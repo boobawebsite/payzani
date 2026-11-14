@@ -878,61 +878,69 @@
 
 
 
-    /* -------------------------------------------------------------
-       LIVE DYNAMIC TARIFFS & DATA PLANS SHOWCASE (APPLE / PRIME CAROUSEL)
+        /* -------------------------------------------------------------
+       NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
     -------------------------------------------------------------- */
     .tariffs-showcase-section {
-      margin-bottom: clamp(36px, 5vw, 64px);
+      background: #0B0F19;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: clamp(28px, 4vw, 44px) clamp(18px, 3.5vw, 36px);
+      margin-bottom: clamp(40px, 6vw, 72px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
       position: relative;
     }
     .tariffs-header {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 20px;
+      gap: 16px;
+      margin-bottom: 24px;
     }
     .tariffs-title-group h3 {
-      font-size: clamp(20px, 2.5vw, 24px);
+      font-size: clamp(22px, 3.2vw, 30px);
       font-weight: 800;
-      letter-spacing: -0.6px;
-      color: var(--text-main);
+      letter-spacing: -0.8px;
+      color: #FFFFFF;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      line-height: 1.2;
     }
     .tariffs-title-group p {
-      font-size: clamp(12.5px, 1.5vw, 13.5px);
-      color: var(--text-muted);
-      margin-top: 3px;
+      font-size: clamp(13px, 1.5vw, 14.5px);
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 6px;
+      line-height: 1.45;
     }
     .tariff-live-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 3px 8px;
-      background: rgba(16, 185, 129, 0.1);
-      color: #10B981;
-      font-size: 11px;
-      font-weight: 700;
+      padding: 3px 9px;
+      background: rgba(229, 9, 20, 0.15);
+      border: 1px solid rgba(229, 9, 20, 0.35);
+      color: #FF3B47;
+      font-size: 10.5px;
+      font-weight: 800;
       border-radius: 9999px;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
     }
     .pulse-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #10B981;
-      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+      background: #E50914;
+      box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3);
     }
     .tariff-nav-bar {
       display: flex;
-      background: rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.03);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       padding: 3px;
-      border-radius: 12px;
+      border-radius: 14px;
       gap: 3px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -946,13 +954,13 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 12px;
+      padding: 7px 12px;
       border: none;
       background: transparent;
-      border-radius: 9px;
+      border-radius: 10px;
       font-size: 11.5px;
       font-weight: 600;
-      color: #636366;
+      color: rgba(255, 255, 255, 0.7);
       cursor: pointer;
       white-space: nowrap;
       position: relative;
@@ -961,12 +969,13 @@
       font-family: inherit;
     }
     .tariff-nav-btn:hover {
-      color: #1D1D1F;
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
     }
     .tariff-nav-btn.active {
-      background: #FFFFFF;
-      color: #0B0F19;
-      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+      background: #E50914;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(229, 9, 20, 0.45);
       font-weight: 700;
     }
     .tariff-nav-btn .progress-bar {
@@ -975,7 +984,7 @@
       left: 0;
       height: 2px;
       width: 0%;
-      background: #0071E3;
+      background: #FFFFFF;
       border-radius: 1px;
       opacity: 0;
     }
@@ -993,14 +1002,14 @@
 
     .tariff-carousel-wrap {
       position: relative;
-      min-height: 190px;
+      min-height: 260px;
     }
     .tariff-group {
       display: none;
       grid-template-columns: repeat(4, 1fr);
-      gap: clamp(10px, 1.8vw, 16px);
+      gap: clamp(14px, 2vw, 20px);
       opacity: 0;
-      transform: translateY(8px);
+      transform: translateY(10px);
       transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .tariff-group.active {
@@ -1013,34 +1022,37 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    @media (max-width: 480px) {
+    @media (max-width: 540px) {
       .tariff-group {
         grid-template-columns: 1fr;
       }
     }
 
+    /* NETFLIX CARD: Exact gradient, border, typography & icon placement */
     .tariff-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: linear-gradient(149deg, #192247 0%, #210e17 99%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
-      padding: clamp(14px, 1.8vw, 18px);
+      padding: clamp(22px, 2.5vw, 28px) clamp(18px, 2.2vw, 22px) 20px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
+      min-height: 275px;
+      cursor: pointer;
     }
     .tariff-card:hover {
-      border-color: rgba(0, 113, 227, 0.35);
-      box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.08);
-      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      transform: translateY(-4px);
     }
     .tariff-card-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .tariff-carrier-tag {
       display: flex;
@@ -1048,9 +1060,9 @@
       gap: 6px;
       font-size: 11px;
       font-weight: 700;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.7);
       text-transform: uppercase;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
     }
     .tariff-carrier-tag img {
       width: 15px;
@@ -1060,65 +1072,87 @@
     .tariff-badge {
       font-size: 10px;
       font-weight: 700;
-      padding: 2.5px 7px;
+      padding: 3px 8px;
       border-radius: 9999px;
-      background: #F1F4F8;
-      color: #48484A;
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      letter-spacing: 0.3px;
     }
     .tariff-badge.popular {
-      background: #0071E3;
+      background: #E50914;
       color: #FFFFFF;
     }
     .tariff-card-volume {
-      font-size: clamp(19px, 2.2vw, 23px);
+      font-size: clamp(20px, 2.4vw, 24px);
       font-weight: 800;
-      color: var(--text-main);
+      color: #FFFFFF;
       letter-spacing: -0.6px;
-      margin-bottom: 3px;
+      line-height: 1.2;
+      margin-bottom: 8px;
     }
     .tariff-card-validity {
-      font-size: 11.5px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.45;
+      margin-bottom: 16px;
+      max-width: 80%;
     }
     .tariff-card-bottom {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 2;
+      padding-right: 66px; /* dedicated clearance for illuminated Netflix glow icon */
     }
     .tariff-price {
-      font-size: clamp(16px, 1.8vw, 18px);
+      font-size: clamp(19px, 2.2vw, 23px);
       font-weight: 800;
-      color: var(--text-main);
-      letter-spacing: -0.4px;
+      color: #FFFFFF;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
     }
     .tariff-subprice {
-      font-size: 10.5px;
-      color: var(--success);
+      font-size: 11px;
+      color: #10B981;
       font-weight: 700;
+      margin-top: 2px;
     }
     .tariff-buy-btn {
-      padding: 6px 12px;
-      background: #F1F4F8;
-      color: #1D1D1F;
-      border: none;
-      border-radius: 8px;
-      font-size: 11.5px;
+      padding: 7px 16px;
+      background: rgba(255, 255, 255, 0.14);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 9999px;
+      font-size: 12px;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: all 0.15s ease;
+      gap: 5px;
+      transition: all 0.2s ease;
       font-family: inherit;
       white-space: nowrap;
     }
     .tariff-card:hover .tariff-buy-btn {
-      background: #0071E3;
-      color: #FFFFFF;
+      background: #E50914;
+      border-color: #E50914;
+      box-shadow: 0 4px 14px rgba(229, 9, 20, 0.4);
+    }
+    .netflix-glow-icon {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      width: 58px;
+      height: 58px;
+      pointer-events: none;
+      z-index: 1;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tariff-card:hover .netflix-glow-icon {
+      transform: scale(1.08);
     }
 
     .bento-grid {
@@ -1950,17 +1984,17 @@
 
 
 
-      <!-- =============================================================
-           LIVE DYNAMIC TARIFFS & DATA PLANS SHOWCASE (3S AUTO-CAROUSEL)
+            <!-- =============================================================
+           NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
       ============================================================== -->
       <section class="tariffs-showcase-section" id="liveTariffShowcase" onmouseenter="isTariffHovered=true" onmouseleave="isTariffHovered=false">
         <div class="tariffs-header">
           <div class="tariffs-title-group">
             <h3>
-              <span>Direct Carrier Plans & Wholesale Bundles</span>
+              <span>More Reasons to Choose Payzani Plans</span>
               <span class="tariff-live-badge"><span class="pulse-dot"></span> Live 3s Feed</span>
             </h3>
-            <p>Live upstream tariffs for data, cable packages, and entertainment top-ups with sub-second delivery.</p>
+            <p>Direct automated delivery for wholesale data bundles, cable TV subscriptions, and streaming passes.</p>
           </div>
 
           <div class="tariff-nav-bar">
@@ -2009,10 +2043,10 @@
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN SME</span>
-                  <span class="tariff-badge">Fast Activation</span>
+                  <span class="tariff-badge">Instant Switch</span>
                 </div>
-                <div class="tariff-card-volume">1.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Instant Fulfillment</div>
+                <div class="tariff-card-volume">1.0 GB SME Data</div>
+                <div class="tariff-card-validity">Sub-second provisioning directly on the MTN national switch. Perfect for daily browsing.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2024,6 +2058,18 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
+  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
+  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
+  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2032,8 +2078,8 @@
                   <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN SME</span>
                   <span class="tariff-badge popular">Popular</span>
                 </div>
-                <div class="tariff-card-volume">2.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • High Speed SME</div>
+                <div class="tariff-card-volume">2.0 GB SME Data</div>
+                <div class="tariff-card-validity">Double data quota with 30 days validity. Nigeria's favorite telecom bundle for heavy social use.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2045,16 +2091,29 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
+  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
             </div>
 
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN Corporate</span>
-                  <span class="tariff-badge">Bulk Node</span>
+                  <span class="tariff-badge">High Speed</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Gifting & SME</div>
+                <div class="tariff-card-volume">5.0 GB Corporate</div>
+                <div class="tariff-card-validity">High-volume corporate allocation. Unthrottled bandwidth on 4G and 5G networks nationwide.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2066,27 +2125,64 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-35 32 32)">
+    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
+    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
+    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
+    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
+  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
+</svg>
             </div>
 
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN Wholesale</span>
-                  <span class="tariff-badge">Reseller Pack</span>
+                  <span class="tariff-badge">Enterprise</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Enterprise Node</div>
+                <div class="tariff-card-volume">10.0 GB Wholesale</div>
+                <div class="tariff-card-validity">Tier-1 wholesale package for businesses, families, and high-consumption power users.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
                   <div class="tariff-price">₦2,900</div>
-                  <div class="tariff-subprice">Tier 1 Wholesale</div>
+                  <div class="tariff-subprice">Reseller Tier</div>
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '10.0 GB Wholesale', 2900)">
                   <span>Recharge</span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
+  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
+  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
+  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
+  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
+  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
+  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
             </div>
           </div>
 
@@ -2098,8 +2194,8 @@
                   <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel 4G</span>
                   <span class="tariff-badge">Sub-second</span>
                 </div>
-                <div class="tariff-card-volume">1.5 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Direct Gifting</div>
+                <div class="tariff-card-volume">1.5 GB 4G Gifting</div>
+                <div class="tariff-card-validity">Instant direct gifting on Airtel 4G LTE. Smooth video streaming and low-latency response.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2111,6 +2207,18 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
+  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
+  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
+  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2119,8 +2227,8 @@
                   <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel Corporate</span>
                   <span class="tariff-badge popular">Popular</span>
                 </div>
-                <div class="tariff-card-volume">2.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Fast Dispatch</div>
+                <div class="tariff-card-volume">2.0 GB Corporate</div>
+                <div class="tariff-card-validity">Fast dispatch corporate package with 30 days validity. Automated network priority.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2132,16 +2240,29 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
+  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
             </div>
 
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel Corporate</span>
-                  <span class="tariff-badge">High Speed</span>
+                  <span class="tariff-badge">Streaming Pack</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Heavy Streaming</div>
+                <div class="tariff-card-volume">5.0 GB Corporate</div>
+                <div class="tariff-card-validity">Heavy streaming bundle. Optimized for YouTube, Netflix, TikTok, and Zoom video meetings.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2153,6 +2274,23 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-35 32 32)">
+    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
+    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
+    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
+    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
+  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2161,8 +2299,8 @@
                   <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel Wholesale</span>
                   <span class="tariff-badge">Bulk Node</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Reseller Favorite</div>
+                <div class="tariff-card-volume">10.0 GB Wholesale</div>
+                <div class="tariff-card-validity">Bulk data distribution for reseller agents and smart telecom shops with maximum uptime.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2174,6 +2312,26 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
+  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
+  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
+  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
+  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
+  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
+  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
             </div>
           </div>
 
@@ -2185,19 +2343,31 @@
                   <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Direct</span>
                   <span class="tariff-badge">Economy</span>
                 </div>
-                <div class="tariff-card-volume">1.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Instant Ping</div>
+                <div class="tariff-card-volume">1.0 GB SME Data</div>
+                <div class="tariff-card-validity">Lowest tariff rate in Nigeria. Instant data credit with nationwide 4G high-speed coverage.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
                   <div class="tariff-price">₦250</div>
-                  <div class="tariff-subprice">Lowest Price</div>
+                  <div class="tariff-subprice">Lowest Cost</div>
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '1.0 GB SME Data', 250)">
                   <span>Recharge</span>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
+  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
+  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
+  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2206,8 +2376,8 @@
                   <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Direct</span>
                   <span class="tariff-badge popular">Popular</span>
                 </div>
-                <div class="tariff-card-volume">2.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Affordable Data</div>
+                <div class="tariff-card-volume">2.0 GB SME Data</div>
+                <div class="tariff-card-validity">Economical everyday package. Valid for 30 days with automated carrier network renewal.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2219,6 +2389,19 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
+  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2227,8 +2410,8 @@
                   <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Direct</span>
                   <span class="tariff-badge">Best Value</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Extended Browsing</div>
+                <div class="tariff-card-volume">5.0 GB SME Data</div>
+                <div class="tariff-card-validity">Extended browsing and downloads for power users on the Grandmasters of Data network.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2240,6 +2423,23 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-35 32 32)">
+    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
+    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
+    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
+    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
+  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2248,8 +2448,8 @@
                   <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Wholesale</span>
                   <span class="tariff-badge">Heavy Pack</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Reseller Quota</div>
+                <div class="tariff-card-volume">10.0 GB Wholesale</div>
+                <div class="tariff-card-validity">Maximum data allocation for agents and power users at direct wholesale margin pricing.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2261,6 +2461,26 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
+  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
+  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
+  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
+  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
+  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
+  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
             </div>
           </div>
 
@@ -2272,8 +2492,8 @@
                   <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile</span>
                   <span class="tariff-badge">Direct</span>
                 </div>
-                <div class="tariff-card-volume">1.5 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Instant Switch</div>
+                <div class="tariff-card-volume">1.5 GB SME Data</div>
+                <div class="tariff-card-validity">Reliable high-speed data on 9mobile turbo LTE. Crystal clear browsing and low packet loss.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2285,6 +2505,18 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
+  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
+  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
+  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2293,8 +2525,8 @@
                   <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile</span>
                   <span class="tariff-badge popular">Popular</span>
                 </div>
-                <div class="tariff-card-volume">3.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Low Latency</div>
+                <div class="tariff-card-volume">3.0 GB SME Data</div>
+                <div class="tariff-card-validity">Balanced bandwidth for remote work and entertainment with guaranteed 30-day validity.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2306,6 +2538,19 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
+  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2314,8 +2559,8 @@
                   <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile Corporate</span>
                   <span class="tariff-badge">Speed Pack</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • High Speed</div>
+                <div class="tariff-card-volume">5.0 GB Corporate</div>
+                <div class="tariff-card-validity">Corporate allocation for high performance downloads and uninterrupted video streaming.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2327,6 +2572,23 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-35 32 32)">
+    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
+    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
+    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
+    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
+  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2335,8 +2597,8 @@
                   <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile Wholesale</span>
                   <span class="tariff-badge">Bulk</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB</div>
-                <div class="tariff-card-validity">30 Days Validity • Enterprise Hub</div>
+                <div class="tariff-card-volume">10.0 GB Wholesale</div>
+                <div class="tariff-card-validity">Wholesale bulk package with dedicated carrier gateway routing for resilient connections.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2348,6 +2610,26 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
+  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
+  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
+  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
+  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
+  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
+  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
             </div>
           </div>
 
@@ -2360,7 +2642,7 @@
                   <span class="tariff-badge">Entry Tier</span>
                 </div>
                 <div class="tariff-card-volume">DStv Padi</div>
-                <div class="tariff-card-validity">1 Month • 45+ HD Channels & Audio</div>
+                <div class="tariff-card-validity">Watch on your Smart TV, decoder, and mobile. Over 45 crystal-clear digital entertainment channels.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2372,6 +2654,18 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
+  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
+  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
+  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2381,7 +2675,7 @@
                   <span class="tariff-badge popular">Popular</span>
                 </div>
                 <div class="tariff-card-volume">DStv Yanga</div>
-                <div class="tariff-card-validity">1 Month • 85+ Channels • Movies & Sports</div>
+                <div class="tariff-card-validity">Stream and enjoy 85+ channels featuring Nollywood classics, international movies, and sports.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2393,16 +2687,29 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
+  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
             </div>
 
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/dstv.png" alt="DStv"> DStv Nigeria</span>
-                  <span class="tariff-badge">Entertainment</span>
+                  <span class="tariff-badge">Family Tier</span>
                 </div>
                 <div class="tariff-card-volume">DStv Confam</div>
-                <div class="tariff-card-validity">1 Month • 105+ Channels • Full Series</div>
+                <div class="tariff-card-validity">105+ channels with kids' favorites, documentary hubs, and blockbuster drama series.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2414,6 +2721,23 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-35 32 32)">
+    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
+    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
+    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
+    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
+  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2423,7 +2747,7 @@
                   <span class="tariff-badge">Live Football</span>
                 </div>
                 <div class="tariff-card-volume">DStv Compact</div>
-                <div class="tariff-card-validity">1 Month • Premier League & Champions League</div>
+                <div class="tariff-card-validity">Complete Premier League and Champions League football plus 130+ HD entertainment channels.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2435,6 +2759,26 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
+  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
+  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
+  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
+  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
+  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
+  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
             </div>
           </div>
 
@@ -2447,7 +2791,7 @@
                   <span class="tariff-badge">Budget</span>
                 </div>
                 <div class="tariff-card-volume">GOtv Smallie</div>
-                <div class="tariff-card-validity">1 Month • 35+ Digital Channels</div>
+                <div class="tariff-card-validity">35+ popular digital channels at Nigeria's most affordable digital TV subscription rate.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2459,6 +2803,18 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
+  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
+  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
+  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2468,7 +2824,7 @@
                   <span class="tariff-badge">Essential</span>
                 </div>
                 <div class="tariff-card-volume">GOtv Jinja</div>
-                <div class="tariff-card-validity">1 Month • 45+ Channels • Nollywood</div>
+                <div class="tariff-card-validity">45+ channels of non-stop local entertainment, music, news, and African drama series.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2480,6 +2836,19 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
+  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2489,7 +2858,7 @@
                   <span class="tariff-badge popular">Popular</span>
                 </div>
                 <div class="tariff-card-volume">GOtv Jolli</div>
-                <div class="tariff-card-validity">1 Month • 65+ Channels • Africa Magic</div>
+                <div class="tariff-card-validity">65+ premium channels with Africa Magic, kids' cartoons, and football match highlights.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2501,16 +2870,33 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-35 32 32)">
+    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
+    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
+    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
+    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
+  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
+</svg>
             </div>
 
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/gotv.png" alt="GOtv"> GOtv Direct</span>
-                  <span class="tariff-badge">Sports Included</span>
+                  <span class="tariff-badge">Sports</span>
                 </div>
                 <div class="tariff-card-volume">GOtv Max</div>
-                <div class="tariff-card-validity">1 Month • 75+ Channels • SuperSport</div>
+                <div class="tariff-card-validity">75+ channels with live La Liga, Serie A, movies, and family reality TV entertainment.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2522,6 +2908,26 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
+  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
+  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
+  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
+  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
+  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
+  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
             </div>
           </div>
 
@@ -2531,10 +2937,10 @@
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/netflix.png" alt="Netflix"> Netflix</span>
-                  <span class="tariff-badge">Mobile Screen</span>
+                  <span class="tariff-badge">1 Screen</span>
                 </div>
                 <div class="tariff-card-volume">Netflix Mobile</div>
-                <div class="tariff-card-validity">30 Days • Phone & Tablet • 480p SD</div>
+                <div class="tariff-card-validity">Watch on your phone and tablet in 480p SD with unlimited downloads and zero commercials.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2546,6 +2952,18 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E50914"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
+  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
+  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
+  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2555,7 +2973,7 @@
                   <span class="tariff-badge popular">Full HD</span>
                 </div>
                 <div class="tariff-card-volume">Netflix Standard</div>
-                <div class="tariff-card-validity">30 Days • 2 Devices Simultaneous • 1080p FHD</div>
+                <div class="tariff-card-validity">2 simultaneous screens in 1080p Full HD on any TV, laptop, phone, or tablet device.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2567,16 +2985,29 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
+  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
+  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+</svg>
             </div>
 
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
                   <span class="tariff-carrier-tag"><img src="assets/netflix.png" alt="Netflix"> Netflix</span>
-                  <span class="tariff-badge">4K HDR</span>
+                  <span class="tariff-badge">4K Ultra HD</span>
                 </div>
                 <div class="tariff-card-volume">Netflix Premium</div>
-                <div class="tariff-card-validity">30 Days • 4 Screens • Spatial Audio & 4K UHD</div>
+                <div class="tariff-card-validity">4 simultaneous screens in glorious 4K Ultra HD with spatial audio and HDR brilliance.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2588,6 +3019,23 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+  <g transform="rotate(-35 32 32)">
+    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
+    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
+    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
+    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
+  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
+</svg>
             </div>
 
             <div class="tariff-card">
@@ -2597,7 +3045,7 @@
                   <span class="tariff-badge">Amazon Prime</span>
                 </div>
                 <div class="tariff-card-volume">Prime Video Pass</div>
-                <div class="tariff-card-validity">30 Days • 3 Screens • Prime Originals & Movies</div>
+                <div class="tariff-card-validity">Stream unlimited Amazon Originals, movies, and TV shows on your phone, tablet, and TV.</div>
               </div>
               <div class="tariff-card-bottom">
                 <div>
@@ -2609,6 +3057,26 @@
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </button>
               </div>
+              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F43F5E"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
+  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
+  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
+  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
+  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
+  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
+  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
+  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+</svg>
             </div>
           </div>
         </div>
