@@ -910,114 +910,21 @@
       box-sizing: border-box;
       width: 100%;
     }
-    .tariffs-header {
+    .tariffs-header-minimal {
+      margin-bottom: clamp(24px, 3.5vw, 36px);
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 24px;
+      align-items: center;
+      justify-content: flex-start;
     }
-    .tariffs-title-group h3 {
-      font-size: clamp(22px, 3.2vw, 30px);
+    .dynamic-tariff-heading {
+      font-size: clamp(28px, 3.6vw, 40px);
       font-weight: 800;
-      letter-spacing: -0.8px;
+      letter-spacing: -1px;
       color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      line-height: 1.2;
-    }
-    .tariffs-title-group p {
-      font-size: clamp(13px, 1.5vw, 14.5px);
-      color: rgba(255, 255, 255, 0.7);
-      margin-top: 6px;
-      line-height: 1.45;
-    }
-    .tariff-live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 9px;
-      background: rgba(229, 9, 20, 0.15);
-      border: 1px solid rgba(229, 9, 20, 0.35);
-      color: #FF3B47;
-      font-size: 10.5px;
-      font-weight: 800;
-      border-radius: 9999px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .pulse-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #E50914;
-      box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3);
-    }
-    .tariff-nav-bar {
-      display: flex;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 3px;
-      border-radius: 14px;
-      gap: 3px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      max-width: 100%;
-    }
-    .tariff-nav-bar::-webkit-scrollbar {
-      display: none;
-    }
-    .tariff-nav-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 12px;
-      border: none;
-      background: transparent;
-      border-radius: 10px;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.7);
-      cursor: pointer;
-      white-space: nowrap;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-      font-family: inherit;
-    }
-    .tariff-nav-btn:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .tariff-nav-btn.active {
-      background: #E50914;
-      color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(229, 9, 20, 0.45);
-      font-weight: 700;
-    }
-    .tariff-nav-btn .progress-bar {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      width: 0%;
-      background: #FFFFFF;
-      border-radius: 1px;
-      opacity: 0;
-    }
-    .tariff-nav-btn.active .progress-bar {
-      opacity: 1;
-      width: 100%;
-      transition: width 3s linear;
-    }
-    .tariff-logo-icon {
-      width: 14px;
-      height: 14px;
-      object-fit: contain;
-      border-radius: 3px;
+      margin: 0;
+      line-height: 1.15;
+      display: inline-block;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .tariff-carousel-wrap {
@@ -2009,54 +1916,9 @@
       ============================================================== -->
       <section class="tariffs-showcase-section" id="liveTariffShowcase" onmouseenter="isTariffHovered=true" onmouseleave="isTariffHovered=false">
       <div class="tariffs-inner-container">
-        <div class="tariffs-header">
-          <div class="tariffs-title-group">
-            <h3>
-              <span>More Reasons to Choose Payzani Plans</span>
-              <span class="tariff-live-badge"><span class="pulse-dot"></span> Live 3s Feed</span>
-            </h3>
-            <p>Direct automated delivery for wholesale data bundles, cable TV subscriptions, and streaming passes.</p>
-          </div>
-
-          <div class="tariff-nav-bar">
-            <button type="button" class="tariff-nav-btn active" id="tariff-tab-mtn" onclick="showTariffGroup('mtn', true)">
-              <img src="assets/mtn.png" alt="MTN" class="tariff-logo-icon">
-              <span>MTN Data</span>
-              <span class="progress-bar"></span>
-            </button>
-            <button type="button" class="tariff-nav-btn" id="tariff-tab-airtel" onclick="showTariffGroup('airtel', true)">
-              <img src="assets/airtel.png" alt="Airtel" class="tariff-logo-icon">
-              <span>Airtel Data</span>
-              <span class="progress-bar"></span>
-            </button>
-            <button type="button" class="tariff-nav-btn" id="tariff-tab-glo" onclick="showTariffGroup('glo', true)">
-              <img src="assets/glo.png" alt="Glo" class="tariff-logo-icon">
-              <span>Glo Data</span>
-              <span class="progress-bar"></span>
-            </button>
-            <button type="button" class="tariff-nav-btn" id="tariff-tab-nine" onclick="showTariffGroup('nine', true)">
-              <span class="dot-net dot-9mobile" style="width:10px;height:10px;"></span>
-              <span>9mobile Data</span>
-              <span class="progress-bar"></span>
-            </button>
-            <button type="button" class="tariff-nav-btn" id="tariff-tab-dstv" onclick="showTariffGroup('dstv', true)">
-              <img src="assets/dstv.png" alt="DStv" class="tariff-logo-icon">
-              <span>DStv Bouquets</span>
-              <span class="progress-bar"></span>
-            </button>
-            <button type="button" class="tariff-nav-btn" id="tariff-tab-gotv" onclick="showTariffGroup('gotv', true)">
-              <img src="assets/gotv.png" alt="GOtv" class="tariff-logo-icon">
-              <span>GOtv Plans</span>
-              <span class="progress-bar"></span>
-            </button>
-            <button type="button" class="tariff-nav-btn" id="tariff-tab-streaming" onclick="showTariffGroup('streaming', true)">
-              <img src="assets/netflix.png" alt="Streaming" class="tariff-logo-icon">
-              <span>Netflix & Prime</span>
-              <span class="progress-bar"></span>
-            </button>
-          </div>
+        <div class="tariffs-header-minimal">
+          <h2 class="dynamic-tariff-heading" id="dynamicTariffHeading">MTN Plans</h2>
         </div>
-
         <div class="tariff-carousel-wrap">
           <!-- 1. MTN Group -->
           <div class="tariff-group active" id="tariff-group-mtn">
@@ -3639,31 +3501,31 @@
     let tariffInterval = null;
     let isTariffHovered = false;
 
+    const tariffHeadings = {
+      'mtn': 'MTN Plans',
+      'airtel': 'Airtel Plans',
+      'glo': 'Glo Plans',
+      'nine': '9mobile Plans',
+      'dstv': 'DStv Plans',
+      'gotv': 'GOtv Plans',
+      'streaming': 'Netflix & Prime Plans'
+    };
+
     function showTariffGroup(providerKey, isManual = false) {
       const index = tariffProviders.indexOf(providerKey);
       if (index === -1) return;
       currentTariffIndex = index;
 
-      // Update tabs and reset progress bar
-      document.querySelectorAll('.tariff-nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-        const pbar = btn.querySelector('.progress-bar');
-        if (pbar) {
-          pbar.style.transition = 'none';
-          pbar.style.width = '0%';
-        }
-      });
-
-      const activeBtn = document.getElementById('tariff-tab-' + providerKey);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-        const pbar = activeBtn.querySelector('.progress-bar');
-        if (pbar) {
-          setTimeout(() => {
-            pbar.style.transition = 'width 3s linear';
-            pbar.style.width = '100%';
-          }, 30);
-        }
+      // Smooth professional heading transition
+      const headingEl = document.getElementById('dynamicTariffHeading');
+      if (headingEl && tariffHeadings[providerKey]) {
+        headingEl.style.opacity = '0';
+        headingEl.style.transform = 'translateY(-4px)';
+        setTimeout(() => {
+          headingEl.innerText = tariffHeadings[providerKey];
+          headingEl.style.opacity = '1';
+          headingEl.style.transform = 'translateY(0)';
+        }, 150);
       }
 
       // Update plan groups with smooth cross-fade
@@ -3683,15 +3545,6 @@
 
     function startTariffCycle() {
       if (tariffInterval) clearInterval(tariffInterval);
-      const firstBtn = document.getElementById('tariff-tab-' + tariffProviders[currentTariffIndex]);
-      if (firstBtn) {
-        const pbar = firstBtn.querySelector('.progress-bar');
-        if (pbar) {
-          pbar.style.transition = 'width 3s linear';
-          pbar.style.width = '100%';
-        }
-      }
-
       tariffInterval = setInterval(() => {
         if (!isTariffHovered) {
           currentTariffIndex = (currentTariffIndex + 1) % tariffProviders.length;
