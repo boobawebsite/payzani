@@ -341,7 +341,7 @@
       align-items: center;
       padding: clamp(24px, 3vh, 48px) 0;
       box-sizing: border-box;
-      margin-bottom: clamp(32px, 5vw, 64px);
+      margin-bottom: 0;
     }
     .hero-lead-col {
       position: relative;
@@ -881,14 +881,34 @@
         /* -------------------------------------------------------------
        NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
     -------------------------------------------------------------- */
+    /* -------------------------------------------------------------
+       NETFLIX-STYLE SHOWCASE: FULL-BLEED FULL-WIDTH SECTION
+    -------------------------------------------------------------- */
     .tariffs-showcase-section {
-      background: #0B0F19;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 24px;
-      padding: clamp(28px, 4vw, 44px) clamp(18px, 3.5vw, 36px);
-      margin-bottom: clamp(40px, 6vw, 72px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
       position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-top: 0;
+      background: #000000;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      padding: clamp(48px, 5.5vw, 72px) 0 clamp(56px, 6.5vw, 84px);
+      margin-bottom: clamp(48px, 6vw, 72px);
+      box-shadow: inset 0 30px 60px -30px rgba(0, 0, 0, 0.9), inset 0 -30px 60px -30px rgba(0, 0, 0, 0.9);
+      box-sizing: border-box;
+    }
+    .tariffs-inner-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 3.5vw, 40px);
+      box-sizing: border-box;
+      width: 100%;
     }
     .tariffs-header {
       display: flex;
@@ -1988,6 +2008,7 @@
            NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
       ============================================================== -->
       <section class="tariffs-showcase-section" id="liveTariffShowcase" onmouseenter="isTariffHovered=true" onmouseleave="isTariffHovered=false">
+      <div class="tariffs-inner-container">
         <div class="tariffs-header">
           <div class="tariffs-title-group">
             <h3>
@@ -3080,6 +3101,7 @@
             </div>
           </div>
         </div>
+      </div>
       </section>
 
       <!-- Bento Grid (Clean titles, no bento-tag labels) -->
