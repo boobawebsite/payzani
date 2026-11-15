@@ -439,9 +439,11 @@
         max-width: 480px;
         margin: 0 auto;
         width: 100%;
-        padding: 14px 12px;
+        padding: 16px 14px;
         border-radius: 18px;
         border-right: 1px solid rgba(255, 255, 255, 0.85);
+        min-height: auto;
+        height: auto;
         transform: none !important;
       }
       .apple-recharge-card::after {
@@ -604,7 +606,7 @@
       box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
     }
 
-    /* Professional Edge-Bleed Cut-Out Recharge Box (Expanded to match exact user red-box bounds) */
+    /* Professional Edge-Bleed Cut-Out Recharge Box (Permanently Locked Exact Dimensions Across All Tabs) */
     .apple-recharge-card {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(36px) saturate(190%);
@@ -615,7 +617,7 @@
       border-bottom-left-radius: 32px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      padding: clamp(32px, 3.8vw, 44px) clamp(34px, 4.2vw, 56px) clamp(30px, 3.6vw, 42px) clamp(28px, 3.2vw, 40px);
+      padding: clamp(28px, 3.4vw, 38px) clamp(34px, 4.2vw, 56px) clamp(28px, 3.4vw, 38px) clamp(28px, 3.2vw, 40px);
       box-shadow: 
         -28px 36px 84px -14px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(255, 255, 255, 0.85) inset,
@@ -624,9 +626,28 @@
       z-index: 2;
       width: 100%;
       max-width: clamp(520px, 47vw, 640px);
+      min-height: 415px;
+      height: 415px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
       margin-left: auto;
       margin-right: -clamp(18px, 3.8vw, 54px);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-recharge-card .tab-pane {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .apple-recharge-card .tab-pane.active {
+      display: flex !important;
+    }
+    .apple-recharge-card .btn-primary {
+      margin-top: auto;
     }
     .apple-recharge-card:hover {
       transform: translateX(-8px);
@@ -1802,7 +1823,7 @@
             </div>
 
             <!-- 1. AIRTIME TAB (Brand Logos, No redundant label text) -->
-            <div id="tab-airtime" class="tab-pane">
+            <div id="tab-airtime" class="tab-pane active" style="display:flex;">
               <div class="apple-carrier-bar">
                 <button type="button" class="apple-carrier-btn selected" onclick="selectProviderTile(this, 'MTN')" data-carrier="MTN" title="MTN">
                   <img src="assets/mtn.png" alt="MTN" class="brand-carrier-logo">
@@ -1919,13 +1940,21 @@
                 <div class="custom-select-trigger" onclick="openModularPicker('cablePackagePicker')">
                   <div style="display:flex; align-items:center; gap:8px; overflow:hidden;">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="flex-shrink:0;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    <span class="custom-select-value" id="selectedCablePackageLabel">DSTV Yanga Bouquet (₦4,200)</span>
+                    <span class="custom-select-value" id="selectedCablePackageLabel">DSTV Yanga (₦4,200)</span>
                   </div>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
               </div>
 
-              <button class="btn-primary" onclick="executeVTUTransaction('Cable TV Renewal')" style="margin-top:16px;">
+              <!-- Cable Package Presets for perfectly matched 4-row layout -->
+              <div class="apple-preset-row">
+                <button type="button" class="apple-preset-pill active" onclick="selectCablePackage('DSTV Yanga', 4200, this)">Yanga</button>
+                <button type="button" class="apple-preset-pill" onclick="selectCablePackage('DSTV Confam', 7400, this)">Confam</button>
+                <button type="button" class="apple-preset-pill" onclick="selectCablePackage('DSTV Compact', 12500, this)">Compact</button>
+                <button type="button" class="apple-preset-pill" onclick="selectCablePackage('DSTV Premium', 29500, this)">Premium</button>
+              </div>
+
+              <button class="btn-primary" onclick="executeVTUTransaction('Cable TV Renewal')">
                 <span>Renew Subscription</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
@@ -1933,23 +1962,31 @@
 
             <!-- 4. POWER TAB -->
             <div id="tab-power" class="tab-pane" style="display:none;">
-              <div class="form-grid" style="margin-bottom: 12px;">
-                <div class="custom-select-trigger" onclick="openModularPicker('discoPicker')">
-                  <div style="display:flex; align-items:center; gap:8px; overflow:hidden;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="flex-shrink:0;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    <span class="custom-select-value" id="selectedDiscoLabel">EKEDC - Eko Electricity</span>
-                  </div>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                </div>
+              <!-- Disco Logos/Short Brand Bar for exact 4-row match -->
+              <div class="apple-carrier-bar">
+                <button type="button" class="apple-carrier-btn selected" onclick="selectDisco(this, 'EKEDC - Eko Electricity')" data-disco="ekedc" title="EKEDC">
+                  <span style="font-weight:700; font-size:12px; color:#1D1D1F;">EKEDC</span>
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectDisco(this, 'IKEDC - Ikeja Electric')" data-disco="ikedc" title="IKEDC">
+                  <span style="font-weight:700; font-size:12px; color:#1D1D1F;">IKEDC</span>
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectDisco(this, 'AEDC - Abuja Electricity')" data-disco="aedc" title="AEDC">
+                  <span style="font-weight:700; font-size:12px; color:#1D1D1F;">AEDC</span>
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectDisco(this, 'IBEDC - Ibadan Electricity')" data-disco="ibedc" title="IBEDC">
+                  <span style="font-weight:700; font-size:12px; color:#1D1D1F;">IBEDC</span>
+                </button>
+              </div>
+
+              <div class="form-grid">
                 <div class="input-icon-wrap">
                   <svg class="input-inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg>
                   <input type="text" class="input-field has-icon" placeholder="Meter Number" value="45192830192">
                 </div>
-              </div>
-
-              <div class="input-icon-wrap">
-                <span class="input-currency-symbol">₦</span>
-                <input type="number" class="input-field has-icon" placeholder="Amount" value="5000" id="powerAmountInput">
+                <div class="input-icon-wrap">
+                  <span class="input-currency-symbol">₦</span>
+                  <input type="number" class="input-field has-icon" placeholder="Amount" value="5000" id="powerAmountInput">
+                </div>
               </div>
 
               <div class="apple-preset-row">
@@ -3782,10 +3819,32 @@
     }
 
     function switchTab(btn, tabId) {
-      document.querySelectorAll('.vtu-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+      btn.parentElement.querySelectorAll('.vtu-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.apple-recharge-card .tab-pane').forEach(p => {
+        p.classList.remove('active');
+        p.style.display = 'none';
+      });
       btn.classList.add('active');
-      document.getElementById(tabId).style.display = 'block';
+      const target = document.getElementById(tabId);
+      if (target) {
+        target.classList.add('active');
+        target.style.display = 'flex';
+      }
+    }
+
+    function selectCablePackage(name, price, el) {
+      const label = document.getElementById('selectedCablePackageLabel');
+      if (label) label.innerText = `${name} (₦${price.toLocaleString()})`;
+      el.parentElement.querySelectorAll('.apple-preset-pill').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    function selectDisco(el, name) {
+      el.parentElement.querySelectorAll('.apple-carrier-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      const label = document.getElementById('selectedDiscoLabel');
+      if (label) label.innerText = name;
+      showCustomAlert(name + ' selected');
     }
 
         function selectCableProvider(el, name) {
