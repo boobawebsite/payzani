@@ -387,16 +387,18 @@
     }
 
     .hero-split-grid {
-      max-width: 1200px;
+      max-width: 1260px;
       margin: 0 auto;
-      padding: 0 clamp(16px, 3vw, 32px);
+      padding-left: clamp(20px, 4vw, 48px);
+      padding-right: 0;
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: clamp(24px, 4vw, 48px);
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: clamp(24px, 3.5vw, 48px);
       align-items: center;
       width: 100%;
+      box-sizing: border-box;
     }
     @media (max-width: 940px) {
       .hero-telecom-wrapper {
@@ -439,6 +441,11 @@
         width: 100%;
         padding: 14px 12px;
         border-radius: 18px;
+        border-right: 1px solid rgba(255, 255, 255, 0.85);
+        transform: none !important;
+      }
+      .apple-recharge-card::after {
+        display: none !important;
       }
       .vtu-nav-pills {
         margin-bottom: 10px;
@@ -597,19 +604,45 @@
       box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
     }
 
+    /* Professional Edge-Bleed Cut-Out Recharge Box */
     .apple-recharge-card {
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(32px) saturate(190%);
-      -webkit-backdrop-filter: blur(32px) saturate(190%);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      border-radius: 22px;
-      padding: clamp(16px, 2.2vw, 22px);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(36px) saturate(190%);
+      -webkit-backdrop-filter: blur(36px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-right: none;
+      border-top-left-radius: 26px;
+      border-bottom-left-radius: 26px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: clamp(18px, 2.2vw, 24px) clamp(28px, 3.8vw, 48px) clamp(18px, 2.2vw, 24px) clamp(20px, 2.4vw, 28px);
       box-shadow: 
-        0 24px 64px -14px rgba(0, 0, 0, 0.32),
-        0 0 0 1px rgba(0, 0, 0, 0.04),
-        0 1px 1px rgba(255, 255, 255, 0.95) inset;
+        -24px 32px 72px -12px rgba(0, 0, 0, 0.44),
+        0 0 0 1px rgba(255, 255, 255, 0.85) inset,
+        0 10px 24px -6px rgba(0, 0, 0, 0.18);
       position: relative;
       z-index: 2;
+      width: 100%;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: -clamp(16px, 3.5vw, 48px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-recharge-card:hover {
+      transform: translateX(-8px);
+      box-shadow: 
+        -32px 38px 84px -10px rgba(0, 0, 0, 0.52),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+    }
+    .apple-recharge-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.6) 100%);
+      pointer-events: none;
     }
 
     /* Apple-Style Segmented Tabs */
