@@ -990,6 +990,7 @@
       margin-right: -50vw;
       margin-top: 0;
       background: #000000;
+      overflow: hidden;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       border-left: none;
@@ -1000,12 +1001,53 @@
       box-shadow: inset 0 30px 60px -30px rgba(0, 0, 0, 0.9), inset 0 -30px 60px -30px rgba(0, 0, 0, 0.9);
       box-sizing: border-box;
     }
+    /* Dramatic Ambient Brand Logo Watermark Stage covering the right region */
+    .tariffs-brand-watermark-stage {
+      position: absolute;
+      top: 50%;
+      right: clamp(-60px, 1vw, 20px);
+      transform: translateY(-50%);
+      width: clamp(520px, 58vw, 900px);
+      height: clamp(380px, 44vw, 650px);
+      pointer-events: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+    .tariff-watermark-item {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      opacity: 0;
+      transform: scale(0.95) translate3d(24px, 0, 0);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
+      mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
+    }
+    .tariff-watermark-item.active {
+      opacity: 0.20;
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+    .tariff-watermark-img {
+      max-width: 95%;
+      max-height: 95%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.08));
+    }
     .tariffs-inner-container {
       max-width: 1240px;
       margin: 0 auto;
       padding: 0 clamp(20px, 3.5vw, 40px);
       box-sizing: border-box;
       width: 100%;
+      position: relative;
+      z-index: 2;
     }
     .tariffs-header-minimal {
       margin-bottom: clamp(24px, 3.5vw, 36px);
@@ -1054,8 +1096,10 @@
 
     /* NETFLIX CARD: Exact gradient, border, typography & icon placement */
     .tariff-card {
-      background: linear-gradient(149deg, #192247 0%, #210e17 99%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(149deg, rgba(25, 34, 71, 0.88) 0%, rgba(33, 14, 23, 0.90) 99%);
+      backdrop-filter: blur(24px) saturate(160%);
+      -webkit-backdrop-filter: blur(24px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.10);
       border-radius: 16px;
       padding: clamp(22px, 2.5vw, 28px) clamp(18px, 2.2vw, 22px) 20px;
       display: flex;
@@ -1063,6 +1107,7 @@
       justify-content: space-between;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      z-index: 2;
       overflow: hidden;
       min-height: 275px;
       cursor: pointer;
@@ -1804,6 +1849,11 @@
               <div class="cycle-logo-item" id="cycle-prime">
                 <img src="assets/prime-video.png?v=2" alt="Prime Video" class="cycle-brand-img" />
               </div>
+
+              <!-- 8. 9mobile -->
+              <div class="cycle-logo-item" id="cycle-nine">
+                <img src="assets/9mobile.png" alt="9mobile" class="cycle-brand-img" />
+              </div>
             </div>
 
             <h1 class="hero-title">It is fast, instant and frictionless.</h1>
@@ -2023,7 +2073,32 @@
            NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
       ============================================================== -->
       <section class="tariffs-showcase-section" id="liveTariffShowcase" onmouseenter="isTariffHovered=true" onmouseleave="isTariffHovered=false">
-      <div class="tariffs-inner-container">
+        <!-- Big Brand Logo Watermark Stage Covering the Right Region -->
+        <div class="tariffs-brand-watermark-stage">
+          <div class="tariff-watermark-item active" id="tariff-watermark-mtn">
+            <img src="assets/mtn.png" alt="MTN" class="tariff-watermark-img" />
+          </div>
+          <div class="tariff-watermark-item" id="tariff-watermark-airtel">
+            <img src="assets/airtel.png" alt="Airtel" class="tariff-watermark-img" />
+          </div>
+          <div class="tariff-watermark-item" id="tariff-watermark-glo">
+            <img src="assets/glo.png" alt="Glo" class="tariff-watermark-img" />
+          </div>
+          <div class="tariff-watermark-item" id="tariff-watermark-nine">
+            <img src="assets/9mobile.png" alt="9mobile" class="tariff-watermark-img" />
+          </div>
+          <div class="tariff-watermark-item" id="tariff-watermark-dstv">
+            <img src="assets/dstv.png" alt="DStv" class="tariff-watermark-img" />
+          </div>
+          <div class="tariff-watermark-item" id="tariff-watermark-gotv">
+            <img src="assets/gotv.png" alt="GOtv" class="tariff-watermark-img" />
+          </div>
+          <div class="tariff-watermark-item" id="tariff-watermark-streaming">
+            <img src="assets/netflix.png" alt="Netflix & Prime" class="tariff-watermark-img" />
+          </div>
+        </div>
+
+        <div class="tariffs-inner-container">
         <div class="tariffs-header-minimal">
           <h2 class="dynamic-tariff-heading" id="dynamicTariffHeading">MTN Plans</h2>
         </div>
@@ -2480,7 +2555,7 @@
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile</span>
+                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile</span>
                   <span class="tariff-badge">Direct</span>
                 </div>
                 <div class="tariff-card-volume">1.5 GB SME Data</div>
@@ -2513,7 +2588,7 @@
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile</span>
+                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile</span>
                   <span class="tariff-badge popular">Popular</span>
                 </div>
                 <div class="tariff-card-volume">3.0 GB SME Data</div>
@@ -2547,7 +2622,7 @@
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile Corporate</span>
+                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile Corporate</span>
                   <span class="tariff-badge">Speed Pack</span>
                 </div>
                 <div class="tariff-card-volume">5.0 GB Corporate</div>
@@ -2585,7 +2660,7 @@
             <div class="tariff-card">
               <div>
                 <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><span class="dot-net dot-9mobile"></span> 9mobile Wholesale</span>
+                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile Wholesale</span>
                   <span class="tariff-badge">Bulk</span>
                 </div>
                 <div class="tariff-card-volume">10.0 GB Wholesale</div>
@@ -3644,6 +3719,15 @@
       const targetGrp = document.getElementById('tariff-group-' + providerKey);
       if (targetGrp) {
         targetGrp.classList.add('active');
+      }
+
+      // Update background watermark brand logo covering the right region
+      document.querySelectorAll('.tariff-watermark-item').forEach(w => {
+        w.classList.remove('active');
+      });
+      const targetWatermark = document.getElementById('tariff-watermark-' + providerKey);
+      if (targetWatermark) {
+        targetWatermark.classList.add('active');
       }
 
       if (isManual) {
