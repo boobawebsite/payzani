@@ -387,15 +387,15 @@
     }
 
     .hero-split-grid {
-      max-width: 1260px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding-left: clamp(20px, 4vw, 48px);
+      padding-left: clamp(20px, 3.5vw, 44px);
       padding-right: 0;
       position: relative;
       z-index: 1;
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: clamp(24px, 3.5vw, 48px);
+      grid-template-columns: 0.98fr 1.02fr;
+      gap: clamp(20px, 3vw, 40px);
       align-items: center;
       width: 100%;
       box-sizing: border-box;
@@ -604,28 +604,28 @@
       box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
     }
 
-    /* Professional Edge-Bleed Cut-Out Recharge Box */
+    /* Professional Edge-Bleed Cut-Out Recharge Box (Enlarged to match user red-box scale) */
     .apple-recharge-card {
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(36px) saturate(190%);
       -webkit-backdrop-filter: blur(36px) saturate(190%);
       border: 1px solid rgba(255, 255, 255, 0.9);
       border-right: none;
-      border-top-left-radius: 26px;
-      border-bottom-left-radius: 26px;
+      border-top-left-radius: 30px;
+      border-bottom-left-radius: 30px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
-      padding: clamp(18px, 2.2vw, 24px) clamp(28px, 3.8vw, 48px) clamp(18px, 2.2vw, 24px) clamp(20px, 2.4vw, 28px);
+      padding: clamp(24px, 2.8vw, 34px) clamp(32px, 4vw, 54px) clamp(24px, 2.8vw, 34px) clamp(26px, 3vw, 38px);
       box-shadow: 
-        -24px 32px 72px -12px rgba(0, 0, 0, 0.44),
+        -28px 36px 80px -14px rgba(0, 0, 0, 0.48),
         0 0 0 1px rgba(255, 255, 255, 0.85) inset,
-        0 10px 24px -6px rgba(0, 0, 0, 0.18);
+        0 12px 28px -6px rgba(0, 0, 0, 0.2);
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 540px;
+      max-width: clamp(520px, 47vw, 640px);
       margin-left: auto;
-      margin-right: -clamp(16px, 3.5vw, 48px);
+      margin-right: -clamp(18px, 3.8vw, 54px);
       transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .apple-recharge-card:hover {
@@ -650,24 +650,24 @@
       display: flex;
       background: rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(0, 0, 0, 0.02);
-      padding: 3px;
-      border-radius: 11px;
-      margin-bottom: 12px;
-      gap: 2px;
+      padding: 4.5px;
+      border-radius: 13px;
+      margin-bottom: 14px;
+      gap: 3px;
       width: 100%;
     }
     .vtu-tab {
       background: transparent;
       border: none;
-      padding: 6.5px 8px;
-      font-size: 11.5px;
-      font-weight: 500;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      font-weight: 600;
       color: #636366;
-      border-radius: 8px;
+      border-radius: 9px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
       flex: 1;
       justify-content: center;
       transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -709,9 +709,9 @@
       width: 100%;
       background: #F5F5F7;
       border: 1px solid rgba(0, 0, 0, 0.08);
-      padding: 9px 12px;
-      border-radius: 10px;
-      font-size: 13.5px;
+      padding: 11.5px 14px;
+      border-radius: 11px;
+      font-size: 14px;
       font-weight: 500;
       color: #1D1D1F;
       outline: none;
@@ -733,9 +733,9 @@
       width: 100%;
       background: #F5F5F7;
       border: 1px solid rgba(0, 0, 0, 0.08);
-      padding: 9px 12px;
-      border-radius: 10px;
-      font-size: 13px;
+      padding: 11.5px 14px;
+      border-radius: 11px;
+      font-size: 13.5px;
       font-weight: 500;
       color: #1D1D1F;
       display: flex;
@@ -847,9 +847,9 @@
       background: linear-gradient(180deg, #0077ED 0%, #0066CC 100%);
       color: #FFFFFF;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 10px 18px;
-      border-radius: 11px;
-      font-size: 13.5px;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-size: 15px;
       font-weight: 600;
       letter-spacing: -0.1px;
       cursor: pointer;
@@ -858,7 +858,7 @@
       justify-content: center;
       gap: 6px;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 12px;
       transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
       font-family: inherit;
       box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35), 0 1px 2px rgba(0, 0, 0, 0.1);
