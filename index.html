@@ -761,40 +761,74 @@
       font-weight: 600;
     }
 
-    /* Apple-Style Carrier Segmented Bar */
+    /* Apple-Style Carrier Segmented Bar with Authentic Brand Logos */
     .apple-carrier-bar {
       display: flex;
       background: rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.02);
-      border-radius: 11px;
-      padding: 3.5px;
-      gap: 3px;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      border-radius: 13px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 14px;
     }
     .apple-carrier-btn {
       flex: 1;
       border: none;
       background: transparent;
       padding: 8px 6px;
-      border-radius: 8px;
+      border-radius: 9px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 500;
-      color: #636366;
-      font-family: inherit;
-      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      height: 40px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .apple-carrier-btn:hover {
-      color: #1D1D1F;
+      background: rgba(255, 255, 255, 0.65);
     }
     .apple-carrier-btn.selected {
       background: #FFFFFF;
-      color: #0B0F19;
-      font-weight: 600;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 1px 1px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+    .brand-carrier-logo {
+      height: 22px;
+      width: auto;
+      max-width: 64px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
+    }
+    .apple-carrier-btn:hover .brand-carrier-logo {
+      transform: scale(1.08);
+    }
+
+    /* Icon-Integrated Inputs */
+    .input-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .input-inline-icon {
+      position: absolute;
+      left: 14px;
+      color: #8E8E93;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-currency-symbol {
+      position: absolute;
+      left: 14px;
+      color: #8E8E93;
+      font-weight: 700;
+      font-size: 15px;
+      pointer-events: none;
+    }
+    .input-field.has-icon {
+      padding-left: 38px !important;
     }
 
     .dot-net {
@@ -1747,60 +1781,60 @@
 
           <!-- Interactive Recharge Surface (Apple & Prime Ultra-Luxury Frosted Surface) -->
           <div class="flat-card apple-recharge-card">
+            <!-- Minimalist Navigation Tabs -->
             <div class="vtu-nav-pills">
               <button class="vtu-tab active" onclick="switchTab(this, 'tab-airtime')">
-                <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                Airtime
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span>Airtime</span>
               </button>
               <button class="vtu-tab" onclick="switchTab(this, 'tab-data')">
-                <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-                Data
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                <span>Data</span>
               </button>
               <button class="vtu-tab" onclick="switchTab(this, 'tab-cable')">
-                <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                Cable TV
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                <span>Cable</span>
               </button>
               <button class="vtu-tab" onclick="switchTab(this, 'tab-power')">
-                <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                Power
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span>Power</span>
               </button>
             </div>
 
-            <!-- AIRTIME TAB -->
+            <!-- 1. AIRTIME TAB (Brand Logos, No redundant label text) -->
             <div id="tab-airtime" class="tab-pane">
-              <div class="form-group" style="margin-bottom: 10px;">
-                <label class="form-label">Carrier</label>
-                <div class="apple-carrier-bar">
-                  <button type="button" class="apple-carrier-btn selected" onclick="selectProviderTile(this, 'MTN')">
-                    <span class="dot-net dot-mtn"></span>
-                    <span>MTN</span>
-                  </button>
-                  <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Airtel')">
-                    <span class="dot-net dot-airtel"></span>
-                    <span>Airtel</span>
-                  </button>
-                  <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Glo')">
-                    <span class="dot-net dot-glo"></span>
-                    <span>Glo</span>
-                  </button>
-                  <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, '9mobile')">
-                    <span class="dot-net dot-9mobile"></span>
-                    <span>9mobile</span>
-                  </button>
-                </div>
+              <div class="apple-carrier-bar">
+                <button type="button" class="apple-carrier-btn selected" onclick="selectProviderTile(this, 'MTN')" data-carrier="MTN" title="MTN">
+                  <img src="assets/mtn.png" alt="MTN" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Airtel')" data-carrier="Airtel" title="Airtel">
+                  <img src="assets/airtel.png" alt="Airtel" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Glo')" data-carrier="Glo" title="Glo">
+                  <img src="assets/glo.png" alt="Glo" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, '9mobile')" data-carrier="9mobile" title="9mobile">
+                  <svg class="brand-carrier-logo" viewBox="0 0 32 32" fill="none" style="width:24px;height:24px;">
+                    <circle cx="16" cy="16" r="15" fill="#005A36"/>
+                    <path d="M16 8a8 8 0 0 1 8 8v1a7 7 0 1 1-14 0" stroke="#A4D65E" stroke-width="2.4" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="3.2" fill="#A4D65E"/>
+                  </svg>
+                </button>
               </div>
 
+              <!-- Inputs with Inline Icons -->
               <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label">Phone</label>
-                  <input type="tel" class="input-field" placeholder="08012345678" value="08039281729" id="airtimePhone">
+                <div class="input-icon-wrap">
+                  <svg class="input-inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <input type="tel" class="input-field has-icon" placeholder="Phone Number" value="08039281729" id="airtimePhone">
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Amount (NGN)</label>
-                  <input type="number" class="input-field" placeholder="1000" value="1000" id="airtimeAmount">
+                <div class="input-icon-wrap">
+                  <span class="input-currency-symbol">₦</span>
+                  <input type="number" class="input-field has-icon" placeholder="Amount" value="1000" id="airtimeAmount">
                 </div>
               </div>
 
+              <!-- Presets Row -->
               <div class="apple-preset-row">
                 <button type="button" class="apple-preset-pill" onclick="setAirtimeAmount(500, this)">₦500</button>
                 <button type="button" class="apple-preset-pill active" onclick="setAirtimeAmount(1000, this)">₦1,000</button>
@@ -1810,110 +1844,112 @@
 
               <button class="btn-primary" onclick="executeVTUTransaction('Airtime Recharge')">
                 <span>Recharge Airtime</span>
-                <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
             </div>
 
-            <!-- DATA TAB -->
+            <!-- 2. DATA TAB -->
             <div id="tab-data" class="tab-pane" style="display:none;">
-              <div class="form-group" style="margin-bottom: 10px;">
-                <label class="form-label">Network</label>
-                <div class="apple-carrier-bar">
-                  <button type="button" class="apple-carrier-btn selected" onclick="selectProviderTile(this, 'MTN SME')">
-                    <span class="dot-net dot-mtn"></span>
-                    <span>MTN SME</span>
-                  </button>
-                  <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Airtel Gifting')">
-                    <span class="dot-net dot-airtel"></span>
-                    <span>Airtel</span>
-                  </button>
-                  <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Glo Direct')">
-                    <span class="dot-net dot-glo"></span>
-                    <span>Glo</span>
-                  </button>
-                  <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, '9mobile')">
-                    <span class="dot-net dot-9mobile"></span>
-                    <span>9mobile</span>
-                  </button>
-                </div>
+              <div class="apple-carrier-bar">
+                <button type="button" class="apple-carrier-btn selected" onclick="selectProviderTile(this, 'MTN SME')" data-carrier="MTN" title="MTN">
+                  <img src="assets/mtn.png" alt="MTN" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Airtel')" data-carrier="Airtel" title="Airtel">
+                  <img src="assets/airtel.png" alt="Airtel" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, 'Glo')" data-carrier="Glo" title="Glo">
+                  <img src="assets/glo.png" alt="Glo" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectProviderTile(this, '9mobile')" data-carrier="9mobile" title="9mobile">
+                  <svg class="brand-carrier-logo" viewBox="0 0 32 32" fill="none" style="width:24px;height:24px;">
+                    <circle cx="16" cy="16" r="15" fill="#005A36"/>
+                    <path d="M16 8a8 8 0 0 1 8 8v1a7 7 0 1 1-14 0" stroke="#A4D65E" stroke-width="2.4" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="3.2" fill="#A4D65E"/>
+                  </svg>
+                </button>
               </div>
 
               <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label">Phone</label>
-                  <input type="tel" class="input-field" placeholder="08000000000" value="08149201948">
+                <div class="input-icon-wrap">
+                  <svg class="input-inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <input type="tel" class="input-field has-icon" placeholder="Phone Number" value="08149201948" id="dataPhone">
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Data Plan</label>
-                  <div class="custom-select-trigger" onclick="openModularPicker('dataPlanPicker')">
+                <div class="custom-select-trigger" onclick="openModularPicker('dataPlanPicker')">
+                  <div style="display:flex; align-items:center; gap:8px; overflow:hidden;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="flex-shrink:0;"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
                     <span class="custom-select-value" id="selectedDataPlanLabel">2.0 GB SME (₦580)</span>
-                    <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                   </div>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
               </div>
 
+              <!-- Data Presets -->
               <div class="apple-preset-row">
                 <button type="button" class="apple-preset-pill" onclick="selectDataPlanPreset('1.0 GB SME', 290, this)">1.0 GB</button>
                 <button type="button" class="apple-preset-pill active" onclick="selectDataPlanPreset('2.0 GB SME', 580, this)">2.0 GB</button>
-                <button type="button" class="apple-preset-pill" onclick="selectDataPlanPreset('5.0 GB Corporate', 1450, this)">5.0 GB</button>
+                <button type="button" class="apple-preset-pill" onclick="selectDataPlanPreset('5.0 GB SME', 1450, this)">5.0 GB</button>
                 <button type="button" class="apple-preset-pill" onclick="selectDataPlanPreset('10.0 GB Corporate', 2900, this)">10 GB</button>
               </div>
 
               <button class="btn-primary" onclick="executeVTUTransaction('Mobile Data')">
                 <span>Purchase Data Plan</span>
-                <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
             </div>
 
-            <!-- CABLE TV TAB -->
+            <!-- 3. CABLE TV TAB -->
             <div id="tab-cable" class="tab-pane" style="display:none;">
+              <div class="apple-carrier-bar">
+                <button type="button" class="apple-carrier-btn selected" onclick="selectCableProvider(this, 'DSTV Nigeria')" data-carrier="dstv" title="DStv">
+                  <img src="assets/dstv.png" alt="DStv" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectCableProvider(this, 'GOTV Nigeria')" data-carrier="gotv" title="GOtv">
+                  <img src="assets/gotv.png" alt="GOtv" class="brand-carrier-logo">
+                </button>
+                <button type="button" class="apple-carrier-btn" onclick="selectCableProvider(this, 'StarTimes')" data-carrier="startimes" title="StarTimes">
+                  <span style="font-weight:800; font-size:12px; color:#E50914; letter-spacing:0.5px;">STARTIMES</span>
+                </button>
+              </div>
+
               <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label">Provider</label>
-                  <div class="custom-select-trigger" onclick="openModularPicker('cableProviderPicker')">
-                    <span class="custom-select-value" id="selectedCableProviderLabel">DSTV Nigeria</span>
-                    <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                  </div>
+                <div class="input-icon-wrap">
+                  <svg class="input-inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                  <input type="text" class="input-field has-icon" placeholder="Smartcard / IUC" value="7029103847">
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Smartcard / IUC</label>
-                  <input type="text" class="input-field" placeholder="1029384756" value="7029103847">
-                </div>
-              </div>
-
-              <div class="form-group" style="margin-top: 10px;">
-                <label class="form-label">Bouquet</label>
                 <div class="custom-select-trigger" onclick="openModularPicker('cablePackagePicker')">
-                  <span class="custom-select-value" id="selectedCablePackageLabel">DSTV Yanga Bouquet (₦4,200)</span>
-                  <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                  <div style="display:flex; align-items:center; gap:8px; overflow:hidden;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="flex-shrink:0;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span class="custom-select-value" id="selectedCablePackageLabel">DSTV Yanga Bouquet (₦4,200)</span>
+                  </div>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
               </div>
 
-              <button class="btn-primary" onclick="executeVTUTransaction('Cable TV Renewal')">
+              <button class="btn-primary" onclick="executeVTUTransaction('Cable TV Renewal')" style="margin-top:16px;">
                 <span>Renew Subscription</span>
-                <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
             </div>
 
-            <!-- POWER TAB -->
+            <!-- 4. POWER TAB -->
             <div id="tab-power" class="tab-pane" style="display:none;">
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label">Disco</label>
-                  <div class="custom-select-trigger" onclick="openModularPicker('discoPicker')">
-                    <span class="custom-select-value" id="selectedDiscoLabel">EKEDC - Eko</span>
-                    <svg class="svg-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              <div class="form-grid" style="margin-bottom: 12px;">
+                <div class="custom-select-trigger" onclick="openModularPicker('discoPicker')">
+                  <div style="display:flex; align-items:center; gap:8px; overflow:hidden;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8E8E93" stroke-width="2" style="flex-shrink:0;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    <span class="custom-select-value" id="selectedDiscoLabel">EKEDC - Eko Electricity</span>
                   </div>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Meter Number</label>
-                  <input type="text" class="input-field" placeholder="45019283748" value="45192830192">
+                <div class="input-icon-wrap">
+                  <svg class="input-inline-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="12" y2="12"/></svg>
+                  <input type="text" class="input-field has-icon" placeholder="Meter Number" value="45192830192">
                 </div>
               </div>
 
-              <div class="form-group" style="margin-top: 10px;">
-                <label class="form-label">Amount (NGN)</label>
-                <input type="number" class="input-field" value="5000" id="powerAmountInput">
+              <div class="input-icon-wrap">
+                <span class="input-currency-symbol">₦</span>
+                <input type="number" class="input-field has-icon" placeholder="Amount" value="5000" id="powerAmountInput">
               </div>
 
               <div class="apple-preset-row">
@@ -1925,15 +1961,8 @@
 
               <button class="btn-primary" onclick="executeVTUTransaction('Electricity Meter Token')">
                 <span>Generate Meter Token</span>
-                <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
               </button>
-            </div>
-
-            <div class="apple-card-trust">
-              <svg class="svg-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>Instant Upstream Fulfillment</span>
-              <span style="opacity:0.35;">•</span>
-              <span>Zero Surcharge</span>
             </div>
           </div>
       </div>
@@ -3595,7 +3624,7 @@
         const dataTabBtn = document.querySelector(".vtu-tab[onclick*='tab-data']");
         if (dataTabBtn) switchTab(dataTabBtn, 'tab-data');
 
-        const carrierBtn = Array.from(document.querySelectorAll("#tab-data .apple-carrier-btn")).find(b => b.innerText.toLowerCase().includes(provider.split(' ')[0].toLowerCase()));
+        const carrierBtn = Array.from(document.querySelectorAll("#tab-data .apple-carrier-btn")).find(b => (b.dataset.carrier || b.innerText).toLowerCase().includes(provider.split(' ')[0].toLowerCase()));
         if (carrierBtn) {
           selectProviderTile(carrierBtn, provider);
         }
@@ -3757,6 +3786,14 @@
       document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
       btn.classList.add('active');
       document.getElementById(tabId).style.display = 'block';
+    }
+
+        function selectCableProvider(el, name) {
+      el.parentElement.querySelectorAll('.apple-carrier-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      const label = document.getElementById('selectedCableProviderLabel');
+      if (label) label.innerText = name;
+      showCustomAlert(name + ' selected');
     }
 
     function selectProviderTile(el, name) {
