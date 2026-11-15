@@ -979,6 +979,756 @@
        NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
     -------------------------------------------------------------- */
     /* -------------------------------------------------------------
+       APPLE PRO SHOWCASE: BENTO GRID & PRECISION GLASS ARCHITECTURE
+    -------------------------------------------------------------- */
+    .tariffs-showcase-section {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-top: 0;
+      background: #000000;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      padding: clamp(64px, 7vw, 96px) 0 clamp(72px, 8vw, 108px);
+      margin-bottom: clamp(48px, 6vw, 72px);
+      box-shadow: inset 0 30px 60px -30px rgba(0, 0, 0, 0.9), inset 0 -30px 60px -30px rgba(0, 0, 0, 0.9);
+      box-sizing: border-box;
+    }
+    /* Dramatic Ambient Brand Logo Watermark Stage covering the right region */
+    .tariffs-brand-watermark-stage {
+      position: absolute;
+      top: 50%;
+      right: clamp(-60px, 1vw, 20px);
+      transform: translateY(-50%);
+      width: clamp(520px, 58vw, 900px);
+      height: clamp(380px, 44vw, 650px);
+      pointer-events: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+    .tariff-watermark-item {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      opacity: 0;
+      transform: scale(0.95) translate3d(24px, 0, 0);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
+      mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
+    }
+    .tariff-watermark-item.active {
+      opacity: 0.18;
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+    .tariff-watermark-img {
+      max-width: 95%;
+      max-height: 95%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.08));
+    }
+    .tariffs-inner-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 3.5vw, 40px);
+      box-sizing: border-box;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .tariffs-header-minimal {
+      margin-bottom: clamp(32px, 4vw, 44px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .tariffs-eyebrow {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #2997ff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .dynamic-tariff-heading {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", sans-serif;
+      font-size: clamp(34px, 4.4vw, 50px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #f5f5f7;
+      margin: 0;
+      line-height: 1.08;
+      display: inline-block;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tariff-carousel-wrap {
+      position: relative;
+      min-height: 320px;
+    }
+    .tariff-group {
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(16px, 2.2vw, 24px);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tariff-group.active {
+      display: grid;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 1040px) {
+      .tariff-group {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 580px) {
+      .tariff-group {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* APPLE PRO CARD: Continuous Squircle, Precision Hairline, Deep Charcoal Acrylic */
+    .tariff-card {
+      background: #161617;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 24px;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 10px 30px rgba(0, 0, 0, 0.4);
+      padding: clamp(28px, 2.8vw, 34px) clamp(22px, 2.2vw, 26px) clamp(24px, 2.4vw, 28px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+      min-height: 310px;
+      cursor: pointer;
+      transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+    }
+    .tariff-card:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.22), 0 20px 48px rgba(0, 0, 0, 0.6);
+      transform: translateY(-4px);
+    }
+    .tariff-card:has(.tariff-badge.popular) {
+      border-color: rgba(0, 113, 227, 0.45);
+      box-shadow: inset 0 1px 0 0 rgba(0, 113, 227, 0.5), 0 12px 36px rgba(0, 0, 0, 0.45);
+    }
+    .tariff-card:has(.tariff-badge.popular):hover {
+      border-color: #0071e3;
+      box-shadow: inset 0 1px 0 0 #0071e3, 0 24px 54px rgba(0, 113, 227, 0.25);
+      transform: translateY(-4px);
+    }
+    .tariff-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .tariff-carrier-tag {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #86868b;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .tariff-carrier-tag img {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .tariff-badge {
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 980px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #86868b;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .tariff-badge.popular {
+      background: #0071e3;
+      color: #ffffff;
+      border-color: #0071e3;
+      box-shadow: 0 2px 10px rgba(0, 113, 227, 0.4);
+    }
+    .tariff-card-volume {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      font-size: clamp(26px, 2.6vw, 32px);
+      font-weight: 700;
+      color: #f5f5f7;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .tariff-card-validity {
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 13.5px;
+      color: #86868b;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+    .tariff-card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 2;
+      padding-right: 0;
+    }
+    .tariff-price {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      font-size: clamp(22px, 2.2vw, 26px);
+      font-weight: 700;
+      color: #f5f5f7;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .tariff-subprice {
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 11px;
+      color: #86868b;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+    .tariff-buy-btn {
+      padding: 8px 18px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #f5f5f7;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 980px;
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+    .tariff-buy-btn:hover {
+      background: rgba(255, 255, 255, 0.22);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: scale(1.02);
+    }
+    .tariff-card:has(.tariff-badge.popular) .tariff-buy-btn {
+      background: #0071e3;
+      color: #ffffff;
+      border-color: #0071e3;
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35);
+    }
+    .tariff-card:has(.tariff-badge.popular) .tariff-buy-btn:hover {
+      background: #0077ed;
+      border-color: #0077ed;
+      box-shadow: 0 6px 18px rgba(0, 113, 227, 0.5);
+      transform: scale(1.03);
+    }
+    
+        .bento-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .bento-item-img {
+        height: 150px;
+      }
+      .bento-content {
+        padding: 14px 12px;
+      }
+      .bento-heading {
+        font-size: 16px;
+      }
+      .bento-desc {
+        font-size: 12.5px;
+      }
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+      .metric-card {
+        padding: 12px 8px;
+      }
+      .metric-value {
+        font-size: 20px;
+      }
+      .metric-label {
+        font-size: 10px;
+      }
+      .comparison-section {
+        padding: 16px 10px;
+        margin-bottom: 28px;
+      }
+      .comp-table th, .comp-table td {
+        padding: 8px 6px;
+        font-size: 11.5px;
+      }
+      .agent-promo-card {
+        border-radius: 14px;
+        grid-template-columns: 1fr !important;
+      }
+      .agent-promo-text {
+        padding: 18px 12px;
+      }
+      .agent-promo-text h3 {
+        font-size: 18px;
+      }
+      .agent-promo-text p {
+        font-size: 12.5px;
+        margin-bottom: 14px;
+      }
+      .agent-promo-img-wrap {
+        height: 160px;
+        border-left: none !important;
+        border-top: 1px solid #1F2937 !important;
+      }
+      .stat-cards-row {
+        grid-template-columns: 1fr !important;
+        gap: 8px;
+      }
+      .stat-card {
+        padding: 14px 12px;
+      }
+      .stat-num {
+        font-size: 20px;
+      }
+      .side-card {
+        padding: 14px 12px;
+      }
+      footer.main-footer {
+        padding: 24px 12px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    .hero-title {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: clamp(30px, 4.4vw, 48px);
+      line-height: 1.06;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: #1d1d1f;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 3;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .hero-sub {
+      font-size: clamp(14px, 1.8vw, 16px);
+      line-height: 1.5;
+      color: var(--text-sub);
+      max-width: 520px;
+    }
+
+    /* -------------------------------------------------------------
+       APPLE / PRIME RECHARGE SURFACE (LUXURY FROSTED GLASS)
+    -------------------------------------------------------------- */
+    .flat-card {
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      padding: clamp(14px, 2vw, 20px);
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Professional Edge-Bleed Cut-Out Recharge Box (Permanently Locked Exact Dimensions Across All Tabs) */
+    .apple-recharge-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(36px) saturate(190%);
+      -webkit-backdrop-filter: blur(36px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-right: none;
+      border-top-left-radius: 32px;
+      border-bottom-left-radius: 32px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: clamp(28px, 3.4vw, 38px) clamp(34px, 4.2vw, 56px) clamp(28px, 3.4vw, 38px) clamp(28px, 3.2vw, 40px);
+      box-shadow: 
+        -28px 36px 84px -14px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.85) inset,
+        0 12px 28px -6px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: clamp(520px, 47vw, 640px);
+      min-height: 415px;
+      height: 415px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      margin-left: auto;
+      margin-right: -clamp(18px, 3.8vw, 54px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-recharge-card .tab-pane {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .apple-recharge-card .tab-pane.active {
+      display: flex !important;
+    }
+    .apple-recharge-card .btn-primary {
+      margin-top: auto;
+    }
+    .apple-recharge-card:hover {
+      transform: translateX(-8px);
+      box-shadow: 
+        -32px 38px 84px -10px rgba(0, 0, 0, 0.52),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+    }
+    .apple-recharge-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.6) 100%);
+      pointer-events: none;
+    }
+
+    /* Apple-Style Segmented Tabs */
+    .vtu-nav-pills {
+      display: flex;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      padding: 5px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      gap: 3px;
+      width: 100%;
+    }
+    .vtu-tab {
+      background: transparent;
+      border: none;
+      padding: 9.5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #636366;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      justify-content: center;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+    .vtu-tab:hover {
+      color: #1D1D1F;
+    }
+    .vtu-tab.active {
+      background: #FFFFFF;
+      color: #0B0F19;
+      font-weight: 600;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .form-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #86868B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .input-field {
+      width: 100%;
+      background: #F5F5F7;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 13px 15px;
+      border-radius: 12px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #1D1D1F;
+      outline: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+    .input-field:hover {
+      background: #EBECEF;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    .input-field:focus {
+      background: #FFFFFF;
+      border-color: #0071E3;
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.18);
+    }
+
+    /* Custom Modular Picker Trigger */
+    .custom-select-trigger {
+      width: 100%;
+      background: #F5F5F7;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 13px 15px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1D1D1F;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .custom-select-trigger:hover {
+      background: #EBECEF;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    .custom-select-trigger:hover {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+    }
+    .custom-select-value {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
+
+    /* Apple-Style Carrier Segmented Bar with Authentic Brand Logos */
+    .apple-carrier-bar {
+      display: flex;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      border-radius: 13px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 14px;
+    }
+    .apple-carrier-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 6px;
+      border-radius: 9px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-carrier-btn:hover {
+      background: rgba(255, 255, 255, 0.65);
+    }
+    .apple-carrier-btn.selected {
+      background: #FFFFFF;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+    .brand-carrier-logo {
+      height: 22px;
+      width: auto;
+      max-width: 64px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
+    }
+    .apple-carrier-btn:hover .brand-carrier-logo {
+      transform: scale(1.08);
+    }
+
+    /* Icon-Integrated Inputs */
+    .input-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .input-inline-icon {
+      position: absolute;
+      left: 14px;
+      color: #8E8E93;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-currency-symbol {
+      position: absolute;
+      left: 14px;
+      color: #8E8E93;
+      font-weight: 700;
+      font-size: 15px;
+      pointer-events: none;
+    }
+    .input-field.has-icon {
+      padding-left: 38px !important;
+    }
+
+    .dot-net {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+    .dot-mtn { background: #FFCC00; }
+    .dot-airtel { background: #ED1C24; }
+    .dot-glo { background: #00A859; }
+    .dot-9mobile { background: #005A36; }
+
+    /* Minimalist Apple Presets */
+    .apple-preset-row {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .apple-preset-pill {
+      flex: 1;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      background: #F4F5F7;
+      padding: 7.5px 6px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #48484A;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: center;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-preset-pill:hover {
+      background: #E8E8ED;
+      color: #1D1D1F;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    .apple-preset-pill.active {
+      background: #0071E3;
+      color: #FFFFFF;
+      font-weight: 700;
+      border-color: #0071E3;
+      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.32);
+    }
+
+    /* Apple-Style Primary Action Button */
+    .btn-primary {
+      background: linear-gradient(180deg, #0077ED 0%, #0066CC 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 14.5px 22px;
+      border-radius: 13px;
+      font-size: 15.5px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 14px;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35), 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(180deg, #1A85F0 0%, #0071E3 100%);
+      box-shadow: 0 6px 20px rgba(0, 113, 227, 0.45);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active {
+      transform: scale(0.985);
+      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+    }
+
+    /* Apple-style Micro-trust Subtext */
+    .apple-card-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 10.5px;
+      color: #86868B;
+      font-weight: 500;
+      margin-top: 9px;
+      letter-spacing: 0.1px;
+    }
+    .apple-card-trust svg {
+      color: #10B981;
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: clamp(9px, 1.5vw, 12px) clamp(14px, 2vw, 18px);
+      border-radius: var(--radius-sm);
+      font-size: clamp(12px, 1.4vw, 13.5px);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s ease;
+      font-family: inherit;
+    }
+    .btn-secondary:hover {
+      background: var(--surface-subtle);
+    }
+
+
+
+        /* -------------------------------------------------------------
+       NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
+    -------------------------------------------------------------- */
+    /* -------------------------------------------------------------
        NETFLIX-STYLE SHOWCASE: FULL-BLEED FULL-WIDTH SECTION
     -------------------------------------------------------------- */
     .tariffs-showcase-section {
@@ -2100,6 +2850,7 @@
 
         <div class="tariffs-inner-container">
         <div class="tariffs-header-minimal">
+          <div class="tariffs-eyebrow">Direct Upstream Tariffs</div>
           <h2 class="dynamic-tariff-heading" id="dynamicTariffHeading">MTN Plans</h2>
         </div>
         <div class="tariff-carousel-wrap">
@@ -2121,21 +2872,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '1.0 GB SME Data', 290)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E50914"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
-  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
-  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
-  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2154,22 +2893,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '2.0 GB SME Data', 580)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
-  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
-  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2188,26 +2914,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '5.0 GB Corporate', 1450)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(-35 32 32)">
-    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
-    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
-    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
-    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
-  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2226,29 +2935,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '10.0 GB Wholesale', 2900)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F43F5E"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#FB7185"/>
-    </linearGradient>
-  </defs>
-  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
-  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
-  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
-  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
-  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
-  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
-  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
             </div>
           </div>
 
@@ -2270,21 +2959,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '1.5 GB Gifting', 500)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E50914"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
-  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
-  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
-  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2303,22 +2980,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '2.0 GB Corporate', 700)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
-  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
-  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2337,26 +3001,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '5.0 GB Corporate', 1400)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(-35 32 32)">
-    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
-    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
-    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
-    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
-  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2375,29 +3022,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '10.0 GB Wholesale', 2800)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F43F5E"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#FB7185"/>
-    </linearGradient>
-  </defs>
-  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
-  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
-  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
-  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
-  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
-  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
-  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
             </div>
           </div>
 
@@ -2419,21 +3046,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '1.0 GB SME Data', 250)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E50914"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
-  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
-  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
-  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2452,22 +3067,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '2.0 GB SME Data', 500)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
-  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
-  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2486,26 +3088,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '5.0 GB SME Data', 1250)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(-35 32 32)">
-    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
-    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
-    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
-    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
-  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2524,29 +3109,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '10.0 GB SME Data', 2500)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F43F5E"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#FB7185"/>
-    </linearGradient>
-  </defs>
-  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
-  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
-  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
-  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
-  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
-  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
-  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
             </div>
           </div>
 
@@ -2568,21 +3133,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '1.5 GB SME', 480)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E50914"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
-  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
-  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
-  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2601,22 +3154,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '3.0 GB SME', 960)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
-  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
-  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2635,26 +3175,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '5.0 GB Corporate', 1500)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(-35 32 32)">
-    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
-    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
-    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
-    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
-  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2673,29 +3196,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '10.0 GB Wholesale', 3000)">
                   <span>Recharge</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F43F5E"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#FB7185"/>
-    </linearGradient>
-  </defs>
-  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
-  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
-  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
-  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
-  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
-  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
-  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
             </div>
           </div>
 
@@ -2717,21 +3220,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Padi Bouquet', 2500)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E50914"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
-  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
-  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
-  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2750,22 +3241,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DSTV Yanga Bouquet', 4200)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
-  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
-  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2784,26 +3262,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Confam Bouquet', 7400)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(-35 32 32)">
-    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
-    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
-    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
-    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
-  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2822,29 +3283,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Compact Bouquet', 12500)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F43F5E"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#FB7185"/>
-    </linearGradient>
-  </defs>
-  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
-  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
-  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
-  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
-  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
-  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
-  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
             </div>
           </div>
 
@@ -2866,21 +3307,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Smallie', 1300)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E50914"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
-  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
-  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
-  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2899,22 +3328,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Jinja Bouquet', 2700)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
-  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
-  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2933,26 +3349,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Jolli Bouquet', 3950)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(-35 32 32)">
-    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
-    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
-    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
-    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
-  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -2971,29 +3370,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Max Bouquet', 5700)">
                   <span>Renew</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F43F5E"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#FB7185"/>
-    </linearGradient>
-  </defs>
-  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
-  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
-  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
-  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
-  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
-  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
-  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
             </div>
           </div>
 
@@ -3015,21 +3394,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Mobile Pass', 1600)">
                   <span>Top-Up</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="tvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#E50914"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-  </defs>
-  <rect x="8" y="10" width="48" height="34" rx="6" fill="#0A0E1A" stroke="url(#tvGrad)" stroke-width="2.5"/>
-  <rect x="12" y="14" width="40" height="26" rx="3" fill="url(#tvGrad)" opacity="0.4"/>
-  <path d="M28 44h8v6h-8z" fill="#8B5CF6"/>
-  <path d="M20 50h24v3H20z" rx="1.5" fill="#E50914"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -3048,22 +3415,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Standard FHD', 4000)">
                   <span>Top-Up</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="dlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="50%" stop-color="#8B5CF6"/>
-      <stop offset="100%" stop-color="#3B82F6"/>
-    </linearGradient>
-  </defs>
-  <circle cx="32" cy="32" r="23" fill="#120D24" stroke="url(#dlGrad)" stroke-width="3"/>
-  <circle cx="32" cy="32" r="18" fill="url(#dlGrad)" opacity="0.4"/>
-  <path d="M32 20v15M25 28l7 7 7-7" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M23 41h18" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -3082,26 +3436,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Premium 4K', 5000)">
                   <span>Top-Up</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="scopeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#F59E0B"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(-35 32 32)">
-    <rect x="18" y="22" width="28" height="12" rx="3" fill="url(#scopeGrad)"/>
-    <ellipse cx="46" cy="28" rx="3" ry="6" fill="#FDE047"/>
-    <ellipse cx="18" cy="28" rx="2" ry="5" fill="#EF4444"/>
-    <path d="M28 34l-8 18M36 34l8 18M32 34v18" stroke="#EC4899" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
-  <path d="M50 12l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" fill="#FDE047"/>
-  <path d="M14 42l1 1.5 1.5 1-1.5 1-1 1.5-1-1.5-1.5-1 1.5-1 1-1.5z" fill="#EF4444"/>
-</svg>
             </div>
 
             <div class="tariff-card">
@@ -3120,29 +3457,9 @@
                 </div>
                 <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Prime Video Subscriptions', 'Prime Video Monthly Pass', 2300)">
                   <span>Top-Up</span>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
                 </button>
               </div>
-              <svg class="netflix-glow-icon" width="60" height="60" viewBox="0 0 64 64" fill="none">
-  <defs>
-    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#F43F5E"/>
-      <stop offset="100%" stop-color="#8B5CF6"/>
-    </linearGradient>
-    <linearGradient id="cubeGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EC4899"/>
-      <stop offset="100%" stop-color="#FB7185"/>
-    </linearGradient>
-  </defs>
-  <rect x="10" y="12" width="24" height="24" rx="5" fill="url(#cubeGrad2)" opacity="0.75"/>
-  <circle cx="17" cy="21" r="1.5" fill="#FFFFFF"/>
-  <circle cx="27" cy="21" r="1.5" fill="#FFFFFF"/>
-  <path d="M19 27c1.5 1.5 4.5 1.5 6 0" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-  <rect x="26" y="24" width="28" height="28" rx="6" fill="url(#cubeGrad1)"/>
-  <circle cx="34" cy="34" r="2" fill="#FFFFFF"/>
-  <circle cx="46" cy="34" r="2" fill="#FFFFFF"/>
-  <path d="M37 42c2 2.5 6 2.5 8 0" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
-</svg>
             </div>
           </div>
         </div>
