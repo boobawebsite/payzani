@@ -979,6 +979,821 @@
        NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
     -------------------------------------------------------------- */
     /* -------------------------------------------------------------
+       APPLE & CARRIER SHOWCASE: DYNAMIC BRAND-COLORED TARIFF CARDS
+       Colors change dynamically with the active brand logo
+    -------------------------------------------------------------- */
+    /* 1. Dynamic Brand Color Variables */
+    #tariff-group-mtn {
+      --brand-accent: #FFCC00;
+      --brand-accent-text: #000000;
+      --brand-banner-bg: #FFCC00;
+      --brand-banner-text: #000000;
+      --brand-banner-sub: rgba(0, 0, 0, 0.65);
+    }
+    #tariff-group-airtel {
+      --brand-accent: #E11924;
+      --brand-accent-text: #FFFFFF;
+      --brand-banner-bg: #E11924;
+      --brand-banner-text: #FFFFFF;
+      --brand-banner-sub: rgba(255, 255, 255, 0.75);
+    }
+    #tariff-group-glo {
+      --brand-accent: #00A859;
+      --brand-accent-text: #FFFFFF;
+      --brand-banner-bg: #00A859;
+      --brand-banner-text: #FFFFFF;
+      --brand-banner-sub: rgba(255, 255, 255, 0.75);
+    }
+    #tariff-group-nine {
+      --brand-accent: #84CC16;
+      --brand-accent-text: #052E16;
+      --brand-banner-bg: #84CC16;
+      --brand-banner-text: #052E16;
+      --brand-banner-sub: rgba(5, 46, 22, 0.7);
+    }
+    #tariff-group-dstv {
+      --brand-accent: #0084D1;
+      --brand-accent-text: #FFFFFF;
+      --brand-banner-bg: #0084D1;
+      --brand-banner-text: #FFFFFF;
+      --brand-banner-sub: rgba(255, 255, 255, 0.75);
+    }
+    #tariff-group-gotv {
+      --brand-accent: #F15A24;
+      --brand-accent-text: #FFFFFF;
+      --brand-banner-bg: #F15A24;
+      --brand-banner-text: #FFFFFF;
+      --brand-banner-sub: rgba(255, 255, 255, 0.75);
+    }
+    #tariff-group-streaming {
+      --brand-accent: #E50914;
+      --brand-accent-text: #FFFFFF;
+      --brand-banner-bg: #E50914;
+      --brand-banner-text: #FFFFFF;
+      --brand-banner-sub: rgba(255, 255, 255, 0.75);
+    }
+
+    .tariffs-showcase-section {
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      margin-top: 0;
+      background: #000000;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+      padding: clamp(60px, 6.5vw, 90px) 0 clamp(68px, 7.5vw, 100px);
+      margin-bottom: clamp(48px, 6vw, 72px);
+      box-shadow: inset 0 30px 60px -30px rgba(0, 0, 0, 0.9), inset 0 -30px 60px -30px rgba(0, 0, 0, 0.9);
+      box-sizing: border-box;
+    }
+    .tariffs-brand-watermark-stage {
+      position: absolute;
+      top: 50%;
+      right: clamp(-60px, 1vw, 20px);
+      transform: translateY(-50%);
+      width: clamp(520px, 58vw, 900px);
+      height: clamp(380px, 44vw, 650px);
+      pointer-events: none;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+    }
+    .tariff-watermark-item {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      opacity: 0;
+      transform: scale(0.95) translate3d(24px, 0, 0);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
+      mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
+    }
+    .tariff-watermark-item.active {
+      opacity: 0.18;
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+    .tariff-watermark-img {
+      max-width: 95%;
+      max-height: 95%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.08));
+    }
+    .tariffs-inner-container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 3.5vw, 40px);
+      box-sizing: border-box;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .tariffs-header-minimal {
+      margin-bottom: clamp(30px, 3.8vw, 42px);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .tariffs-eyebrow {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #2997ff;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .dynamic-tariff-heading {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", sans-serif;
+      font-size: clamp(34px, 4.4vw, 50px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #f5f5f7;
+      margin: 0;
+      line-height: 1.08;
+      display: inline-block;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tariff-carousel-wrap {
+      position: relative;
+      min-height: 380px;
+    }
+    .tariff-group {
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(16px, 2vw, 22px);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tariff-group.active {
+      display: grid;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 1040px) {
+      .tariff-group {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 580px) {
+      .tariff-group {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CARRIER TARIFF CARD (Matching User Image with Dynamic Brand Colors) */
+    .tariff-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      min-height: 360px;
+      cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+      padding: 0;
+    }
+    .tariff-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Card Upper Body */
+    .card-plan-body {
+      padding: 22px 20px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      min-height: 52px;
+    }
+    .brand-card-visual {
+      display: block;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tariff-card:hover .brand-card-visual {
+      transform: translateY(-3px) scale(1.04);
+    }
+    .plan-type-pill {
+      background: var(--brand-accent);
+      color: var(--brand-accent-text);
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 5px 14px;
+      border-radius: 980px;
+      text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Category & Volume */
+    .card-plan-category {
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: #8E8E93;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .card-plan-volume {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      font-size: clamp(24px, 2.3vw, 28px);
+      font-weight: 800;
+      color: #1D1D1F;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+    .card-plan-divider {
+      width: 100%;
+      height: 1px;
+      background: #E5E5EA;
+      margin: 14px 0 12px;
+    }
+
+    /* Specs List */
+    .card-plan-specs {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card-plan-specs li {
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 12.5px;
+      color: #3A3A3C;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      line-height: 1.35;
+    }
+    .card-bullet-arrow {
+      color: var(--brand-accent);
+      font-weight: 800;
+      font-size: 13px;
+      margin-right: 6px;
+      font-family: monospace, sans-serif;
+    }
+
+    /* Dynamic Brand Bottom Banner */
+    .card-plan-footer {
+      background: var(--brand-banner-bg);
+      color: var(--brand-banner-text);
+      padding: 16px 20px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      cursor: pointer;
+      transition: filter 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-plan-footer:hover {
+      filter: brightness(0.94);
+    }
+    .card-footer-price-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .card-footer-only {
+      display: block;
+      font-family: "SF Pro Text", -apple-system, sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--brand-banner-sub);
+      margin-bottom: 2px;
+      line-height: 1;
+    }
+    .card-footer-price {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      font-size: clamp(22px, 2.2vw, 26px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--brand-banner-text);
+    }
+    .card-footer-action {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-banner-text);
+    }
+    .card-footer-action svg {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-plan-footer:hover .card-footer-action svg {
+      transform: translateX(4px);
+    }
+    
+        .bento-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .bento-item-img {
+        height: 150px;
+      }
+      .bento-content {
+        padding: 14px 12px;
+      }
+      .bento-heading {
+        font-size: 16px;
+      }
+      .bento-desc {
+        font-size: 12.5px;
+      }
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+      .metric-card {
+        padding: 12px 8px;
+      }
+      .metric-value {
+        font-size: 20px;
+      }
+      .metric-label {
+        font-size: 10px;
+      }
+      .comparison-section {
+        padding: 16px 10px;
+        margin-bottom: 28px;
+      }
+      .comp-table th, .comp-table td {
+        padding: 8px 6px;
+        font-size: 11.5px;
+      }
+      .agent-promo-card {
+        border-radius: 14px;
+        grid-template-columns: 1fr !important;
+      }
+      .agent-promo-text {
+        padding: 18px 12px;
+      }
+      .agent-promo-text h3 {
+        font-size: 18px;
+      }
+      .agent-promo-text p {
+        font-size: 12.5px;
+        margin-bottom: 14px;
+      }
+      .agent-promo-img-wrap {
+        height: 160px;
+        border-left: none !important;
+        border-top: 1px solid #1F2937 !important;
+      }
+      .stat-cards-row {
+        grid-template-columns: 1fr !important;
+        gap: 8px;
+      }
+      .stat-card {
+        padding: 14px 12px;
+      }
+      .stat-num {
+        font-size: 20px;
+      }
+      .side-card {
+        padding: 14px 12px;
+      }
+      footer.main-footer {
+        padding: 24px 12px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    .hero-title {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Helvetica, sans-serif;
+      font-size: clamp(30px, 4.4vw, 48px);
+      line-height: 1.06;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: #1d1d1f;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 3;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .hero-sub {
+      font-size: clamp(14px, 1.8vw, 16px);
+      line-height: 1.5;
+      color: var(--text-sub);
+      max-width: 520px;
+    }
+
+    /* -------------------------------------------------------------
+       APPLE / PRIME RECHARGE SURFACE (LUXURY FROSTED GLASS)
+    -------------------------------------------------------------- */
+    .flat-card {
+      background: rgba(255, 255, 255, 0.98);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      padding: clamp(14px, 2vw, 20px);
+      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Professional Edge-Bleed Cut-Out Recharge Box (Permanently Locked Exact Dimensions Across All Tabs) */
+    .apple-recharge-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(36px) saturate(190%);
+      -webkit-backdrop-filter: blur(36px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-right: none;
+      border-top-left-radius: 32px;
+      border-bottom-left-radius: 32px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: clamp(28px, 3.4vw, 38px) clamp(34px, 4.2vw, 56px) clamp(28px, 3.4vw, 38px) clamp(28px, 3.2vw, 40px);
+      box-shadow: 
+        -28px 36px 84px -14px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.85) inset,
+        0 12px 28px -6px rgba(0, 0, 0, 0.2);
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: clamp(520px, 47vw, 640px);
+      min-height: 415px;
+      height: 415px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      margin-left: auto;
+      margin-right: -clamp(18px, 3.8vw, 54px);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-recharge-card .tab-pane {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .apple-recharge-card .tab-pane.active {
+      display: flex !important;
+    }
+    .apple-recharge-card .btn-primary {
+      margin-top: auto;
+    }
+    .apple-recharge-card:hover {
+      transform: translateX(-8px);
+      box-shadow: 
+        -32px 38px 84px -10px rgba(0, 0, 0, 0.52),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+    }
+    .apple-recharge-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.6) 100%);
+      pointer-events: none;
+    }
+
+    /* Apple-Style Segmented Tabs */
+    .vtu-nav-pills {
+      display: flex;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      padding: 5px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      gap: 3px;
+      width: 100%;
+    }
+    .vtu-tab {
+      background: transparent;
+      border: none;
+      padding: 9.5px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #636366;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      justify-content: center;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+    .vtu-tab:hover {
+      color: #1D1D1F;
+    }
+    .vtu-tab.active {
+      background: #FFFFFF;
+      color: #0B0F19;
+      font-weight: 600;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .form-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #86868B;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .input-field {
+      width: 100%;
+      background: #F5F5F7;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 13px 15px;
+      border-radius: 12px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: #1D1D1F;
+      outline: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+    }
+    .input-field:hover {
+      background: #EBECEF;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    .input-field:focus {
+      background: #FFFFFF;
+      border-color: #0071E3;
+      box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.18);
+    }
+
+    /* Custom Modular Picker Trigger */
+    .custom-select-trigger {
+      width: 100%;
+      background: #F5F5F7;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      padding: 13px 15px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1D1D1F;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .custom-select-trigger:hover {
+      background: #EBECEF;
+      border-color: rgba(0, 0, 0, 0.12);
+    }
+    .custom-select-trigger:hover {
+      background: #FFFFFF;
+      border-color: #CBD5E1;
+    }
+    .custom-select-value {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
+
+    /* Apple-Style Carrier Segmented Bar with Authentic Brand Logos */
+    .apple-carrier-bar {
+      display: flex;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      border-radius: 13px;
+      padding: 4px;
+      gap: 4px;
+      margin-bottom: 14px;
+    }
+    .apple-carrier-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 6px;
+      border-radius: 9px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-carrier-btn:hover {
+      background: rgba(255, 255, 255, 0.65);
+    }
+    .apple-carrier-btn.selected {
+      background: #FFFFFF;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+    .brand-carrier-logo {
+      height: 22px;
+      width: auto;
+      max-width: 64px;
+      object-fit: contain;
+      transition: transform 0.2s ease;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,0.06));
+    }
+    .apple-carrier-btn:hover .brand-carrier-logo {
+      transform: scale(1.08);
+    }
+
+    /* Icon-Integrated Inputs */
+    .input-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+    .input-inline-icon {
+      position: absolute;
+      left: 14px;
+      color: #8E8E93;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .input-currency-symbol {
+      position: absolute;
+      left: 14px;
+      color: #8E8E93;
+      font-weight: 700;
+      font-size: 15px;
+      pointer-events: none;
+    }
+    .input-field.has-icon {
+      padding-left: 38px !important;
+    }
+
+    .dot-net {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9);
+    }
+    .dot-mtn { background: #FFCC00; }
+    .dot-airtel { background: #ED1C24; }
+    .dot-glo { background: #00A859; }
+    .dot-9mobile { background: #005A36; }
+
+    /* Minimalist Apple Presets */
+    .apple-preset-row {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0 16px;
+    }
+    .apple-preset-pill {
+      flex: 1;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+      background: #F4F5F7;
+      padding: 7.5px 6px;
+      border-radius: 9px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #48484A;
+      cursor: pointer;
+      font-family: inherit;
+      text-align: center;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-preset-pill:hover {
+      background: #E8E8ED;
+      color: #1D1D1F;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    .apple-preset-pill.active {
+      background: #0071E3;
+      color: #FFFFFF;
+      font-weight: 700;
+      border-color: #0071E3;
+      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.32);
+    }
+
+    /* Apple-Style Primary Action Button */
+    .btn-primary {
+      background: linear-gradient(180deg, #0077ED 0%, #0066CC 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 14.5px 22px;
+      border-radius: 13px;
+      font-size: 15.5px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 14px;
+      transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(0, 113, 227, 0.35), 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(180deg, #1A85F0 0%, #0071E3 100%);
+      box-shadow: 0 6px 20px rgba(0, 113, 227, 0.45);
+      transform: translateY(-1px);
+    }
+    .btn-primary:active {
+      transform: scale(0.985);
+      box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+    }
+
+    /* Apple-style Micro-trust Subtext */
+    .apple-card-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 10.5px;
+      color: #86868B;
+      font-weight: 500;
+      margin-top: 9px;
+      letter-spacing: 0.1px;
+    }
+    .apple-card-trust svg {
+      color: #10B981;
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      padding: clamp(9px, 1.5vw, 12px) clamp(14px, 2vw, 18px);
+      border-radius: var(--radius-sm);
+      font-size: clamp(12px, 1.4vw, 13.5px);
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s ease;
+      font-family: inherit;
+    }
+    .btn-secondary:hover {
+      background: var(--surface-subtle);
+    }
+
+
+
+        /* -------------------------------------------------------------
+       NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
+    -------------------------------------------------------------- */
+    /* -------------------------------------------------------------
        APPLE PRO SHOWCASE: BENTO GRID & PRECISION GLASS ARCHITECTURE
     -------------------------------------------------------------- */
     .tariffs-showcase-section {
@@ -2854,611 +3669,1059 @@
           <h2 class="dynamic-tariff-heading" id="dynamicTariffHeading">MTN Plans</h2>
         </div>
         <div class="tariff-carousel-wrap">
-          <!-- 1. MTN Group -->
-          <div class="tariff-group active" id="tariff-group-mtn">
+                    <div class="tariff-group active" id="tariff-group-mtn">
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN SME</span>
-                  <span class="tariff-badge">Instant Switch</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">DATA</span>
                 </div>
-                <div class="tariff-card-volume">1.0 GB SME Data</div>
-                <div class="tariff-card-validity">Sub-second provisioning directly on the MTN national switch. Perfect for daily browsing.</div>
+                <div class="card-plan-category">DAILY PLANS</div>
+                <div class="card-plan-volume">75MB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦1.00/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 24 Hrs</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Direct Fast Top-up</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦290</div>
-                  <div class="tariff-subprice">Wholesale Rate</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'MTN SME', '75MB Daily Plan', 75)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 75</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '1.0 GB SME Data', 290)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN SME</span>
-                  <span class="tariff-badge popular">Popular</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">POPULAR</span>
                 </div>
-                <div class="tariff-card-volume">2.0 GB SME Data</div>
-                <div class="tariff-card-validity">Double data quota with 30 days validity. Nigeria's favorite telecom bundle for heavy social use.</div>
+                <div class="card-plan-category">DAILY PLANS</div>
+                <div class="card-plan-volume">1.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.29/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Best Seller Nationwide</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦580</div>
-                  <div class="tariff-subprice">Best Seller</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'MTN SME', '1.0 GB SME Data', 290)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 290</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '2.0 GB SME Data', 580)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN Corporate</span>
-                  <span class="tariff-badge">High Speed</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">SME VALUE</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB Corporate</div>
-                <div class="tariff-card-validity">High-volume corporate allocation. Unthrottled bandwidth on 4G and 5G networks nationwide.</div>
+                <div class="card-plan-category">CORPORATE PLANS</div>
+                <div class="card-plan-volume">2.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.29/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Automated Instant Switch</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦1,450</div>
-                  <div class="tariff-subprice">Save 15%</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'MTN SME', '2.0 GB SME Data', 580)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 580</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '5.0 GB Corporate', 1450)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/mtn.png" alt="MTN"> MTN Wholesale</span>
-                  <span class="tariff-badge">Enterprise</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">ENTERPRISE</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB Wholesale</div>
-                <div class="tariff-card-validity">Tier-1 wholesale package for businesses, families, and high-consumption power users.</div>
+                <div class="card-plan-category">WHOLESALE PLANS</div>
+                <div class="card-plan-volume">10.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.29/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> High Bandwidth Priority</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Reseller Tier-1 Node</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦2,900</div>
-                  <div class="tariff-subprice">Reseller Tier</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'MTN SME', '10.0 GB Wholesale', 2900)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 2,900</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'MTN SME', '10.0 GB Wholesale', 2900)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- 2. Airtel Group -->
           <div class="tariff-group" id="tariff-group-airtel">
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel 4G</span>
-                  <span class="tariff-badge">Sub-second</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">DATA</span>
                 </div>
-                <div class="tariff-card-volume">1.5 GB 4G Gifting</div>
-                <div class="tariff-card-validity">Instant direct gifting on Airtel 4G LTE. Smooth video streaming and low-latency response.</div>
+                <div class="card-plan-category">DIRECT GIFTING</div>
+                <div class="card-plan-volume">1.5 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.33/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Sub-second Direct Switch</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦500</div>
-                  <div class="tariff-subprice">Wholesale Rate</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Airtel Gifting', '1.5 GB Gifting', 500)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 500</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '1.5 GB Gifting', 500)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel Corporate</span>
-                  <span class="tariff-badge popular">Popular</span>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </div>
-                <div class="tariff-card-volume">2.0 GB Corporate</div>
-                <div class="tariff-card-validity">Fast dispatch corporate package with 30 days validity. Automated network priority.</div>
-              </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦700</div>
-                  <div class="tariff-subprice">Best Value</div>
-                </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '2.0 GB Corporate', 700)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel Corporate</span>
-                  <span class="tariff-badge">Streaming Pack</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">POPULAR</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB Corporate</div>
-                <div class="tariff-card-validity">Heavy streaming bundle. Optimized for YouTube, Netflix, TikTok, and Zoom video meetings.</div>
+                <div class="card-plan-category">CORPORATE PLANS</div>
+                <div class="card-plan-volume">2.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.35/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Fast Social Dispatch</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦1,400</div>
-                  <div class="tariff-subprice">Save 18%</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Airtel Gifting', '2.0 GB Corporate', 700)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 700</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '5.0 GB Corporate', 1400)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/airtel.png" alt="Airtel"> Airtel Wholesale</span>
-                  <span class="tariff-badge">Bulk Node</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">STREAMING</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB Wholesale</div>
-                <div class="tariff-card-validity">Bulk data distribution for reseller agents and smart telecom shops with maximum uptime.</div>
+                <div class="card-plan-category">CORPORATE PLANS</div>
+                <div class="card-plan-volume">5.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.28/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Unthrottled 4G LTE</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Heavy Video Streaming</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦2,800</div>
-                  <div class="tariff-subprice">Direct Switch</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Airtel Gifting', '5.0 GB Corporate', 1400)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 1,400</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Airtel Gifting', '10.0 GB Wholesale', 2800)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-card">
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">BULK NODE</span>
+                </div>
+                <div class="card-plan-category">WHOLESALE PLANS</div>
+                <div class="card-plan-volume">10.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.28/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Reseller Top Choice</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Dedicated Bulk Gateway</li>
+                </ul>
+              </div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Airtel Gifting', '10.0 GB Wholesale', 2800)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 2,800</div>
+                </div>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- 3. Glo Group -->
           <div class="tariff-group" id="tariff-group-glo">
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Direct</span>
-                  <span class="tariff-badge">Economy</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">ECONOMY</span>
                 </div>
-                <div class="tariff-card-volume">1.0 GB SME Data</div>
-                <div class="tariff-card-validity">Lowest tariff rate in Nigeria. Instant data credit with nationwide 4G high-speed coverage.</div>
+                <div class="card-plan-category">SME PLANS</div>
+                <div class="card-plan-volume">1.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Lowest Tariff in Nigeria</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Nationwide 4G Coverage</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦250</div>
-                  <div class="tariff-subprice">Lowest Cost</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Glo Direct', '1.0 GB SME Data', 250)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 250</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '1.0 GB SME Data', 250)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Direct</span>
-                  <span class="tariff-badge popular">Popular</span>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </div>
-                <div class="tariff-card-volume">2.0 GB SME Data</div>
-                <div class="tariff-card-validity">Economical everyday package. Valid for 30 days with automated carrier network renewal.</div>
-              </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦500</div>
-                  <div class="tariff-subprice">Most Popular</div>
-                </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '2.0 GB SME Data', 500)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Direct</span>
-                  <span class="tariff-badge">Best Value</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">POPULAR</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB SME Data</div>
-                <div class="tariff-card-validity">Extended browsing and downloads for power users on the Grandmasters of Data network.</div>
+                <div class="card-plan-category">SME PLANS</div>
+                <div class="card-plan-volume">2.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦0.25/MB</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Automated Network Renewal</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦1,250</div>
-                  <div class="tariff-subprice">Save 20%</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Glo Direct', '2.0 GB SME Data', 500)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 500</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '5.0 GB SME Data', 1250)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/glo.png" alt="Glo"> Glo Wholesale</span>
-                  <span class="tariff-badge">Heavy Pack</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">BEST VALUE</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB Wholesale</div>
-                <div class="tariff-card-validity">Maximum data allocation for agents and power users at direct wholesale margin pricing.</div>
+                <div class="card-plan-category">SME PLANS</div>
+                <div class="card-plan-volume">5.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Extended Power Browsing</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Grandmasters of Data</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦2,500</div>
-                  <div class="tariff-subprice">Top Wholesale</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Glo Direct', '5.0 GB SME Data', 1250)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 1,250</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', 'Glo Direct', '10.0 GB SME Data', 2500)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-card">
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">HEAVY PACK</span>
+                </div>
+                <div class="card-plan-category">WHOLESALE PLANS</div>
+                <div class="card-plan-volume">10.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Maximum Data Allocation</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Direct Wholesale Margin</li>
+                </ul>
+              </div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Glo Direct', '10.0 GB Wholesale', 2500)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 2,500</div>
+                </div>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- 4. 9mobile Group -->
           <div class="tariff-group" id="tariff-group-nine">
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile</span>
-                  <span class="tariff-badge">Direct</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">DIRECT</span>
                 </div>
-                <div class="tariff-card-volume">1.5 GB SME Data</div>
-                <div class="tariff-card-validity">Reliable high-speed data on 9mobile turbo LTE. Crystal clear browsing and low packet loss.</div>
+                <div class="card-plan-category">SME PLANS</div>
+                <div class="card-plan-volume">1.5 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Low Packet Loss LTE</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Crystal Clear Browsing</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦480</div>
-                  <div class="tariff-subprice">Standard Rate</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', '9mobile', '1.5 GB SME', 480)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 480</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '1.5 GB SME', 480)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile</span>
-                  <span class="tariff-badge popular">Popular</span>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </div>
-                <div class="tariff-card-volume">3.0 GB SME Data</div>
-                <div class="tariff-card-validity">Balanced bandwidth for remote work and entertainment with guaranteed 30-day validity.</div>
-              </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦960</div>
-                  <div class="tariff-subprice">Most Popular</div>
-                </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '3.0 GB SME', 960)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile Corporate</span>
-                  <span class="tariff-badge">Speed Pack</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">POPULAR</span>
                 </div>
-                <div class="tariff-card-volume">5.0 GB Corporate</div>
-                <div class="tariff-card-validity">Corporate allocation for high performance downloads and uninterrupted video streaming.</div>
+                <div class="card-plan-category">SME PLANS</div>
+                <div class="card-plan-volume">3.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Balanced Bandwidth Quota</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Valid for 30 Days</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Remote Work Ready</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦1,500</div>
-                  <div class="tariff-subprice">Save 12%</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', '9mobile', '3.0 GB SME', 960)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 960</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '5.0 GB Corporate', 1500)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/9mobile.png" alt="9mobile"> 9mobile Wholesale</span>
-                  <span class="tariff-badge">Bulk</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">SPEED PACK</span>
                 </div>
-                <div class="tariff-card-volume">10.0 GB Wholesale</div>
-                <div class="tariff-card-validity">Wholesale bulk package with dedicated carrier gateway routing for resilient connections.</div>
+                <div class="card-plan-category">CORPORATE PLANS</div>
+                <div class="card-plan-volume">5.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Corporate Allocation</li>
+                <li><span class="card-bullet-arrow">&gt;</span> High Performance Video</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Uninterrupted Pipeline</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦3,000</div>
-                  <div class="tariff-subprice">Wholesale Node</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', '9mobile', '5.0 GB Corporate', 1500)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 1,500</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('data', '9mobile', '10.0 GB Wholesale', 3000)">
-                  <span>Recharge</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-card">
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">DATA</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">BULK</span>
+                </div>
+                <div class="card-plan-category">WHOLESALE PLANS</div>
+                <div class="card-plan-volume">10.0 GB</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Dedicated Carrier Routing</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Resilient Wholesale Node</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Enterprise Speed Band</li>
+                </ul>
+              </div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('data', '9mobile', '10.0 GB Wholesale', 3000)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 3,000</div>
+                </div>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- 5. DStv Group -->
           <div class="tariff-group" id="tariff-group-dstv">
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/dstv.png" alt="DStv"> DStv Nigeria</span>
-                  <span class="tariff-badge">Entry Tier</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">ENTRY TIER</span>
                 </div>
-                <div class="tariff-card-volume">DStv Padi</div>
-                <div class="tariff-card-validity">Watch on your Smart TV, decoder, and mobile. Over 45 crystal-clear digital entertainment channels.</div>
+                <div class="card-plan-category">CABLE BOUQUET</div>
+                <div class="card-plan-volume">DStv Padi</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 45+ Entertainment Channels</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Smart TV, Decoder & Mobile</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Instant IUC Switch</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦2,500</div>
-                  <div class="tariff-subprice">Instant IUC Switch</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Padi Bouquet', 2500)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 2,500</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Padi Bouquet', 2500)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/dstv.png" alt="DStv"> DStv Nigeria</span>
-                  <span class="tariff-badge popular">Popular</span>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </div>
-                <div class="tariff-card-volume">DStv Yanga</div>
-                <div class="tariff-card-validity">Stream and enjoy 85+ channels featuring Nollywood classics, international movies, and sports.</div>
-              </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦4,200</div>
-                  <div class="tariff-subprice">Most Subscribed</div>
-                </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DSTV Yanga Bouquet', 4200)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/dstv.png" alt="DStv"> DStv Nigeria</span>
-                  <span class="tariff-badge">Family Tier</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">POPULAR</span>
                 </div>
-                <div class="tariff-card-volume">DStv Confam</div>
-                <div class="tariff-card-validity">105+ channels with kids' favorites, documentary hubs, and blockbuster drama series.</div>
+                <div class="card-plan-category">CABLE BOUQUET</div>
+                <div class="card-plan-volume">DStv Yanga</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 85+ Channels Included</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Nollywood Classics & Kids</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Most Popular Bouquet</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦7,400</div>
-                  <div class="tariff-subprice">Family Choice</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DSTV Yanga Bouquet', 4200)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 4,200</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Confam Bouquet', 7400)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/dstv.png" alt="DStv"> DStv Nigeria</span>
-                  <span class="tariff-badge">Live Football</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">FAMILY TIER</span>
                 </div>
-                <div class="tariff-card-volume">DStv Compact</div>
-                <div class="tariff-card-validity">Complete Premier League and Champions League football plus 130+ HD entertainment channels.</div>
+                <div class="card-plan-category">CABLE BOUQUET</div>
+                <div class="card-plan-volume">DStv Confam</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 105+ Channels with Kids</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Documentary & Drama Series</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Family Favorite Hub</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦12,500</div>
-                  <div class="tariff-subprice">Live Sports Hub</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Confam Bouquet', 7400)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 7,400</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Compact Bouquet', 12500)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-card">
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">LIVE SPORTS</span>
+                </div>
+                <div class="card-plan-category">CABLE BOUQUET</div>
+                <div class="card-plan-volume">DStv Compact</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Premier League & Serie A</li>
+                <li><span class="card-bullet-arrow">&gt;</span> 130+ HD Entertainment</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Full Sports Streaming</li>
+                </ul>
+              </div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Compact Bouquet', 12500)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 12,500</div>
+                </div>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- 6. GOtv Group -->
           <div class="tariff-group" id="tariff-group-gotv">
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/gotv.png" alt="GOtv"> GOtv Direct</span>
-                  <span class="tariff-badge">Budget</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">BUDGET</span>
                 </div>
-                <div class="tariff-card-volume">GOtv Smallie</div>
-                <div class="tariff-card-validity">35+ popular digital channels at Nigeria's most affordable digital TV subscription rate.</div>
+                <div class="card-plan-category">DIGITAL TV</div>
+                <div class="card-plan-volume">GOtv Smallie</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 35+ Digital Channels</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Local News, Music & Faith</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Lowest Cable Tariff</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦1,300</div>
-                  <div class="tariff-subprice">Lowest Cost</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Smallie', 1300)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 1,300</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Smallie', 1300)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/gotv.png" alt="GOtv"> GOtv Direct</span>
-                  <span class="tariff-badge">Essential</span>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </div>
-                <div class="tariff-card-volume">GOtv Jinja</div>
-                <div class="tariff-card-validity">45+ channels of non-stop local entertainment, music, news, and African drama series.</div>
-              </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦2,700</div>
-                  <div class="tariff-subprice">Top Value</div>
-                </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Jinja Bouquet', 2700)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/gotv.png" alt="GOtv"> GOtv Direct</span>
-                  <span class="tariff-badge popular">Popular</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">ESSENTIAL</span>
                 </div>
-                <div class="tariff-card-volume">GOtv Jolli</div>
-                <div class="tariff-card-validity">65+ premium channels with Africa Magic, kids' cartoons, and football match highlights.</div>
+                <div class="card-plan-category">DIGITAL TV</div>
+                <div class="card-plan-volume">GOtv Jinja</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 45+ Quality Channels</li>
+                <li><span class="card-bullet-arrow">&gt;</span> African Magic Epic & Movies</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Telemundo & SuperSport</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦3,950</div>
-                  <div class="tariff-subprice">Most Popular</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Jinja Bouquet', 2700)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 2,700</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Jolli Bouquet', 3950)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/gotv.png" alt="GOtv"> GOtv Direct</span>
-                  <span class="tariff-badge">Sports</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">POPULAR</span>
                 </div>
-                <div class="tariff-card-volume">GOtv Max</div>
-                <div class="tariff-card-validity">75+ channels with live La Liga, Serie A, movies, and family reality TV entertainment.</div>
+                <div class="card-plan-category">DIGITAL TV</div>
+                <div class="card-plan-volume">GOtv Jolli</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 65+ Vibrant Channels</li>
+                <li><span class="card-bullet-arrow">&gt;</span> WWE & Premier League</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Family Entertainment</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦5,700</div>
-                  <div class="tariff-subprice">Complete Tier</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Jolli Bouquet', 3950)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 3,950</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Max Bouquet', 5700)">
-                  <span>Renew</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-card">
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">TV</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">COMPLETE</span>
+                </div>
+                <div class="card-plan-category">DIGITAL TV</div>
+                <div class="card-plan-volume">GOtv Max</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 75+ Complete Channels</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Live La Liga & Serie A</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Top Sports Package</li>
+                </ul>
+              </div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOtv Nigeria', 'GOtv Max', 5700)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 5,700</div>
+                </div>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- 7. Netflix & Prime Video Streaming Group -->
           <div class="tariff-group" id="tariff-group-streaming">
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/netflix.png" alt="Netflix"> Netflix</span>
-                  <span class="tariff-badge">1 Screen</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">PASS</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">1 SCREEN</span>
                 </div>
-                <div class="tariff-card-volume">Netflix Mobile</div>
-                <div class="tariff-card-validity">Watch on your phone and tablet in 480p SD with unlimited downloads and zero commercials.</div>
+                <div class="card-plan-category">STREAMING PASS</div>
+                <div class="card-plan-volume">Netflix Mobile</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Phone & Tablet SD 480p</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Unlimited Downloads</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Zero Commercial Interruptions</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦1,600</div>
-                  <div class="tariff-subprice">Direct Voucher</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Mobile Pass', 1600)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 1,600</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Mobile Pass', 1600)">
-                  <span>Top-Up</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/netflix.png" alt="Netflix"> Netflix</span>
-                  <span class="tariff-badge popular">Full HD</span>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
                 </div>
-                <div class="tariff-card-volume">Netflix Standard</div>
-                <div class="tariff-card-validity">2 simultaneous screens in 1080p Full HD on any TV, laptop, phone, or tablet device.</div>
-              </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦4,000</div>
-                  <div class="tariff-subprice">Most Popular</div>
-                </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Standard FHD', 4000)">
-                  <span>Top-Up</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/netflix.png" alt="Netflix"> Netflix</span>
-                  <span class="tariff-badge">4K Ultra HD</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">PASS</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">POPULAR</span>
                 </div>
-                <div class="tariff-card-volume">Netflix Premium</div>
-                <div class="tariff-card-validity">4 simultaneous screens in glorious 4K Ultra HD with spatial audio and HDR brilliance.</div>
+                <div class="card-plan-category">STREAMING PASS</div>
+                <div class="card-plan-volume">Netflix Standard</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 2 Screens Full HD 1080p</li>
+                <li><span class="card-bullet-arrow">&gt;</span> TV, Laptop & Tablet</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Top Streaming Voucher</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦5,000</div>
-                  <div class="tariff-subprice">Ultra Tier</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Standard FHD', 4000)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 4,000</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Premium 4K', 5000)">
-                  <span>Top-Up</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
-
             <div class="tariff-card">
-              <div>
-                <div class="tariff-card-top">
-                  <span class="tariff-carrier-tag"><img src="assets/prime-video.png?v=2" alt="Prime"> Prime Video</span>
-                  <span class="tariff-badge">Amazon Prime</span>
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">PASS</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">4K ULTRA HD</span>
                 </div>
-                <div class="tariff-card-volume">Prime Video Pass</div>
-                <div class="tariff-card-validity">Stream unlimited Amazon Originals, movies, and TV shows on your phone, tablet, and TV.</div>
+                <div class="card-plan-category">STREAMING PASS</div>
+                <div class="card-plan-volume">Netflix Premium</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> 4 Screens 4K Ultra HD</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Spatial Audio & HDR</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Ultimate Family Experience</li>
+                </ul>
               </div>
-              <div class="tariff-card-bottom">
-                <div>
-                  <div class="tariff-price">₦2,300</div>
-                  <div class="tariff-subprice">Direct Token</div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'Netflix Billing API', 'Netflix Premium 4K', 5000)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 5,000</div>
                 </div>
-                <button type="button" class="tariff-buy-btn" onclick="selectTariffPlan('cable', 'Prime Video Subscriptions', 'Prime Video Monthly Pass', 2300)">
-                  <span>Top-Up</span>
-                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
-                </button>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="tariff-card">
+              <div class="card-plan-body">
+                <div class="card-top-row">
+                  <svg class="brand-card-visual" width="72" height="50" viewBox="0 0 72 50" fill="none">
+  <ellipse cx="36" cy="44" rx="26" ry="4" fill="rgba(0,0,0,0.12)"/>
+  <g transform="rotate(-6 36 22)">
+    <rect x="8" y="5" width="56" height="34" rx="6" fill="var(--brand-banner-bg)" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    <rect x="14" y="12" width="11" height="9" rx="2" fill="rgba(255,255,255,0.3)"/>
+    <line x1="14" y1="16.5" x2="25" y2="16.5" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <line x1="19.5" y1="12" x2="19.5" y2="21" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"/>
+    <text x="31" y="22" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="800" fill="var(--brand-banner-text)" letter-spacing="0.5">PASS</text>
+  </g>
+</svg>
+                  <span class="plan-type-pill">AMAZON PRIME</span>
+                </div>
+                <div class="card-plan-category">STREAMING PASS</div>
+                <div class="card-plan-volume">Prime Video</div>
+                <div class="card-plan-divider"></div>
+                <ul class="card-plan-specs">
+                <li><span class="card-bullet-arrow">&gt;</span> Amazon Originals & Movies</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Multi-Device Simultaneous</li>
+                <li><span class="card-bullet-arrow">&gt;</span> Sub-second Direct Token</li>
+                </ul>
+              </div>
+              <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'Prime Video Subscriptions', 'Prime Video Monthly Pass', 2300)">
+                <div class="card-footer-price-wrap">
+                  <span class="card-footer-only">ONLY</span>
+                  <div class="card-footer-price">₦ 2,300</div>
+                </div>
+                <div class="card-footer-action">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
