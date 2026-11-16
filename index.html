@@ -2762,7 +2762,7 @@
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
       gap: clamp(28px, 4vw, 52px);
-      margin-bottom: clamp(40px, 5vw, 64px);
+      margin-bottom: 0;
     }
     .footer-brand-col {
       display: flex;
@@ -2790,27 +2790,8 @@
       margin: 0;
       max-width: 300px;
     }
-    .footer-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #F0FDF4;
-      border: 1px solid #BBF7D0;
-      padding: 5px 12px;
-      border-radius: 999px;
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      color: #166534;
-      margin-top: 4px;
-    }
-    .status-pulse-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #16A34A;
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
-    }
+    
+    
     .footer-links-col {
       display: flex;
       flex-direction: column;
@@ -2845,38 +2826,12 @@
     .footer-links-list li a:hover {
       color: #0284C7;
     }
-    .footer-bottom-row {
-      padding-top: 24px;
-      border-top: 1px solid #E5E7EB;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      font-size: 12px;
-      color: #64748B;
-    }
-    .footer-copyright {
-      color: #64748B;
-    }
-    .footer-legal-links {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .footer-legal-links a {
-      color: #4B5563;
-      text-decoration: none;
-      transition: color 0.18s ease;
-    }
-    .footer-legal-links a:hover {
-      color: #0284C7;
-    }
-    .footer-dot-sep {
-      color: #CBD5E1;
-      font-size: 10px;
-    }
+    
+    
+    
+    
+    
+    
 
     /* Responsive Footer Rows */
     @media (max-width: 990px) {
@@ -2893,11 +2848,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 28px 20px;
       }
-      .footer-bottom-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
+      
     }
     @media (max-width: 380px) {
       .footer-grid {
@@ -5810,10 +5761,6 @@
           <p class="footer-brand-desc">
             Next-generation telecommunications switching, instant bill settlements, and turnkey white-label agent infrastructure.
           </p>
-          <div class="footer-status-pill">
-            <span class="status-pulse-dot"></span>
-            <span>All Systems 100% Operational</span>
-          </div>
         </div>
 
         <!-- Column 1: Services -->
@@ -5861,21 +5808,6 @@
         </div>
 
       </div>
-
-      <!-- Bottom Row: Compliance, Legal & Copyright -->
-      <div class="footer-bottom-row">
-        <div class="footer-copyright">
-          © 2026 Payzani Technologies Ltd. Licensed & Secure Telecommunications Billing Switch.
-        </div>
-        <div class="footer-legal-links">
-          <a href="#" onclick="showCustomAlert('Privacy Policy: All customer transaction logs are encrypted under NDPR standards.'); return false;">Privacy Policy</a>
-          <span class="footer-dot-sep">•</span>
-          <a href="#" onclick="showCustomAlert('Terms of Service: Automated wholesale routing with zero-surcharge guarantee.'); return false;">Terms of Service</a>
-          <span class="footer-dot-sep">•</span>
-          <a href="#" onclick="showCustomAlert('System Status: Upstream carrier gateways healthy (MTN, Airtel, Glo, 9mobile).'); return false;">System Status</a>
-        </div>
-      </div>
-
     </div>
   </footer>
 
