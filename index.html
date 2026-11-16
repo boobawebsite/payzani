@@ -1937,50 +1937,134 @@
       color: var(--agent-primary);
     }
 
-    /* Reseller Banner */
-    .agent-promo-card {
-      background: #0B0F19;
-      color: #FFFFFF;
-      border-radius: var(--radius-md);
+    /* ---- Become An Agent CTA Banner ---- */
+    .agent-cta-banner {
+      position: relative;
+      width: 100%;
+      background: #030508;
+      border-radius: 24px;
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: stretch;
-      border: 1px solid #1F2937;
+      padding: clamp(60px, 10vw, 110px) clamp(24px, 5vw, 60px);
+      margin-bottom: clamp(36px, 5vw, 56px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 32px 80px -16px rgba(0, 0, 0, 0.5);
     }
-    
+    .agent-cta-grid-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
     }
-    .agent-promo-text {
-      padding: clamp(28px, 4.5vw, 48px);
+    .grid-line-h {
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .grid-line-h:nth-child(1) { top: 33%; }
+    .grid-line-h:nth-child(2) { top: 55%; }
+    .grid-line-h:nth-child(3) { top: 75%; }
+    .grid-line-v {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .grid-line-v:nth-child(4) { left: 25%; }
+    .grid-line-v:nth-child(5) { left: 50%; }
+    .grid-line-v:nth-child(6) { left: 75%; }
+    .agent-cta-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .agent-cta-orb-left {
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+      top: -100px;
+      left: -120px;
+    }
+    .agent-cta-orb-right {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+      bottom: -80px;
+      right: -100px;
+    }
+    .agent-cta-content {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      gap: 20px;
     }
-    .agent-promo-text h3 {
-      font-size: clamp(22px, 3.2vw, 30px);
+    .agent-cta-eyebrow {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 11px;
       font-weight: 800;
-      letter-spacing: -0.8px;
-      margin-bottom: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin: 0;
     }
-    .agent-promo-text p {
-      color: #9CA3AF;
-      font-size: clamp(13.5px, 1.8vw, 15px);
-      margin-bottom: 24px;
-      line-height: 1.55;
+    .agent-cta-headline {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 900;
+      letter-spacing: -2.5px;
+      line-height: 1.0;
+      color: #FFFFFF;
+      margin: 0;
     }
-    .agent-promo-img-wrap {
-      min-height: 260px;
-      border-left: 1px solid #1F2937;
+    .agent-cta-gradient {
+      background: linear-gradient(135deg, #38BDF8 0%, #818CF8 50%, #A855F7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    
+    .agent-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      color: #0A0D14;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease, background 0.2s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     }
-    .apple-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      background: var(--surface-muted);
+    .agent-cta-btn:hover {
+      transform: scale(1.04) translateY(-2px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
+      background: #F1F5F9;
     }
+
+    @media (max-width: 480px) {
+      .agent-cta-banner {
+        border-radius: 18px;
+        padding: 44px 20px;
+      }
+      .agent-cta-headline {
+        font-size: clamp(38px, 11vw, 56px);
+        letter-spacing: -1.5px;
+      }
+      .agent-cta-btn {
+        padding: 14px 26px;
+        font-size: 14px;
+      }
+    }
+
 
     /* -------------------------------------------------------------
        AGENT DASHBOARD & METRICS
@@ -5355,20 +5439,28 @@
         </div>
       </div>
 
-      <!-- Reseller Banner -->
-      <div class="agent-promo-card">
-        <div class="agent-promo-text">
-          <h3>Start Your Branded Telecom Business Today</h3>
-          <p>Every agent gets their own dedicated link, personalized storefront name, custom logo, and color theme. You buy tokens at wholesale margins; your customers purchase seamlessly on your site.</p>
-          <div>
-            <button class="btn-secondary" style="background:#FFFFFF; color:#0B0F19; border:none;" onclick="switchEcoView('agent-admin')">
-              <span>Open Agent Console</span>
-              <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </button>
-          </div>
+      <!-- Become An Agent CTA Banner -->
+      <div class="agent-cta-banner">
+        <!-- Animated background grid lines -->
+        <div class="agent-cta-grid-lines" aria-hidden="true">
+          <div class="grid-line-h"></div>
+          <div class="grid-line-h"></div>
+          <div class="grid-line-h"></div>
+          <div class="grid-line-v"></div>
+          <div class="grid-line-v"></div>
+          <div class="grid-line-v"></div>
         </div>
-        <div class="agent-promo-img-wrap">
-          <img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=800&q=80" alt="Digital Telecom Platform" class="apple-img">
+        <!-- Glow orbs -->
+        <div class="agent-cta-orb agent-cta-orb-left" aria-hidden="true"></div>
+        <div class="agent-cta-orb agent-cta-orb-right" aria-hidden="true"></div>
+        <!-- Content -->
+        <div class="agent-cta-content">
+          <p class="agent-cta-eyebrow">PAYZANI PARTNER NETWORK</p>
+          <h2 class="agent-cta-headline">Become an<br><span class="agent-cta-gradient">Agent Today.</span></h2>
+          <button class="agent-cta-btn" onclick="switchEcoView('agent-admin')">
+            Get Started
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
         </div>
       </div>
     </section>
