@@ -403,29 +403,42 @@
     }
     @media (max-width: 940px) {
       .hero-telecom-wrapper {
-        min-height: auto;
-        padding: clamp(40px, 8vw, 68px) 16px clamp(48px, 10vw, 80px);
-        background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 35%, #18202E 75%, #070A0F 100%);
+        min-height: clamp(580px, 80vh, 720px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: clamp(48px, 8vh, 80px) 16px;
+        background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 36%, #18202E 76%, #070A0F 100%);
         margin-bottom: 0;
+        box-sizing: border-box;
       }
       .hero-split-grid {
         grid-template-columns: 1fr;
         gap: 0;
         padding: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .hero-lead-col {
         text-align: center;
-        padding: 10px 0;
+        padding: 20px 0;
         position: relative;
         max-width: 640px;
+        width: 100%;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
       .hero-cycle-stage {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: clamp(240px, 85vw, 360px);
-        height: 140px;
+        width: clamp(260px, 85vw, 380px);
+        height: clamp(160px, 35vw, 220px);
       }
       .cycle-brand-img {
         max-width: 86%;
@@ -433,15 +446,19 @@
       }
       .hero-title {
         font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Helvetica, sans-serif;
-        font-size: clamp(26px, 7vw, 38px);
-        letter-spacing: -0.022em;
+        font-size: clamp(28px, 7.5vw, 42px);
+        letter-spacing: -0.024em;
         line-height: 1.15;
         font-weight: 700;
         margin-bottom: 0;
         text-align: center;
         color: #1d1d1f;
+        position: relative;
+        z-index: 3;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        max-width: 480px;
+        padding: 0 12px;
       }
       /* Hide Recharge Card in mobile view - desktop only */
       .apple-recharge-card,
