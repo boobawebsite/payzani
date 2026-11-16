@@ -979,8 +979,8 @@
        NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
     -------------------------------------------------------------- */
     /* -------------------------------------------------------------
-       APPLE & CARRIER SHOWCASE: 4-SERVICE HORIZONTAL SCROLL CAROUSEL
-       Airtime -> Data -> Cable TV -> Power Plans
+       APPLE & CARRIER SHOWCASE: VERTICAL SCROLLING PLANS
+       Scroll down through: Airtime -> Data -> Cable TV -> Power Plans
     -------------------------------------------------------------- */
     /* Dynamic Card Brand Colors */
     .card-brand-mtn {
@@ -1066,52 +1066,64 @@
       overflow: hidden;
       border-top: 1px solid rgba(255, 255, 255, 0.12);
       border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      border-left: none;
-      border-right: none;
-      border-radius: 0;
-      padding: clamp(60px, 6.5vw, 90px) 0 clamp(68px, 7.5vw, 100px);
+      padding: clamp(50px, 6vw, 80px) 0 clamp(68px, 7.5vw, 100px);
       margin-bottom: clamp(48px, 6vw, 72px);
       box-shadow: inset 0 30px 60px -30px rgba(0, 0, 0, 0.9), inset 0 -30px 60px -30px rgba(0, 0, 0, 0.9);
       box-sizing: border-box;
     }
-    .tariffs-brand-watermark-stage {
-      position: absolute;
-      top: 50%;
-      right: clamp(-60px, 1vw, 20px);
-      transform: translateY(-50%);
-      width: clamp(520px, 58vw, 900px);
-      height: clamp(380px, 44vw, 650px);
-      pointer-events: none;
-      z-index: 1;
+    
+    /* Apple-Style Sticky Subnav */
+    .tariffs-sticky-nav-bar {
+      position: sticky;
+      top: 68px;
+      z-index: 25;
       display: flex;
-      align-items: center;
       justify-content: center;
-      overflow: visible;
+      margin-bottom: clamp(36px, 4.5vw, 54px);
+      padding: 0 16px;
+      pointer-events: none;
     }
-    .tariff-watermark-item {
-      position: absolute;
-      inset: 0;
-      display: flex;
+    .tariffs-sticky-nav-inner {
+      background: rgba(22, 22, 23, 0.82);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 980px;
+      padding: 4px;
+      display: inline-flex;
       align-items: center;
-      justify-content: flex-end;
-      opacity: 0;
-      transform: scale(0.95) translate3d(24px, 0, 0);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-      -webkit-mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
-      mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 84%);
+      gap: 4px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+      pointer-events: auto;
+      max-width: 100%;
+      overflow-x: auto;
     }
-    .tariff-watermark-item.active {
-      opacity: 0.18;
-      transform: scale(1) translate3d(0, 0, 0);
+    .sticky-cat-link {
+      color: #A1A1A6;
+      text-decoration: none;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 18px;
+      border-radius: 980px;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      user-select: none;
     }
-    .tariff-watermark-img {
-      max-width: 95%;
-      max-height: 95%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.08));
+    .sticky-cat-link:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
     }
+    .sticky-cat-link.active {
+      background: #FFFFFF;
+      color: #000000;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
     .tariffs-inner-container {
       max-width: 1240px;
       margin: 0 auto;
@@ -1121,18 +1133,49 @@
       position: relative;
       z-index: 2;
     }
-    .tariffs-header-minimal {
-      margin-bottom: clamp(28px, 3.5vw, 40px);
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
+
+    /* Category Block Stacked Vertically */
+    .tariff-category-block {
+      position: relative;
+      margin-bottom: clamp(68px, 8vw, 100px);
+      scroll-margin-top: 130px;
     }
-    .tariffs-header-left {
+    .tariff-category-block:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Watermark Backdrop for Each Category */
+    .tariff-block-watermark {
+      position: absolute;
+      top: 50%;
+      right: clamp(-40px, 1vw, 20px);
+      transform: translateY(-50%);
+      width: clamp(420px, 48vw, 750px);
+      height: clamp(320px, 38vw, 550px);
+      pointer-events: none;
+      z-index: 1;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      justify-content: flex-end;
+      opacity: 0.15;
+      overflow: visible;
+      -webkit-mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%);
+      mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%);
+    }
+    .tariff-watermark-img {
+      max-width: 95%;
+      max-height: 95%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.08));
+    }
+
+    /* Category Block Header */
+    .tariff-block-header {
+      margin-bottom: clamp(24px, 3vw, 34px);
+      position: relative;
+      z-index: 2;
     }
     .tariffs-eyebrow {
       font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
@@ -1141,148 +1184,33 @@
       color: #2997ff;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 8px;
-      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-bottom: 6px;
     }
     .dynamic-tariff-heading {
       font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", sans-serif;
-      font-size: clamp(34px, 4.4vw, 50px);
+      font-size: clamp(32px, 3.8vw, 44px);
       font-weight: 700;
       letter-spacing: -0.03em;
       color: #f5f5f7;
       margin: 0;
-      line-height: 1.08;
-      display: inline-block;
-      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      line-height: 1.1;
     }
-
-    /* Apple-style Category Segmented Nav & Navigation Controls */
-    .tariffs-header-controls {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .apple-category-nav {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 980px;
-      padding: 4px;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-    }
-    .category-pill {
-      background: transparent;
-      color: #A1A1A6;
-      border: none;
-      padding: 7px 15px;
-      border-radius: 980px;
+    .tariff-category-sub {
       font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      user-select: none;
-    }
-    .category-pill svg {
-      opacity: 0.75;
-      transition: opacity 0.2s;
-    }
-    .category-pill:hover {
-      color: #FFFFFF;
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .category-pill.active {
-      background: #FFFFFF;
-      color: #000000;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-    }
-    .category-pill.active svg {
-      opacity: 1;
-      stroke: #000000;
+      font-size: 14.5px;
+      color: #86868B;
+      margin: 6px 0 0;
+      max-width: 640px;
+      line-height: 1.45;
     }
 
-    /* Apple-style Arrow Nav */
-    .tariffs-arrow-nav {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .tariff-nav-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #F5F5F7;
-      border-radius: 980px;
-      height: 38px;
-      padding: 0 16px;
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      user-select: none;
-    }
-    .tariff-nav-btn.prev-btn {
-      padding: 0 12px;
-    }
-    .tariff-nav-btn:hover {
-      background: rgba(255, 255, 255, 0.16);
-      border-color: rgba(255, 255, 255, 0.32);
-      transform: translateY(-1px);
-      color: #FFFFFF;
-    }
-    .tariff-nav-btn:active {
-      transform: translateY(0);
-      background: rgba(255, 255, 255, 0.2);
-    }
-    .next-btn-text {
-      display: inline-block;
-      white-space: nowrap;
-    }
-
-    /* Horizontal Carousel Track with Smooth Scroll Snap */
-    .tariff-carousel-wrap {
-      position: relative;
-      width: 100%;
-    }
-    .tariff-scroll-track {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 40px;
-      scrollbar-width: none;
-      padding-bottom: 12px;
-      margin: 0 -8px;
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-    .tariff-scroll-track::-webkit-scrollbar {
-      display: none;
-    }
-    .tariff-service-slide {
-      flex: 0 0 100%;
-      min-width: 100%;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      box-sizing: border-box;
-    }
+    /* Responsive Grid for Cards */
     .tariff-cards-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: clamp(16px, 2vw, 22px);
+      position: relative;
+      z-index: 2;
     }
     @media (max-width: 1040px) {
       .tariff-cards-grid {
@@ -1292,18 +1220,6 @@
     @media (max-width: 580px) {
       .tariff-cards-grid {
         grid-template-columns: 1fr;
-      }
-      .tariffs-header-minimal {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .tariffs-header-controls {
-        width: 100%;
-        justify-content: space-between;
-      }
-      .apple-category-nav {
-        overflow-x: auto;
-        max-width: 100%;
       }
     }
 
@@ -2738,555 +2654,556 @@
             <!-- =============================================================
            NETFLIX-STYLE SHOWCASE: MORE REASONS TO CHOOSE PAYZANI PLANS
       ============================================================== -->
-      <section class="tariffs-showcase-section" id="liveTariffShowcase" onmouseenter="isTariffHovered=true" onmouseleave="isTariffHovered=false">
-        <!-- Dynamic Service Watermark Stage -->
-        <div class="tariffs-brand-watermark-stage">
-          <div class="tariff-watermark-item active" id="tariff-watermark-airtime">
-            <img src="assets/mtn.png" alt="Airtime VTU" class="tariff-watermark-img" />
-          </div>
-          <div class="tariff-watermark-item" id="tariff-watermark-data">
-            <img src="assets/airtel.png" alt="Data Broadband" class="tariff-watermark-img" />
-          </div>
-          <div class="tariff-watermark-item" id="tariff-watermark-cable">
-            <img src="assets/dstv.png" alt="Digital TV" class="tariff-watermark-img" />
-          </div>
-          <div class="tariff-watermark-item" id="tariff-watermark-power">
-            <svg class="tariff-watermark-img" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height: 80%; opacity: 0.65;">
-              <path d="M120 10L30 130H100L80 230L170 110H100L120 10Z" fill="url(#boltGrad)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
-              <defs>
-                <linearGradient id="boltGrad" x1="30" y1="10" x2="170" y2="230" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#0284C7"/>
-                  <stop offset="1" stop-color="#059669"/>
-                </linearGradient>
-              </defs>
-            </svg>
+      <section class="tariffs-showcase-section" id="liveTariffShowcase">
+        <!-- Sticky Category Nav: Airtime -> Data -> Cable TV -> Power -->
+        <div class="tariffs-sticky-nav-bar">
+          <div class="tariffs-sticky-nav-inner">
+            <a href="#plans-airtime" class="sticky-cat-link active" id="nav-link-airtime" onclick="scrollToTariffCategory(event, 'plans-airtime')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>Airtime</span>
+            </a>
+            <a href="#plans-data" class="sticky-cat-link" id="nav-link-data" onclick="scrollToTariffCategory(event, 'plans-data')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+              <span>Data</span>
+            </a>
+            <a href="#plans-cable" class="sticky-cat-link" id="nav-link-cable" onclick="scrollToTariffCategory(event, 'plans-cable')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+              <span>Cable TV</span>
+            </a>
+            <a href="#plans-power" class="sticky-cat-link" id="nav-link-power" onclick="scrollToTariffCategory(event, 'plans-power')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <span>Power</span>
+            </a>
           </div>
         </div>
 
         <div class="tariffs-inner-container">
-          <div class="tariffs-header-minimal">
-            <div class="tariffs-header-left">
-              <div class="tariffs-eyebrow" id="dynamicTariffEyebrow">Direct Instant VTU & Cashback</div>
-              <h2 class="dynamic-tariff-heading" id="dynamicTariffHeading">Airtime Plans</h2>
+          <!-- =========================================================
+               1. AIRTIME PLANS (Scroll to view first)
+          ========================================================== -->
+          <div class="tariff-category-block" id="plans-airtime">
+            <div class="tariff-block-watermark">
+              <img src="assets/mtn.png" alt="Airtime" class="tariff-watermark-img" />
             </div>
-
-            <div class="tariffs-header-controls">
-              <!-- Apple Category Segmented Nav -->
-              <div class="apple-category-nav" role="tablist">
-                <button type="button" class="category-pill active" onclick="goToServiceSlide(0)" data-service="airtime" id="cat-pill-0">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                  <span>Airtime</span>
-                </button>
-                <button type="button" class="category-pill" onclick="goToServiceSlide(1)" data-service="data" id="cat-pill-1">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
-                  <span>Data</span>
-                </button>
-                <button type="button" class="category-pill" onclick="goToServiceSlide(2)" data-service="cable" id="cat-pill-2">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
-                  <span>Cable TV</span>
-                </button>
-                <button type="button" class="category-pill" onclick="goToServiceSlide(3)" data-service="power" id="cat-pill-3">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                  <span>Power</span>
-                </button>
+            <div class="tariff-block-header">
+              <div class="tariffs-eyebrow">Direct Instant VTU & Cashback</div>
+              <h2 class="dynamic-tariff-heading">Airtime Plans</h2>
+              <p class="tariff-category-sub">Instant discounted mobile top-ups with zero hidden surcharge across all 4 major Nigerian carriers.</p>
+            </div>
+            <div class="tariff-cards-grid">
+              <!-- MTN Airtime -->
+              <div class="tariff-card card-brand-mtn">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">2% OFF</span>
+                  </div>
+                  <div class="card-plan-category">MTN VTU</div>
+                  <div class="card-plan-volume">₦1,000 Airtime</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> 2.0% Instant Cash Discount</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Direct SIM Top-up in &lt; 2 Sec</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Zero Hidden Processing Fee</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('airtime', 'MTN', '₦1,000 Airtime', 1000)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 980</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
               </div>
 
-              <!-- Apple-style Navigation Arrows -->
-              <div class="tariffs-arrow-nav">
-                <button type="button" class="tariff-nav-btn prev-btn" onclick="prevServiceSlide()" aria-label="Previous plans" title="Previous plans">
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                </button>
-                <button type="button" class="tariff-nav-btn next-btn" onclick="nextServiceSlide()" aria-label="Next plans" id="nextServiceBtn" title="Next plans">
-                  <span class="next-btn-text" id="nextBtnLabel">Next: Data Plans</span>
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </button>
+              <!-- Airtel Airtime -->
+              <div class="tariff-card card-brand-airtel">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">2.5% OFF</span>
+                  </div>
+                  <div class="card-plan-category">AIRTEL VTU</div>
+                  <div class="card-plan-volume">₦2,000 Airtime</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> 2.5% Instant Cashback</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant 4G/5G Route Delivery</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> 24/7 Automated Carrier Sync</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('airtime', 'Airtel', '₦2,000 Airtime', 2000)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 1,950</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Glo Airtime -->
+              <div class="tariff-card card-brand-glo">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">3% OFF</span>
+                  </div>
+                  <div class="card-plan-category">GLO VTU</div>
+                  <div class="card-plan-volume">₦2,500 Airtime</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> 3.0% Max Wholesale Margin</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant Direct SIM Credit</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Best Voice Calling Value</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('airtime', 'Glo', '₦2,500 Airtime', 2500)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 2,425</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 9mobile Airtime -->
+              <div class="tariff-card card-brand-nine">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">3.5% OFF</span>
+                  </div>
+                  <div class="card-plan-category">9MOBILE VTU</div>
+                  <div class="card-plan-volume">₦5,000 Airtime</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> 3.5% Bulk Top-up Discount</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Dedicated Gateway Routing</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Enterprise Commercial Ready</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('airtime', '9mobile', '₦5,000 Airtime', 5000)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 4,825</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- Scroll Snap Carousel Track -->
-          <div class="tariff-carousel-wrap">
-            <div class="tariff-scroll-track" id="tariffScrollTrack">
-              <!-- 1. AIRTIME PLANS SLIDE -->
-              <div class="tariff-service-slide" id="slide-airtime">
-                <div class="tariff-cards-grid">
-                  <!-- Card 1: MTN Airtime -->
-                  <div class="tariff-card card-brand-mtn">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">2% OFF</span>
-                      </div>
-                      <div class="card-plan-category">MTN VTU</div>
-                      <div class="card-plan-volume">₦1,000 Airtime</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> 2.0% Instant Cash Discount</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Direct SIM Top-up in &lt; 2 Sec</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Zero Hidden Processing Fee</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('airtime', 'MTN', '₦1,000 Airtime', 1000)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 980</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+          <!-- =========================================================
+               2. DATA PLANS (Scroll down next to view)
+          ========================================================== -->
+          <div class="tariff-category-block" id="plans-data">
+            <div class="tariff-block-watermark">
+              <img src="assets/airtel.png" alt="Data" class="tariff-watermark-img" />
+            </div>
+            <div class="tariff-block-header">
+              <div class="tariffs-eyebrow">High-Speed 4G / 5G Broadband</div>
+              <h2 class="dynamic-tariff-heading">Data Plans</h2>
+              <p class="tariff-category-sub">Direct SME, Corporate, and Wholesale allocations with guaranteed 30-day validity.</p>
+            </div>
+            <div class="tariff-cards-grid">
+              <!-- MTN SME -->
+              <div class="tariff-card card-brand-mtn">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">SME VALUE</span>
                   </div>
-
-                  <!-- Card 2: Airtel Airtime -->
-                  <div class="tariff-card card-brand-airtel">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">2.5% OFF</span>
-                      </div>
-                      <div class="card-plan-category">AIRTEL VTU</div>
-                      <div class="card-plan-volume">₦2,000 Airtime</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> 2.5% Instant Cashback</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant 4G/5G Route Delivery</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> 24/7 Automated Carrier Sync</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('airtime', 'Airtel', '₦2,000 Airtime', 2000)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 1,950</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-plan-category">MTN DATA</div>
+                  <div class="card-plan-volume">1.0 GB SME</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦270 / GB</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Valid for Full 30 Days</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant 4G / 5G Tethering</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('data', 'MTN SME', '1.0 GB SME Data', 270)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 270</div>
                   </div>
-
-                  <!-- Card 3: Glo Airtime -->
-                  <div class="tariff-card card-brand-glo">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">3% OFF</span>
-                      </div>
-                      <div class="card-plan-category">GLO VTU</div>
-                      <div class="card-plan-volume">₦2,500 Airtime</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> 3.0% Max Wholesale Margin</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant Direct SIM Credit</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Best Voice Calling Value</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('airtime', 'Glo', '₦2,500 Airtime', 2500)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 2,425</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Card 4: 9mobile Airtime -->
-                  <div class="tariff-card card-brand-nine">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">3.5% OFF</span>
-                      </div>
-                      <div class="card-plan-category">9MOBILE VTU</div>
-                      <div class="card-plan-volume">₦5,000 Airtime</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> 3.5% Bulk Top-up Discount</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Dedicated Gateway Routing</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Enterprise Commercial Ready</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('airtime', '9mobile', '₦5,000 Airtime', 5000)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 4,825</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </div>
                 </div>
               </div>
 
-              <!-- 2. DATA PLANS SLIDE -->
-              <div class="tariff-service-slide" id="slide-data">
-                <div class="tariff-cards-grid">
-                  <!-- Card 1: MTN SME -->
-                  <div class="tariff-card card-brand-mtn">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">SME VALUE</span>
-                      </div>
-                      <div class="card-plan-category">MTN DATA</div>
-                      <div class="card-plan-volume">1.0 GB SME</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Rate: ₦270 / GB</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Valid for Full 30 Days</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant 4G / 5G Tethering</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('data', 'MTN SME', '1.0 GB SME Data', 270)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 270</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+              <!-- Airtel Direct -->
+              <div class="tariff-card card-brand-airtel">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">POPULAR</span>
                   </div>
-
-                  <!-- Card 2: Airtel Direct -->
-                  <div class="tariff-card card-brand-airtel">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">POPULAR</span>
-                      </div>
-                      <div class="card-plan-category">AIRTEL DATA</div>
-                      <div class="card-plan-volume">2.0 GB Direct</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Blazing High-Speed LTE</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Guaranteed 30-Day Validity</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Remote Work & Streaming</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Airtel', '2.0 GB Direct Data', 600)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 600</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-plan-category">AIRTEL DATA</div>
+                  <div class="card-plan-volume">2.0 GB Direct</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Blazing High-Speed LTE</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Guaranteed 30-Day Validity</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Remote Work & Streaming</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Airtel', '2.0 GB Direct Data', 600)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 600</div>
                   </div>
-
-                  <!-- Card 3: Glo SME -->
-                  <div class="tariff-card card-brand-glo">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">BEST VALUE</span>
-                      </div>
-                      <div class="card-plan-category">GLO DATA</div>
-                      <div class="card-plan-volume">5.0 GB SME</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Grandmasters Dedicated Plan</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> 30-Day Nationwide Coverage</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Lowest GB Tariff in Nigeria</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Glo', '5.0 GB SME Data', 1250)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 1,250</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Card 4: 9mobile Wholesale -->
-                  <div class="tariff-card card-brand-nine">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">BULK PACK</span>
-                      </div>
-                      <div class="card-plan-category">9MOBILE DATA</div>
-                      <div class="card-plan-volume">10.0 GB Bulk</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Maximum Bandwidth Allocation</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Wholesale Agent Margin Pricing</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Heavy Multi-Device Hotspot</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('data', '9mobile', '10.0 GB Wholesale Data', 2800)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 2,800</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </div>
                 </div>
               </div>
 
-              <!-- 3. CABLE PLANS SLIDE -->
-              <div class="tariff-service-slide" id="slide-cable">
-                <div class="tariff-cards-grid">
-                  <!-- Card 1: DStv Yanga -->
-                  <div class="tariff-card card-brand-dstv">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">ENTRY TIER</span>
-                      </div>
-                      <div class="card-plan-category">DSTV BOUQUET</div>
-                      <div class="card-plan-volume">DStv Yanga</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> 85+ Live Entertainment Channels</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Nollywood Classics, Kids & News</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant Smartcard Reconnect</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Yanga Bouquet', 4200)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 4,200</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+              <!-- Glo SME -->
+              <div class="tariff-card card-brand-glo">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">BEST VALUE</span>
                   </div>
-
-                  <!-- Card 2: DStv Compact -->
-                  <div class="tariff-card card-brand-dstv">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">POPULAR</span>
-                      </div>
-                      <div class="card-plan-category">DSTV BOUQUET</div>
-                      <div class="card-plan-volume">DStv Compact</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Premier League & Serie A Live</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> 130+ HD Channels & Movies</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Full SuperSport HD Coverage</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Compact Bouquet', 12500)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 12,500</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-plan-category">GLO DATA</div>
+                  <div class="card-plan-volume">5.0 GB SME</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Grandmasters Dedicated Plan</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> 30-Day Nationwide Coverage</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Lowest GB Tariff in Nigeria</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('data', 'Glo', '5.0 GB SME Data', 1250)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 1,250</div>
                   </div>
-
-                  <!-- Card 3: GOtv Jolli -->
-                  <div class="tariff-card card-brand-gotv">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">FAMILY CHOICE</span>
-                      </div>
-                      <div class="card-plan-category">GOTV BOUQUET</div>
-                      <div class="card-plan-volume">GOtv Jolli</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> 65+ Vibrant Family Channels</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Drama, Kids Cartoons & Movies</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant IUC Signal Switch</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOTV Nigeria', 'GOtv Jolli Bouquet', 3950)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 3,950</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Card 4: GOtv Max -->
-                  <div class="tariff-card card-brand-gotv">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">SPORTS TIER</span>
-                      </div>
-                      <div class="card-plan-category">GOTV BOUQUET</div>
-                      <div class="card-plan-volume">GOtv Max</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> 75+ Complete Channels Included</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> La Liga, Serie A & WWE Live</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Top Rated Series & Music Hits</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOTV Nigeria', 'GOtv Max Bouquet', 5700)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 5,700</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </div>
                 </div>
               </div>
 
-              <!-- 4. POWER PLANS SLIDE -->
-              <div class="tariff-service-slide" id="slide-power">
-                <div class="tariff-cards-grid">
-                  <!-- Card 1: IKEDC -->
-                  <div class="tariff-card card-brand-ikedc">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">INSTANT STS</span>
-                      </div>
-                      <div class="card-plan-category">IKEDC PREPAID</div>
-                      <div class="card-plan-volume">₦2,000 Token</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant 20-Digit STS Token</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Zero Surcharge Convenience</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant SMS & Receipt Delivery</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('power', 'IKEDC - Ikeja Electric', '₦2,000 Electricity Token', 2000)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 2,000</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+              <!-- 9mobile Wholesale -->
+              <div class="tariff-card card-brand-nine">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">BULK PACK</span>
                   </div>
-
-                  <!-- Card 2: EKEDC -->
-                  <div class="tariff-card card-brand-ekedc">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">POPULAR</span>
-                      </div>
-                      <div class="card-plan-category">EKEDC PREPAID</div>
-                      <div class="card-plan-volume">₦5,000 Token</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Lagos Island & Peninsula Grid</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Direct Automated Upstream API</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Instant STS Meter Verification</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('power', 'EKEDC - Eko Electricity', '₦5,000 Electricity Token', 5000)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 5,000</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-plan-category">9MOBILE DATA</div>
+                  <div class="card-plan-volume">10.0 GB Bulk</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Maximum Bandwidth Allocation</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Wholesale Agent Margin Pricing</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Heavy Multi-Device Hotspot</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('data', '9mobile', '10.0 GB Wholesale Data', 2800)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 2,800</div>
                   </div>
-
-                  <!-- Card 3: AEDC -->
-                  <div class="tariff-card card-brand-aedc">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">FAST DISPATCH</span>
-                      </div>
-                      <div class="card-plan-category">AEDC PREPAID</div>
-                      <div class="card-plan-volume">₦10,000 Token</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> FCT, Kogi, Niger & Nasarawa</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Direct 24/7 Server Token Link</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Verified Instant Unit Clearance</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('power', 'AEDC - Abuja Electricity', '₦10,000 Electricity Token', 10000)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 10,000</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-                  <!-- Card 4: IBEDC -->
-                  <div class="tariff-card card-brand-ibedc">
-                    <div class="card-plan-body">
-                      <div class="card-top-row">
-                        <span class="plan-type-pill">REGIONAL GRID</span>
-                      </div>
-                      <div class="card-plan-category">IBEDC PREPAID</div>
-                      <div class="card-plan-volume">₦15,000 Token</div>
-                      <div class="card-plan-divider"></div>
-                      <ul class="card-plan-specs">
-                        <li><span class="card-bullet-arrow">&gt;</span> Oyo, Ogun, Osun & Kwara States</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> STS High-Compliance Protocol</li>
-                        <li><span class="card-bullet-arrow">&gt;</span> Dedicated Power Distribution</li>
-                      </ul>
-                    </div>
-                    <div class="card-plan-footer" onclick="selectTariffPlan('power', 'IBEDC - Ibadan Electricity', '₦15,000 Electricity Token', 15000)">
-                      <div class="card-footer-price-wrap">
-                        <span class="card-footer-only">ONLY</span>
-                        <div class="card-footer-price">₦ 15,000</div>
-                      </div>
-                      <div class="card-footer-action">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
-                          <line x1="5" y1="12" x2="19" y2="12"></line>
-                          <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                      </div>
-                    </div>
+          <!-- =========================================================
+               3. CABLE PLANS (Scroll down next to view)
+          ========================================================== -->
+          <div class="tariff-category-block" id="plans-cable">
+            <div class="tariff-block-watermark">
+              <img src="assets/dstv.png" alt="Cable TV" class="tariff-watermark-img" />
+            </div>
+            <div class="tariff-block-header">
+              <div class="tariffs-eyebrow">Digital TV Entertainment</div>
+              <h2 class="dynamic-tariff-heading">Cable Plans</h2>
+              <p class="tariff-category-sub">Instant automated signal reconnection for all DStv and GOtv bouquets.</p>
+            </div>
+            <div class="tariff-cards-grid">
+              <!-- DStv Yanga -->
+              <div class="tariff-card card-brand-dstv">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">ENTRY TIER</span>
+                  </div>
+                  <div class="card-plan-category">DSTV BOUQUET</div>
+                  <div class="card-plan-volume">DStv Yanga</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> 85+ Live Entertainment Channels</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Nollywood Classics, Kids & News</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant Smartcard Reconnect</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Yanga Bouquet', 4200)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 4,200</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DStv Compact -->
+              <div class="tariff-card card-brand-dstv">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">POPULAR</span>
+                  </div>
+                  <div class="card-plan-category">DSTV BOUQUET</div>
+                  <div class="card-plan-volume">DStv Compact</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Premier League & Serie A Live</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> 130+ HD Channels & Movies</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Full SuperSport HD Coverage</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'DSTV Nigeria', 'DStv Compact Bouquet', 12500)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 12,500</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GOtv Jolli -->
+              <div class="tariff-card card-brand-gotv">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">FAMILY CHOICE</span>
+                  </div>
+                  <div class="card-plan-category">GOTV BOUQUET</div>
+                  <div class="card-plan-volume">GOtv Jolli</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> 65+ Vibrant Family Channels</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Drama, Kids Cartoons & Movies</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant IUC Signal Switch</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOTV Nigeria', 'GOtv Jolli Bouquet', 3950)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 3,950</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GOtv Max -->
+              <div class="tariff-card card-brand-gotv">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">SPORTS TIER</span>
+                  </div>
+                  <div class="card-plan-category">GOTV BOUQUET</div>
+                  <div class="card-plan-volume">GOtv Max</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> 75+ Complete Channels Included</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> La Liga, Serie A & WWE Live</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Top Rated Series & Music Hits</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('cable', 'GOTV Nigeria', 'GOtv Max Bouquet', 5700)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 5,700</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================================
+               4. POWER PLANS (Scroll down finally to view)
+          ========================================================== -->
+          <div class="tariff-category-block" id="plans-power">
+            <div class="tariff-block-watermark">
+              <svg class="tariff-watermark-img" viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-height: 80%; opacity: 0.65;">
+                <path d="M120 10L30 130H100L80 230L170 110H100L120 10Z" fill="url(#boltGradPower)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                <defs>
+                  <linearGradient id="boltGradPower" x1="30" y1="10" x2="170" y2="230" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#0284C7"/>
+                    <stop offset="1" stop-color="#059669"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="tariff-block-header">
+              <div class="tariffs-eyebrow">Instant Prepaid Electricity Tokens</div>
+              <h2 class="dynamic-tariff-heading">Power Plans</h2>
+              <p class="tariff-category-sub">Direct 20-digit STS prepaid meter token generation with zero convenience fees.</p>
+            </div>
+            <div class="tariff-cards-grid">
+              <!-- IKEDC -->
+              <div class="tariff-card card-brand-ikedc">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">INSTANT STS</span>
+                  </div>
+                  <div class="card-plan-category">IKEDC PREPAID</div>
+                  <div class="card-plan-volume">₦2,000 Token</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant 20-Digit STS Token</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Zero Surcharge Convenience</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant SMS & Receipt Delivery</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('power', 'IKEDC - Ikeja Electric', '₦2,000 Electricity Token', 2000)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 2,000</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EKEDC -->
+              <div class="tariff-card card-brand-ekedc">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">POPULAR</span>
+                  </div>
+                  <div class="card-plan-category">EKEDC PREPAID</div>
+                  <div class="card-plan-volume">₦5,000 Token</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Lagos Island & Peninsula Grid</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Direct Automated Upstream API</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Instant STS Meter Verification</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('power', 'EKEDC - Eko Electricity', '₦5,000 Electricity Token', 5000)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 5,000</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- AEDC -->
+              <div class="tariff-card card-brand-aedc">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">FAST DISPATCH</span>
+                  </div>
+                  <div class="card-plan-category">AEDC PREPAID</div>
+                  <div class="card-plan-volume">₦10,000 Token</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> FCT, Kogi, Niger & Nasarawa</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Direct 24/7 Server Token Link</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Verified Instant Unit Clearance</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('power', 'AEDC - Abuja Electricity', '₦10,000 Electricity Token', 10000)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 10,000</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- IBEDC -->
+              <div class="tariff-card card-brand-ibedc">
+                <div class="card-plan-body">
+                  <div class="card-top-row">
+                    <span class="plan-type-pill">REGIONAL GRID</span>
+                  </div>
+                  <div class="card-plan-category">IBEDC PREPAID</div>
+                  <div class="card-plan-volume">₦15,000 Token</div>
+                  <div class="card-plan-divider"></div>
+                  <ul class="card-plan-specs">
+                    <li><span class="card-bullet-arrow">&gt;</span> Oyo, Ogun, Osun & Kwara States</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> STS High-Compliance Protocol</li>
+                    <li><span class="card-bullet-arrow">&gt;</span> Dedicated Power Distribution</li>
+                  </ul>
+                </div>
+                <div class="card-plan-footer" onclick="selectTariffPlan('power', 'IBEDC - Ibadan Electricity', '₦15,000 Electricity Token', 15000)">
+                  <div class="card-footer-price-wrap">
+                    <span class="card-footer-only">ONLY</span>
+                    <div class="card-footer-price">₦ 15,000</div>
+                  </div>
+                  <div class="card-footer-action">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                   </div>
                 </div>
               </div>
@@ -3823,138 +3740,48 @@
     }
 
     // -------------------------------------------------------------
-    // LIVE DYNAMIC TARIFFS: 4-SERVICE CAROUSEL (Airtime -> Data -> Cable -> Power)
+    // LIVE VERTICAL TARIFFS SHOWCASE (Airtime -> Data -> Cable -> Power)
     // -------------------------------------------------------------
-    let currentServiceIndex = 0;
-    const serviceKeys = ['airtime', 'data', 'cable', 'power'];
-    let tariffInterval = null;
-    let isTariffHovered = false;
-
-    const serviceMeta = {
-      'airtime': {
-        eyebrow: 'Direct Instant VTU & Cashback',
-        title: 'Airtime Plans',
-        nextLabel: 'Next: Data Plans'
-      },
-      'data': {
-        eyebrow: 'High-Speed 4G / 5G Broadband',
-        title: 'Data Plans',
-        nextLabel: 'Next: Cable Plans'
-      },
-      'cable': {
-        eyebrow: 'Digital TV Bouquets & Decoders',
-        title: 'Cable Plans',
-        nextLabel: 'Next: Power Plans'
-      },
-      'power': {
-        eyebrow: 'Instant Prepaid Electricity Tokens',
-        title: 'Power Plans',
-        nextLabel: 'Back to: Airtime Plans'
+    function scrollToTariffCategory(event, categoryId) {
+      if (event) event.preventDefault();
+      const targetEl = document.getElementById(categoryId);
+      if (targetEl) {
+        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - 120;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
       }
+    }
+
+    // Update active sticky nav link as user scrolls down the page
+    const categoryIds = ['plans-airtime', 'plans-data', 'plans-cable', 'plans-power'];
+    const navLinks = {
+      'plans-airtime': document.getElementById('nav-link-airtime'),
+      'plans-data': document.getElementById('nav-link-data'),
+      'plans-cable': document.getElementById('nav-link-cable'),
+      'plans-power': document.getElementById('nav-link-power')
     };
 
-    function updateServiceUI(index) {
-      currentServiceIndex = index;
-      const key = serviceKeys[index];
-      const meta = serviceMeta[key];
-      if (!meta) return;
+    window.addEventListener('scroll', () => {
+      let currentActiveId = 'plans-airtime';
+      const scrollPos = window.pageYOffset + 200;
 
-      // Update category pills
-      document.querySelectorAll('.apple-category-nav .category-pill').forEach((pill, i) => {
-        if (i === index) {
-          pill.classList.add('active');
-        } else {
-          pill.classList.remove('active');
+      categoryIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollPos) {
+          currentActiveId = id;
         }
       });
 
-      // Update next button label
-      const nextBtnLabel = document.getElementById('nextBtnLabel');
-      if (nextBtnLabel) {
-        nextBtnLabel.innerText = meta.nextLabel;
-      }
-
-      // Smooth heading & eyebrow transition
-      const headingEl = document.getElementById('dynamicTariffHeading');
-      const eyebrowEl = document.getElementById('dynamicTariffEyebrow');
-      if (headingEl) {
-        headingEl.style.opacity = '0';
-        headingEl.style.transform = 'translateY(-4px)';
-        setTimeout(() => {
-          headingEl.innerText = meta.title;
-          if (eyebrowEl) eyebrowEl.innerText = meta.eyebrow;
-          headingEl.style.opacity = '1';
-          headingEl.style.transform = 'translateY(0)';
-        }, 150);
-      }
-
-      // Update background watermark
-      document.querySelectorAll('.tariff-watermark-item').forEach(w => {
-        w.classList.remove('active');
-      });
-      const targetWatermark = document.getElementById('tariff-watermark-' + key);
-      if (targetWatermark) {
-        targetWatermark.classList.add('active');
-      }
-    }
-
-    function goToServiceSlide(index, isManual = true) {
-      if (index < 0 || index >= serviceKeys.length) return;
-      const track = document.getElementById('tariffScrollTrack');
-      if (track) {
-        const slides = track.querySelectorAll('.tariff-service-slide');
-        if (slides[index]) {
-          const slideOffset = slides[index].offsetLeft;
-          track.scrollTo({ left: slideOffset, behavior: 'smooth' });
-        }
-      }
-      updateServiceUI(index);
-      if (isManual) {
-        restartTariffCycle();
-      }
-    }
-
-    function nextServiceSlide() {
-      const nextIdx = (currentServiceIndex + 1) % serviceKeys.length;
-      goToServiceSlide(nextIdx, true);
-    }
-
-    function prevServiceSlide() {
-      const prevIdx = (currentServiceIndex - 1 + serviceKeys.length) % serviceKeys.length;
-      goToServiceSlide(prevIdx, true);
-    }
-
-    // Bind scroll synchronization on manual drag / swipe
-    const tariffTrackEl = document.getElementById('tariffScrollTrack');
-    if (tariffTrackEl) {
-      let scrollDebounce = null;
-      tariffTrackEl.addEventListener('scroll', () => {
-        clearTimeout(scrollDebounce);
-        scrollDebounce = setTimeout(() => {
-          const trackWidth = tariffTrackEl.offsetWidth;
-          if (trackWidth > 0) {
-            const activeIdx = Math.round(tariffTrackEl.scrollLeft / trackWidth);
-            if (activeIdx >= 0 && activeIdx < serviceKeys.length && activeIdx !== currentServiceIndex) {
-              updateServiceUI(activeIdx);
-            }
+      categoryIds.forEach(id => {
+        const link = document.getElementById('nav-link-' + id.replace('plans-', ''));
+        if (link) {
+          if (id === currentActiveId) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
           }
-        }, 80);
-      }, { passive: true });
-    }
-
-    function startTariffCycle() {
-      if (tariffInterval) clearInterval(tariffInterval);
-      tariffInterval = setInterval(() => {
-        if (!isTariffHovered) {
-          const nextIdx = (currentServiceIndex + 1) % serviceKeys.length;
-          goToServiceSlide(nextIdx, false);
         }
-      }, 5500);
-    }
-
-    function restartTariffCycle() {
-      startTariffCycle();
-    }
+      });
+    }, { passive: true });
 
     function selectTariffPlan(type, provider, planName, price) {
       if (type === 'airtime') {
@@ -4012,9 +3839,6 @@
 
       window.scrollTo({ top: 100, behavior: 'smooth' });
     }
-
-    // Start cycle when page loads
-    startTariffCycle();
 
     let currentTokenPack = { bill: 5000, fee: 200, credit: 4800 };
     let agentTokenBalance = 48200;
