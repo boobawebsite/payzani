@@ -487,10 +487,7 @@
       }
     }
 
-    @media (max-width: 480px) {
-      .view-container {
-        padding: 0 10px 32px;
-      }
+    
       .form-grid {
         grid-template-columns: 1fr;
         gap: 8px;
@@ -1872,11 +1869,8 @@
       gap: clamp(12px, 2vw, 20px);
       margin-bottom: clamp(40px, 6vw, 72px);
     }
-    @media (max-width: 768px) {
-      .metrics-bar { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 440px) {
-      .metrics-bar { grid-template-columns: 1fr; }
+    
+    
     }
     .metric-card {
       background: var(--surface);
@@ -1954,8 +1948,7 @@
       align-items: stretch;
       border: 1px solid #1F2937;
     }
-    @media (max-width: 800px) {
-      .agent-promo-card { grid-template-columns: 1fr; }
+    
     }
     .agent-promo-text {
       padding: clamp(28px, 4.5vw, 48px);
@@ -1979,8 +1972,7 @@
       min-height: 260px;
       border-left: 1px solid #1F2937;
     }
-    @media (max-width: 800px) {
-      .agent-promo-img-wrap { border-left: none; border-top: 1px solid #1F2937; height: 200px; }
+    
     }
     .apple-img {
       width: 100%;
@@ -1999,8 +1991,7 @@
       gap: clamp(10px, 2vw, 16px);
       margin-bottom: clamp(16px, 3vw, 24px);
     }
-    @media (max-width: 720px) {
-      .stat-cards-row { grid-template-columns: 1fr; }
+    
     }
     .stat-card {
       background: var(--surface);
@@ -2457,11 +2448,24 @@
       max-width: 480px;
     }
 
+    
+
+    
+
+    /* ================================================================
+       MOBILE FIRST — COMPREHENSIVE RESPONSIVE OVERHAUL
+       Targets: 480px (phone), 640px (large phone), 860px (tablet)
+    ================================================================ */
+
+    /* ---- GLOBAL MOBILE RESETS ---- */
     @media (max-width: 860px) {
+      .view-container {
+        padding: 0 16px clamp(32px, 6vw, 48px);
+      }
       .importance-row,
       .importance-row.reverse {
         grid-template-columns: 1fr;
-        gap: 28px;
+        gap: 20px;
       }
       .importance-row .importance-visual,
       .importance-row.reverse .importance-visual {
@@ -2470,13 +2474,325 @@
       .importance-row .importance-text,
       .importance-row.reverse .importance-text {
         order: 1;
+        text-align: left;
       }
       .importance-svg-icon {
-        max-width: 220px;
+        max-width: 160px;
+      }
+      .importance-visual {
+        padding: 0;
+        justify-content: flex-start;
+      }
+      .importance-rows {
+        gap: clamp(44px, 8vw, 72px);
+      }
+      .importance-header {
+        margin-bottom: clamp(32px, 5vw, 52px);
+      }
+      .importance-title {
+        font-size: clamp(28px, 7vw, 38px);
+      }
+      .importance-row-title {
+        font-size: clamp(22px, 5.5vw, 30px);
+      }
+      .importance-row-desc {
+        font-size: 15px;
       }
     }
 
-    </style>
+    /* ---- TABLET / LARGE PHONE ---- */
+    @media (max-width: 640px) {
+      /* Nav & Header */
+      .nav-logo-text {
+        font-size: 15px;
+      }
+
+      /* Tariff Cards — single scrollable horizontal row on mobile */
+      .tariff-provider-group {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 12px;
+        padding-bottom: 8px;
+        grid-template-columns: unset;
+      }
+      .tariff-provider-group::-webkit-scrollbar {
+        display: none;
+      }
+      .tariff-card {
+        flex: 0 0 82vw;
+        max-width: 300px;
+        scroll-snap-align: start;
+      }
+
+      /* Tariff block header */
+      .tariff-block-header {
+        margin-bottom: 16px;
+      }
+      .tariff-category-block {
+        margin-bottom: clamp(44px, 8vw, 60px);
+      }
+
+      /* Metrics Bar — 2 column */
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-bottom: 32px;
+      }
+
+      /* Comparison Table — font size reduction */
+      .comp-table th,
+      .comp-table td {
+        padding: 9px 6px;
+        font-size: 11.5px;
+      }
+
+      /* Agent Promo Card */
+      .agent-promo-card {
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+      }
+      .agent-promo-img-wrap {
+        height: 180px;
+        border-left: none;
+        border-top: 1px solid #1F2937;
+      }
+      .agent-promo-text {
+        padding: 20px 16px;
+      }
+    }
+
+    /* ---- SMALL PHONE (≤ 480px) ---- */
+    @media (max-width: 480px) {
+      /* ---- Hero ---- */
+      .hero-title {
+        font-size: clamp(22px, 7.5vw, 30px);
+        letter-spacing: -0.5px;
+        line-height: 1.1;
+      }
+      .hero-sub {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .hero-lead-col {
+        text-align: center;
+        padding: 0;
+      }
+      .hero-cta-row {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .hero-trust-row {
+        justify-content: center;
+      }
+      .hero-cycle-stage {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      /* ---- VTU Recharge Card ---- */
+      .flat-card,
+      .apple-recharge-card {
+        max-width: 100%;
+        width: 100%;
+        padding: 16px 14px;
+        border-radius: 20px;
+        border-right: 1px solid rgba(0,0,0,0.07);
+        min-height: auto;
+        height: auto;
+        transform: none !important;
+        margin-left: 0;
+        margin-right: 0;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .apple-recharge-card::after {
+        display: none;
+      }
+      .vtu-nav-pills {
+        padding: 3px;
+        gap: 2px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+      }
+      .vtu-tab {
+        padding: 7px 6px;
+        font-size: 11.5px;
+        gap: 4px;
+        border-radius: 9px;
+      }
+      .vtu-tab svg {
+        width: 12px;
+        height: 12px;
+      }
+      .apple-carrier-bar {
+        padding: 2px;
+        gap: 2px;
+      }
+      .apple-carrier-btn {
+        padding: 5px 4px;
+        font-size: 11px;
+        gap: 3px;
+      }
+      .apple-preset-pill {
+        padding: 5px 6px;
+        font-size: 10.5px;
+      }
+      .btn-primary {
+        padding: 12px 16px;
+        font-size: 14px;
+        border-radius: 14px;
+      }
+      .form-grid {
+        gap: 8px;
+      }
+      .flat-card .form-grid,
+      .apple-recharge-card .form-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 8px;
+      }
+
+      /* ---- Why Payzani Section ---- */
+      .importance-section {
+        padding: clamp(40px, 8vw, 60px) 0;
+      }
+      .importance-eyebrow {
+        font-size: 10.5px;
+        letter-spacing: 1.5px;
+      }
+      .importance-title {
+        font-size: clamp(24px, 7.5vw, 32px);
+        letter-spacing: -0.6px;
+      }
+      .importance-sub {
+        font-size: 14px;
+      }
+      .importance-row-title {
+        font-size: clamp(20px, 6vw, 26px);
+        letter-spacing: -0.4px;
+        line-height: 1.18;
+      }
+      .importance-row-desc {
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+      .importance-svg-icon {
+        max-width: 130px;
+      }
+      .importance-rows {
+        gap: 36px;
+      }
+
+      /* ---- Tariffs Section ---- */
+      .tariffs-showcase-section {
+        padding: clamp(32px, 7vw, 52px) 0 clamp(40px, 8vw, 60px);
+        margin-bottom: clamp(28px, 5vw, 40px);
+      }
+      .tariff-card-price {
+        font-size: clamp(20px, 6.5vw, 28px);
+      }
+      .tariff-card-label {
+        font-size: 10px;
+      }
+      .tariff-card-features li {
+        font-size: 12px;
+        gap: 6px;
+      }
+      .tariff-card-cta {
+        padding: 10px 14px;
+      }
+
+      /* ---- Metrics Bar ---- */
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+      .metric-card {
+        padding: 14px 10px;
+        border-radius: 14px;
+      }
+      .metric-value {
+        font-size: 20px;
+      }
+      .metric-label {
+        font-size: 10px;
+      }
+
+      /* ---- Comparison Table ---- */
+      .comparison-section {
+        padding: 16px 10px;
+        margin-bottom: 28px;
+        border-radius: 14px;
+        overflow-x: auto;
+      }
+
+      /* ---- Agent Promo ---- */
+      .agent-promo-card {
+        border-radius: 14px;
+        grid-template-columns: 1fr !important;
+      }
+      .agent-promo-text {
+        padding: 18px 14px;
+      }
+      .agent-promo-text h3 {
+        font-size: 18px;
+      }
+      .agent-promo-text p {
+        font-size: 13px;
+        margin-bottom: 14px;
+      }
+      .agent-promo-img-wrap {
+        height: 150px;
+        border-left: none !important;
+        border-top: 1px solid #1F2937 !important;
+      }
+
+      /* ---- Stat Cards ---- */
+      .stat-cards-row {
+        grid-template-columns: 1fr !important;
+        gap: 8px;
+      }
+      .stat-card {
+        padding: 14px 12px;
+      }
+      .stat-num {
+        font-size: 20px;
+      }
+
+      /* ---- Footer ---- */
+      footer.main-footer {
+        padding: 28px 16px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .footer-brand {
+        font-size: 13px;
+      }
+    }
+
+    /* ---- VERY SMALL PHONES (≤ 360px) ---- */
+    @media (max-width: 360px) {
+      .view-container {
+        padding: 0 12px 24px;
+      }
+      .importance-row-title {
+        font-size: 19px;
+      }
+      .importance-title {
+        font-size: 22px;
+      }
+      .tariff-card {
+        flex: 0 0 90vw;
+      }
+    }
+  </style>
 </head>
 <body>
 
