@@ -2881,6 +2881,103 @@
         flex: 0 0 90vw;
       }
     }
+    /* ---- Agent Signup Slide Panel ---- */
+    .agent-signup-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: clamp(260px, 35%, 380px);
+      background: #FFFFFF;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(28px, 4vw, 48px);
+      box-shadow: 8px 0 48px rgba(0, 0, 0, 0.5);
+      transform: translateX(-100%);
+      animation: signupSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards,
+                 signupSlideOut 0.5s cubic-bezier(0.4, 0, 1, 1) 6.3s forwards;
+    }
+    @keyframes signupSlideIn {
+      from { transform: translateX(-100%); }
+      to   { transform: translateX(0); }
+    }
+    @keyframes signupSlideOut {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+    /* Blur the agent content while signup panel is showing */
+    .agent-cta-content {
+      transition: filter 0.5s ease, opacity 0.5s ease;
+    }
+    .agent-cta-banner.signup-visible .agent-cta-content {
+      filter: blur(6px);
+      opacity: 0.4;
+      pointer-events: none;
+      user-select: none;
+    }
+    .agent-signup-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+    }
+    .agent-signup-label {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #0284C7;
+      margin: 0;
+    }
+    .agent-signup-title {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.08;
+      color: #0A0D14;
+      margin: 0;
+    }
+    .agent-signup-desc {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      color: #4B5563;
+      line-height: 1.55;
+      margin: 0;
+    }
+    .agent-signup-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #0A0D14;
+      color: #FFFFFF;
+      border: none;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 4px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .agent-signup-btn:hover {
+      background: #1E293B;
+      transform: scale(1.02);
+    }
+    @media (max-width: 480px) {
+      .agent-signup-panel {
+        width: 85%;
+      }
+      .agent-signup-title {
+        font-size: 26px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -5393,8 +5490,21 @@
         <!-- Glow orbs -->
         <div class="agent-cta-orb agent-cta-orb-left" aria-hidden="true"></div>
         <div class="agent-cta-orb agent-cta-orb-right" aria-hidden="true"></div>
+        <!-- Signup Slide Panel -->
+        <div class="agent-signup-panel" id="agentSignupPanel">
+          <div class="agent-signup-inner">
+            <p class="agent-signup-label">NEW HERE?</p>
+            <h3 class="agent-signup-title">Sign Up<br>as a User</h3>
+            <p class="agent-signup-desc">Create your free account and start topping up in seconds.</p>
+            <button class="agent-signup-btn" onclick="switchEcoView('view-main')">
+              Create Account
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
         <!-- Content -->
-        <div class="agent-cta-content">
+        <div class="agent-cta-content" id="agentCtaContent">
           <p class="agent-cta-eyebrow">PAYZANI PARTNER NETWORK</p>
           <h2 class="agent-cta-headline">Become an<br><span class="agent-cta-gradient">Agent Today.</span></h2>
           <button class="agent-cta-btn" onclick="switchEcoView('agent-admin')">
@@ -6254,6 +6364,56 @@
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
     
+  </script>
+
+  <script>
+    /* ---- Agent CTA Signup Panel: blur + auto-dismiss ---- */
+    (function() {
+      var banner = document.querySelector('.agent-cta-banner');
+      var panel  = document.getElementById('agentSignupPanel');
+      if (!banner || !panel) return;
+
+      var slideInDelay  = 800;   // ms before slide-in starts
+      var holdDuration  = 5000;  // ms panel stays visible
+      var slideOutDuration = 500;
+
+      var blurTimer, unblurTimer, resetTimer;
+      var played = false;
+
+      function play() {
+        if (played) return;
+        played = true;
+
+        // Reset animation so it re-plays
+        panel.style.animation = 'none';
+        panel.offsetHeight; // reflow
+        panel.style.animation =
+          'signupSlideIn 0.6s cubic-bezier(0.16,1,0.3,1) ' + (slideInDelay/1000) + 's forwards, ' +
+          'signupSlideOut 0.5s cubic-bezier(0.4,0,1,1) ' + ((slideInDelay + holdDuration)/1000) + 's forwards';
+
+        // Add blur after slide-in starts
+        blurTimer = setTimeout(function() {
+          banner.classList.add('signup-visible');
+        }, slideInDelay);
+
+        // Remove blur when slide-out completes
+        unblurTimer = setTimeout(function() {
+          banner.classList.remove('signup-visible');
+        }, slideInDelay + holdDuration + slideOutDuration);
+      }
+
+      // Trigger once when banner enters viewport
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            play();
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(banner);
+    })();
   </script>
 </body>
 </html>
