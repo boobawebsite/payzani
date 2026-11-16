@@ -1100,45 +1100,44 @@
       margin-bottom: 0;
     }
 
-    /* Watermark Backdrop for Each Category */
+    /* Ambient Brand Watermark in Main Black Background Behind Category Boxes */
     .tariff-block-watermark {
       position: absolute;
-      top: 50%;
-      right: clamp(-40px, 1vw, 20px);
-      transform: translateY(-50%);
-      width: clamp(420px, 48vw, 750px);
-      height: clamp(320px, 38vw, 550px);
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(94vw, 1180px);
+      height: clamp(340px, 46vw, 560px);
       pointer-events: none;
       z-index: 1;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      opacity: 0.16;
+      justify-content: center;
       overflow: visible;
-      -webkit-mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%);
-      mask-image: radial-gradient(ellipse at 72% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 82%);
     }
     .block-watermark-item {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
       opacity: 0;
-      transform: scale(0.95) translate3d(20px, 0, 0);
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.92);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .block-watermark-item.active {
       opacity: 1;
-      transform: scale(1) translate3d(0, 0, 0);
+      transform: scale(1);
     }
     .tariff-watermark-img {
-      max-width: 95%;
-      max-height: 95%;
+      max-width: 82%;
+      max-height: 80%;
       width: auto;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 20px 60px rgba(255, 255, 255, 0.08));
+      opacity: 0.22;
+      filter: drop-shadow(0 0 90px rgba(255, 255, 255, 0.14));
+      transition: opacity 0.4s ease;
     }
 
     /* Category Block Header */
@@ -4000,27 +3999,35 @@
           <div class="tariff-category-block" id="plans-power">
             <div class="tariff-block-watermark">
               <div class="block-watermark-item active" id="power-watermark-ikedc">
-                <svg class="tariff-watermark-img" viewBox="0 0 200 240" fill="none" style="max-height: 80%; opacity: 0.65;">
-                  <path d="M120 10L30 130H100L80 230L170 110H100L120 10Z" fill="url(#boltGradIK)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
-                  <defs><linearGradient id="boltGradIK" x1="30" y1="10" x2="170" y2="230" gradientUnits="userSpaceOnUse"><stop stop-color="#0A66C2"/><stop offset="1" stop-color="#0284C7"/></linearGradient></defs>
+                <svg class="tariff-watermark-img" viewBox="0 0 600 240" fill="none">
+                  <path d="M85 20L20 135H75L55 220L135 115H80L95 20H85Z" fill="url(#boltGradIK)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                  <text x="160" y="145" fill="#0A66C2" font-size="96" font-weight="900" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="2">IKEDC</text>
+                  <text x="165" y="190" fill="rgba(255,255,255,0.5)" font-size="24" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="6">IKEJA ELECTRIC</text>
+                  <defs><linearGradient id="boltGradIK" x1="20" y1="20" x2="135" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#0A66C2"/><stop offset="1" stop-color="#0284C7"/></linearGradient></defs>
                 </svg>
               </div>
               <div class="block-watermark-item" id="power-watermark-ekedc">
-                <svg class="tariff-watermark-img" viewBox="0 0 200 240" fill="none" style="max-height: 80%; opacity: 0.65;">
-                  <path d="M120 10L30 130H100L80 230L170 110H100L120 10Z" fill="url(#boltGradEK)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
-                  <defs><linearGradient id="boltGradEK" x1="30" y1="10" x2="170" y2="230" gradientUnits="userSpaceOnUse"><stop stop-color="#0284C7"/><stop offset="1" stop-color="#38BDF8"/></linearGradient></defs>
+                <svg class="tariff-watermark-img" viewBox="0 0 600 240" fill="none">
+                  <path d="M85 20L20 135H75L55 220L135 115H80L95 20H85Z" fill="url(#boltGradEK)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                  <text x="160" y="145" fill="#0284C7" font-size="96" font-weight="900" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="2">EKEDC</text>
+                  <text x="165" y="190" fill="rgba(255,255,255,0.5)" font-size="24" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="6">EKO ELECTRICITY</text>
+                  <defs><linearGradient id="boltGradEK" x1="20" y1="20" x2="135" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#0284C7"/><stop offset="1" stop-color="#38BDF8"/></linearGradient></defs>
                 </svg>
               </div>
               <div class="block-watermark-item" id="power-watermark-aedc">
-                <svg class="tariff-watermark-img" viewBox="0 0 200 240" fill="none" style="max-height: 80%; opacity: 0.65;">
-                  <path d="M120 10L30 130H100L80 230L170 110H100L120 10Z" fill="url(#boltGradAE)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
-                  <defs><linearGradient id="boltGradAE" x1="30" y1="10" x2="170" y2="230" gradientUnits="userSpaceOnUse"><stop stop-color="#059669"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
+                <svg class="tariff-watermark-img" viewBox="0 0 600 240" fill="none">
+                  <path d="M85 20L20 135H75L55 220L135 115H80L95 20H85Z" fill="url(#boltGradAE)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                  <text x="160" y="145" fill="#059669" font-size="96" font-weight="900" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="2">AEDC</text>
+                  <text x="165" y="190" fill="rgba(255,255,255,0.5)" font-size="24" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="6">ABUJA ELECTRICITY</text>
+                  <defs><linearGradient id="boltGradAE" x1="20" y1="20" x2="135" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#059669"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
                 </svg>
               </div>
               <div class="block-watermark-item" id="power-watermark-ibedc">
-                <svg class="tariff-watermark-img" viewBox="0 0 200 240" fill="none" style="max-height: 80%; opacity: 0.65;">
-                  <path d="M120 10L30 130H100L80 230L170 110H100L120 10Z" fill="url(#boltGradIB)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
-                  <defs><linearGradient id="boltGradIB" x1="30" y1="10" x2="170" y2="230" gradientUnits="userSpaceOnUse"><stop stop-color="#D97706"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs>
+                <svg class="tariff-watermark-img" viewBox="0 0 600 240" fill="none">
+                  <path d="M85 20L20 135H75L55 220L135 115H80L95 20H85Z" fill="url(#boltGradIB)" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+                  <text x="160" y="145" fill="#D97706" font-size="96" font-weight="900" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="2">IBEDC</text>
+                  <text x="165" y="190" fill="rgba(255,255,255,0.5)" font-size="24" font-weight="800" font-family="-apple-system, BlinkMacSystemFont, sans-serif" letter-spacing="6">IBADAN ELECTRICITY</text>
+                  <defs><linearGradient id="boltGradIB" x1="20" y1="20" x2="135" y2="220" gradientUnits="userSpaceOnUse"><stop stop-color="#D97706"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs>
                 </svg>
               </div>
             </div>
