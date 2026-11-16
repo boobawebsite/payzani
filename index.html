@@ -1046,16 +1046,7 @@
       opacity: 1;
       transform: translateY(0);
     }
-    @media (max-width: 1040px) {
-      .tariff-provider-group {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 580px) {
-      .tariff-provider-group {
-        grid-template-columns: 1fr;
-      }
-    }
+
 
     /* CARRIER TARIFF CARD (White to Black Gradient Surface with Apple Duo Typography) */
     .tariff-card {
@@ -2340,25 +2331,7 @@
         font-size: 15px;
       }
 
-      /* Tariff Cards — single scrollable horizontal row on mobile */
-      .tariff-provider-group {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 12px;
-        padding-bottom: 8px;
-        grid-template-columns: unset;
-      }
-      .tariff-provider-group::-webkit-scrollbar {
-        display: none;
-      }
-      .tariff-card {
-        flex: 0 0 82vw;
-        max-width: 300px;
-        scroll-snap-align: start;
-      }
+
 
       /* Tariff block header */
       .tariff-block-header {
@@ -2761,6 +2734,84 @@
         gap: 24px;
       }
     }
+  
+    /* ---- MOBILE TARIFF CAROUSELS (Airtime -> Data -> Streaming -> Power) ---- */
+    @media (max-width: 860px) {
+      .tariffs-showcase-section {
+        padding: clamp(32px, 6vw, 48px) 0 clamp(40px, 7vw, 60px);
+        margin-bottom: clamp(24px, 5vw, 40px);
+        overflow: hidden;
+      }
+      .tariffs-inner-container {
+        padding: 0 16px;
+        overflow: visible;
+      }
+      .tariff-category-block {
+        margin-bottom: clamp(36px, 7vw, 52px);
+        position: relative;
+      }
+      .tariff-block-header {
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 4px;
+      }
+      .dynamic-tariff-heading {
+        font-size: clamp(20px, 5vw, 24px);
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: -0.4px;
+      }
+      .tariff-block-header::after {
+        content: "Swipe \2192";
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      .tariff-groups-wrap {
+        width: 100%;
+        min-height: auto;
+        position: relative;
+        overflow: visible;
+      }
+      .tariff-provider-group {
+        display: none !important;
+      }
+      .tariff-provider-group.active {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        gap: 14px !important;
+        padding: 6px 16px 20px 16px !important;
+        margin-left: -16px !important;
+        margin-right: -16px !important;
+        width: calc(100% + 32px) !important;
+        scroll-padding-left: 16px;
+      }
+      .tariff-provider-group.active::-webkit-scrollbar {
+        display: none !important;
+      }
+      .tariff-card {
+        flex: 0 0 clamp(245px, 76vw, 290px) !important;
+        width: clamp(245px, 76vw, 290px) !important;
+        max-width: 290px !important;
+        min-height: 330px !important;
+        scroll-snap-align: start !important;
+        scroll-snap-stop: normal !important;
+        margin: 0 !important;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5) !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -5774,7 +5825,18 @@
       }
     };
 
+    let tariffInteractionPauseUntil = 0;
+    if (typeof window !== 'undefined') {
+      window.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.tariff-groups-wrap').forEach(el => {
+          el.addEventListener('touchstart', () => { tariffInteractionPauseUntil = Date.now() + 8000; }, { passive: true });
+          el.addEventListener('scroll', () => { tariffInteractionPauseUntil = Date.now() + 6000; }, { passive: true });
+        });
+      });
+    }
+
     function rotateCategoryProvider(catKey) {
+      if (Date.now() < tariffInteractionPauseUntil) return;
       const config = categoryRotations[catKey];
       if (!config) return;
 
