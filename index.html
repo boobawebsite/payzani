@@ -2628,7 +2628,7 @@
           <!-- =========================================================
                1. AIRTIME PLANS (MTN -> Airtel -> Glo -> 9mobile every 3s)
           ========================================================== -->
-          <div class="tariff-category-block" id="plans-airtime" onmouseenter="categoryRotations.airtime.isHovered=true" onmouseleave="categoryRotations.airtime.isHovered=false">
+          <div class="tariff-category-block" id="plans-airtime">
             <div class="tariff-block-watermark">
               <div class="block-watermark-item active" id="airtime-watermark-mtn">
                 <img src="assets/mtn.png" alt="MTN" class="tariff-watermark-img" />
@@ -3093,7 +3093,7 @@
           <!-- =========================================================
                2. DATA PLANS (MTN -> Airtel -> Glo -> 9mobile every 3s)
           ========================================================== -->
-          <div class="tariff-category-block" id="plans-data" onmouseenter="categoryRotations.data.isHovered=true" onmouseleave="categoryRotations.data.isHovered=false">
+          <div class="tariff-category-block" id="plans-data">
             <div class="tariff-block-watermark">
               <div class="block-watermark-item active" id="data-watermark-mtn">
                 <img src="assets/mtn.png" alt="MTN" class="tariff-watermark-img" />
@@ -3558,7 +3558,7 @@
           <!-- =========================================================
                3. CABLE PLANS (DStv -> GOtv -> Streaming every 3s)
           ========================================================== -->
-          <div class="tariff-category-block" id="plans-cable" onmouseenter="categoryRotations.cable.isHovered=true" onmouseleave="categoryRotations.cable.isHovered=false">
+          <div class="tariff-category-block" id="plans-cable">
             <div class="tariff-block-watermark">
               <div class="block-watermark-item active" id="cable-watermark-dstv">
                 <img src="assets/dstv.png" alt="DStv" class="tariff-watermark-img" />
@@ -3910,7 +3910,7 @@
           <!-- =========================================================
                4. POWER PLANS (IKEDC -> EKEDC -> AEDC -> IBEDC every 3s)
           ========================================================== -->
-          <div class="tariff-category-block" id="plans-power" onmouseenter="categoryRotations.power.isHovered=true" onmouseleave="categoryRotations.power.isHovered=false">
+          <div class="tariff-category-block" id="plans-power">
             <div class="tariff-block-watermark">
               <div class="block-watermark-item active" id="power-watermark-ikedc">
                 <svg class="tariff-watermark-img" viewBox="0 0 200 240" fill="none" style="max-height: 80%; opacity: 0.65;">
@@ -4925,8 +4925,7 @@
           'glo': 'Glo Airtime Plans',
           'nine': '9mobile Airtime Plans'
         },
-        currentIndex: 0,
-        isHovered: false
+        currentIndex: 0
       },
       data: {
         providers: ['mtn', 'airtel', 'glo', 'nine'],
@@ -4936,8 +4935,7 @@
           'glo': 'Glo Data Plans',
           'nine': '9mobile Data Plans'
         },
-        currentIndex: 0,
-        isHovered: false
+        currentIndex: 0
       },
       cable: {
         providers: ['dstv', 'gotv', 'streaming'],
@@ -4946,8 +4944,7 @@
           'gotv': 'GOtv Cable Plans',
           'streaming': 'Streaming & Prime Plans'
         },
-        currentIndex: 0,
-        isHovered: false
+        currentIndex: 0
       },
       power: {
         providers: ['ikedc', 'ekedc', 'aedc', 'ibedc'],
@@ -4957,14 +4954,13 @@
           'aedc': 'Abuja Electric (AEDC) Plans',
           'ibedc': 'Ibadan Electric (IBEDC) Plans'
         },
-        currentIndex: 0,
-        isHovered: false
+        currentIndex: 0
       }
     };
 
     function rotateCategoryProvider(catKey) {
       const config = categoryRotations[catKey];
-      if (!config || config.isHovered) return;
+      if (!config) return;
 
       config.currentIndex = (config.currentIndex + 1) % config.providers.length;
       const provider = config.providers[config.currentIndex];
