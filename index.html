@@ -2342,11 +2342,11 @@
     }
   
     /* =============================================================
-       THE IMPORTANCE OF CHOOSING PAYZANI: ALTERNATING SVG & TEXT
+       WHY PAYZANI: MINIMAL & HIGH-IMPACT (ONE SVG + ESSENTIAL TEXT)
     ============================================================= */
     .importance-section {
       background: #000000;
-      padding: clamp(60px, 8vw, 110px) 0 clamp(50px, 7vw, 90px);
+      padding: clamp(60px, 7vw, 100px) 0 clamp(50px, 6vw, 80px);
       position: relative;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -2356,10 +2356,17 @@
       margin: 0 auto;
       padding: 0 clamp(18px, 4vw, 36px);
     }
-    .importance-header {
-      text-align: center;
-      max-width: 780px;
-      margin: 0 auto clamp(40px, 6vw, 70px);
+    .importance-minimal-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: clamp(36px, 5vw, 64px);
+      align-items: center;
+    }
+    .importance-text-minimal {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
     }
     .importance-eyebrow {
       display: inline-block;
@@ -2369,159 +2376,92 @@
       letter-spacing: 1.6px;
       text-transform: uppercase;
       color: #38BDF8;
-      margin-bottom: 12px;
     }
-    .importance-title {
+    .importance-minimal-title {
       font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: clamp(28px, 4vw, 46px);
-      font-weight: 800;
-      letter-spacing: -0.8px;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: -1px;
       color: #FFFFFF;
-      line-height: 1.15;
-      margin: 0 0 14px;
-    }
-    .importance-sub {
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: clamp(14px, 1.6vw, 16.5px);
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.5;
+      line-height: 1.12;
       margin: 0;
     }
-    .importance-rows {
+    .gradient-text-cyan {
+      background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .importance-minimal-desc {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(14px, 1.4vw, 16px);
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.55;
+      margin: 0;
+      max-width: 520px;
+    }
+    .importance-minimal-highlights {
       display: flex;
-      flex-direction: column;
-      gap: clamp(48px, 7vw, 84px);
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
     }
-    .importance-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 5vw, 64px);
+    .minimal-pill {
+      display: inline-flex;
       align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #FFFFFF;
     }
-    .importance-row.reverse {
-      direction: rtl;
+    .pill-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
     }
-    .importance-row.reverse > * {
-      direction: ltr;
+    .pill-dot.green { background: #22C55E; box-shadow: 0 0 8px rgba(34, 197, 94, 0.6); }
+    .pill-dot.blue { background: #38BDF8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.6); }
+    .pill-dot.purple { background: #A855F7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
+
+    .importance-minimal-cta {
+      margin-top: 10px;
     }
-    .importance-visual {
+    .importance-visual-minimal {
+      width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
     }
     .importance-card-surface {
       width: 100%;
-      border-radius: 20px;
-      background: #0C0D12;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      border-radius: 24px;
+      background: #0C0D14;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.2);
       overflow: hidden;
       display: flex;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
     }
     .importance-card-surface:hover {
       transform: translateY(-4px);
-    }
-    .glow-cyan {
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(56, 189, 248, 0.12);
-    }
-    .glow-emerald {
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(34, 197, 94, 0.12);
-    }
-    .glow-indigo {
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(129, 140, 248, 0.12);
-    }
-    .glow-amber {
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.12);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(56, 189, 248, 0.18);
     }
     .importance-svg {
       width: 100%;
       height: auto;
       display: block;
     }
-    .importance-text {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .importance-badge {
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 10.5px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
-      padding: 4px 12px;
-      border-radius: 999px;
-      text-transform: uppercase;
-    }
-    .badge-cyan {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38BDF8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-    }
-    .badge-emerald {
-      background: rgba(34, 197, 94, 0.15);
-      color: #22C55E;
-      border: 1px solid rgba(34, 197, 94, 0.3);
-    }
-    .badge-indigo {
-      background: rgba(129, 140, 248, 0.15);
-      color: #818CF8;
-      border: 1px solid rgba(129, 140, 248, 0.3);
-    }
-    .badge-amber {
-      background: rgba(245, 158, 11, 0.15);
-      color: #F59E0B;
-      border: 1px solid rgba(245, 158, 11, 0.3);
-    }
-    .importance-row-title {
-      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: clamp(22px, 2.6vw, 32px);
-      font-weight: 800;
-      letter-spacing: -0.6px;
-      color: #FFFFFF;
-      line-height: 1.2;
-      margin: 0;
-    }
-    .importance-row-desc {
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: clamp(13.5px, 1.4vw, 15.5px);
-      color: rgba(255, 255, 255, 0.72);
-      line-height: 1.55;
-      margin: 0 0 6px;
-    }
-    .importance-bullets {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .importance-bullets li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: clamp(12.5px, 1.25vw, 14px);
-      color: rgba(255, 255, 255, 0.88);
-      line-height: 1.4;
-    }
-    .importance-check {
-      color: #22C55E;
-      font-weight: 800;
-      font-size: 14px;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
 
     @media (max-width: 860px) {
-      .importance-row, .importance-row.reverse {
+      .importance-minimal-grid {
         grid-template-columns: 1fr;
-        direction: ltr;
-        gap: 28px;
+        gap: 36px;
       }
-      .importance-row.reverse .importance-visual {
+      .importance-visual-minimal {
         order: -1;
       }
     }
@@ -4741,303 +4681,122 @@
            WHY CHOOSE PAYZANI: THE IMPORTANCE OF CHOOSING PAYZANI
            PROFESSIONAL ALTERNATING TEXT & BESPOKE SVG SHOWCASE
       ============================================================== -->
+      <!-- =============================================================
+           WHY PAYZANI: MINIMAL & HIGH-IMPACT (ONE SVG + ESSENTIAL TEXT)
+      ============================================================== -->
       <section class="importance-section" id="whyPayzani">
         <div class="importance-inner">
-          
-          <!-- Section Header -->
-          <div class="importance-header">
-            <span class="importance-eyebrow">THE IMPORTANCE OF CHOOSING PAYZANI</span>
-            <h2 class="importance-title">Engineered for speed, savings, and absolute reliability.</h2>
-            <p class="importance-sub">Discover why individuals, business owners, and verified agents trust Payzani as their primary telecom switching engine.</p>
-          </div>
-
-          <!-- Feature Rows (Alternating SVG & Text) -->
-          <div class="importance-rows">
-
-            <!-- ROW 1: SVG Left, Text Right (Sub-Second Fulfillment) -->
-            <div class="importance-row">
-              <div class="importance-visual">
-                <div class="importance-card-surface glow-cyan">
-                  <svg class="importance-svg" viewBox="0 0 460 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="460" height="320" rx="20" fill="#0C0D12"/>
-                    <rect x="0.5" y="0.5" width="459" height="319" rx="19.5" stroke="rgba(56, 189, 248, 0.25)"/>
-                    
-                    <!-- Network Grid Background -->
-                    <circle cx="230" cy="160" r="110" stroke="rgba(56, 189, 248, 0.08)" stroke-dasharray="4 4"/>
-                    <circle cx="230" cy="160" r="70" stroke="rgba(56, 189, 248, 0.12)"/>
-                    
-                    <!-- Core Switch Hub -->
-                    <circle cx="230" cy="160" r="34" fill="#0284C7" fill-opacity="0.2" stroke="#38BDF8" stroke-width="2"/>
-                    <path d="M222 153L238 153M230 145L230 161M224 167L236 167" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-                    <text x="230" y="206" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="800" font-family="-apple-system, sans-serif" letter-spacing="1">PAYZANI ROUTER</text>
-                    
-                    <!-- Carrier Nodes -->
-                    <!-- Top Left: MTN -->
-                    <line x1="205" y1="135" x2="115" y2="85" stroke="url(#cyanBeam1)" stroke-width="2"/>
-                    <g transform="translate(70, 50)">
-                      <rect width="90" height="48" rx="10" fill="#15171E" stroke="rgba(255, 204, 0, 0.4)"/>
-                      <circle cx="20" cy="24" r="6" fill="#FFCC00"/>
-                      <text x="32" y="22" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">MTN</text>
-                      <text x="32" y="34" fill="#22C55E" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">0.6s • LIVE</text>
-                    </g>
-
-                    <!-- Top Right: Airtel -->
-                    <line x1="255" y1="135" x2="345" y2="85" stroke="url(#cyanBeam2)" stroke-width="2"/>
-                    <g transform="translate(300, 50)">
-                      <rect width="90" height="48" rx="10" fill="#15171E" stroke="rgba(225, 25, 36, 0.4)"/>
-                      <circle cx="20" cy="24" r="6" fill="#E11924"/>
-                      <text x="32" y="22" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">Airtel</text>
-                      <text x="32" y="34" fill="#22C55E" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">0.8s • LIVE</text>
-                    </g>
-
-                    <!-- Bottom Left: Glo -->
-                    <line x1="205" y1="185" x2="115" y2="235" stroke="url(#cyanBeam1)" stroke-width="2"/>
-                    <g transform="translate(70, 220)">
-                      <rect width="90" height="48" rx="10" fill="#15171E" stroke="rgba(0, 168, 89, 0.4)"/>
-                      <circle cx="20" cy="24" r="6" fill="#00A859"/>
-                      <text x="32" y="22" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">Glo</text>
-                      <text x="32" y="34" fill="#22C55E" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">0.7s • LIVE</text>
-                    </g>
-
-                    <!-- Bottom Right: 9mobile -->
-                    <line x1="255" y1="185" x2="345" y2="235" stroke="url(#cyanBeam2)" stroke-width="2"/>
-                    <g transform="translate(300, 220)">
-                      <rect width="90" height="48" rx="10" fill="#15171E" stroke="rgba(132, 204, 22, 0.4)"/>
-                      <circle cx="20" cy="24" r="6" fill="#84CC16"/>
-                      <text x="32" y="22" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">9mobile</text>
-                      <text x="32" y="34" fill="#22C55E" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">0.9s • LIVE</text>
-                    </g>
-
-                    <!-- Ping Badge Top Center -->
-                    <rect x="175" y="16" width="110" height="26" rx="13" fill="rgba(56, 189, 248, 0.15)" stroke="#38BDF8" stroke-width="1"/>
-                    <text x="230" y="33" text-anchor="middle" fill="#38BDF8" font-size="11" font-weight="800" font-family="-apple-system, sans-serif">&lt; 1.2s FULFILLMENT</text>
-
-                    <!-- Gradient Beams -->
-                    <defs>
-                      <linearGradient id="cyanBeam1" x1="230" y1="160" x2="115" y2="100" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#38BDF8"/>
-                        <stop offset="1" stop-color="#38BDF8" stop-opacity="0.2"/>
-                      </linearGradient>
-                      <linearGradient id="cyanBeam2" x1="230" y1="160" x2="345" y2="100" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#38BDF8"/>
-                        <stop offset="1" stop-color="#38BDF8" stop-opacity="0.2"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
+          <div class="importance-minimal-grid">
+            
+            <!-- Left: Very few important words -->
+            <div class="importance-text-minimal">
+              <span class="importance-eyebrow">WHY CHOOSE PAYZANI</span>
+              <h2 class="importance-minimal-title">Instant delivery.<br>Zero hidden fees.<br><span class="gradient-text-cyan">Always reliable.</span></h2>
+              <p class="importance-minimal-desc">Direct carrier switching routes airtime, SME data, cable TV, and electricity tokens in sub-seconds with guaranteed zero convenience surcharges.</p>
+              
+              <div class="importance-minimal-highlights">
+                <div class="minimal-pill">
+                  <span class="pill-dot green"></span>
+                  <span>&lt; 1.2s Instant Fulfillment</span>
+                </div>
+                <div class="minimal-pill">
+                  <span class="pill-dot blue"></span>
+                  <span>₦0.00 Convenience Fee</span>
+                </div>
+                <div class="minimal-pill">
+                  <span class="pill-dot purple"></span>
+                  <span>100% Auto-Refund SLA</span>
                 </div>
               </div>
 
-              <div class="importance-text">
-                <span class="importance-badge badge-cyan">SUB-SECOND SPEED</span>
-                <h3 class="importance-row-title">Instant Carrier Fulfillment. Zero Queue Delays.</h3>
-                <p class="importance-row-desc">Direct tier-1 telecommunications gateways connect your top-up requests straight into core carrier networks. Airtime and data arrive on user handsets in sub-second time.</p>
-                <ul class="importance-bullets">
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Direct upstream connections to MTN, Airtel, Glo & 9mobile switches.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>99.99% autonomous infrastructure uptime with zero peak congestion.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Instant real-time carrier response and delivery acknowledgement.</span>
-                  </li>
-                </ul>
+              <div class="importance-minimal-cta">
+                <button class="btn-primary" onclick="scrollToTariffs('airtime')">
+                  <span>Explore All Plans</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
               </div>
             </div>
 
-            <!-- ROW 2: Text Left, SVG Right (Transparent Wholesale Pricing) -->
-            <div class="importance-row reverse">
-              <div class="importance-text">
-                <span class="importance-badge badge-emerald">TRUE VALUE</span>
-                <h3 class="importance-row-title">True Wholesale Pricing. Zero Hidden Fees.</h3>
-                <p class="importance-row-desc">While conventional platforms charge extra convenience surcharges on tokens and bills, Payzani offers transparent rates with ₦0.00 hidden fee and up to 3.5% instant discount margin.</p>
-                <ul class="importance-bullets">
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Zero convenience surcharge on all prepaid electricity tokens and bills.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Instant wholesale discounts of up to 3.5% on mobile airtime and data.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>100% transparent fee ledger with no account maintenance deductions.</span>
-                  </li>
-                </ul>
-              </div>
+            <!-- Right: One Single, Masterfully Crafted SVG -->
+            <div class="importance-visual-minimal">
+              <div class="importance-card-surface glow-cyan">
+                <svg class="importance-svg" viewBox="0 0 480 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Card Background -->
+                  <rect width="480" height="360" rx="24" fill="#0C0D14"/>
+                  <rect x="0.5" y="0.5" width="479" height="359" rx="23.5" stroke="rgba(56, 189, 248, 0.28)"/>
+                  
+                  <!-- Radar Rings -->
+                  <circle cx="240" cy="180" r="130" stroke="rgba(56, 189, 248, 0.06)" stroke-dasharray="4 4"/>
+                  <circle cx="240" cy="180" r="90" stroke="rgba(56, 189, 248, 0.1)"/>
+                  
+                  <!-- Connecting Laser Beams -->
+                  <line x1="240" y1="180" x2="100" y2="90" stroke="url(#lineBeam1)" stroke-width="2"/>
+                  <line x1="240" y1="180" x2="380" y2="90" stroke="url(#lineBeam2)" stroke-width="2"/>
+                  <line x1="240" y1="180" x2="90" y2="270" stroke="url(#lineBeam1)" stroke-width="2"/>
+                  <line x1="240" y1="180" x2="390" y2="270" stroke="url(#lineBeam2)" stroke-width="2"/>
+                  
+                  <!-- Central Core Orb -->
+                  <circle cx="240" cy="180" r="42" fill="#0369A1" fill-opacity="0.25" stroke="#38BDF8" stroke-width="2"/>
+                  <circle cx="240" cy="180" r="32" fill="#0284C7" fill-opacity="0.35"/>
+                  
+                  <!-- Center Shield & Lightning -->
+                  <path d="M240 162L249 167V177C249 184 245 190 240 193C235 190 231 184 231 177V167L240 162Z" fill="#38BDF8" fill-opacity="0.3" stroke="#FFFFFF" stroke-width="1.8"/>
+                  <path d="M241 169L236 177H240L239 183L245 175H241L241 169Z" fill="#FFFFFF"/>
+                  
+                  <text x="240" y="238" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="900" font-family="-apple-system, sans-serif" letter-spacing="1.5">PAYZANI SWITCH CORE</text>
+                  <text x="240" y="254" text-anchor="middle" fill="#38BDF8" font-size="10" font-weight="700" font-family="-apple-system, sans-serif">Direct Tier-1 Gateway</text>
 
-              <div class="importance-visual">
-                <div class="importance-card-surface glow-emerald">
-                  <svg class="importance-svg" viewBox="0 0 460 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="460" height="320" rx="20" fill="#0C0D12"/>
-                    <rect x="0.5" y="0.5" width="459" height="319" rx="19.5" stroke="rgba(34, 197, 94, 0.25)"/>
-                    
-                    <!-- Pricing Comparison Ledger Card -->
-                    <!-- Card 1: Other Platforms (Red Surcharge) -->
-                    <g transform="translate(30, 45)">
-                      <rect width="400" height="88" rx="12" fill="#15171E" stroke="rgba(239, 68, 68, 0.3)"/>
-                      <circle cx="34" cy="44" r="14" fill="rgba(239, 68, 68, 0.15)"/>
-                      <text x="34" y="49" text-anchor="middle" fill="#EF4444" font-size="14" font-weight="900">✕</text>
-                      
-                      <text x="64" y="38" fill="rgba(255,255,255,0.6)" font-size="12" font-weight="700" font-family="-apple-system, sans-serif">Other Retail Platforms</text>
-                      <text x="64" y="62" fill="#FFFFFF" font-size="16" font-weight="800" font-family="-apple-system, sans-serif">₦5,000 Power Token + <tspan fill="#EF4444">₦100 Surcharge</tspan></text>
-                      <text x="375" y="52" text-anchor="end" fill="rgba(239, 68, 68, 0.85)" font-size="15" font-weight="800" font-family="-apple-system, sans-serif" text-decoration="line-through">₦5,100</text>
-                    </g>
+                  <!-- Top Status Chip: Live SLA -->
+                  <g transform="translate(165, 20)">
+                    <rect width="150" height="28" rx="14" fill="rgba(34, 197, 94, 0.15)" stroke="#22C55E" stroke-width="1"/>
+                    <circle cx="16" cy="14" r="4" fill="#22C55E"/>
+                    <text x="28" y="18" fill="#4ADE80" font-size="11" font-weight="800" font-family="-apple-system, sans-serif" letter-spacing="0.5">99.99% UPTIME SLA</text>
+                  </g>
 
-                    <!-- Arrow Down Divider -->
-                    <circle cx="230" cy="154" r="16" fill="#10B981" fill-opacity="0.2" stroke="#10B981"/>
-                    <path d="M230 146L230 162M225 157L230 162L235 157" stroke="#22C55E" stroke-width="2" stroke-linecap="round"/>
+                  <!-- Node 1: MTN (Top Left) -->
+                  <g transform="translate(45, 65)">
+                    <rect width="105" height="50" rx="12" fill="#141620" stroke="rgba(255, 204, 0, 0.4)"/>
+                    <circle cx="22" cy="25" r="7" fill="#FFCC00"/>
+                    <text x="36" y="23" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">MTN</text>
+                    <text x="36" y="36" fill="#22C55E" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">&lt; 0.6s • FAST</text>
+                  </g>
 
-                    <!-- Card 2: Payzani Rate (Clean Green Wholesale) -->
-                    <g transform="translate(30, 185)">
-                      <rect width="400" height="95" rx="14" fill="#0E2319" stroke="#22C55E" stroke-width="1.5"/>
-                      <circle cx="34" cy="47" r="14" fill="#22C55E"/>
-                      <path d="M30 47L33 50L38 44" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-                      
-                      <text x="64" y="38" fill="#86EFAC" font-size="12" font-weight="800" font-family="-apple-system, sans-serif" letter-spacing="0.5">PAYZANI WHOLESALE SWITCH</text>
-                      <text x="64" y="64" fill="#FFFFFF" font-size="17" font-weight="900" font-family="-apple-system, sans-serif">₦5,000 Power Token + <tspan fill="#4ADE80">₦0.00 FEE</tspan></text>
-                      <text x="375" y="55" text-anchor="end" fill="#4ADE80" font-size="20" font-weight="900" font-family="-apple-system, sans-serif">ONLY ₦5,000</text>
-                      
-                      <!-- Cashback Chip -->
-                      <rect x="64" y="72" width="135" height="18" rx="9" fill="rgba(34, 197, 94, 0.2)"/>
-                      <text x="131" y="85" text-anchor="middle" fill="#86EFAC" font-size="10" font-weight="800" font-family="-apple-system, sans-serif">MAX CASHBACK SAVED</text>
-                    </g>
-                  </svg>
-                </div>
-              </div>
-            </div>
+                  <!-- Node 2: Airtel (Top Right) -->
+                  <g transform="translate(330, 65)">
+                    <rect width="105" height="50" rx="12" fill="#141620" stroke="rgba(225, 25, 36, 0.4)"/>
+                    <circle cx="22" cy="25" r="7" fill="#E11924"/>
+                    <text x="36" y="23" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">Airtel</text>
+                    <text x="36" y="36" fill="#22C55E" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">&lt; 0.8s • FAST</text>
+                  </g>
 
-            <!-- ROW 3: SVG Left, Text Right (Unified Utility Infrastructure) -->
-            <div class="importance-row">
-              <div class="importance-visual">
-                <div class="importance-card-surface glow-indigo">
-                  <svg class="importance-svg" viewBox="0 0 460 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="460" height="320" rx="20" fill="#0C0D12"/>
-                    <rect x="0.5" y="0.5" width="459" height="319" rx="19.5" stroke="rgba(129, 140, 248, 0.25)"/>
-                    
-                    <!-- Center Universal Hub Card -->
-                    <g transform="translate(130, 100)">
-                      <rect width="200" height="120" rx="16" fill="#151724" stroke="#818CF8" stroke-width="2"/>
-                      <circle cx="100" cy="44" r="22" fill="#4F46E5" fill-opacity="0.3" stroke="#818CF8"/>
-                      <path d="M93 44L107 44M100 37L100 51" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-                      <text x="100" y="84" text-anchor="middle" fill="#FFFFFF" font-size="13" font-weight="900" font-family="-apple-system, sans-serif" letter-spacing="1">PAYZANI CORE</text>
-                      <text x="100" y="102" text-anchor="middle" fill="#A5B4FC" font-size="10" font-weight="700" font-family="-apple-system, sans-serif">Unified Utility Wallet</text>
-                    </g>
+                  <!-- Node 3: Glo & 9mobile (Bottom Left) -->
+                  <g transform="translate(35, 245)">
+                    <rect width="115" height="50" rx="12" fill="#141620" stroke="rgba(0, 168, 89, 0.4)"/>
+                    <circle cx="20" cy="25" r="7" fill="#00A859"/>
+                    <text x="34" y="23" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">Glo / 9mobile</text>
+                    <text x="34" y="36" fill="#22C55E" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">&lt; 0.7s • FAST</text>
+                  </g>
 
-                    <!-- Surrounding Pillars -->
-                    <!-- Top: Telco 4G/5G -->
-                    <line x1="230" y1="100" x2="230" y2="55" stroke="#818CF8" stroke-dasharray="3 3"/>
-                    <g transform="translate(145, 18)">
-                      <rect width="170" height="38" rx="10" fill="#151722" stroke="rgba(255,255,255,0.15)"/>
-                      <text x="85" y="24" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="800" font-family="-apple-system, sans-serif">📶 MTN • AIRTEL • GLO • 9MOBILE</text>
-                    </g>
+                  <!-- Node 4: Cable & 11 Discos (Bottom Right) -->
+                  <g transform="translate(325, 245)">
+                    <rect width="125" height="50" rx="12" fill="#141620" stroke="rgba(129, 140, 248, 0.4)"/>
+                    <circle cx="20" cy="25" r="7" fill="#818CF8"/>
+                    <text x="34" y="23" fill="#FFFFFF" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">Cable & 11 Discos</text>
+                    <text x="34" y="36" fill="#38BDF8" font-size="9" font-weight="700" font-family="-apple-system, sans-serif">₦0.00 Surcharge</text>
+                  </g>
 
-                    <!-- Bottom Left: Cable TV -->
-                    <line x1="160" y1="220" x2="110" y2="255" stroke="#818CF8" stroke-dasharray="3 3"/>
-                    <g transform="translate(30, 255)">
-                      <rect width="175" height="42" rx="10" fill="#151722" stroke="rgba(255,255,255,0.15)"/>
-                      <text x="87" y="26" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="800" font-family="-apple-system, sans-serif">📺 DSTV • GOTV • NETFLIX</text>
-                    </g>
-
-                    <!-- Bottom Right: Power Discos -->
-                    <line x1="300" y1="220" x2="350" y2="255" stroke="#818CF8" stroke-dasharray="3 3"/>
-                    <g transform="translate(255, 255)">
-                      <rect width="175" height="42" rx="10" fill="#151722" stroke="rgba(255,255,255,0.15)"/>
-                      <text x="87" y="26" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="800" font-family="-apple-system, sans-serif">💡 ALL 11 DISCO STS TOKENS</text>
-                    </g>
-                  </svg>
-                </div>
-              </div>
-
-              <div class="importance-text">
-                <span class="importance-badge badge-indigo">ALL-IN-ONE ENGINE</span>
-                <h3 class="importance-row-title">4 Telcos, Cable TV & 11 Discos in One Unified Hub.</h3>
-                <p class="importance-row-desc">Consolidate your telecom and everyday utility bills. Top up airtime, subscribe to DStv, GOtv, Startimes, Netflix, or generate 20-digit prepaid meter tokens across all 11 Nigerian electricity Discos from a single wallet.</p>
-                <ul class="importance-bullets">
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Automated IUC decoder & prepaid meter customer name verification.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Instant 20-digit STS meter token delivered via on-screen & SMS receipt.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Universal single-balance wallet for all telecommunications and utilities.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- ROW 4: Text Left, SVG Right (Bank-Grade Security & Instant Auto-Refunds) -->
-            <div class="importance-row reverse">
-              <div class="importance-text">
-                <span class="importance-badge badge-amber">BANK-GRADE SECURITY</span>
-                <h3 class="importance-row-title">256-Bit SSL Protection. Instant Auto-Reversals.</h3>
-                <p class="importance-row-desc">Never worry about lost funds. Every payment is safeguarded by 256-bit SSL encryption. In the rare event of upstream carrier timeout, our autonomous engine restores your money back to your wallet in seconds.</p>
-                <ul class="importance-bullets">
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>PCI-DSS certified secure payment processing via Paystack & Virtual Accounts.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Autonomous instant wallet refund if telecom upstream fails to acknowledge.</span>
-                  </li>
-                  <li>
-                    <span class="importance-check">✓</span>
-                    <span>Granular immutable ledger and exportable accounting transaction history.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="importance-visual">
-                <div class="importance-card-surface glow-amber">
-                  <svg class="importance-svg" viewBox="0 0 460 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="460" height="320" rx="20" fill="#0C0D12"/>
-                    <rect x="0.5" y="0.5" width="459" height="319" rx="19.5" stroke="rgba(245, 158, 11, 0.25)"/>
-                    
-                    <!-- Shield Icon Center-Top -->
-                    <circle cx="230" cy="58" r="28" fill="#D97706" fill-opacity="0.2" stroke="#F59E0B" stroke-width="2"/>
-                    <path d="M230 42L244 48V62C244 72 238 80 230 84C222 80 216 72 216 62V48L230 42Z" fill="#F59E0B" fill-opacity="0.3" stroke="#F59E0B" stroke-width="2"/>
-                    <path d="M225 63L229 67L236 59" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-                    <text x="230" y="104" text-anchor="middle" fill="#F59E0B" font-size="11" font-weight="800" font-family="-apple-system, sans-serif" letter-spacing="1">256-BIT SSL ENCRYPTED</text>
-
-                    <!-- Automated Refund Timeline Card -->
-                    <g transform="translate(35, 125)">
-                      <rect width="390" height="165" rx="14" fill="#151720" stroke="rgba(255, 255, 255, 0.1)"/>
-                      
-                      <!-- Step 1: Request Dispatched -->
-                      <circle cx="35" cy="40" r="10" fill="#3B82F6"/>
-                      <path d="M32 40L34 42L38 38" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-                      <text x="56" y="36" fill="#FFFFFF" font-size="12" font-weight="700" font-family="-apple-system, sans-serif">Recharge Dispatched: ₦2,000</text>
-                      <text x="56" y="49" fill="rgba(255,255,255,0.5)" font-size="10" font-family="-apple-system, sans-serif">12:04:01 PM • Transferred to upstream carrier</text>
-
-                      <!-- Connector Line 1 -->
-                      <line x1="35" y1="52" x2="35" y2="78" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-
-                      <!-- Step 2: Timeout Detected -->
-                      <circle cx="35" cy="88" r="10" fill="#EF4444"/>
-                      <text x="35" y="92" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="900">!</text>
-                      <text x="56" y="84" fill="#FCA5A5" font-size="12" font-weight="700" font-family="-apple-system, sans-serif">Carrier Gateway Timeout Detected</text>
-                      <text x="56" y="97" fill="rgba(255,255,255,0.5)" font-size="10" font-family="-apple-system, sans-serif">12:04:02 PM • Upstream network delay triggered</text>
-
-                      <!-- Connector Line 2 -->
-                      <line x1="35" y1="100" x2="35" y2="126" stroke="#22C55E" stroke-width="2"/>
-
-                      <!-- Step 3: Wallet Restored -->
-                      <circle cx="35" cy="136" r="10" fill="#22C55E"/>
-                      <path d="M32 136L34 138L38 134" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round"/>
-                      <text x="56" y="132" fill="#86EFAC" font-size="12" font-weight="800" font-family="-apple-system, sans-serif">Autonomous Refund Completed: +₦2,000</text>
-                      <text x="56" y="145" fill="#4ADE80" font-size="10" font-weight="700" font-family="-apple-system, sans-serif">12:04:03 PM • Wallet automatically credited in 0.8s</text>
-                    </g>
-                  </svg>
-                </div>
+                  <!-- Gradients -->
+                  <defs>
+                    <linearGradient id="lineBeam1" x1="240" y1="180" x2="100" y2="90" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#38BDF8"/>
+                      <stop offset="1" stop-color="#38BDF8" stop-opacity="0.15"/>
+                    </linearGradient>
+                    <linearGradient id="lineBeam2" x1="240" y1="180" x2="380" y2="90" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#38BDF8"/>
+                      <stop offset="1" stop-color="#38BDF8" stop-opacity="0.15"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
             </div>
 
