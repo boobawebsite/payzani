@@ -2340,6 +2340,269 @@
       vertical-align: middle;
       flex-shrink: 0;
     }
+  
+    /* =============================================================
+       APPLE-STYLE CINEMATIC CAROUSEL: THE IMPORTANCE OF CHOOSING PAYZANI
+    ============================================================= */
+    .apple-carousel-section {
+      position: relative;
+      background: #000000;
+      padding: clamp(60px, 8vw, 100px) 0 clamp(40px, 6vw, 70px);
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .apple-carousel-header {
+      max-width: 1200px;
+      margin: 0 auto clamp(28px, 4vw, 44px);
+      padding: 0 clamp(16px, 3vw, 32px);
+      text-align: left;
+    }
+    .apple-carousel-eyebrow {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #38BDF8;
+      margin-bottom: 8px;
+    }
+    .apple-carousel-title {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(26px, 3.8vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      color: #FFFFFF;
+      line-height: 1.15;
+      max-width: 800px;
+    }
+    .apple-carousel-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .apple-carousel-track-wrapper {
+      width: 100%;
+      overflow: hidden;
+      padding: 10px 0 20px;
+    }
+    .apple-carousel-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.5vw, 32px);
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 0 max(20px, calc((100% - clamp(680px, 72vw, 980px)) / 2));
+      will-change: transform;
+    }
+    .apple-carousel-slide {
+      flex: 0 0 clamp(300px, 72vw, 980px);
+      height: clamp(380px, 46vw, 540px);
+      border-radius: clamp(18px, 2.4vw, 28px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transform: scale(0.93);
+      opacity: 0.55;
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    .apple-carousel-slide.active {
+      transform: scale(1);
+      opacity: 1;
+      border-color: rgba(255, 255, 255, 0.28);
+      cursor: default;
+    }
+    .apple-slide-media {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .apple-slide-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-carousel-slide.active:hover .apple-slide-img {
+      transform: scale(1.03);
+    }
+    .apple-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 35%, rgba(0,0,0,0.88) 85%, #000000 100%);
+      pointer-events: none;
+    }
+    .apple-slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: clamp(24px, 3.8vw, 44px);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: clamp(10px, 1.4vw, 14px);
+    }
+    .apple-slide-tag-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .apple-slide-badge {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #FFFFFF;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+    }
+    .apple-slide-subtag {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .apple-slide-headline {
+      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.6px;
+      color: #FFFFFF;
+      line-height: 1.18;
+      margin: 0;
+      max-width: 680px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .apple-slide-desc {
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: clamp(13px, 1.5vw, 15.5px);
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.45;
+      margin: 0;
+      max-width: 640px;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    }
+    .apple-slide-actions {
+      margin-top: 6px;
+    }
+    .apple-slide-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFFFFF;
+      color: #000000;
+      font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 9px 20px 9px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-slide-btn:hover {
+      background: rgba(255, 255, 255, 0.92);
+      transform: scale(1.04);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    }
+    .apple-slide-btn svg {
+      transition: transform 0.2s ease;
+    }
+    .apple-slide-btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Apple-Style Navigation Buttons */
+    .apple-carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(30, 30, 32, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      transition: all 0.22s ease;
+    }
+    .apple-carousel-nav:hover {
+      background: rgba(50, 50, 54, 0.95);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: translateY(-50%) scale(1.08);
+    }
+    .apple-carousel-nav.prev {
+      left: clamp(12px, 2.5vw, 40px);
+    }
+    .apple-carousel-nav.next {
+      right: clamp(12px, 2.5vw, 40px);
+    }
+
+    /* Apple Pagination Strip */
+    .apple-carousel-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: clamp(20px, 3vw, 32px);
+    }
+    .apple-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apple-dot:hover {
+      background: rgba(255, 255, 255, 0.65);
+    }
+    .apple-dot.active {
+      width: 32px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .apple-carousel-slide {
+        flex: 0 0 calc(100vw - 48px);
+        height: 420px;
+      }
+      .apple-carousel-nav {
+        display: none;
+      }
+      .apple-slide-headline {
+        font-size: 20px;
+      }
+      .apple-slide-desc {
+        font-size: 12px;
+      }
+    }
+    
   </style>
 </head>
 <body>
@@ -4544,38 +4807,154 @@
         </div>
       </section>
 
-      <!-- Bento Grid (Clean titles, no bento-tag labels) -->
-      <div class="bento-grid">
-        <div class="bento-item">
-          <img class="bento-item-img" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80" alt="High-Speed Mobile Connectivity">
-          <div class="bento-content">
-            <div>
-              <h4 class="bento-heading">High-Speed 4G / 5G Data</h4>
-              <p class="bento-desc">Direct wholesale rates for SME and corporate data bundles on MTN, Airtel, Glo, and 9mobile with sub-second activation.</p>
-            </div>
-          </div>
+      <!-- =============================================================
+           APPLE-STYLE CINEMATIC CAROUSEL: THE IMPORTANCE OF CHOOSING PAYZANI
+      ============================================================== -->
+      <section class="apple-carousel-section" id="whyPayzani">
+        <div class="apple-carousel-header">
+          <div class="apple-carousel-eyebrow">THE IMPORTANCE OF CHOOSING PAYZANI</div>
+          <h2 class="apple-carousel-title">Engineered for speed, savings, and absolute reliability.</h2>
         </div>
 
-        <div class="bento-item">
-          <img class="bento-item-img" src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80" alt="Cable TV and Electricity">
-          <div class="bento-content">
-            <div>
-              <h4 class="bento-heading">Cable TV & Power Tokens</h4>
-              <p class="bento-desc">Instant DSTV, GOtv, and prepaid meter token generation with automated IUC and meter name verification.</p>
+        <div class="apple-carousel-container">
+          <button class="apple-carousel-nav prev" id="appleCarouselPrev" aria-label="Previous Slide">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          
+          <div class="apple-carousel-track-wrapper">
+            <div class="apple-carousel-track" id="appleCarouselTrack">
+              
+              <!-- Slide 1: Sub-Second Fulfillment -->
+              <div class="apple-carousel-slide active" data-index="0">
+                <div class="apple-slide-media">
+                  <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=85" alt="Sub-Second VTU Routing" class="apple-slide-img" />
+                  <div class="apple-slide-overlay"></div>
+                </div>
+                <div class="apple-slide-content">
+                  <div class="apple-slide-tag-wrap">
+                    <span class="apple-slide-badge">INSTANT ROUTING</span>
+                    <span class="apple-slide-subtag">Airtime & SME Data • &lt; 1.2s Delivery</span>
+                  </div>
+                  <h3 class="apple-slide-headline">Sub-Second Top-Ups. Zero Queue Delays.</h3>
+                  <p class="apple-slide-desc">Direct enterprise carrier routing connects your transactions straight into core telecommunications switches with 99.99% automated uptime.</p>
+                  <div class="apple-slide-actions">
+                    <button class="apple-slide-btn" onclick="scrollToTariffs('airtime')">
+                      <span>Get Instant Top-Up</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: True Wholesale Rates & Zero Surcharges -->
+              <div class="apple-carousel-slide" data-index="1">
+                <div class="apple-slide-media">
+                  <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1600&q=85" alt="Wholesale Telecom Value" class="apple-slide-img" />
+                  <div class="apple-slide-overlay"></div>
+                </div>
+                <div class="apple-slide-content">
+                  <div class="apple-slide-tag-wrap">
+                    <span class="apple-slide-badge">MAXIMUM SAVINGS</span>
+                    <span class="apple-slide-subtag">Up to 3.5% Cash Discount • Zero Fees</span>
+                  </div>
+                  <h3 class="apple-slide-headline">Zero Hidden Fees. 100% Transparent Value.</h3>
+                  <p class="apple-slide-desc">No convenience surcharges on tokens and bills. Direct wholesale rates allow you to save more on personal usage or maximize profit margins as a seller.</p>
+                  <div class="apple-slide-actions">
+                    <button class="apple-slide-btn" onclick="scrollToTariffs('data')">
+                      <span>View Wholesale Tariffs</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Universal All-in-One Utility Hub -->
+              <div class="apple-carousel-slide" data-index="2">
+                <div class="apple-slide-media">
+                  <img src="https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=1600&q=85" alt="Universal Entertainment & Energy" class="apple-slide-img" />
+                  <div class="apple-slide-overlay"></div>
+                </div>
+                <div class="apple-slide-content">
+                  <div class="apple-slide-tag-wrap">
+                    <span class="apple-slide-badge">UNIFIED ECOSYSTEM</span>
+                    <span class="apple-slide-subtag">4 Telcos • Cable TV • 11 Electricity Discos</span>
+                  </div>
+                  <h3 class="apple-slide-headline">All 4 Telcos, Cable TV & Electricity in One Engine.</h3>
+                  <p class="apple-slide-desc">From MTN and Airtel to DStv, GOtv, Netflix passes, and all 11 Nigerian electricity Discos — fund and execute all payments from a single unified wallet.</p>
+                  <div class="apple-slide-actions">
+                    <button class="apple-slide-btn" onclick="scrollToTariffs('cable')">
+                      <span>Explore Subscriptions</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: Bank-Grade Security & Instant Refunds -->
+              <div class="apple-carousel-slide" data-index="3">
+                <div class="apple-slide-media">
+                  <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1600&q=85" alt="Bank-Grade Security" class="apple-slide-img" />
+                  <div class="apple-slide-overlay"></div>
+                </div>
+                <div class="apple-slide-content">
+                  <div class="apple-slide-tag-wrap">
+                    <span class="apple-slide-badge">BANK-GRADE SECURITY</span>
+                    <span class="apple-slide-subtag">PCI-DSS Certified • 256-Bit SSL Encryption</span>
+                  </div>
+                  <h3 class="apple-slide-headline">Bank-Grade Security & Instant Automated Reversals.</h3>
+                  <p class="apple-slide-desc">In the rare event of upstream telco downtime or transaction timeout, our autonomous switching algorithm instantly refunds your wallet within seconds.</p>
+                  <div class="apple-slide-actions">
+                    <button class="apple-slide-btn" onclick="openFundWalletDialog()">
+                      <span>Fund Wallet Securely</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5: Turnkey White-Label Agent Architecture -->
+              <div class="apple-carousel-slide" data-index="4">
+                <div class="apple-slide-media">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1600&q=85" alt="Agent Storefront Architecture" class="apple-slide-img" />
+                  <div class="apple-slide-overlay"></div>
+                </div>
+                <div class="apple-slide-content">
+                  <div class="apple-slide-tag-wrap">
+                    <span class="apple-slide-badge">AGENT STOREFRONT</span>
+                    <span class="apple-slide-subtag">Custom Domain • 140+ Active Nodes</span>
+                  </div>
+                  <h3 class="apple-slide-headline">Launch Your Own Branded Telecom Business.</h3>
+                  <p class="apple-slide-desc">Become an enterprise agent. Receive your personalized web storefront with custom branding, custom pricing margins, and high-frequency developer APIs.</p>
+                  <div class="apple-slide-actions">
+                    <button class="apple-slide-btn" onclick="switchEcoView('agent-portal')">
+                      <span>Become an Agent</span>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
+
+          <button class="apple-carousel-nav next" id="appleCarouselNext" aria-label="Next Slide">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
 
-        <div class="bento-item">
-          <img class="bento-item-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Agent Storefront Architecture">
-          <div class="bento-content">
-            <div>
-              <h4 class="bento-heading">Launch Your Branded Portal</h4>
-              <p class="bento-desc">Become a verified agent. Obtain your custom branded storefront with your logo, custom theme, and managed server quota.</p>
-            </div>
-          </div>
+        <!-- Apple-Style Pagination Indicators -->
+        <div class="apple-carousel-pagination" id="appleCarouselDots">
+          <button class="apple-dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="apple-dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="apple-dot" data-index="2" aria-label="Slide 3"></button>
+          <button class="apple-dot" data-index="3" aria-label="Slide 4"></button>
+          <button class="apple-dot" data-index="4" aria-label="Slide 5"></button>
         </div>
-      </div>
+      </section>
 
       <!-- Metrics Bar -->
       <div class="metrics-bar">
@@ -5503,6 +5882,126 @@
         box.classList.remove('show');
       }, 3000);
     }
+  
+    // -------------------------------------------------------------
+    // APPLE-STYLE CINEMATIC CAROUSEL CONTROLLER
+    // -------------------------------------------------------------
+    function scrollToTariffs(catKey) {
+      const el = document.getElementById('plans-' + catKey);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    (function initAppleCarousel() {
+      const track = document.getElementById('appleCarouselTrack');
+      const slides = document.querySelectorAll('.apple-carousel-slide');
+      const dots = document.querySelectorAll('.apple-dot');
+      const prevBtn = document.getElementById('appleCarouselPrev');
+      const nextBtn = document.getElementById('appleCarouselNext');
+      if (!track || slides.length === 0) return;
+
+      let currentIndex = 0;
+      let autoplayTimer = null;
+
+      function updateCarousel(index) {
+        currentIndex = (index + slides.length) % slides.length;
+        
+        slides.forEach((slide, i) => {
+          if (i === currentIndex) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+
+        dots.forEach((dot, i) => {
+          if (i === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+
+        const activeSlide = slides[currentIndex];
+        const trackWrapper = track.parentElement;
+        const wrapperCenter = trackWrapper.offsetWidth / 2;
+        const slideCenter = activeSlide.offsetLeft + (activeSlide.offsetWidth / 2);
+        const targetOffset = wrapperCenter - slideCenter;
+
+        track.style.transform = `translateX(${targetOffset}px)`;
+      }
+
+      function nextSlide() {
+        updateCarousel(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        updateCarousel(currentIndex - 1);
+      }
+
+      function startAutoplay() {
+        stopAutoplay();
+        autoplayTimer = setInterval(nextSlide, 4500);
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) {
+          clearInterval(autoplayTimer);
+          autoplayTimer = null;
+        }
+      }
+
+      if (nextBtn) nextBtn.addEventListener('click', () => { nextSlide(); startAutoplay(); });
+      if (prevBtn) prevBtn.addEventListener('click', () => { prevSlide(); startAutoplay(); });
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+          updateCarousel(idx);
+          startAutoplay();
+        });
+      });
+
+      slides.forEach((slide, idx) => {
+        slide.addEventListener('click', (e) => {
+          if (!e.target.closest('button')) {
+            updateCarousel(idx);
+            startAutoplay();
+          }
+        });
+      });
+
+      const container = document.getElementById('whyPayzani');
+      if (container) {
+        container.addEventListener('mouseenter', stopAutoplay);
+        container.addEventListener('mouseleave', startAutoplay);
+      }
+
+      let touchStartX = 0;
+      let touchEndX = 0;
+      track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoplay();
+      }, { passive: true });
+
+      track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) {
+          nextSlide();
+        } else if (touchEndX - touchStartX > 45) {
+          prevSlide();
+        }
+        startAutoplay();
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        updateCarousel(currentIndex);
+      });
+
+      setTimeout(() => {
+        updateCarousel(0);
+        startAutoplay();
+      }, 120);
+    })();
+    
   </script>
 </body>
 </html>
