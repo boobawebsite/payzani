@@ -23,12 +23,12 @@
     <rect width="180" height="32" rx="16" fill="url(#cyan-btn)"/>
     <text x="90" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">TV &amp; STREAMING DEALS</text>
 
-    <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">DStv &bull; GOtv &bull; StarTimes</text>
+    <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">DStv &#8226; GOtv &#8226; StarTimes</text>
     <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#7DD3FC">Instant Smartcard Activation</text>
 
     <g transform="translate(0, 140)">
       <rect width="360" height="56" rx="14" fill="#081024" stroke="#0284C7" stroke-width="1.5"/>
-      <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">GOtv Supa &bull; DStv @ </text>
+      <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">GOtv Supa &#8226; DStv @ </text>
       <text x="180" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#38BDF8">₦5,800</text>
       <rect x="260" y="14" width="85" height="26" rx="8" fill="rgba(56, 189, 248, 0.2)"/>
       <text x="302" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#38BDF8" text-anchor="middle">INSTANT</text>
@@ -36,7 +36,7 @@
 
     <g transform="translate(0, 214)">
       <rect width="210" height="46" rx="23" fill="url(#cyan-btn)"/>
-      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Renew Package &rarr;</text>
+      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Renew Package &#8594;</text>
     </g>
   </g>
 

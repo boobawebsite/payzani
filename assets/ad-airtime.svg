@@ -34,7 +34,7 @@
 
     <!-- Main Title -->
     <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">Instant Airtime Top-Up</text>
-    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#C4B5FD">MTN &bull; Airtel &bull; Glo &bull; 9mobile</text>
+    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#C4B5FD">MTN &#8226; Airtel &#8226; Glo &#8226; 9mobile</text>
 
     <!-- Price Offer Bar -->
     <g transform="translate(0, 140)">
@@ -48,7 +48,7 @@
     <!-- Action Button -->
     <g transform="translate(0, 214)">
       <rect width="210" height="46" rx="23" fill="url(#purple-btn)"/>
-      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Recharge Now &rarr;</text>
+      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Recharge Now &#8594;</text>
     </g>
   </g>
 

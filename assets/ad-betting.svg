@@ -24,7 +24,7 @@
     <text x="90" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#000000" text-anchor="middle" letter-spacing="0.5">INSTANT BET FUNDING</text>
 
     <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">Zero-Fee Sportsbook</text>
-    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#FCD34D">SportyBet &bull; Bet9ja &bull; 1xBet &bull; iLOT</text>
+    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#FCD34D">SportyBet &#8226; Bet9ja &#8226; 1xBet &#8226; iLOT</text>
 
     <g transform="translate(0, 140)">
       <rect width="360" height="56" rx="14" fill="#0B1324" stroke="#F59E0B" stroke-width="1.5"/>
@@ -36,7 +36,7 @@
 
     <g transform="translate(0, 214)">
       <rect width="210" height="46" rx="23" fill="url(#gold-btn)"/>
-      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#000000" text-anchor="middle">Fund Account &rarr;</text>
+      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#000000" text-anchor="middle">Fund Account &#8594;</text>
     </g>
   </g>
 

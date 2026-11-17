@@ -28,7 +28,7 @@
     <text x="85" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">HOT DATA PLANS</text>
 
     <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">Ultra-Fast 5G SME Data</text>
-    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#93C5FD">Daily &bull; Weekly &bull; Monthly Bundles</text>
+    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#93C5FD">Daily &#8226; Weekly &#8226; Monthly Bundles</text>
 
     <g transform="translate(0, 140)">
       <rect width="360" height="56" rx="14" fill="#0B132B" stroke="#1D4ED8" stroke-width="1.5"/>
@@ -40,7 +40,7 @@
 
     <g transform="translate(0, 214)">
       <rect width="210" height="46" rx="23" fill="url(#cyan-purple)"/>
-      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Buy Data Plans &rarr;</text>
+      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Buy Data Plans &#8594;</text>
     </g>
   </g>
 
