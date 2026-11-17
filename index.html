@@ -2829,9 +2829,1259 @@
       }
     }
 
+  
+    /* =============================================================
+       OPAY MOBILE FINTECH EXPERIENCE (PRIMARY ACCENT: ROYAL PURPLE)
+       Strictly scoped to mobile viewports (<= 860px)
+    ============================================================== */
+    #mobile-opay-experience {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      /* Hide desktop elements on mobile */
+      header.main-header,
+      .hero-telecom-wrapper,
+      .importance-section,
+      #liveTariffShowcase,
+      #agentSectionFull,
+      footer.apple-luxury-footer {
+        display: none !important;
+      }
+
+      /* Enable OPay Mobile Experience */
+      #mobile-opay-experience {
+        display: block !important;
+        background: #0F0F12 !important;
+        color: #F3F4F6 !important;
+        min-height: 100vh;
+        padding-bottom: 90px;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      /* Mobile Top Bar */
+      .opay-top-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px 10px 16px;
+        background: #0F0F12;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .opay-user-greeting {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .opay-avatar-wrap {
+        position: relative;
+        width: 38px;
+        height: 38px;
+      }
+      .opay-avatar-circle {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 15px;
+        color: #FFFFFF;
+        border: 2px solid #8B5CF6;
+      }
+      .opay-tier-badge {
+        position: absolute;
+        bottom: -2px;
+        right: -2px;
+        background: #7C3AED;
+        color: #FFFFFF;
+        font-size: 9px;
+        font-weight: 800;
+        border-radius: 6px;
+        padding: 1px 4px;
+        border: 1px solid #0F0F12;
+      }
+      .opay-user-name {
+        font-size: 16px;
+        font-weight: 700;
+        color: #FFFFFF;
+        letter-spacing: -0.2px;
+      }
+      .opay-top-actions {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .opay-icon-btn {
+        background: transparent;
+        border: none;
+        color: #E5E7EB;
+        padding: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .opay-help-pill {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        background: #EC4899;
+        color: #FFFFFF;
+        font-size: 8px;
+        font-weight: 800;
+        padding: 1px 4px;
+        border-radius: 6px;
+        letter-spacing: 0.2px;
+      }
+      .opay-notif-dot {
+        position: absolute;
+        top: 2px;
+        right: 4px;
+        width: 6px;
+        height: 6px;
+        background: #EF4444;
+        border-radius: 50%;
+      }
+
+      /* Main Scrollable Canvas */
+      .opay-content-body {
+        padding: 0 16px 24px 16px;
+      }
+
+      /* Available Balance Card (Royal Purple) */
+      .opay-balance-card {
+        background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 55%, #4C1D95 100%);
+        border-radius: 18px;
+        padding: 18px 18px 14px 18px;
+        box-shadow: 0 10px 25px rgba(124, 58, 237, 0.35);
+        color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+      .opay-balance-card::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        right: -20px;
+        width: 140px;
+        height: 140px;
+        background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .opay-card-top-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      .opay-available-label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .opay-eye-btn {
+        background: transparent;
+        border: none;
+        color: rgba(255, 255, 255, 0.85);
+        cursor: pointer;
+        padding: 2px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .opay-add-money-btn {
+        background: #FFFFFF;
+        color: #6D28D9;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.15s ease;
+      }
+      .opay-add-money-btn:active {
+        transform: scale(0.96);
+      }
+      .opay-balance-amount-row {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        margin-bottom: 4px;
+        cursor: pointer;
+      }
+      .opay-balance-amount {
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -0.6px;
+        color: #FFFFFF;
+      }
+      .opay-balance-arrow {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 16px;
+        font-weight: 700;
+      }
+      .opay-earned-sub {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 500;
+        margin-bottom: 14px;
+      }
+      .opay-card-notif-bar {
+        background: rgba(0, 0, 0, 0.22);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-radius: 10px;
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-top: 6px;
+      }
+      .opay-notif-left {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #FFFFFF;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .opay-trans-link {
+        color: #DDD6FE;
+        font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+
+      /* Business / Agent Announcement Row */
+      .opay-business-banner {
+        background: #18181D;
+        border: 1px solid #27272F;
+        border-radius: 12px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        cursor: pointer;
+      }
+      .opay-business-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #E5E7EB;
+      }
+      .opay-business-sales {
+        color: #A78BFA;
+        font-weight: 700;
+      }
+
+      /* 4 Core Quick Actions (Dark rounded tiles) */
+      .opay-quick-actions-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .opay-quick-action-card {
+        background: #18181D;
+        border: 1px solid #27272F;
+        border-radius: 14px;
+        padding: 14px 6px 12px 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+        transition: transform 0.15s ease, background-color 0.15s ease;
+      }
+      .opay-quick-action-card:active {
+        transform: scale(0.95);
+        background: #22222A;
+      }
+      .opay-quick-icon-wrap {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(124, 58, 237, 0.16);
+        color: #A78BFA;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .opay-quick-label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #F3F4F6;
+        text-align: center;
+      }
+
+      /* 8 Services Grid (2 rows of 4 dark cards) */
+      .opay-services-card {
+        background: #18181D;
+        border: 1px solid #27272F;
+        border-radius: 16px;
+        padding: 16px 10px 14px 10px;
+        margin-bottom: 14px;
+      }
+      .opay-services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 16px;
+        column-gap: 8px;
+      }
+      .opay-service-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+      }
+      .opay-service-item:active {
+        transform: scale(0.92);
+      }
+      .opay-service-icon-box {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #22222A;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #F3F4F6;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .opay-service-icon-box.purple-glow {
+        background: rgba(124, 58, 237, 0.18);
+        color: #A78BFA;
+        border-color: rgba(124, 58, 237, 0.3);
+      }
+      .opay-service-name {
+        font-size: 11.5px;
+        font-weight: 600;
+        color: #D1D5DB;
+        text-align: center;
+      }
+
+      /* Promo / Savings Banner (SafeBox) */
+      .opay-promo-card {
+        background: linear-gradient(90deg, #18181D 0%, #20182E 100%);
+        border: 1px solid #3B2A58;
+        border-radius: 14px;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        cursor: pointer;
+      }
+      .opay-promo-left {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+      .opay-promo-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      .opay-promo-sub {
+        font-size: 11.5px;
+        color: #9CA3AF;
+      }
+      .opay-promo-btn {
+        background: #7C3AED;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 700;
+        padding: 7px 18px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+      }
+
+      /* Mini Ledger / Recent Transactions */
+      .opay-recent-section {
+        background: #18181D;
+        border: 1px solid #27272F;
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+      .opay-recent-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+      .opay-recent-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #F9FAFB;
+      }
+      .opay-recent-all {
+        font-size: 12px;
+        font-weight: 600;
+        color: #A78BFA;
+        cursor: pointer;
+      }
+      .opay-trans-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #22222A;
+      }
+      .opay-trans-row:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .opay-trans-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .opay-trans-circle {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(124, 58, 237, 0.15);
+        color: #A78BFA;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .opay-trans-desc {
+        font-size: 13px;
+        font-weight: 600;
+        color: #FFFFFF;
+      }
+      .opay-trans-date {
+        font-size: 11px;
+        color: #9CA3AF;
+      }
+      .opay-trans-amount {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #10B981;
+      }
+
+      /* -------------------------------------------------------------
+         OPAY SUB-SCREENS (Airtime, Data, TV, Betting)
+      -------------------------------------------------------------- */
+      .opay-subscreen {
+        display: none;
+        animation: opayFadeIn 0.2s ease-out;
+      }
+      .opay-subscreen.active {
+        display: block;
+      }
+      @keyframes opayFadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .opay-sub-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        background: #0F0F12;
+        border-bottom: 1px solid #1F1F24;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .opay-sub-back-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 17px;
+        font-weight: 700;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+      .opay-sub-history {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: #A78BFA;
+        cursor: pointer;
+      }
+      .opay-sub-banner {
+        background: linear-gradient(135deg, #2E1065 0%, #1E1B4B 100%);
+        border: 1px solid #4C1D95;
+        border-radius: 12px;
+        padding: 12px 14px;
+        margin: 12px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .opay-sub-banner-text {
+        font-size: 12px;
+        font-weight: 700;
+        color: #E9D5FF;
+      }
+      .opay-sub-banner-badge {
+        background: #7C3AED;
+        color: #FFFFFF;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 12px;
+      }
+
+      /* Phone & Network Input Container */
+      .opay-input-box {
+        background: #18181D;
+        border: 1px solid #27272F;
+        border-radius: 14px;
+        padding: 12px 14px;
+        margin: 0 16px 14px 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .opay-carrier-select-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: #24242C;
+        border: 1px solid #33333E;
+        padding: 5px 8px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .opay-carrier-logo-img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+      }
+      .opay-phone-input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      .opay-phone-input::placeholder {
+        color: #6B7280;
+        font-weight: 500;
+      }
+
+      /* Voucher bar */
+      .opay-voucher-bar {
+        background: rgba(124, 58, 237, 0.12);
+        border: 1px solid rgba(124, 58, 237, 0.28);
+        border-radius: 10px;
+        padding: 9px 12px;
+        margin: 0 16px 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .opay-voucher-title {
+        font-size: 12px;
+        font-weight: 600;
+        color: #DDD6FE;
+      }
+      .opay-voucher-badge {
+        color: #A78BFA;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      /* Subscreen Grid Container */
+      .opay-sheet-body {
+        background: #18181D;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        padding: 18px 16px 30px 16px;
+        border: 1px solid #27272F;
+      }
+      .opay-sheet-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #F3F4F6;
+        margin-bottom: 14px;
+      }
+      .opay-amounts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .opay-amount-pill {
+        background: #22222A;
+        border: 1px solid #2E2E38;
+        border-radius: 12px;
+        padding: 12px 6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+      .opay-amount-pill:active,
+      .opay-amount-pill.selected {
+        background: rgba(124, 58, 237, 0.18);
+        border-color: #7C3AED;
+      }
+      .opay-pill-val {
+        font-size: 15px;
+        font-weight: 800;
+        color: #FFFFFF;
+      }
+      .opay-pill-cashback {
+        font-size: 10.5px;
+        font-weight: 600;
+        color: #A78BFA;
+      }
+      .opay-custom-amt-input {
+        width: 100%;
+        background: #22222A;
+        border: 1px solid #2E2E38;
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: #FFFFFF;
+        font-size: 15px;
+        font-weight: 600;
+        outline: none;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+      }
+      .opay-custom-amt-input:focus {
+        border-color: #7C3AED;
+      }
+      .opay-pay-action-btn {
+        width: 100%;
+        background: #7C3AED;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 24px;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 800;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 6px 18px rgba(124, 58, 237, 0.4);
+        transition: transform 0.15s ease;
+      }
+      .opay-pay-action-btn:active {
+        transform: scale(0.98);
+      }
+
+      /* Data Tab Pills (HOT, Daily, Weekly...) */
+      .opay-subtabs-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        overflow-x: auto;
+        padding-bottom: 12px;
+        margin-bottom: 14px;
+        scrollbar-width: none;
+      }
+      .opay-subtab-btn {
+        background: transparent;
+        border: none;
+        color: #9CA3AF;
+        font-size: 13.5px;
+        font-weight: 600;
+        padding: 4px 6px;
+        cursor: pointer;
+        white-space: nowrap;
+        position: relative;
+      }
+      .opay-subtab-btn.active {
+        color: #7C3AED;
+        font-weight: 800;
+      }
+      .opay-subtab-btn.active::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 2.5px;
+        background: #7C3AED;
+        border-radius: 2px;
+      }
+
+      /* Fixed Mobile Bottom Navigation Bar */
+      .opay-bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 64px;
+        background: #111116;
+        border-top: 1px solid #1F1F27;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        z-index: 999;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      .opay-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        color: #9CA3AF;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: color 0.15s ease;
+      }
+      .opay-nav-item.active {
+        color: #A78BFA;
+      }
+      .opay-nav-item.active svg {
+        color: #7C3AED;
+      }
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- =============================================================
+       OPAY-STYLE MOBILE FINTECH EXPERIENCE (PRIMARY ACCENT: ROYAL PURPLE)
+       Visible ONLY on mobile devices (<= 860px)
+  ============================================================== -->
+  <div id="mobile-opay-experience">
+
+    <!-- SCREEN 1: MAIN HOMEPAGE (MATCHES SCREENSHOT 2) -->
+    <div id="opay-screen-home" class="opay-subscreen active">
+      <!-- Top Header -->
+      <div class="opay-top-bar">
+        <div class="opay-user-greeting">
+          <div class="opay-avatar-wrap">
+            <div class="opay-avatar-circle">V</div>
+            <span class="opay-tier-badge">2</span>
+          </div>
+          <span class="opay-user-name">Hi, Victor</span>
+        </div>
+        <div class="opay-top-actions">
+          <button class="opay-icon-btn" onclick="showCustomAlert('Payzani Live Support: Connected')">
+            <span class="opay-help-pill">HELP</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </button>
+          <button class="opay-icon-btn" onclick="showCustomAlert('Scan to Pay QR: Ready')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </button>
+          <button class="opay-icon-btn" onclick="showCustomAlert('No unread notifications')">
+            <span class="opay-notif-dot"></span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="opay-content-body">
+        <!-- Available Balance Card (Royal Purple) -->
+        <div class="opay-balance-card">
+          <div class="opay-card-top-row">
+            <div class="opay-available-label">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Available</span>
+              <button class="opay-eye-btn" onclick="opayToggleBalance()" title="Toggle Balance">
+                <svg id="opay-eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <button class="opay-add-money-btn" onclick="openFundWalletDialog()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add Money
+            </button>
+          </div>
+
+          <div class="opay-balance-amount-row" onclick="opayToggleBalance()">
+            <span class="opay-balance-amount" id="opay-balance-val">₦24,500.00</span>
+            <span class="opay-balance-arrow">&gt;</span>
+          </div>
+
+          <div class="opay-earned-sub">Earned Today <span style="color:#DDD6FE; font-weight:700;">+₦120.00</span></div>
+
+          <div class="opay-card-notif-bar">
+            <div class="opay-notif-left">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>Transfer from GODBLESS... +₦1,500.00</span>
+            </div>
+            <span class="opay-trans-link" onclick="showCustomAlert('Displaying recent ledger...')">Transactions &gt;</span>
+          </div>
+        </div>
+
+        <!-- Business Announcement Row -->
+        <div class="opay-business-banner" onclick="switchEcoView('agent-portal')">
+          <div class="opay-business-left">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>Business Service - Today's Sales: <span class="opay-business-sales">₦4,800.00</span></span>
+          </div>
+          <span style="color:#9CA3AF; font-size:13px; font-weight:700;">&gt;</span>
+        </div>
+
+        <!-- 4 Quick Actions (Dark rounded tiles) -->
+        <div class="opay-quick-actions-row">
+          <div class="opay-quick-action-card" onclick="opaySwitchScreen('opay-screen-airtime')">
+            <div class="opay-quick-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <span class="opay-quick-label">To Payzani</span>
+          </div>
+          <div class="opay-quick-action-card" onclick="openFundWalletDialog()">
+            <div class="opay-quick-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span class="opay-quick-label">To Bank</span>
+          </div>
+          <div class="opay-quick-action-card" onclick="showCustomAlert('SafeBox Yield: 18% Annual APY Active')">
+            <div class="opay-quick-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/></svg>
+            </div>
+            <span class="opay-quick-label">Save</span>
+          </div>
+          <div class="opay-quick-action-card" onclick="switchEcoView('agent-admin')">
+            <div class="opay-quick-icon-wrap">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+            </div>
+            <span class="opay-quick-label">Loan / Quota</span>
+          </div>
+        </div>
+
+        <!-- 8 Services Grid (2 rows of 4 dark cards) -->
+        <div class="opay-services-card">
+          <div class="opay-services-grid">
+            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-airtime')">
+              <div class="opay-service-icon-box purple-glow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <span class="opay-service-name">Airtime</span>
+            </div>
+            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-data')">
+              <div class="opay-service-icon-box purple-glow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              </div>
+              <span class="opay-service-name">Data</span>
+            </div>
+            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-betting')">
+              <div class="opay-service-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              </div>
+              <span class="opay-service-name">Betting</span>
+            </div>
+            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-tv')">
+              <div class="opay-service-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+              </div>
+              <span class="opay-service-name">TV</span>
+            </div>
+            <div class="opay-service-item" onclick="showCustomAlert('Electricity STS Tokens: Ready')">
+              <div class="opay-service-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <span class="opay-service-name">OWealth</span>
+            </div>
+            <div class="opay-service-item" onclick="switchEcoView('agent-admin')">
+              <div class="opay-service-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
+              </div>
+              <span class="opay-service-name">Loan Center</span>
+            </div>
+            <div class="opay-service-item" onclick="switchEcoView('agent-portal')">
+              <div class="opay-service-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="opay-service-name">Invitation</span>
+            </div>
+            <div class="opay-service-item" onclick="showCustomAlert('All 24+ Automated VTU Switch Services Active')">
+              <div class="opay-service-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+              </div>
+              <span class="opay-service-name">More</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SafeBox Promo Banner -->
+        <div class="opay-promo-card" onclick="showCustomAlert('SafeBox: 18% p.a. automated interest')">
+          <div class="opay-promo-left">
+            <span class="opay-promo-title">Save &amp; Earn More with 18% p.a.</span>
+            <span class="opay-promo-sub">SafeBox &bull; Your SafeBox now grows faster.</span>
+          </div>
+          <button class="opay-promo-btn">Go</button>
+        </div>
+
+        <!-- Mini Ledger / Recent Transactions -->
+        <div class="opay-recent-section">
+          <div class="opay-recent-header">
+            <span class="opay-recent-title">Recent Transactions</span>
+            <span class="opay-recent-all" onclick="showCustomAlert('Opening complete ledger...')">See All &gt;</span>
+          </div>
+          <div class="opay-trans-row">
+            <div class="opay-trans-info">
+              <div class="opay-trans-circle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <div>
+                <div class="opay-trans-desc">Transfer from GODBLESS...</div>
+                <div class="opay-trans-date">Today &bull; 03:24 PM</div>
+              </div>
+            </div>
+            <div class="opay-trans-amount">+₦1,500.00</div>
+          </div>
+          <div class="opay-trans-row">
+            <div class="opay-trans-info">
+              <div class="opay-trans-circle" style="color:#A78BFA; background:rgba(124, 58, 237, 0.15);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg>
+              </div>
+              <div>
+                <div class="opay-trans-desc">MTN Airtime ₦1,000 Top-up</div>
+                <div class="opay-trans-date">Yesterday &bull; 06:12 PM</div>
+              </div>
+            </div>
+            <div class="opay-trans-amount" style="color:#DDD6FE;">-₦980.00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: AIRTIME SCREEN (MATCHES SCREENSHOT 3) -->
+    <div id="opay-screen-airtime" class="opay-subscreen">
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Airtime</span>
+        </div>
+        <span class="opay-sub-history" onclick="showCustomAlert('Airtime history loaded')">History</span>
+      </div>
+
+      <div class="opay-sub-banner">
+        <span class="opay-sub-banner-text">BNPL BLACK FRIDAY PERKS &bull; ENJOY 0% INTEREST</span>
+        <span class="opay-sub-banner-badge">Use Now</span>
+      </div>
+
+      <div class="opay-input-box">
+        <div class="opay-carrier-select-chip" onclick="opayRotateCarrier('airtime')">
+          <img src="assets/mtn.png" alt="Carrier" class="opay-carrier-logo-img" id="opay-airtime-carrier-img" />
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <input type="tel" class="opay-phone-input" id="opay-airtime-phone" placeholder="0916 1182 730" value="0916 1182 730" />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+      </div>
+
+      <div class="opay-voucher-bar">
+        <div>
+          <div class="opay-voucher-title">Super Value Pack &bull; Instant discount</div>
+          <div style="font-size:11px; color:#A78BFA;">Airtime Voucher Package &bull; Airtimex5 Datax3</div>
+        </div>
+        <span class="opay-voucher-badge">₦30 Off</span>
+      </div>
+
+      <div class="opay-sheet-body">
+        <div class="opay-sheet-title">Top up</div>
+        <div class="opay-amounts-grid">
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 100, 'airtime')">
+            <span class="opay-pill-val">₦100</span>
+            <span class="opay-pill-cashback">₦0.90 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 200, 'airtime')">
+            <span class="opay-pill-val">₦200</span>
+            <span class="opay-pill-cashback">₦1.80 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 300, 'airtime')">
+            <span class="opay-pill-val">₦300</span>
+            <span class="opay-pill-cashback">₦2.70 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 500, 'airtime')">
+            <span class="opay-pill-val">₦500</span>
+            <span class="opay-pill-cashback">₦4.50 Cashback</span>
+          </div>
+          <div class="opay-amount-pill selected" onclick="opaySelectAmount(this, 1000, 'airtime')">
+            <span class="opay-pill-val">₦1,000</span>
+            <span class="opay-pill-cashback">₦9.00 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 2000, 'airtime')">
+            <span class="opay-pill-val">₦2,000</span>
+            <span class="opay-pill-cashback">₦18.00 Cashback</span>
+          </div>
+        </div>
+
+        <input type="number" class="opay-custom-amt-input" id="opay-airtime-custom" placeholder="₦ 50-500,000" value="1000" />
+        <button class="opay-pay-action-btn" onclick="opaySubmitPayment('Airtime')">
+          Pay ₦<span id="opay-airtime-pay-label">1,000</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: MOBILE DATA SCREEN (MATCHES SCREENSHOT 4) -->
+    <div id="opay-screen-data" class="opay-subscreen">
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Mobile Data</span>
+        </div>
+        <span class="opay-sub-history" onclick="showCustomAlert('Data history loaded')">History</span>
+      </div>
+
+      <div class="opay-sub-banner">
+        <span class="opay-sub-banner-text">Calls Shouldn't Wait For Payday &bull; Up To 6% Cashback</span>
+        <span class="opay-sub-banner-badge">Apply</span>
+      </div>
+
+      <div class="opay-input-box">
+        <div class="opay-carrier-select-chip" onclick="opayRotateCarrier('data')">
+          <img src="assets/mtn.png" alt="Carrier" class="opay-carrier-logo-img" id="opay-data-carrier-img" />
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <input type="tel" class="opay-phone-input" id="opay-data-phone" placeholder="0916 1182 730" value="0916 1182 730" />
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/></svg>
+      </div>
+
+      <div class="opay-voucher-bar">
+        <div>
+          <div class="opay-voucher-title">Super Value Pack &bull; Instant discount</div>
+          <div style="font-size:11px; color:#A78BFA;">Airtime Voucher Package &bull; Total 9 &bull; Use now</div>
+        </div>
+        <span class="opay-voucher-badge">₦30 Off</span>
+      </div>
+
+      <div class="opay-sheet-body">
+        <div class="opay-sheet-title">Data Plans</div>
+        <div class="opay-subtabs-row">
+          <button class="opay-subtab-btn active" onclick="opaySwitchDataTab(this, 'hot')">HOT</button>
+          <button class="opay-subtab-btn" onclick="opaySwitchDataTab(this, 'night')">Extra Night</button>
+          <button class="opay-subtab-btn" onclick="opaySwitchDataTab(this, 'daily')">Daily</button>
+          <button class="opay-subtab-btn" onclick="opaySwitchDataTab(this, 'weekly')">Weekly</button>
+          <button class="opay-subtab-btn" onclick="opaySwitchDataTab(this, 'monthly')">Monthly</button>
+        </div>
+
+        <div class="opay-amounts-grid">
+          <div class="opay-amount-pill selected" onclick="opaySelectDataPlan(this, '1GB', 500)">
+            <span class="opay-pill-val">1GB</span>
+            <span style="font-size:11px; color:#9CA3AF;">1 Day &bull; ₦500</span>
+            <span class="opay-pill-cashback">₦17.50 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectDataPlan(this, '2.5GB', 750)">
+            <span class="opay-pill-val">2.5GB</span>
+            <span style="font-size:11px; color:#9CA3AF;">1 Day &bull; ₦750</span>
+            <span class="opay-pill-cashback">₦15.00 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectDataPlan(this, '2.5GB', 900)">
+            <span class="opay-pill-val">2.5GB</span>
+            <span style="font-size:11px; color:#9CA3AF;">2 Days &bull; ₦900</span>
+            <span class="opay-pill-cashback">₦18.00 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectDataPlan(this, '500M', 500)">
+            <span class="opay-pill-val">500M</span>
+            <span style="font-size:11px; color:#9CA3AF;">7 Days &bull; ₦500</span>
+            <span class="opay-pill-cashback">₦17.50 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectDataPlan(this, '1GB', 800)">
+            <span class="opay-pill-val">1GB</span>
+            <span style="font-size:11px; color:#9CA3AF;">7 Days &bull; ₦800</span>
+            <span class="opay-pill-cashback">₦16.00 Cashback</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectDataPlan(this, '3.5GB', 1500)">
+            <span class="opay-pill-val">3.5GB</span>
+            <span style="font-size:11px; color:#9CA3AF;">7 Days &bull; ₦1,500</span>
+            <span class="opay-pill-cashback">₦30.00 Cashback</span>
+          </div>
+        </div>
+
+        <button class="opay-pay-action-btn" onclick="opaySubmitPayment('Mobile Data')">
+          Pay ₦<span id="opay-data-pay-label">500</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN 4: TV / CABLE SCREEN (MATCHES SCREENSHOT 5) -->
+    <div id="opay-screen-tv" class="opay-subscreen">
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>TV</span>
+        </div>
+        <span class="opay-sub-history" onclick="showCustomAlert('TV history loaded')">History</span>
+      </div>
+
+      <div class="opay-sub-banner">
+        <span class="opay-sub-banner-text">Share the joy this season with DStv &amp; GOtv!</span>
+        <span class="opay-sub-banner-badge">Hot</span>
+      </div>
+
+      <div class="opay-input-box">
+        <div class="opay-carrier-select-chip" onclick="showCustomAlert('DStv, GOtv, Startimes active')">
+          <img src="assets/dstv.png" alt="DStv" class="opay-carrier-logo-img" />
+          <span style="font-size:13px; font-weight:700;">DStv</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <input type="text" class="opay-phone-input" placeholder="Enter Smartcard Number" value="7034982109" />
+      </div>
+
+      <div class="opay-sheet-body">
+        <div class="opay-sheet-title">Hot Offers</div>
+        <div class="opay-amounts-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="opay-amount-pill selected" onclick="opaySelectTvPlan(this, 'STARTERE36', 5800)">
+            <span class="opay-pill-val">STARTERE36</span>
+            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+            <span class="opay-pill-cashback">₦5,800</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SELECTE36', 10800)">
+            <span class="opay-pill-val">SELECTE36</span>
+            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+            <span class="opay-pill-cashback">₦10,800</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SPORTSE36', 20800)">
+            <span class="opay-pill-val">SPORTSE36</span>
+            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+            <span class="opay-pill-cashback">₦20,800</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'DStv Compact', 15700)">
+            <span class="opay-pill-val">Compact</span>
+            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+            <span class="opay-pill-cashback">₦15,700</span>
+          </div>
+        </div>
+
+        <button class="opay-pay-action-btn" onclick="opaySubmitPayment('TV Subscription')">
+          Pay ₦<span id="opay-tv-pay-label">5,800</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SCREEN 5: BETTING SCREEN (MATCHES SCREENSHOT 6) -->
+    <div id="opay-screen-betting" class="opay-subscreen">
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Betting</span>
+        </div>
+        <span class="opay-sub-history" onclick="showCustomAlert('Betting history loaded')">History</span>
+      </div>
+
+      <div class="opay-sub-banner">
+        <span class="opay-sub-banner-text">Awoof Wey No Dey Run Belle! Get 10% Off!</span>
+        <span class="opay-sub-banner-badge">₦100 All &gt;</span>
+      </div>
+
+      <div class="opay-input-box">
+        <div class="opay-carrier-select-chip" onclick="showCustomAlert('SportyBet, iLOTBet, 1xBET active')">
+          <span style="font-size:13px; font-weight:800; color:#EF4444;">SportyBet</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <input type="text" class="opay-phone-input" placeholder="User ID" value="8168207892" />
+      </div>
+
+      <div class="opay-sheet-body">
+        <div class="opay-sheet-title">Select Amount</div>
+        <div class="opay-amounts-grid">
+          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 100)">
+            <span class="opay-pill-val">₦100</span>
+            <span class="opay-pill-cashback" style="color:#10B981;">Pay ₦90</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 200)">
+            <span class="opay-pill-val">₦200</span>
+            <span class="opay-pill-cashback" style="color:#10B981;">Pay ₦180</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 300)">
+            <span class="opay-pill-val">₦300</span>
+            <span class="opay-pill-cashback" style="color:#10B981;">Pay ₦270</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 400)">
+            <span class="opay-pill-val">₦400</span>
+            <span class="opay-pill-cashback" style="color:#10B981;">Pay ₦370</span>
+          </div>
+          <div class="opay-amount-pill selected" onclick="opaySelectBetAmount(this, 500)">
+            <span class="opay-pill-val">₦500</span>
+            <span class="opay-pill-cashback" style="color:#10B981;">Pay ₦470</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 1000)">
+            <span class="opay-pill-val">₦1,000</span>
+            <span class="opay-pill-cashback" style="color:#10B981;">Pay ₦970</span>
+          </div>
+        </div>
+
+        <input type="number" class="opay-custom-amt-input" id="opay-bet-custom" placeholder="₦ 100-1,000,000" value="500" />
+        <button class="opay-pay-action-btn" onclick="opaySubmitPayment('Betting Topup')">
+          Pay
+        </button>
+      </div>
+    </div>
+
+    <!-- PERSISTENT MOBILE BOTTOM NAVIGATION BAR -->
+    <nav class="opay-bottom-nav">
+      <div class="opay-nav-item active" onclick="opaySwitchBottomTab(this, 'home')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Home</span>
+      </div>
+      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'rewards')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+        <span>Rewards</span>
+      </div>
+      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'finance')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+        <span>Finance</span>
+      </div>
+      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'cards')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+        <span>Cards</span>
+      </div>
+      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'me')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Me</span>
+      </div>
+    </nav>
+
+  </div>
+
+
 
 
 
@@ -6274,6 +7524,104 @@
 
       observer.observe(banner);
     })();
-  </script>
+  
+
+    // -------------------------------------------------------------
+    // OPAY MOBILE INTERACTIVE CONTROLS
+    // -------------------------------------------------------------
+    let opayBalanceHidden = false;
+    const OPAY_CARRIERS = [
+      { name: 'MTN', img: 'assets/mtn.png' },
+      { name: 'Airtel', img: 'assets/airtel.png' },
+      { name: 'Glo', img: 'assets/glo.png' },
+      { name: '9mobile', img: 'assets/9mobile.png' }
+    ];
+    let opayCarrierIdx = 0;
+
+    function opayToggleBalance() {
+      opayBalanceHidden = !opayBalanceHidden;
+      const el = document.getElementById('opay-balance-val');
+      if (el) {
+        el.innerText = opayBalanceHidden ? '••••••••' : '₦24,500.00';
+      }
+    }
+
+    function opaySwitchScreen(screenId) {
+      document.querySelectorAll('#mobile-opay-experience .opay-subscreen').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById(screenId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function opayRotateCarrier(type) {
+      opayCarrierIdx = (opayCarrierIdx + 1) % OPAY_CARRIERS.length;
+      const c = OPAY_CARRIERS[opayCarrierIdx];
+      const img = document.getElementById(`opay-${type}-carrier-img`);
+      if (img) img.src = c.img;
+      showCustomAlert(`Network switched to ${c.name}`);
+    }
+
+    function opaySelectAmount(el, val, type) {
+      el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      const input = document.getElementById(`opay-${type}-custom`);
+      if (input) input.value = val;
+      const label = document.getElementById(`opay-${type}-pay-label`);
+      if (label) label.innerText = Number(val).toLocaleString();
+    }
+
+    function opaySelectDataPlan(el, planName, price) {
+      el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      const label = document.getElementById('opay-data-pay-label');
+      if (label) label.innerText = Number(price).toLocaleString();
+    }
+
+    function opaySelectTvPlan(el, planName, price) {
+      el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      const label = document.getElementById('opay-tv-pay-label');
+      if (label) label.innerText = Number(price).toLocaleString();
+    }
+
+    function opaySelectBetAmount(el, val) {
+      el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      const input = document.getElementById('opay-bet-custom');
+      if (input) input.value = val;
+    }
+
+    function opaySwitchDataTab(btn, tabKey) {
+      btn.parentElement.querySelectorAll('.opay-subtab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showCustomAlert(`Filtered to ${btn.innerText} plans`);
+    }
+
+    function opaySwitchBottomTab(el, tabKey) {
+      document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      if (tabKey === 'home') {
+        opaySwitchScreen('opay-screen-home');
+      } else if (tabKey === 'rewards') {
+        showCustomAlert('Rewards Center: 3% Cashback Active on All Purchases');
+      } else if (tabKey === 'finance') {
+        showCustomAlert('SafeBox & OWealth Savings: 18% Annual APY');
+      } else if (tabKey === 'cards') {
+        showCustomAlert('Payzani Virtual Card: Verified & Linked');
+      } else if (tabKey === 'me') {
+        showCustomAlert('Account: Victor O. &bull; Tier 2 Verified');
+      }
+    }
+
+    function opaySubmitPayment(serviceName) {
+      showCustomAlert(`${serviceName} payment of ₦1,000 processed instantly via switch!`);
+      setTimeout(() => {
+        opaySwitchScreen('opay-screen-home');
+      }, 1200);
+    }
+
+</script>
 </body>
 </html>
