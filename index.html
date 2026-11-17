@@ -3650,7 +3650,7 @@
           <div class="opay-earned-sub">Earned Today <span style="color:#DDD6FE; font-weight:700;">+₦120.00</span></div>
 
           <div class="opay-card-notif-bar">
-            <div class="opay-notif-left">
+            <div class="opay-notif-left" style="margin-right: 10px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
               <span>Transfer from GODBLESS... +₦1,500.00</span>
             </div>
@@ -3667,31 +3667,31 @@
           <span style="color:#9CA3AF; font-size:13px; font-weight:700;">&gt;</span>
         </div>
 
-        <!-- 4 Quick Actions (Dark rounded tiles) -->
+        <!-- 4 Quick Actions (Dark rounded tiles) - AIRTIME, DATA, BETTING, TV -->
         <div class="opay-quick-actions-row">
           <div class="opay-quick-action-card" onclick="opaySwitchScreen('opay-screen-airtime')">
             <div class="opay-quick-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
             </div>
-            <span class="opay-quick-label">To Payzani</span>
+            <span class="opay-quick-label">Airtime</span>
           </div>
-          <div class="opay-quick-action-card" onclick="openFundWalletDialog()">
+          <div class="opay-quick-action-card" onclick="opaySwitchScreen('opay-screen-data')">
             <div class="opay-quick-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
             </div>
-            <span class="opay-quick-label">To Bank</span>
+            <span class="opay-quick-label">Data</span>
           </div>
-          <div class="opay-quick-action-card" onclick="showCustomAlert('SafeBox Yield: 18% Annual APY Active')">
+          <div class="opay-quick-action-card" onclick="opaySwitchScreen('opay-screen-betting')">
             <div class="opay-quick-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
             </div>
-            <span class="opay-quick-label">Save</span>
+            <span class="opay-quick-label">Betting</span>
           </div>
-          <div class="opay-quick-action-card" onclick="switchEcoView('agent-admin')">
+          <div class="opay-quick-action-card" onclick="opaySwitchScreen('opay-screen-tv')">
             <div class="opay-quick-icon-wrap">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="8"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
             </div>
-            <span class="opay-quick-label">Loan / Quota</span>
+            <span class="opay-quick-label">TV</span>
           </div>
         </div>
 
