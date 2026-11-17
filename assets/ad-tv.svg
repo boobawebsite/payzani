@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360">
+  <defs>
+    <linearGradient id="bg-tv" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C1E4A"/>
+      <stop offset="50%" stop-color="#091433"/>
+      <stop offset="100%" stop-color="#050A1A"/>
+    </linearGradient>
+    <linearGradient id="cyan-btn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <filter id="glow-tv" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="360" rx="24" fill="url(#bg-tv)"/>
+  <circle cx="680" cy="160" r="140" fill="#0284C7" opacity="0.3" filter="url(#glow-tv)"/>
+  <circle cx="120" cy="180" r="100" fill="#06B6D4" opacity="0.25" filter="url(#glow-tv)"/>
+
+  <g transform="translate(48, 48)">
+    <rect width="180" height="32" rx="16" fill="url(#cyan-btn)"/>
+    <text x="90" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">TV &amp; STREAMING DEALS</text>
+
+    <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">DStv &bull; GOtv &bull; StarTimes</text>
+    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#7DD3FC">Instant Smartcard Activation</text>
+
+    <g transform="translate(0, 140)">
+      <rect width="360" height="56" rx="14" fill="#081024" stroke="#0284C7" stroke-width="1.5"/>
+      <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">GOtv Supa &bull; DStv @ </text>
+      <text x="180" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#38BDF8">₦5,800</text>
+      <rect x="260" y="14" width="85" height="26" rx="8" fill="rgba(56, 189, 248, 0.2)"/>
+      <text x="302" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#38BDF8" text-anchor="middle">INSTANT</text>
+    </g>
+
+    <g transform="translate(0, 214)">
+      <rect width="210" height="46" rx="23" fill="url(#cyan-btn)"/>
+      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Renew Package &rarr;</text>
+    </g>
+  </g>
+
+  <!-- Right Graphic: TV Screen with Satellite Dish -->
+  <g transform="translate(560, 60)">
+    <rect x="20" y="40" width="160" height="110" rx="12" fill="#050B1A" stroke="#38BDF8" stroke-width="3"/>
+    <rect x="30" y="50" width="140" height="90" rx="8" fill="url(#cyan-btn)" opacity="0.3"/>
+    
+    <!-- Screen Play Icon -->
+    <circle cx="100" cy="95" r="24" fill="#06B6D4"/>
+    <polygon points="94,85 110,95 94,105" fill="#FFFFFF"/>
+    
+    <!-- Stand -->
+    <path d="M100 150 L100 180 M75 180 L125 180" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

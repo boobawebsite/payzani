@@ -3578,6 +3578,77 @@
       }
     }
 
+  
+      /* Advertisement Banner Carousel (Latest & Popular Plans: Airtime, Data, Betting, TV) */
+      .opay-ad-carousel-card {
+        width: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-bottom: 14px;
+        position: relative;
+        background: #18181D;
+        border: 1px solid #27272F;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      }
+      .opay-ad-carousel-track {
+        position: relative;
+        width: 100%;
+        height: clamp(140px, 42vw, 175px);
+        overflow: hidden;
+      }
+      .opay-ad-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.98);
+        transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+        cursor: pointer;
+      }
+      .opay-ad-slide.active {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        z-index: 2;
+      }
+      .opay-ad-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 16px;
+      }
+      .opay-ad-dots {
+        position: absolute;
+        bottom: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+        z-index: 5;
+        background: rgba(0, 0, 0, 0.45);
+        padding: 3px 8px;
+        border-radius: 10px;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+      .opay-ad-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.35);
+        transition: all 0.25s ease;
+        cursor: pointer;
+      }
+      .opay-ad-dot.active {
+        width: 16px;
+        border-radius: 4px;
+        background: #A78BFA;
+      }
+
   </style>
 </head>
 <body>
@@ -3695,57 +3766,27 @@
           </div>
         </div>
 
-        <!-- 8 Services Grid (2 rows of 4 dark cards) -->
-        <div class="opay-services-card">
-          <div class="opay-services-grid">
-            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-airtime')">
-              <div class="opay-service-icon-box purple-glow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </div>
-              <span class="opay-service-name">Airtime</span>
+                <!-- Advertisement Banner Carousel (Latest & Popular Plans: Airtime, Data, Betting, TV) -->
+        <div class="opay-ad-carousel-card" id="opayAdCarousel">
+          <div class="opay-ad-carousel-track">
+            <div class="opay-ad-slide active" onclick="opaySwitchScreen('opay-screen-airtime')">
+              <img src="assets/ad-airtime.svg" alt="Airtime Latest Deals" class="opay-ad-img" />
             </div>
-            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-data')">
-              <div class="opay-service-icon-box purple-glow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-              </div>
-              <span class="opay-service-name">Data</span>
+            <div class="opay-ad-slide" onclick="opaySwitchScreen('opay-screen-data')">
+              <img src="assets/ad-data.svg" alt="Data Latest Plans" class="opay-ad-img" />
             </div>
-            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-betting')">
-              <div class="opay-service-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-              </div>
-              <span class="opay-service-name">Betting</span>
+            <div class="opay-ad-slide" onclick="opaySwitchScreen('opay-screen-betting')">
+              <img src="assets/ad-betting.svg" alt="Betting Popular Plans" class="opay-ad-img" />
             </div>
-            <div class="opay-service-item" onclick="opaySwitchScreen('opay-screen-tv')">
-              <div class="opay-service-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-              </div>
-              <span class="opay-service-name">TV</span>
+            <div class="opay-ad-slide" onclick="opaySwitchScreen('opay-screen-tv')">
+              <img src="assets/ad-tv.svg" alt="TV Latest Packages" class="opay-ad-img" />
             </div>
-            <div class="opay-service-item" onclick="showCustomAlert('Electricity STS Tokens: Ready')">
-              <div class="opay-service-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-              </div>
-              <span class="opay-service-name">OWealth</span>
-            </div>
-            <div class="opay-service-item" onclick="switchEcoView('agent-admin')">
-              <div class="opay-service-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0M2 9.5h20"/></svg>
-              </div>
-              <span class="opay-service-name">Loan Center</span>
-            </div>
-            <div class="opay-service-item" onclick="switchEcoView('agent-portal')">
-              <div class="opay-service-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <span class="opay-service-name">Invitation</span>
-            </div>
-            <div class="opay-service-item" onclick="showCustomAlert('All 24+ Automated VTU Switch Services Active')">
-              <div class="opay-service-icon-box">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
-              </div>
-              <span class="opay-service-name">More</span>
-            </div>
+          </div>
+          <div class="opay-ad-dots">
+            <span class="opay-ad-dot active" onclick="opayGoToAdSlide(0)"></span>
+            <span class="opay-ad-dot" onclick="opayGoToAdSlide(1)"></span>
+            <span class="opay-ad-dot" onclick="opayGoToAdSlide(2)"></span>
+            <span class="opay-ad-dot" onclick="opayGoToAdSlide(3)"></span>
           </div>
         </div>
 
@@ -7621,6 +7662,35 @@
         opaySwitchScreen('opay-screen-home');
       }, 1200);
     }
+
+
+
+    // 3-Second Automatic Advertisement Carousel
+    let opayAdCurrentIdx = 0;
+    function opayGoToAdSlide(idx) {
+      const slides = document.querySelectorAll('.opay-ad-slide');
+      const dots = document.querySelectorAll('.opay-ad-dot');
+      if (!slides.length) return;
+      opayAdCurrentIdx = (idx + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        if (i === opayAdCurrentIdx) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+      dots.forEach((d, i) => {
+        if (i === opayAdCurrentIdx) {
+          d.classList.add('active');
+        } else {
+          d.classList.remove('active');
+        }
+      });
+    }
+
+    setInterval(() => {
+      opayGoToAdSlide(opayAdCurrentIdx + 1);
+    }, 3000);
 
 </script>
 </body>

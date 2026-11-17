@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360">
+  <defs>
+    <linearGradient id="bg-airtime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E1065"/>
+      <stop offset="50%" stop-color="#1E0B40"/>
+      <stop offset="100%" stop-color="#0B0518"/>
+    </linearGradient>
+    <linearGradient id="purple-btn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="badge-gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <filter id="glow-airtime" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="360" rx="24" fill="url(#bg-airtime)"/>
+  
+  <!-- Ambient Neon Orbs -->
+  <circle cx="680" cy="120" r="140" fill="#7C3AED" opacity="0.35" filter="url(#glow-airtime)"/>
+  <circle cx="120" cy="300" r="100" fill="#6D28D9" opacity="0.25" filter="url(#glow-airtime)"/>
+
+  <!-- Left Content -->
+  <g transform="translate(48, 48)">
+    <!-- Pill Tag -->
+    <rect width="180" height="32" rx="16" fill="url(#badge-gold)"/>
+    <text x="90" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.5">LATEST POPULAR DEALS</text>
+
+    <!-- Main Title -->
+    <text x="0" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" letter-spacing="-0.5">Instant Airtime Top-Up</text>
+    <text x="0" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#C4B5FD">MTN &bull; Airtel &bull; Glo &bull; 9mobile</text>
+
+    <!-- Price Offer Bar -->
+    <g transform="translate(0, 140)">
+      <rect width="360" height="56" rx="14" fill="#130924" stroke="#4C1D95" stroke-width="1.5"/>
+      <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">₦1,000 Airtime @ </text>
+      <text x="160" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#10B981">₦980 ONLY</text>
+      <rect x="275" y="14" width="70" height="26" rx="8" fill="rgba(16, 185, 129, 0.2)"/>
+      <text x="310" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#10B981" text-anchor="middle">2% OFF</text>
+    </g>
+
+    <!-- Action Button -->
+    <g transform="translate(0, 214)">
+      <rect width="210" height="46" rx="23" fill="url(#purple-btn)"/>
+      <text x="105" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="800" fill="#FFFFFF" text-anchor="middle">Recharge Now &rarr;</text>
+    </g>
+  </g>
+
+  <!-- Right Graphic: 3D Smartphone & Signal Waves -->
+  <g transform="translate(560, 60)">
+    <!-- Signal Rings -->
+    <circle cx="100" cy="120" r="110" fill="none" stroke="#7C3AED" stroke-width="2" stroke-dasharray="6 6" opacity="0.4"/>
+    <circle cx="100" cy="120" r="80" fill="none" stroke="#8B5CF6" stroke-width="2" opacity="0.6"/>
+    
+    <!-- Phone Body -->
+    <rect x="40" y="20" width="120" height="200" rx="20" fill="#0F0F14" stroke="#8B5CF6" stroke-width="3"/>
+    <rect x="50" y="35" width="100" height="170" rx="12" fill="#1E0B40"/>
+    <circle cx="100" cy="28" r="4" fill="#4C1D95"/>
+    
+    <!-- Screen elements -->
+    <circle cx="100" cy="90" r="28" fill="#7C3AED" opacity="0.8"/>
+    <path d="M92 90 L98 96 L108 84" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="100" y="136" font-family="sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">₦24,500</text>
+    <text x="100" y="152" font-family="sans-serif" font-size="9" font-weight="700" fill="#10B981" text-anchor="middle">SUCCESSFUL</text>
+
+    <!-- Network Badges Floating -->
+    <g transform="translate(-10, 30)">
+      <rect width="40" height="40" rx="10" fill="#FFCC00" filter="url(#glow-airtime)"/>
+      <text x="20" y="25" font-family="sans-serif" font-size="11" font-weight="900" fill="#000000" text-anchor="middle">MTN</text>
+    </g>
+    <g transform="translate(130, 140)">
+      <rect width="40" height="40" rx="10" fill="#ED1C24" filter="url(#glow-airtime)"/>
+      <text x="20" y="25" font-family="sans-serif" font-size="9" font-weight="900" fill="#FFFFFF" text-anchor="middle">airtel</text>
+    </g>
+  </g>
+</svg>
