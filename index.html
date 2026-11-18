@@ -3103,20 +3103,20 @@
       /* 4 Core Quick Actions (Dark rounded tiles) */
       .opay-quick-actions-row {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: clamp(5px, 1.6vw, 8px);
         margin-bottom: 14px;
       }
       .opay-quick-action-card {
         background: #18181D;
         border: 1px solid #27272F;
-        border-radius: 14px;
-        padding: 14px 6px 12px 6px;
+        border-radius: 12px;
+        padding: 11px 3px 9px 3px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 6px;
         cursor: pointer;
         transition: transform 0.15s ease, background-color 0.15s ease;
       }
@@ -3135,10 +3135,14 @@
         justify-content: center;
       }
       .opay-quick-label {
-        font-size: 12px;
+        font-size: 10.5px;
         font-weight: 600;
         color: #F3F4F6;
         text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
       }
 
       /* 8 Services Grid (2 rows of 4 dark cards) */
@@ -3764,6 +3768,17 @@
             </div>
             <span class="opay-quick-label">TV</span>
           </div>
+          <div class="opay-quick-action-card" onclick="opaySwitchScreen('opay-screen-booster')">
+            <div class="opay-quick-icon-wrap" style="color: #EC4899; background: rgba(236, 72, 153, 0.16);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+              </svg>
+            </div>
+            <span class="opay-quick-label">Booster</span>
+          </div>
         </div>
 
                 <!-- Advertisement Banner Carousel (Latest & Popular Plans: Airtime, Data, Betting, TV) -->
@@ -3781,12 +3796,16 @@
             <div class="opay-ad-slide" onclick="opaySwitchScreen('opay-screen-tv')">
               <img src="assets/ad-tv.svg" alt="TV Latest Packages" class="opay-ad-img" />
             </div>
+            <div class="opay-ad-slide" onclick="opaySwitchScreen('opay-screen-booster')">
+              <img src="assets/ad-booster.svg" alt="Social Booster Deals" class="opay-ad-img" />
+            </div>
           </div>
           <div class="opay-ad-dots">
             <span class="opay-ad-dot active" onclick="opayGoToAdSlide(0)"></span>
             <span class="opay-ad-dot" onclick="opayGoToAdSlide(1)"></span>
             <span class="opay-ad-dot" onclick="opayGoToAdSlide(2)"></span>
             <span class="opay-ad-dot" onclick="opayGoToAdSlide(3)"></span>
+            <span class="opay-ad-dot" onclick="opayGoToAdSlide(4)"></span>
           </div>
         </div>
 
@@ -4092,6 +4111,71 @@
         <input type="number" class="opay-custom-amt-input" id="opay-bet-custom" placeholder="₦ 100-1,000,000" value="500" />
         <button class="opay-pay-action-btn" onclick="opaySubmitPayment('Betting Topup')">
           Pay
+        </button>
+      </div>
+    </div>
+
+    
+    <!-- SCREEN 6: SOCIAL BOOSTER SCREEN -->
+    <div id="opay-screen-booster" class="opay-subscreen">
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Social Booster</span>
+        </div>
+        <span class="opay-sub-history" onclick="showCustomAlert('Social growth history loaded')">History</span>
+      </div>
+
+      <div class="opay-sub-banner" style="background: linear-gradient(135deg, #4A044E 0%, #2E0854 100%); border-color: #831843;">
+        <span class="opay-sub-banner-text">INSTANT SOCIAL BOOST &bull; INSTAGRAM, TIKTOK, YOUTUBE &amp; X</span>
+        <span class="opay-sub-banner-badge" style="background: #EC4899;">Fast Delivery</span>
+      </div>
+
+      <div class="opay-input-box">
+        <div class="opay-carrier-select-chip" onclick="showCustomAlert('Platforms: Instagram, TikTok, YouTube, X')">
+          <span style="font-size:13px; font-weight:800; color:#EC4899;">Instagram</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <input type="text" class="opay-phone-input" placeholder="@username or link" value="@victor_official" />
+      </div>
+
+      <div class="opay-sheet-body">
+        <div class="opay-sheet-title">Popular Growth Packages</div>
+        <div class="opay-amounts-grid">
+          <div class="opay-amount-pill selected" onclick="opaySelectBoosterPlan(this, '1k Followers', 1200)">
+            <span class="opay-pill-val">1,000</span>
+            <span style="font-size:11px; color:#F472B6;">Followers</span>
+            <span class="opay-pill-cashback">₦1,200</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '2.5k Followers', 2800)">
+            <span class="opay-pill-val">2,500</span>
+            <span style="font-size:11px; color:#F472B6;">Followers</span>
+            <span class="opay-pill-cashback">₦2,800</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5k Followers', 5200)">
+            <span class="opay-pill-val">5,000</span>
+            <span style="font-size:11px; color:#F472B6;">Followers</span>
+            <span class="opay-pill-cashback">₦5,200</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '1k Likes', 450)">
+            <span class="opay-pill-val">1,000</span>
+            <span style="font-size:11px; color:#F472B6;">Post Likes</span>
+            <span class="opay-pill-cashback">₦450</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5k Views', 600)">
+            <span class="opay-pill-val">5,000</span>
+            <span style="font-size:11px; color:#F472B6;">Video Views</span>
+            <span class="opay-pill-cashback">₦600</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '10k Views', 1100)">
+            <span class="opay-pill-val">10,000</span>
+            <span style="font-size:11px; color:#F472B6;">Reels Views</span>
+            <span class="opay-pill-cashback">₦1,100</span>
+          </div>
+        </div>
+
+        <button class="opay-pay-action-btn" style="background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);" onclick="opaySubmitPayment('Social Booster')">
+          Boost Now &bull; ₦<span id="opay-booster-pay-label">1,200</span>
         </button>
       </div>
     </div>
@@ -7691,6 +7775,15 @@
     setInterval(() => {
       opayGoToAdSlide(opayAdCurrentIdx + 1);
     }, 3000);
+
+
+
+    function opaySelectBoosterPlan(el, planName, price) {
+      el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
+      el.classList.add('selected');
+      const label = document.getElementById('opay-booster-pay-label');
+      if (label) label.innerText = Number(price).toLocaleString();
+    }
 
 </script>
 </body>
