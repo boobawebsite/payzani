@@ -3194,42 +3194,74 @@
         text-align: center;
       }
 
-      /* Promo / Savings Banner (SafeBox) */
+      /* Refer Your Friend Banner */
       .opay-promo-card {
-        background: linear-gradient(90deg, #18181D 0%, #20182E 100%);
-        border: 1px solid #3B2A58;
-        border-radius: 14px;
-        padding: 14px 16px;
+        background: linear-gradient(135deg, #1A1329 0%, #221238 50%, #150E24 100%);
+        border: 1px solid rgba(167, 139, 250, 0.28);
+        border-radius: 16px;
+        padding: 13px 14px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 12px;
         margin-bottom: 14px;
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+        transition: transform 0.15s ease, border-color 0.2s ease;
+      }
+      .opay-promo-card:active {
+        transform: scale(0.985);
+        border-color: #A78BFA;
+      }
+      .opay-promo-icon-wrap {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.28) 0%, rgba(236, 72, 153, 0.22) 100%);
+        border: 1px solid rgba(167, 139, 250, 0.3);
+        color: #C4B5FD;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
       }
       .opay-promo-left {
         display: flex;
         flex-direction: column;
         gap: 3px;
+        flex: 1;
+        min-width: 0;
       }
       .opay-promo-title {
-        font-size: 14px;
-        font-weight: 700;
+        font-size: 13.5px;
+        font-weight: 800;
         color: #FFFFFF;
+        letter-spacing: -0.2px;
       }
       .opay-promo-sub {
-        font-size: 11.5px;
-        color: #9CA3AF;
+        font-size: 11px;
+        color: #A78BFA;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .opay-promo-btn {
-        background: #7C3AED;
+        background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
         color: #FFFFFF;
-        font-size: 13px;
-        font-weight: 700;
-        padding: 7px 18px;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 7px 16px;
         border-radius: 20px;
-        border: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+        flex-shrink: 0;
+        transition: transform 0.15s ease;
+      }
+      .opay-promo-btn:active {
+        transform: scale(0.95);
       }
 
       /* Mini Ledger / Recent Transactions */
@@ -3809,13 +3841,21 @@
           </div>
         </div>
 
-        <!-- SafeBox Promo Banner -->
-        <div class="opay-promo-card" onclick="showCustomAlert('SafeBox: 18% p.a. automated interest')">
-          <div class="opay-promo-left">
-            <span class="opay-promo-title">Save &amp; Earn More with 18% p.a.</span>
-            <span class="opay-promo-sub">SafeBox &bull; Your SafeBox now grows faster.</span>
+        <!-- Refer Your Friend Referral Banner -->
+        <div class="opay-promo-card" onclick="opayTriggerReferral()">
+          <div class="opay-promo-icon-wrap">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="8.5" cy="7" r="4"/>
+              <line x1="20" y1="8" x2="20" y2="14"/>
+              <line x1="23" y1="11" x2="17" y2="11"/>
+            </svg>
           </div>
-          <button class="opay-promo-btn">Go</button>
+          <div class="opay-promo-left">
+            <span class="opay-promo-title">Refer Your Friends</span>
+            <span class="opay-promo-sub">Earn ₦1,000 bonus &bull; Up to 5% commission on every top-up</span>
+          </div>
+          <button class="opay-promo-btn">Invite</button>
         </div>
 
         <!-- Mini Ledger / Recent Transactions -->
@@ -7783,6 +7823,16 @@
       el.classList.add('selected');
       const label = document.getElementById('opay-booster-pay-label');
       if (label) label.innerText = Number(price).toLocaleString();
+    }
+
+
+
+    function opayTriggerReferral() {
+      const refLink = 'https://payzani.vercel.app/?ref=PAYZANI-' + Math.floor(100000 + Math.random() * 900000);
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(refLink).catch(() => {});
+      }
+      showCustomAlert('Referral Link Copied! Share with friends to earn ₦1,000 on their first top-up.');
     }
 
 </script>
