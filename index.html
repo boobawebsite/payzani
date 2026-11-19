@@ -4578,7 +4578,7 @@
 </head>
 <body>
   <!-- PAYZANI MOBILE SPLASH SCREEN (FIRST SCREEN ON LOAD) -->
-  <div id="payzani-mobile-splash" class="payzani-splash-screen" onclick="dismissPayzaniSplash()">
+  <div id="payzani-mobile-splash" class="payzani-splash-screen" onclick="this.classList.add('dismissed'); if (typeof dismissPayzaniSplash === 'function') dismissPayzaniSplash();">
     <div class="payzani-splash-center">
       <div class="payzani-splash-logo-circle">
         <div class="payzani-splash-p-mark">P</div>
@@ -4593,6 +4593,26 @@
       </div>
     </div>
   </div>
+  <script>
+    // Bulletproof splash screen auto-dismissal (fires unconditionally even if subsequent scripts fail)
+    (function() {
+      function safeDismissSplash() {
+        try {
+          var s = document.getElementById('payzani-mobile-splash');
+          if (s && !s.classList.contains('dismissed')) {
+            s.classList.add('dismissed');
+          }
+        } catch(e) {}
+      }
+      setTimeout(safeDismissSplash, 1600);
+      window.addEventListener('load', function() {
+        setTimeout(safeDismissSplash, 600);
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(safeDismissSplash, 1200);
+      });
+    })();
+  </script>
 
   <!-- PAYZANI MOBILE AUTH SCREEN (PREMIUM FINTECH LOGIN & SIGN-UP) -->
   <div id="payzani-mobile-auth">
@@ -9547,10 +9567,6 @@
         }
       }
     }
-      setTimeout(() => {
-        location.reload();
-      }, 700);
-    }
 
     function opaySubmitPayment(serviceName) {
       showCustomAlert(`${serviceName} payment of ₦1,000 processed instantly via switch!`);
@@ -9611,18 +9627,22 @@
 
     // Payzani Splash Screen Controller
     function dismissPayzaniSplash() {
-      const splash = document.getElementById('payzani-mobile-splash');
-      if (splash && !splash.classList.contains('dismissed')) {
-        splash.classList.add('dismissed');
-      }
+      try {
+        const splash = document.getElementById('payzani-mobile-splash');
+        if (splash && !splash.classList.contains('dismissed')) {
+          splash.classList.add('dismissed');
+        }
+      } catch(e) {}
     }
 
     if (typeof window !== 'undefined') {
       window.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-          dismissPayzaniSplash();
-        }, 2200);
+        setTimeout(dismissPayzaniSplash, 1600);
       });
+      window.addEventListener('load', () => {
+        setTimeout(dismissPayzaniSplash, 600);
+      });
+      setTimeout(dismissPayzaniSplash, 1800);
     }
 
 
