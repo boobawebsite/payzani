@@ -4288,7 +4288,9 @@
   </style>
     <style id="payzani-agent-theme-override"></style>
   <script>
-    // Instant Head Theme Engine (Zero-Flicker)
+    // Instant Head Theme Engine:
+    // IMPORTANT: Main Payzani Website is ALWAYS Royal Purple (#7C3AED).
+    // Custom theme colors ONLY apply when visiting an Agent's Storefront (?agent=...).
     function generatePayzaniThemeCSS(color) {
       if (!color) return '';
       function adjHex(hex, factor) {
@@ -4554,17 +4556,21 @@
     (function() {
       try {
         var params = new URLSearchParams(window.location.search);
-        var qTheme = params.get('theme') || params.get('color');
-        if (qTheme) {
-          if (qTheme[0] !== '#') qTheme = '#' + qTheme;
-          localStorage.setItem('payzani_agent_color', qTheme);
-        }
-        var activeTheme = localStorage.getItem('payzani_agent_color');
-        if (activeTheme) {
-          var styleEl = document.getElementById('payzani-agent-theme-override');
-          if (styleEl) {
-            styleEl.innerHTML = generatePayzaniThemeCSS(activeTheme);
+        var styleEl = document.getElementById('payzani-agent-theme-override');
+        // ONLY apply a custom theme if this is an AGENT STOREFRONT (has ?agent=...)
+        if (params.has('agent')) {
+          var qTheme = params.get('theme') || params.get('color');
+          if (qTheme) {
+            if (qTheme[0] !== '#') qTheme = '#' + qTheme;
+          } else {
+            qTheme = localStorage.getItem('payzani_agent_color');
           }
+          if (qTheme && qTheme.toLowerCase() !== '#7c3aed' && styleEl) {
+            styleEl.innerHTML = generatePayzaniThemeCSS(qTheme);
+          }
+        } else {
+          // MAIN PAYZANI WEBSITE: Strictly Royal Purple (#7C3AED)!
+          if (styleEl) styleEl.innerHTML = '';
         }
       } catch(e) {}
     })();
@@ -9389,6 +9395,15 @@
       isPayzaniAgentRegistered = localStorage.getItem('payzani_is_agent') === 'true';
     } catch(e) {}
 
+    function isAgentStorefront() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        return params.has('agent');
+      } catch(e) {
+        return false;
+      }
+    }
+
     function opaySwitchBottomTab(el, tabKey) {
       document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
       if (el) el.classList.add('active');
@@ -9402,10 +9417,18 @@
         showCustomAlert('Payzani Virtual Card: Verified & Linked');
       } else if (tabKey === 'transactions') {
         opaySwitchScreen('opay-screen-transactions');
-      } else if (tabKey === 'me' || tabKey === 'agent') {
-        // On an agent website, tab 4 is strictly 'Me' (User Dashboard)
+      } else if (tabKey === 'me') {
+        // Customer User Dashboard on an Agent's website
         opaySwitchScreen('opay-screen-me');
         updateUserDashboardUI();
+      } else if (tabKey === 'agent') {
+        // Agent access on the Main Payzani Website
+        if (isPayzaniAgentRegistered) {
+          opaySwitchScreen('opay-screen-agent-dashboard');
+          if (typeof updateAgentDashboardUI === 'function') updateAgentDashboardUI();
+        } else {
+          opaySwitchScreen('opay-screen-agent');
+        }
       }
     }
 
@@ -9456,6 +9479,74 @@
       if (typeof showCustomAlert === 'function') {
         showCustomAlert('Signed out successfully. See you again!');
       }
+      setTimeout(() => {
+        location.reload();
+      }, 700);
+    }
+
+    function applyStorefrontOrMainMode() {
+      const isAgentSite = isAgentStorefront();
+      const styleEl = document.getElementById('payzani-agent-theme-override');
+
+      if (isAgentSite) {
+        // ==========================================
+        // 1. AGENT'S STOREFRONT WEBSITE (?agent=...)
+        // ==========================================
+        // Apply Agent's chosen theme color
+        const params = new URLSearchParams(window.location.search);
+        let agentColor = params.get('theme') || params.get('color');
+        if (agentColor) {
+          if (agentColor[0] !== '#') agentColor = '#' + agentColor;
+        } else {
+          agentColor = localStorage.getItem('payzani_agent_color') || '#7C3AED';
+        }
+        if (styleEl && agentColor && agentColor.toLowerCase() !== '#7c3aed') {
+          styleEl.innerHTML = generatePayzaniThemeCSS(agentColor);
+        }
+
+        // On an agent storefront: 4th Tab is STRICTLY "Me" (User Dashboard)
+        const navTab = document.getElementById('opayNavMe');
+        const navLabel = document.getElementById('opayNavMeLabel');
+        const navIcon = document.getElementById('opayNavMeIcon');
+        if (navTab) navTab.setAttribute('onclick', "opaySwitchBottomTab(this, 'me')");
+        if (navLabel) navLabel.textContent = 'Me';
+        if (navIcon) {
+          navIcon.innerHTML = '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>';
+        }
+
+        // Customer header
+        const userNameEl = document.querySelector('.opay-user-name');
+        if (userNameEl) {
+          userNameEl.innerHTML = 'Hi, Victor <span style="font-size:10px; font-weight:700; color:#10B981; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:2px 6px; border-radius:10px; margin-left:4px;">CUSTOMER</span>';
+        }
+      } else {
+        // ==========================================
+        // 2. MAIN PAYZANI WEBSITE (STRICTLY PURPLE #7C3AED)
+        // ==========================================
+        // Remove any custom theme override so the main site is ALWAYS Royal Purple!
+        if (styleEl) {
+          styleEl.innerHTML = '';
+        }
+
+        // On the Main Payzani Website: 4th Tab is "Agent"
+        const navTab = document.getElementById('opayNavMe');
+        const navLabel = document.getElementById('opayNavMeLabel');
+        const navIcon = document.getElementById('opayNavMeIcon');
+        if (navTab) navTab.setAttribute('onclick', "opaySwitchBottomTab(this, 'agent')");
+        if (navLabel) navLabel.textContent = 'Agent';
+        if (navIcon) {
+          navIcon.innerHTML = '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>';
+        }
+
+        // On main site, if user is registered agent, show Agent badge
+        if (localStorage.getItem('payzani_is_agent') === 'true') {
+          const userNameEl = document.querySelector('.opay-user-name');
+          if (userNameEl) {
+            userNameEl.innerHTML = 'Hi, Victor <span class="opay-agent-header-pill">AGENT</span>';
+          }
+        }
+      }
+    }
       setTimeout(() => {
         location.reload();
       }, 700);
@@ -10244,14 +10335,9 @@
     function applyAgentStorefrontColor(color, showToast) {
       if (!color) return;
       currentAgentThemeColor = color;
-
-      let styleEl = document.getElementById('payzani-agent-theme-override');
-      if (!styleEl) {
-        styleEl = document.createElement('style');
-        styleEl.id = 'payzani-agent-theme-override';
-        document.head.appendChild(styleEl);
-      }
-      styleEl.innerHTML = generatePayzaniThemeCSS(color);
+      try {
+        localStorage.setItem('payzani_agent_color', color);
+      } catch(e) {}
 
       previewAgentMiniTheme(color);
       updateColorSelectorUI(color);
@@ -10262,8 +10348,19 @@
         linkInput.value = getAgentStorefrontUrl();
       }
 
+      // If we are currently on the agent storefront or previewing, apply immediately:
+      if (isAgentStorefront()) {
+        let styleEl = document.getElementById('payzani-agent-theme-override');
+        if (!styleEl) {
+          styleEl = document.createElement('style');
+          styleEl.id = 'payzani-agent-theme-override';
+          document.head.appendChild(styleEl);
+        }
+        styleEl.innerHTML = generatePayzaniThemeCSS(color);
+      }
+
       if (showToast && typeof showCustomAlert === 'function') {
-        showCustomAlert('Storefront Theme Applied! Every purple element across Payzani has now transformed to ' + color.toUpperCase() + '.');
+        showCustomAlert('Storefront Theme Saved! Your storefront link is configured with ' + color.toUpperCase() + '. The main Payzani website remains Royal Purple.');
       }
     }
 
@@ -10342,34 +10439,20 @@
     // Auto-init on page load
     document.addEventListener('DOMContentLoaded', () => {
       try {
-        // Apply saved color if present
-        const savedColor = localStorage.getItem('payzani_agent_color');
-        if (savedColor) {
-          currentAgentThemeColor = savedColor;
-          applyAgentStorefrontColor(savedColor, false);
-        }
-
-        // Check if agent registered
-        if (localStorage.getItem('payzani_is_agent') === 'true') {
-          isPayzaniAgentRegistered = true;
-          const avatarBadge = document.querySelector('.opay-tier-badge');
-          if (avatarBadge) {
-            avatarBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-            avatarBadge.title = 'Authorized Payzani Agent';
-          }
-          const userName = document.querySelector('.opay-user-name');
-          if (userName) {
-            userName.innerHTML = 'Hi, Victor <span style="font-size:10px; font-weight:700; color:#A78BFA; background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.4); padding:2px 6px; border-radius:10px; margin-left:4px;">AGENT</span>';
-          }
-        }
+        // Enforce Main Site (Purple) vs Agent Storefront (Custom Color + Me Tab)
+        applyStorefrontOrMainMode();
 
         // Storefront URL query param check (?agent=...)
         const params = new URLSearchParams(window.location.search);
         if (params.has('agent')) {
           const agentSlug = params.get('agent');
+          let name = 'Victor Telecoms & POS';
+          try {
+            name = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms';
+          } catch(e) {}
           setTimeout(() => {
             if (typeof showCustomAlert === 'function') {
-              showCustomAlert(`Welcome to ${agentSlug.toUpperCase()}'s Official Payzani Storefront Outlet! Instant Telecoms Switching Active.`);
+              showCustomAlert('Welcome to ' + name + ' Verified Payzani Storefront Outlet!');
             }
           }, 1200);
         }
