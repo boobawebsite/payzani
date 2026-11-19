@@ -3963,7 +3963,7 @@
         height: 100vh;
         height: 100dvh;
         background: #0B0E14 !important;
-        background: radial-gradient(circle at 50% 12%, #221044 0%, #0D0F17 55%, #07080C 100%) !important;
+        background: radial-gradient(circle at 50% 12%, var(--theme-primary-darkest, #221044) 0%, #0D0F17 55%, #07080C 100%) !important;
         z-index: 9999990;
         flex-direction: column;
         align-items: center;
@@ -4013,7 +4013,7 @@
         width: 36px;
         height: 36px;
         border-radius: 11px;
-        background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+        background: linear-gradient(135deg, var(--theme-primary, #7C3AED) 0%, var(--theme-primary-dark, #6D28D9) 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -4021,7 +4021,7 @@
         font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
         font-size: 20px;
         font-weight: 900;
-        box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+        box-shadow: 0 4px 14px var(--theme-primary-glow, rgba(124, 58, 237, 0.4));
       }
       .payzani-auth-brand-label {
         font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
@@ -4034,11 +4034,11 @@
         display: flex;
         align-items: center;
         gap: 6px;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--theme-primary-subtle, rgba(255, 255, 255, 0.06));
+        border: 1px solid var(--theme-primary-subtle25, rgba(255, 255, 255, 0.1));
         border-radius: 20px;
         padding: 6px 12px;
-        color: #C4B5FD;
+        color: var(--theme-primary-light, #C4B5FD);
         font-size: 12px;
         font-weight: 600;
         cursor: pointer;
@@ -4090,9 +4090,9 @@
         text-align: center;
       }
       .payzani-auth-tab-btn.active {
-        background: #7C3AED;
+        background: var(--theme-primary, #7C3AED);
         color: #FFFFFF;
-        box-shadow: 0 4px 14px rgba(124, 58, 237, 0.45);
+        box-shadow: 0 4px 14px var(--theme-primary-glow-strong, rgba(124, 58, 237, 0.45));
       }
 
       /* Form Container */
@@ -4139,8 +4139,8 @@
         transition: border-color 0.2s, box-shadow 0.2s;
       }
       .payzani-auth-input-wrapper:focus-within {
-        border-color: #7C3AED;
-        box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.25);
+        border-color: var(--theme-primary, #7C3AED);
+        box-shadow: 0 0 0 3px var(--theme-primary-subtle25, rgba(124, 58, 237, 0.25));
       }
       .payzani-auth-prefix {
         display: flex;
@@ -4155,7 +4155,7 @@
         flex-shrink: 0;
       }
       .payzani-auth-input-wrapper svg.field-icon {
-        color: #A78BFA;
+        color: var(--theme-primary, #A78BFA);
         margin-right: 12px;
         flex-shrink: 0;
       }
@@ -4203,19 +4203,19 @@
         cursor: pointer;
       }
       .payzani-auth-remember input[type="checkbox"] {
-        accent-color: #7C3AED;
+        accent-color: var(--theme-primary, #7C3AED);
         width: 16px;
         height: 16px;
         cursor: pointer;
       }
       .payzani-auth-forgot {
-        color: #A78BFA;
+        color: var(--theme-primary, #A78BFA);
         text-decoration: none;
         font-weight: 600;
         cursor: pointer;
       }
       .payzani-auth-forgot:hover {
-        color: #C4B5FD;
+        color: var(--theme-primary-light, #C4B5FD);
         text-decoration: underline;
       }
 
@@ -4223,7 +4223,7 @@
       .payzani-auth-submit-btn {
         width: 100%;
         height: 50px;
-        background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+        background: linear-gradient(135deg, var(--theme-primary, #7C3AED) 0%, var(--theme-primary-dark, #6D28D9) 100%);
         border: none;
         outline: none;
         border-radius: 14px;
@@ -4236,13 +4236,14 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
-        box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+        box-shadow: 0 8px 24px var(--theme-primary-glow, rgba(124, 58, 237, 0.4));
         transition: transform 0.15s, box-shadow 0.15s;
         margin-bottom: 16px;
       }
       .payzani-auth-submit-btn:active {
         transform: scale(0.98);
-        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        background: var(--theme-primary-dark, #6D28D9);
+        box-shadow: 0 4px 12px var(--theme-primary-glow, rgba(124, 58, 237, 0.3));
       }
 
       /* Bottom Switch Prompt */
@@ -4253,7 +4254,7 @@
         margin-top: 4px;
       }
       .payzani-auth-switch-prompt a {
-        color: #A78BFA;
+        color: var(--theme-primary, #A78BFA);
         font-weight: 700;
         text-decoration: none;
         margin-left: 4px;
@@ -4278,16 +4279,278 @@
         transition: color 0.2s;
       }
       .payzani-auth-biometric-row svg {
-        color: #A78BFA;
+        color: var(--theme-primary, #A78BFA);
       }
       .payzani-auth-biometric-row:hover {
-        color: #C4B5FD;
+        color: var(--theme-primary-light, #C4B5FD);
       }
     }
   </style>
     <style id="payzani-agent-theme-override"></style>
   <script>
     // Instant Head Theme Engine (Zero-Flicker)
+    function generatePayzaniThemeCSS(color) {
+      if (!color) return '';
+      function adjHex(hex, factor) {
+        var c = hex.replace('#', '');
+        if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
+        var num = parseInt(c, 16);
+        var r = Math.min(255, Math.max(0, Math.floor((num >> 16) * factor)));
+        var g = Math.min(255, Math.max(0, Math.floor(((num >> 8) & 0x00FF) * factor)));
+        var b = Math.min(255, Math.max(0, Math.floor((num & 0x0000FF) * factor)));
+        return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+      }
+      function hToRgba(hex, alpha) {
+        var c = hex.replace('#', '');
+        if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
+        var num = parseInt(c, 16);
+        var r = (num >> 16) & 255;
+        var g = (num >> 8) & 255;
+        var b = num & 255;
+        return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+      }
+
+      var dark = adjHex(color, 0.82);
+      var deep = adjHex(color, 0.55);
+      var darkest = adjHex(color, 0.28);
+      var blackTint = adjHex(color, 0.12);
+      var light = adjHex(color, 1.35);
+      var lighter = adjHex(color, 1.55);
+      var subtle = hToRgba(color, 0.15);
+      var subtle20 = hToRgba(color, 0.20);
+      var subtle25 = hToRgba(color, 0.25);
+      var subtle35 = hToRgba(color, 0.35);
+      var glow = hToRgba(color, 0.40);
+      var glowStrong = hToRgba(color, 0.60);
+
+      return `
+        :root {
+          --theme-primary: ${color} !important;
+          --theme-primary-dark: ${dark} !important;
+          --theme-primary-deep: ${deep} !important;
+          --theme-primary-darkest: ${darkest} !important;
+          --theme-primary-black: ${blackTint} !important;
+          --theme-primary-light: ${light} !important;
+          --theme-primary-lighter: ${lighter} !important;
+          --theme-primary-subtle: ${subtle} !important;
+          --theme-primary-subtle25: ${subtle25} !important;
+          --theme-primary-subtle35: ${subtle35} !important;
+          --theme-primary-glow: ${glow} !important;
+          --theme-primary-glow-strong: ${glowStrong} !important;
+          --brand: ${color} !important;
+          --brand-hover: ${dark} !important;
+          --brand-subtle: ${subtle} !important;
+          --agent-primary: ${color} !important;
+          --agent-primary-hover: ${dark} !important;
+          --agent-primary-subtle: ${subtle} !important;
+        }
+        #mobile-opay-experience {
+          --opay-primary: ${color} !important;
+          --opay-primary-dark: ${dark} !important;
+          --opay-primary-deep: ${deep} !important;
+          --opay-primary-light: ${light} !important;
+        }
+        #payzani-mobile-splash {
+          background: linear-gradient(180deg, ${blackTint} 0%, #060608 100%) !important;
+        }
+        .payzani-splash-p-mark,
+        .payzani-auth-brand-logo,
+        .payzani-auth-mini-logo {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 0 35px ${glowStrong} !important;
+        }
+        #payzani-mobile-auth {
+          background: #0B0E14 !important;
+          background: radial-gradient(circle at 50% 12%, ${darkest} 0%, #0D0F17 55%, #07080C 100%) !important;
+        }
+        .payzani-auth-tab-btn.active {
+          background: ${color} !important;
+          color: #FFFFFF !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+        .payzani-auth-remember input[type="checkbox"] {
+          accent-color: ${color} !important;
+        }
+        .payzani-auth-help-btn {
+          color: ${light} !important;
+          border-color: ${subtle25} !important;
+          background: ${subtle} !important;
+        }
+        .payzani-auth-input-wrapper:focus-within {
+          border-color: ${color} !important;
+          box-shadow: 0 0 0 3px ${subtle25} !important;
+        }
+        .payzani-auth-input-wrapper svg.field-icon,
+        .payzani-auth-forgot,
+        .payzani-auth-switch-prompt a,
+        .payzani-auth-biometric-row svg {
+          color: ${color} !important;
+        }
+        .payzani-auth-submit-btn,
+        #payzaniLoginBtn,
+        #payzaniSignupBtn {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 8px 24px ${glow} !important;
+        }
+        .payzani-auth-submit-btn:active,
+        #payzaniLoginBtn:active,
+        #payzaniSignupBtn:active {
+          background: ${dark} !important;
+        }
+        .opay-avatar-circle {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+        }
+        .opay-tier-badge {
+          background: ${color} !important;
+        }
+        .opay-balance-card {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 55%, ${deep} 100%) !important;
+          box-shadow: 0 10px 30px ${glow} !important;
+        }
+        .opay-add-money-btn {
+          color: ${dark} !important;
+        }
+        .opay-balance-history,
+        .opay-recent-all,
+        .opay-sub-history {
+          color: ${lighter} !important;
+        }
+        .opay-promo-card:active {
+          border-color: ${color} !important;
+        }
+        .opay-promo-btn {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+        }
+        .opay-carousel-dot.active,
+        .opay-ad-dot.active {
+          background: ${color} !important;
+        }
+        .opay-promo-icon-wrap,
+        .opay-trans-circle,
+        .opay-quick-icon-wrap {
+          background: ${subtle} !important;
+          color: ${light} !important;
+        }
+        .opay-promo-sub,
+        .opay-pill-cashback {
+          color: ${light} !important;
+        }
+        .opay-invite-btn {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+        .opay-bottom-nav .opay-nav-item.active {
+          color: ${color} !important;
+        }
+        .opay-bottom-nav .opay-nav-item.active svg {
+          stroke: ${color} !important;
+        }
+        .opay-sub-banner {
+          background: linear-gradient(135deg, ${darkest} 0%, #121020 100%) !important;
+          border-color: ${dark} !important;
+        }
+        .opay-sub-banner-badge {
+          background: ${color} !important;
+        }
+        .opay-voucher-bar {
+          background: linear-gradient(135deg, ${subtle} 0%, rgba(0,0,0,0) 100%) !important;
+          border-color: ${subtle35} !important;
+        }
+        .opay-voucher-badge {
+          background: ${color} !important;
+        }
+        .opay-amount-pill:active,
+        .opay-amount-pill.selected {
+          background: ${subtle25} !important;
+          border-color: ${color} !important;
+        }
+        .opay-custom-amt-input:focus {
+          border-color: ${color} !important;
+        }
+        .opay-pay-action-btn {
+          background: ${color} !important;
+          box-shadow: 0 6px 20px ${glow} !important;
+        }
+        .opay-subtab-btn.active {
+          color: ${light} !important;
+        }
+        .opay-subtab-btn.active::after {
+          background: ${color} !important;
+        }
+        .opay-filter-pill.active,
+        .opay-agent-tier-pill.active {
+          background: ${color} !important;
+          border-color: ${color} !important;
+          color: #FFFFFF !important;
+        }
+        div[style*="linear-gradient(135deg, rgba(124, 58, 237"],
+        div[style*="linear-gradient(135deg, rgba(124,58,237"] {
+          background: linear-gradient(135deg, ${subtle25} 0%, ${blackTint} 100%) !important;
+          border-color: ${subtle35} !important;
+        }
+        span[style*="color:#DDD6FE"],
+        span[style*="color: #DDD6FE"],
+        div[style*="color:#DDD6FE"],
+        div[style*="color: #DDD6FE"] {
+          color: ${lighter} !important;
+        }
+        span[style*="color:#A78BFA"],
+        span[style*="color: #A78BFA"],
+        div[style*="color:#A78BFA"],
+        div[style*="color: #A78BFA"],
+        span[style*="color:#C4B5FD"],
+        span[style*="color: #C4B5FD"] {
+          color: ${light} !important;
+        }
+        svg[stroke="#A78BFA"],
+        svg[stroke="#7C3AED"] {
+          stroke: ${color} !important;
+        }
+        div[style*="background:rgba(124, 58, 237"],
+        div[style*="background: rgba(124, 58, 237"],
+        div[style*="background: rgba(124,58,237"] {
+          background: ${subtle20} !important;
+        }
+        span[style*="background: rgba(124,58,237"],
+        span[style*="background: rgba(124, 58, 237"] {
+          background: ${subtle25} !important;
+          border-color: ${subtle35} !important;
+          color: ${light} !important;
+        }
+        .opay-agent-header-pill {
+          color: ${light} !important;
+          background: ${subtle25} !important;
+          border-color: ${subtle35} !important;
+        }
+        #agentDashboardOutletName {
+          color: #FFFFFF !important;
+        }
+        #agentStorefrontLinkInput {
+          color: ${light} !important;
+        }
+        #agentCopyLinkBtn,
+        button[style*="background: #251B38"],
+        div[style*="background: #251B38"] {
+          background: ${subtle25} !important;
+          border-color: ${dark} !important;
+          color: ${lighter} !important;
+        }
+        button[onclick*="toggleAgentTopUpDrawer"] {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+        button[onclick*="saveAndApplyAgentColor"] {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+        .btn-primary {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          border-color: ${dark} !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+      `;
+    }
+
     (function() {
       try {
         var params = new URLSearchParams(window.location.search);
@@ -4298,188 +4561,9 @@
         }
         var activeTheme = localStorage.getItem('payzani_agent_color');
         if (activeTheme) {
-          function adjHex(hex, factor) {
-            var c = hex.replace('#', '');
-            if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
-            var num = parseInt(c, 16);
-            var r = Math.min(255, Math.max(0, Math.floor((num >> 16) * factor)));
-            var g = Math.min(255, Math.max(0, Math.floor(((num >> 8) & 0x00FF) * factor)));
-            var b = Math.min(255, Math.max(0, Math.floor((num & 0x0000FF) * factor)));
-            return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
-          }
-          function hToRgba(hex, alpha) {
-            var c = hex.replace('#', '');
-            if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
-            var num = parseInt(c, 16);
-            var r = (num >> 16) & 255;
-            var g = (num >> 8) & 255;
-            var b = num & 255;
-            return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
-          }
-          var dark = adjHex(activeTheme, 0.82);
-          var deep = adjHex(activeTheme, 0.55);
-          var darkest = adjHex(activeTheme, 0.28);
-          var blackTint = adjHex(activeTheme, 0.12);
-          var light = adjHex(activeTheme, 1.35);
-          var lighter = adjHex(activeTheme, 1.55);
-          var subtle = hToRgba(activeTheme, 0.15);
-          var subtle25 = hToRgba(activeTheme, 0.25);
-          var subtle35 = hToRgba(activeTheme, 0.35);
-          var glow = hToRgba(activeTheme, 0.40);
-          var glowStrong = hToRgba(activeTheme, 0.60);
-
           var styleEl = document.getElementById('payzani-agent-theme-override');
           if (styleEl) {
-            styleEl.innerHTML = `
-              :root {
-                --brand: ${activeTheme} !important;
-                --brand-hover: ${dark} !important;
-                --brand-subtle: ${subtle} !important;
-                --agent-primary: ${activeTheme} !important;
-                --agent-primary-hover: ${dark} !important;
-                --agent-primary-subtle: ${subtle} !important;
-              }
-              #mobile-opay-experience {
-                --opay-primary: ${activeTheme} !important;
-                --opay-primary-dark: ${dark} !important;
-                --opay-primary-deep: ${deep} !important;
-                --opay-primary-light: ${light} !important;
-              }
-              #payzani-mobile-splash {
-                background: linear-gradient(180deg, ${blackTint} 0%, #060608 100%) !important;
-              }
-              .payzani-splash-p-mark,
-              .payzani-auth-brand-logo,
-              .payzani-auth-mini-logo {
-                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
-                box-shadow: 0 0 35px ${glowStrong} !important;
-              }
-              .payzani-auth-pill.active,
-              .payzani-auth-tab-btn.active {
-                color: ${light} !important;
-                border-bottom-color: ${activeTheme} !important;
-              }
-              .payzani-auth-input-wrapper:focus-within {
-                border-color: ${activeTheme} !important;
-                box-shadow: 0 0 0 3px ${subtle25} !important;
-              }
-              .payzani-auth-input-wrapper svg.field-icon,
-              .payzani-auth-forgot,
-              .payzani-auth-switch-prompt a,
-              .payzani-auth-biometric-row svg {
-                color: ${light} !important;
-              }
-              .payzani-auth-remember input[type="checkbox"]:checked {
-                background: ${activeTheme} !important;
-                border-color: ${activeTheme} !important;
-              }
-              .payzani-auth-submit-btn,
-              #payzaniLoginBtn,
-              #payzaniSignupBtn {
-                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
-                box-shadow: 0 8px 24px ${glow} !important;
-              }
-              .payzani-auth-submit-btn:active,
-              #payzaniLoginBtn:active,
-              #payzaniSignupBtn:active {
-                background: ${dark} !important;
-              }
-              .opay-avatar-circle {
-                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
-              }
-              .opay-tier-badge {
-                background: ${activeTheme} !important;
-              }
-              .opay-balance-card {
-                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 55%, ${deep} 100%) !important;
-                box-shadow: 0 10px 30px ${glow} !important;
-              }
-              .opay-add-money-btn {
-                color: ${dark} !important;
-              }
-              .opay-balance-history,
-              .opay-recent-all,
-              .opay-sub-history {
-                color: ${lighter} !important;
-              }
-              .opay-promo-card:active {
-                border-color: ${activeTheme} !important;
-              }
-              .opay-promo-btn {
-                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
-              }
-              .opay-carousel-dot.active,
-              .opay-ad-dot.active {
-                background: ${activeTheme} !important;
-              }
-              .opay-promo-icon-wrap,
-              .opay-trans-circle,
-              .opay-quick-icon-wrap {
-                background: ${subtle} !important;
-                color: ${light} !important;
-              }
-              .opay-promo-sub,
-              .opay-pill-cashback {
-                color: ${light} !important;
-              }
-              .opay-invite-btn {
-                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
-                box-shadow: 0 4px 14px ${glow} !important;
-              }
-              .opay-bottom-nav .opay-nav-item.active {
-                color: ${activeTheme} !important;
-              }
-              .opay-bottom-nav .opay-nav-item.active svg {
-                stroke: ${activeTheme} !important;
-              }
-              .opay-sub-banner {
-                background: linear-gradient(135deg, ${darkest} 0%, #121020 100%) !important;
-                border-color: ${dark} !important;
-              }
-              .opay-sub-banner-badge {
-                background: ${activeTheme} !important;
-              }
-              .opay-voucher-bar {
-                background: linear-gradient(135deg, ${subtle} 0%, rgba(0,0,0,0) 100%) !important;
-                border-color: ${subtle35} !important;
-              }
-              .opay-voucher-badge {
-                background: ${activeTheme} !important;
-              }
-              .opay-amount-pill:active,
-              .opay-amount-pill.selected {
-                background: ${subtle25} !important;
-                border-color: ${activeTheme} !important;
-              }
-              .opay-custom-amt-input:focus {
-                border-color: ${activeTheme} !important;
-              }
-              .opay-pay-action-btn {
-                background: ${activeTheme} !important;
-                box-shadow: 0 6px 20px ${glow} !important;
-              }
-              .opay-subtab-btn.active {
-                color: ${light} !important;
-              }
-              .opay-subtab-btn.active::after {
-                background: ${activeTheme} !important;
-              }
-              .opay-filter-pill.active,
-              .opay-agent-tier-pill.active {
-                background: ${activeTheme} !important;
-                border-color: ${activeTheme} !important;
-                color: #FFFFFF !important;
-              }
-              div[style*="linear-gradient(135deg, rgba(124, 58, 237"] {
-                background: linear-gradient(135deg, ${subtle25} 0%, ${blackTint} 100%) !important;
-                border-color: ${subtle35} !important;
-              }
-              .btn-primary {
-                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
-                border-color: ${dark} !important;
-                box-shadow: 0 4px 14px ${glow} !important;
-              }
-            `;
+            styleEl.innerHTML = generatePayzaniThemeCSS(activeTheme);
           }
         }
       } catch(e) {}
@@ -9772,110 +9856,60 @@
       }
     }
 
-    // Storefront Primary Color Branding Engine
+        // Storefront Primary Color Branding Engine
     let currentAgentThemeColor = '#7C3AED';
     try {
       currentAgentThemeColor = localStorage.getItem('payzani_agent_color') || '#7C3AED';
     } catch(e) {}
 
-    function selectAgentThemeColor(hex) {
-      currentAgentThemeColor = hex;
-      updateColorSelectorUI(hex);
-      previewAgentMiniTheme(hex);
-    }
-
-    function handleAgentCustomColor(hex) {
-      currentAgentThemeColor = hex;
-      const display = document.getElementById('agentCustomHexDisplay');
-      if (display) display.textContent = hex.toUpperCase();
-      const activeLabel = document.getElementById('agentActiveColorLabel');
-      if (activeLabel) activeLabel.textContent = hex.toUpperCase();
-      // unselect preset swatches
-      document.querySelectorAll('.agent-theme-swatch').forEach(s => {
-        s.style.border = '2px solid transparent';
-        const svg = s.querySelector('svg');
-        if (svg) svg.style.display = 'none';
-      });
-      previewAgentMiniTheme(hex);
-    }
-
-    function updateColorSelectorUI(hex) {
-      const activeLabel = document.getElementById('agentActiveColorLabel');
-      if (activeLabel) activeLabel.textContent = hex.toUpperCase();
-      const customInput = document.getElementById('agentCustomColorInput');
-      if (customInput) customInput.value = hex;
-      const customHex = document.getElementById('agentCustomHexDisplay');
-      if (customHex) customHex.textContent = hex.toUpperCase();
-
-      document.querySelectorAll('.agent-theme-swatch').forEach(s => {
-        const swatchColor = s.getAttribute('data-color');
-        const svg = s.querySelector('svg');
-        if (swatchColor && swatchColor.toLowerCase() === hex.toLowerCase()) {
-          s.style.border = '2px solid #FFFFFF';
-          if (svg) svg.style.display = 'block';
-        } else {
-          s.style.border = '2px solid transparent';
-          if (svg) svg.style.display = 'none';
-        }
-      });
-    }
-
-    function previewAgentMiniTheme(hex) {
-      const miniCard = document.getElementById('agentPreviewMiniCard');
-      if (miniCard) {
-        miniCard.style.background = `linear-gradient(135deg, ${hex} 0%, #1E1B4B 100%)`;
+    function generatePayzaniThemeCSS(color) {
+      if (!color) return '';
+      function adjHex(hex, factor) {
+        var c = hex.replace('#', '');
+        if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
+        var num = parseInt(c, 16);
+        var r = Math.min(255, Math.max(0, Math.floor((num >> 16) * factor)));
+        var g = Math.min(255, Math.max(0, Math.floor(((num >> 8) & 0x00FF) * factor)));
+        var b = Math.min(255, Math.max(0, Math.floor((num & 0x0000FF) * factor)));
+        return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
       }
-      const miniBtn = document.getElementById('agentPreviewMiniBtn');
-      if (miniBtn) {
-        miniBtn.style.background = hex;
+      function hToRgba(hex, alpha) {
+        var c = hex.replace('#', '');
+        if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
+        var num = parseInt(c, 16);
+        var r = (num >> 16) & 255;
+        var g = (num >> 8) & 255;
+        var b = num & 255;
+        return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
       }
-    }
 
-    function saveAndApplyAgentColor() {
-      applyAgentStorefrontColor(currentAgentThemeColor, true);
-      try {
-        localStorage.setItem('payzani_agent_color', currentAgentThemeColor);
-      } catch(e) {}
-    }
+      var dark = adjHex(color, 0.82);
+      var deep = adjHex(color, 0.55);
+      var darkest = adjHex(color, 0.28);
+      var blackTint = adjHex(color, 0.12);
+      var light = adjHex(color, 1.35);
+      var lighter = adjHex(color, 1.55);
+      var subtle = hToRgba(color, 0.15);
+      var subtle20 = hToRgba(color, 0.20);
+      var subtle25 = hToRgba(color, 0.25);
+      var subtle35 = hToRgba(color, 0.35);
+      var glow = hToRgba(color, 0.40);
+      var glowStrong = hToRgba(color, 0.60);
 
-    function adjustHex(hex, factor) {
-      let c = hex.replace('#', '');
-      if (c.length === 3) c = c.split('').map(x => x + x).join('');
-      let num = parseInt(c, 16);
-      let r = Math.min(255, Math.max(0, Math.floor((num >> 16) * factor)));
-      let g = Math.min(255, Math.max(0, Math.floor(((num >> 8) & 0x00FF) * factor)));
-      let b = Math.min(255, Math.max(0, Math.floor((num & 0x0000FF) * factor)));
-      return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
-    }
-
-    function applyAgentStorefrontColor(color, showToast) {
-      if (!color) return;
-      currentAgentThemeColor = color;
-      
-      const dark = adjustHex(color, 0.82);
-      const deep = adjustHex(color, 0.55);
-      const darkest = adjustHex(color, 0.28);
-      const blackTint = adjustHex(color, 0.12);
-      const light = adjustHex(color, 1.35);
-      const lighter = adjustHex(color, 1.55);
-      
-      let c = color.replace('#', '');
-      if (c.length === 3) c = c.split('').map(x => x + x).join('');
-      const num = parseInt(c, 16);
-      const r = (num >> 16) & 255;
-      const g = (num >> 8) & 255;
-      const b = num & 255;
-      
-      const subtle = `rgba(${r}, ${g}, ${b}, 0.15)`;
-      const subtle25 = `rgba(${r}, ${g}, ${b}, 0.25)`;
-      const subtle35 = `rgba(${r}, ${g}, ${b}, 0.35)`;
-      const glow = `rgba(${r}, ${g}, ${b}, 0.40)`;
-      const glowStrong = `rgba(${r}, ${g}, ${b}, 0.60)`;
-
-      const styleEl = document.getElementById('payzani-agent-theme-override') || document.createElement('style');
-      styleEl.id = 'payzani-agent-theme-override';
-      styleEl.innerHTML = `
+      return `
         :root {
+          --theme-primary: ${color} !important;
+          --theme-primary-dark: ${dark} !important;
+          --theme-primary-deep: ${deep} !important;
+          --theme-primary-darkest: ${darkest} !important;
+          --theme-primary-black: ${blackTint} !important;
+          --theme-primary-light: ${light} !important;
+          --theme-primary-lighter: ${lighter} !important;
+          --theme-primary-subtle: ${subtle} !important;
+          --theme-primary-subtle25: ${subtle25} !important;
+          --theme-primary-subtle35: ${subtle35} !important;
+          --theme-primary-glow: ${glow} !important;
+          --theme-primary-glow-strong: ${glowStrong} !important;
           --brand: ${color} !important;
           --brand-hover: ${dark} !important;
           --brand-subtle: ${subtle} !important;
@@ -9898,10 +9932,22 @@
           background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
           box-shadow: 0 0 35px ${glowStrong} !important;
         }
-        .payzani-auth-pill.active,
+        #payzani-mobile-auth {
+          background: #0B0E14 !important;
+          background: radial-gradient(circle at 50% 12%, ${darkest} 0%, #0D0F17 55%, #07080C 100%) !important;
+        }
         .payzani-auth-tab-btn.active {
+          background: ${color} !important;
+          color: #FFFFFF !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+        .payzani-auth-remember input[type="checkbox"] {
+          accent-color: ${color} !important;
+        }
+        .payzani-auth-help-btn {
           color: ${light} !important;
-          border-bottom-color: ${color} !important;
+          border-color: ${subtle25} !important;
+          background: ${subtle} !important;
         }
         .payzani-auth-input-wrapper:focus-within {
           border-color: ${color} !important;
@@ -9911,11 +9957,7 @@
         .payzani-auth-forgot,
         .payzani-auth-switch-prompt a,
         .payzani-auth-biometric-row svg {
-          color: ${light} !important;
-        }
-        .payzani-auth-remember input[type="checkbox"]:checked {
-          background: ${color} !important;
-          border-color: ${color} !important;
+          color: ${color} !important;
         }
         .payzani-auth-submit-btn,
         #payzaniLoginBtn,
@@ -10014,8 +10056,43 @@
           border-color: ${color} !important;
           color: #FFFFFF !important;
         }
-        div[style*="linear-gradient(135deg, rgba(124, 58, 237"] {
+        div[style*="linear-gradient(135deg, rgba(124, 58, 237"],
+        div[style*="linear-gradient(135deg, rgba(124,58,237"] {
           background: linear-gradient(135deg, ${subtle25} 0%, ${blackTint} 100%) !important;
+          border-color: ${subtle35} !important;
+        }
+        span[style*="color:#DDD6FE"],
+        span[style*="color: #DDD6FE"],
+        div[style*="color:#DDD6FE"],
+        div[style*="color: #DDD6FE"] {
+          color: ${lighter} !important;
+        }
+        span[style*="color:#A78BFA"],
+        span[style*="color: #A78BFA"],
+        div[style*="color:#A78BFA"],
+        div[style*="color: #A78BFA"],
+        span[style*="color:#C4B5FD"],
+        span[style*="color: #C4B5FD"] {
+          color: ${light} !important;
+        }
+        svg[stroke="#A78BFA"],
+        svg[stroke="#7C3AED"] {
+          stroke: ${color} !important;
+        }
+        div[style*="background:rgba(124, 58, 237"],
+        div[style*="background: rgba(124, 58, 237"],
+        div[style*="background: rgba(124,58,237"] {
+          background: ${subtle20} !important;
+        }
+        span[style*="background: rgba(124,58,237"],
+        span[style*="background: rgba(124, 58, 237"] {
+          background: ${subtle25} !important;
+          border-color: ${subtle35} !important;
+          color: ${light} !important;
+        }
+        .opay-agent-header-pill {
+          color: ${light} !important;
+          background: ${subtle25} !important;
           border-color: ${subtle35} !important;
         }
         #agentDashboardOutletName {
@@ -10024,7 +10101,9 @@
         #agentStorefrontLinkInput {
           color: ${light} !important;
         }
-        #agentCopyLinkBtn {
+        #agentCopyLinkBtn,
+        button[style*="background: #251B38"],
+        div[style*="background: #251B38"] {
           background: ${subtle25} !important;
           border-color: ${dark} !important;
           color: ${lighter} !important;
@@ -10043,20 +10122,99 @@
           box-shadow: 0 4px 14px ${glow} !important;
         }
       `;
+    }
 
-      if (!document.getElementById('payzani-agent-theme-override')) {
+    function selectAgentThemeColor(hex) {
+      currentAgentThemeColor = hex;
+      updateColorSelectorUI(hex);
+      previewAgentMiniTheme(hex);
+      // Immediately transform the entire site in real-time on selection
+      applyAgentStorefrontColor(hex, false);
+      try {
+        localStorage.setItem('payzani_agent_color', hex);
+      } catch(e) {}
+    }
+
+    function handleAgentCustomColor(hex) {
+      currentAgentThemeColor = hex;
+      const display = document.getElementById('agentCustomHexDisplay');
+      if (display) display.textContent = hex.toUpperCase();
+      const activeLabel = document.getElementById('agentActiveColorLabel');
+      if (activeLabel) activeLabel.textContent = hex.toUpperCase();
+      document.querySelectorAll('.agent-theme-swatch').forEach(s => {
+        s.style.border = '2px solid transparent';
+        const svg = s.querySelector('svg');
+        if (svg) svg.style.display = 'none';
+      });
+      previewAgentMiniTheme(hex);
+      applyAgentStorefrontColor(hex, false);
+      try {
+        localStorage.setItem('payzani_agent_color', hex);
+      } catch(e) {}
+    }
+
+    function updateColorSelectorUI(hex) {
+      const activeLabel = document.getElementById('agentActiveColorLabel');
+      if (activeLabel) activeLabel.textContent = hex.toUpperCase();
+      const customInput = document.getElementById('agentCustomColorInput');
+      if (customInput) customInput.value = hex;
+      const customHex = document.getElementById('agentCustomHexDisplay');
+      if (customHex) customHex.textContent = hex.toUpperCase();
+
+      document.querySelectorAll('.agent-theme-swatch').forEach(s => {
+        const swatchColor = s.getAttribute('data-color');
+        const svg = s.querySelector('svg');
+        if (swatchColor && swatchColor.toLowerCase() === hex.toLowerCase()) {
+          s.style.border = '2px solid #FFFFFF';
+          if (svg) svg.style.display = 'block';
+        } else {
+          s.style.border = '2px solid transparent';
+          if (svg) svg.style.display = 'none';
+        }
+      });
+    }
+
+    function previewAgentMiniTheme(hex) {
+      const miniCard = document.getElementById('agentPreviewMiniCard');
+      if (miniCard) {
+        miniCard.style.background = `linear-gradient(135deg, ${hex} 0%, #1E1B4B 100%)`;
+      }
+      const miniBtn = document.getElementById('agentPreviewMiniBtn');
+      if (miniBtn) {
+        miniBtn.style.background = hex;
+      }
+    }
+
+    function saveAndApplyAgentColor() {
+      applyAgentStorefrontColor(currentAgentThemeColor, true);
+      try {
+        localStorage.setItem('payzani_agent_color', currentAgentThemeColor);
+      } catch(e) {}
+    }
+
+    function applyAgentStorefrontColor(color, showToast) {
+      if (!color) return;
+      currentAgentThemeColor = color;
+
+      let styleEl = document.getElementById('payzani-agent-theme-override');
+      if (!styleEl) {
+        styleEl = document.createElement('style');
+        styleEl.id = 'payzani-agent-theme-override';
         document.head.appendChild(styleEl);
       }
+      styleEl.innerHTML = generatePayzaniThemeCSS(color);
 
       previewAgentMiniTheme(color);
       updateColorSelectorUI(color);
-      
-      // Update dynamic link input in dashboard
+
+      // Update dynamic storefront link
       const linkInput = document.getElementById('agentStorefrontLinkInput');
-      if (linkInput) linkInput.value = getAgentStorefrontUrl();
+      if (linkInput && typeof getAgentStorefrontUrl === 'function') {
+        linkInput.value = getAgentStorefrontUrl();
+      }
 
       if (showToast && typeof showCustomAlert === 'function') {
-        showCustomAlert('Storefront Theme Applied! Every purple element across Payzani has now transformed to ' + color.toUpperCase() + ' for your storefront.');
+        showCustomAlert('Storefront Theme Applied! Every purple element across Payzani has now transformed to ' + color.toUpperCase() + '.');
       }
     }
 
