@@ -3076,6 +3076,46 @@
       }
 
       /* Business / Agent Announcement Row */
+      /* Social Media Booster Ad Carousel (Exact Same Size as Business Bar) */
+      .opay-booster-ad-box {
+        width: 100%;
+        height: 46px;
+        border-radius: 12px;
+        margin-bottom: 14px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        background: #18181D;
+        border: 1px solid #27272F;
+        box-sizing: border-box;
+      }
+      .opay-booster-ad-track {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+      .opay-booster-ad-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        transform: translateY(4px);
+      }
+      .opay-booster-ad-slide.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      .opay-booster-ad-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
       .opay-business-banner {
         background: #18181D;
         border: 1px solid #27272F;
@@ -4462,13 +4502,22 @@
           </div>
         </div>
 
-        <!-- Business Announcement Row -->
-        <div class="opay-business-banner" onclick="switchEcoView('agent-portal')">
-          <div class="opay-business-left">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-            <span>Business Service - Today's Sales: <span class="opay-business-sales">₦4,800.00</span></span>
+        <!-- Social Media Boost Ads Carousel (Same exact size as previous box) -->
+        <div class="opay-booster-ad-box" id="opayBoosterAdBox" onclick="opaySwitchScreen('opay-screen-booster')" title="Tap to open Social Media Booster">
+          <div class="opay-booster-ad-track">
+            <div class="opay-booster-ad-slide active">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgNDYiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogICAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImlnQmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMzQjA3NjQiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNzAxQTc1Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM0QTA0NEUiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iaWdJY29uIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI0VDNDg5OSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOEI1Q0Y2Ii8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMzYwIiBoZWlnaHQ9IjQ2IiByeD0iMTIiIGZpbGw9InVybCgjaWdCZykiIHN0cm9rZT0iIzgzMTg0MyIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICAgIDxyZWN0IHg9IjEyIiB5PSI5IiB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHJ4PSI4IiBmaWxsPSJ1cmwoI2lnSWNvbikiLz4KICAgICAgPHJlY3QgeD0iMTgiIHk9IjE1IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHJ4PSI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjIzIiByPSIzLjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICAgIDxjaXJjbGUgY3g9IjMxIiBjeT0iMTgiIHI9IjEiIGZpbGw9IiNGRkZGRkYiLz4KICAgICAgPHRleHQgeD0iNDgiIHk9IjIxIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjAuMiI+SU5TVEFHUkFNIEdST1dUSCBCT09TVDwvdGV4dD4KICAgICAgPHRleHQgeD0iNDgiIHk9IjM0IiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMC41IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjRkJDRkU4Ij5Gb2xsb3dlcnMgJmFtcDsgTGlrZXMgZnJvbSAmIzgzNTg7NDUwICYjODIyNjsgSW5zdGFudDwvdGV4dD4KICAgICAgPHJlY3QgeD0iMjcwIiB5PSIxMiIgd2lkdGg9IjYyIiBoZWlnaHQ9IjIyIiByeD0iMTEiIGZpbGw9IiNFQzQ4OTkiLz4KICAgICAgPHRleHQgeD0iMzAxIiB5PSIyNi41IiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMC41Ij5GQVNUIDEuMnM8L3RleHQ+CiAgICAgIDxwYXRoIGQ9Ik0zNDIgMTkgTDM0NyAyMyBMMzQyIDI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNGNDcyQjYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8L3N2Zz4=" alt="Instagram Growth Ad" class="opay-booster-ad-img" />
+            </div>
+            <div class="opay-booster-ad-slide">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgNDYiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogICAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9InR0QmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwOTBBMTIiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMTQxRTMzIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxRTFCNEIiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIzNjAiIGhlaWdodD0iNDYiIHJ4PSIxMiIgZmlsbD0idXJsKCN0dEJnKSIgc3Ryb2tlPSIjMUUyOTNCIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgICAgPHJlY3QgeD0iMTIiIHk9IjkiIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgcng9IjgiIGZpbGw9IiMwMDAwMDAiIHN0cm9rZT0iIzAwRjJGRSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgICAgIDxwYXRoIGQ9Ik0yNSAxNSBDMjYgMTggMjkgMTkgMzIgMTkgTDMyIDIyIEMyOSAyMiAyNiAyMSAyNSAxOSBMMjUgMjcgQzI1IDMwIDIyIDMyIDE5IDMxIEMxNi41IDMwIDE1IDI3LjUgMTYgMjUgQzE3IDIyLjUgMTkuNSAyMiAyMiAyMyBMMjIgMjYgQzIwLjUgMjUuNSAxOSAyNi41IDE5IDI4IEMxOSAyOS41IDIwLjUgMzAgMjEuNSAyOS41IEMyMi41IDI5IDIzIDI4IDIzIDI2LjUgTDIzIDE1IFoiIGZpbGw9IiNGRTJDNTUiLz4KICAgICAgPHBhdGggZD0iTTI0IDE0IEMyNSAxNyAyOCAxOCAzMSAxOCBMMzEgMjAgQzI4IDIwIDI1IDE5IDI0IDE3IEwyNCAyNSBDMjQgMjggMjEgMzAgMTggMjkgQzE1LjUgMjggMTQgMjUuNSAxNSAyMyBDMTYgMjAuNSAxOC41IDIwIDIxIDIxIEwyMSAyNCBDMTkuNSAyMy41IDE4IDI0LjUgMTggMjYgQzE4IDI3LjUgMTkuNSAyOCAyMC41IDI3LjUgQzIxLjUgMjcgMjIgMjYgMjIgMjQuNSBMMjIgMTQgWiIgZmlsbD0iIzAwRjJGRSIgb3BhY2l0eT0iMC44Ii8+CiAgICAgIDx0ZXh0IHg9IjQ4IiB5PSIyMSIgZm9udC1mYW1pbHk9IidQbHVzIEpha2FydGEgU2FucycsIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSI4MDAiIGZpbGw9IiNGRkZGRkYiIGxldHRlci1zcGFjaW5nPSIwLjIiPlRJS1RPSyBHTyBWSVJBTCBCT09TVDwvdGV4dD4KICAgICAgPHRleHQgeD0iNDgiIHk9IjM0IiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMC41IiBmb250LXdlaWdodD0iNjAwIiBmaWxsPSIjOTNDNUZEIj5WaWV3cywgTGlrZXMgJmFtcDsgU2hhcmVzIGZyb20gJiM4MzU4OzYwMDwvdGV4dD4KICAgICAgPHJlY3QgeD0iMjcwIiB5PSIxMiIgd2lkdGg9IjYyIiBoZWlnaHQ9IjIyIiByeD0iMTEiIGZpbGw9IiMwMjg0QzciLz4KICAgICAgPHRleHQgeD0iMzAxIiB5PSIyNi41IiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMC41Ij5UUkVORElORzwvdGV4dD4KICAgICAgPHBhdGggZD0iTTM0MiAxOSBMMzQ3IDIzIEwzNDIgMjciIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzM4QkRGOCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDwvc3ZnPg==" alt="TikTok Viral Ad" class="opay-booster-ad-img" />
+            </div>
+            <div class="opay-booster-ad-slide">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgNDYiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogICAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9Inl0QmciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM0NTBBMEEiLz4KICAgICAgICAgIDxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMzExMDJBIi8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxRjBBMjQiLz4KICAgICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgICA8L2RlZnM+CiAgICAgIDxyZWN0IHdpZHRoPSIzNjAiIGhlaWdodD0iNDYiIHJ4PSIxMiIgZmlsbD0idXJsKCN5dEJnKSIgc3Ryb2tlPSIjN0YxRDFEIiBzdHJva2Utd2lkdGg9IjEiLz4KICAgICAgPHJlY3QgeD0iMTIiIHk9IjkiIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCIgcng9IjgiIGZpbGw9IiNEQzI2MjYiLz4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIyMywxOSAzMSwyMyAyMywyNyIgZmlsbD0iI0ZGRkZGRiIvPgogICAgICA8dGV4dCB4PSI0OCIgeT0iMjEiIGZvbnQtZmFtaWx5PSInUGx1cyBKYWthcnRhIFNhbnMnLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjRkZGRkZGIiBsZXR0ZXItc3BhY2luZz0iMC4yIj5ZT1VUVUJFICZhbXA7IFRFTEVHUkFNIERFQUxTPC90ZXh0PgogICAgICA8dGV4dCB4PSI0OCIgeT0iMzQiIGZvbnQtZmFtaWx5PSInUGx1cyBKYWthcnRhIFNhbnMnLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiNGRUNBQ0EiPlN1YnNjcmliZXJzLCBXYXRjaC1Ib3VycyAmYW1wOyBWaWV3czwvdGV4dD4KICAgICAgPHJlY3QgeD0iMjcwIiB5PSIxMiIgd2lkdGg9IjYyIiBoZWlnaHQ9IjIyIiByeD0iMTEiIGZpbGw9IiNFRjQ0NDQiLz4KICAgICAgPHRleHQgeD0iMzAxIiB5PSIyNi41IiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI5IiBmb250LXdlaWdodD0iODAwIiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBsZXR0ZXItc3BhY2luZz0iMC41Ij5BQ1RJVkU8L3RleHQ+CiAgICAgIDxwYXRoIGQ9Ik0zNDIgMTkgTDM0NyAyMyBMMzQyIDI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNGODcxNzEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8L3N2Zz4=" alt="YouTube Telegram Ad" class="opay-booster-ad-img" />
+            </div>
+            <div class="opay-booster-ad-slide">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjAgNDYiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogICAgICA8ZGVmcz4KICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImFsbEJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMCI+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjNEMxRDk1Ii8+CiAgICAgICAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzZEMjhEOSIvPgogICAgICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMzEyRTgxIi8+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgICAgPC9kZWZzPgogICAgICA8cmVjdCB3aWR0aD0iMzYwIiBoZWlnaHQ9IjQ2IiByeD0iMTIiIGZpbGw9InVybCgjYWxsQmcpIiBzdHJva2U9IiM2RDI4RDkiIHN0cm9rZS13aWR0aD0iMSIvPgogICAgICA8cmVjdCB4PSIxMiIgeT0iOSIgd2lkdGg9IjI4IiBoZWlnaHQ9IjI4IiByeD0iOCIgZmlsbD0iI0ZGRkZGRiIvPgogICAgICA8cGF0aCBkPSJNMjYgMTUgQzIzIDE2IDIwIDIwIDIwIDIzIEwyMyAyNiBDMjYgMjYgMzAgMjMgMzEgMjAgTDI2IDE1IFoiIGZpbGw9IiM3QzNBRUQiLz4KICAgICAgPHBhdGggZD0iTTE5IDI0IEwxNiAyNSBMMTggMjcgWiIgZmlsbD0iI0Y1OUUwQiIvPgogICAgICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjIwIiByPSIxLjUiIGZpbGw9IiNGRkZGRkYiLz4KICAgICAgPHRleHQgeD0iNDgiIHk9IjIxIiBmb250LWZhbWlseT0iJ1BsdXMgSmFrYXJ0YSBTYW5zJywgLWFwcGxlLXN5c3RlbSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iI0ZGRkZGRiIgbGV0dGVyLXNwYWNpbmc9IjAuMiI+QUxMIFNPQ0lBTFMgV0hPTEVTQUxFIENPTUJPPC90ZXh0PgogICAgICA8dGV4dCB4PSI0OCIgeT0iMzQiIGZvbnQtZmFtaWx5PSInUGx1cyBKYWthcnRhIFNhbnMnLCAtYXBwbGUtc3lzdGVtLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwLjUiIGZvbnQtd2VpZ2h0PSI2MDAiIGZpbGw9IiNEREQ2RkUiPlVwIHRvIDQwJSBPRkYgJiM4MjI2OyBBdXRvLVJlZmlsbCBHdWFyYW50ZWU8L3RleHQ+CiAgICAgIDxyZWN0IHg9IjI3MCIgeT0iMTIiIHdpZHRoPSI2MiIgaGVpZ2h0PSIyMiIgcng9IjExIiBmaWxsPSIjN0MzQUVEIi8+CiAgICAgIDx0ZXh0IHg9IjMwMSIgeT0iMjYuNSIgZm9udC1mYW1pbHk9IidQbHVzIEpha2FydGEgU2FucycsIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iOSIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iI0ZGRkZGRiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjAuNSI+SE9UIERFQUw8L3RleHQ+CiAgICAgIDxwYXRoIGQ9Ik0zNDIgMTkgTDM0NyAyMyBMMzQyIDI3IiBmaWxsPSJub25lIiBzdHJva2U9IiNDNEI1RkQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8L3N2Zz4=" alt="All Socials Combo Ad" class="opay-booster-ad-img" />
+            </div>
           </div>
-          <span style="color:#9CA3AF; font-size:13px; font-weight:700;">&gt;</span>
         </div>
 
         <!-- 4 Quick Actions (Dark rounded tiles) - AIRTIME, DATA, BETTING, TV -->
@@ -9010,6 +9059,23 @@
         showCustomAlert('Statement dispatched: An encrypted PDF statement has been sent to your registered email.');
       }
     }
+
+  
+    // Auto-rotate Social Media Booster Ads every 3 seconds
+    let opayBoosterAdIdx = 0;
+    function opayRotateBoosterAds() {
+      const slides = document.querySelectorAll('.opay-booster-ad-slide');
+      if (!slides.length) return;
+      opayBoosterAdIdx = (opayBoosterAdIdx + 1) % slides.length;
+      slides.forEach((s, i) => {
+        if (i === opayBoosterAdIdx) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+    }
+    setInterval(opayRotateBoosterAds, 3000);
 
   </script>
 </body>
