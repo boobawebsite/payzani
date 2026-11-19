@@ -5138,22 +5138,15 @@
         </div>
       </div>
 
-      <!-- Agent Tier Selection -->
-      <div style="margin: 0 16px 16px;">
-        <div style="color: #D1D5DB; font-size: 13px; font-weight: 700; margin-bottom: 8px;">Select Agent Package:</div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-          <div class="opay-agent-tier-pill" onclick="selectAgentTier(this, 'Starter Agent', 'Free')">
-            <div style="font-size: 11.5px; font-weight: 700; color: #FFF;">Starter</div>
-            <div style="font-size: 10px; color: #10B981; font-weight: 700;">FREE</div>
-          </div>
-          <div class="opay-agent-tier-pill active" onclick="selectAgentTier(this, 'Super Merchant', '₦5,000')">
-            <div style="font-size: 11.5px; font-weight: 700; color: #FFF;">VIP Merchant</div>
-            <div style="font-size: 10px; color: #A78BFA; font-weight: 700;">POPULAR</div>
-          </div>
-          <div class="opay-agent-tier-pill" onclick="selectAgentTier(this, 'API Switch Enterprise', 'Wholesale')">
-            <div style="font-size: 11.5px; font-weight: 700; color: #FFF;">API Switch</div>
-            <div style="font-size: 10px; color: #F59E0B; font-weight: 700;">ENTERPRISE</div>
-          </div>
+      <!-- One-Time Agent Registration Fee Display -->
+      <div style="margin: 0 16px 16px; background: linear-gradient(135deg, rgba(124, 58, 237, 0.18) 0%, rgba(76, 29, 149, 0.12) 100%); border: 1px solid rgba(124, 58, 237, 0.35); border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="color: #DDD6FE; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">One-Time Agent Activation Fee</div>
+          <div style="color: #9CA3AF; font-size: 11.5px;">Lifetime wholesale rates &bull; Free storefront &bull; No renewal</div>
+        </div>
+        <div style="text-align: right; flex-shrink: 0; margin-left: 12px;">
+          <div style="color: #FFFFFF; font-size: 20px; font-weight: 900; line-height: 1.1;">₦2,500</div>
+          <div style="font-size: 10px; color: #10B981; font-weight: 700; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 8px; display: inline-block; margin-top: 3px;">ONE-TIME</div>
         </div>
       </div>
 
@@ -5197,7 +5190,7 @@
           </div>
 
           <button type="submit" id="agentRegSubmitBtn" class="opay-pay-action-btn" style="width: 100%; margin: 0;">
-            Sign Up as Payzani Agent &rarr;
+            Pay ₦2,500 &bull; Sign Up as Agent &rarr;
           </button>
         </form>
       </div>
@@ -8923,15 +8916,6 @@
 
   
     // Agent Subscreen Controller
-    function selectAgentTier(el, tierName, fee) {
-      document.querySelectorAll('.opay-agent-tier-pill').forEach(p => p.classList.remove('active'));
-      el.classList.add('active');
-      const btn = document.getElementById('agentRegSubmitBtn');
-      if (btn) {
-        btn.innerHTML = 'Sign Up as Payzani Agent (' + tierName + ') &rarr;';
-      }
-    }
-
     function submitAgentRegistration(e) {
       if (e) e.preventDefault();
       const nameInput = document.getElementById('agentRegName');
@@ -8939,16 +8923,22 @@
       const btn = document.getElementById('agentRegSubmitBtn');
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '<span style="display:inline-block;animation:spin 0.8s linear infinite;">&#8635;</span> <span>Activating Agent Console...</span>';
+        btn.innerHTML = '<span style="display:inline-block;animation:spin 0.8s linear infinite;">&#8635;</span> <span>Processing ₦2,500 Agent Fee...</span>';
       }
       setTimeout(() => {
         if (btn) {
           btn.disabled = false;
-          btn.innerHTML = 'Sign Up as Payzani Agent &rarr;';
+          btn.innerHTML = 'Pay ₦2,500 &bull; Sign Up as Agent &rarr;';
         }
         if (typeof showCustomAlert === 'function') {
-          showCustomAlert('Registration Successful! ' + businessName + ' is now an authorized Payzani VIP Agent.');
+          showCustomAlert('Payment & Registration Successful! ₦2,500 Agent Fee debited from wallet. Welcome, ' + businessName + ' - your VIP Agent Storefront & Wholesale rates are now ACTIVE.');
         }
+        // Deduct ₦2,500 from mobile wallet display (₦24,500.00 -> ₦22,000.00)
+        const walletEl = document.querySelector('.opay-balance-amount');
+        if (walletEl) {
+          walletEl.textContent = '₦22,000.00';
+        }
+        // Update mobile user badge to show Agent status
         const avatarBadge = document.querySelector('.opay-avatar-badge');
         if (avatarBadge) {
           avatarBadge.textContent = '★';
