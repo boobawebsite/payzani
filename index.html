@@ -4285,6 +4285,7 @@
       }
     }
   </style>
+  <style id="payzani-agent-theme-override"></style>
 </head>
 <body>
   <!-- PAYZANI MOBILE SPLASH SCREEN (FIRST SCREEN ON LOAD) -->
@@ -5254,11 +5255,313 @@
           <button type="submit" id="agentRegSubmitBtn" class="opay-pay-action-btn" style="width: 100%; margin: 0;">
             Pay ₦2,500 &bull; Sign Up as Agent &rarr;
           </button>
+
+          <div style="text-align: center; margin-top: 14px;">
+            <button type="button" onclick="openAgentDashboard()" style="background: none; border: none; color: #A78BFA; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; display: inline-flex; align-items: center; gap: 5px;">
+              <span>Already registered as an Agent? Open Agent Dashboard</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
         </form>
       </div>
     </div>
 
-    <!-- PERSISTENT MOBILE BOTTOM NAVIGATION BAR -->
+    
+
+    <!-- SCREEN 8: AGENT STOREFRONT & WHOLESALE DASHBOARD -->
+    <div id="opay-screen-agent-dashboard" class="opay-subscreen">
+      <!-- Top Header -->
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Agent Dashboard</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #10B981; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 12px; letter-spacing: 0.3px;">
+            <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; display: inline-block;"></span>
+            <span>STOREFRONT LIVE</span>
+          </span>
+          <button type="button" onclick="openAgentRegistrationScreen()" style="background: transparent; border: 1px solid #2B2B38; border-radius: 8px; color: #9CA3AF; font-size: 11px; padding: 4px 8px; cursor: pointer;">
+            Onboarding
+          </button>
+        </div>
+      </div>
+
+      <!-- Agent Storefront Overview Banner -->
+      <div style="margin: 14px 16px; background: linear-gradient(135deg, #1A1A24 0%, #121217 100%); border: 1px solid #2B2B38; border-radius: 14px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 32px; height: 32px; border-radius: 10px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; color: #C4B5FD;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </div>
+            <div>
+              <div id="agentDashboardOutletName" style="color: #FFFFFF; font-size: 15px; font-weight: 800; line-height: 1.2;">Victor Telecoms &amp; POS</div>
+              <div style="color: #9CA3AF; font-size: 11px;">Wholesale Partner Outlet &bull; Tier 3 VIP</div>
+            </div>
+          </div>
+          <span style="font-size: 10.5px; font-weight: 700; color: #A78BFA; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 3px 8px; border-radius: 20px;">
+            8.5% MARGIN
+          </span>
+        </div>
+        <div style="font-size: 11.5px; color: #9CA3AF; margin-top: 6px; line-height: 1.4;">
+          Your independent branded Payzani clone is active. All end-user orders are fulfilled instantly via your wholesale credit float.
+        </div>
+      </div>
+
+      <!-- CARD 1: STOREFRONT LINK & CLONE ACCESS -->
+      <div style="margin: 0 16px 16px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span>Your Branded Storefront Link</span>
+          </div>
+          <span style="font-size: 10.5px; color: #10B981; font-weight: 700;">Payzani Clone</span>
+        </div>
+
+        <div style="background: #0E0E12; border: 1px solid #272733; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" style="flex-shrink:0;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          <input type="text" id="agentStorefrontLinkInput" readonly value="https://payzani.vercel.app/?agent=victor" style="width: 100%; background: transparent; border: none; outline: none; color: #C4B5FD; font-size: 12px; font-family: monospace; font-weight: 600; text-overflow: ellipsis;" />
+          <button type="button" id="agentCopyLinkBtn" onclick="copyAgentStorefrontLink()" style="background: #251B38; border: 1px solid #582CA6; color: #DDD6FE; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy</span>
+          </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <button type="button" onclick="shareStorefrontWhatsApp()" style="background: #064E3B; border: 1px solid #059669; color: #A7F3D0; font-size: 11.5px; font-weight: 700; padding: 8px 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            <span>WhatsApp Share</span>
+          </button>
+          <button type="button" onclick="openStorefrontPreview()" style="background: #1F1F2A; border: 1px solid #333344; color: #E5E7EB; font-size: 11.5px; font-weight: 700; padding: 8px 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            <span>Test Customer View</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD 2: WHOLESALE API CREDIT / REMAINING FLOAT (USER REQUIREMENT) -->
+      <div style="margin: 0 16px 16px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+            <span>Wholesale API Credit / Remaining Float</span>
+          </div>
+          <span id="agentFloatStatusBadge" style="font-size: 10px; font-weight: 700; color: #10B981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 6px;">
+            100% HEALTHY
+          </span>
+        </div>
+
+        <div style="color: #9CA3AF; font-size: 11px; margin-bottom: 12px; line-height: 1.4;">
+          Your storefront orders (Data, Airtime, Cable TV) are deducted from this wholesale float balance at discounted dealer rates.
+        </div>
+
+        <div style="background: linear-gradient(135deg, #1B1B26 0%, #12121A 100%); border: 1px solid #2A2A38; border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div>
+              <div style="font-size: 11px; color: #9CA3AF; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Remaining Wholesale Credit</div>
+              <div id="agentFloatDisplay" style="font-size: 28px; font-weight: 900; color: #FFFFFF; line-height: 1.2; margin-top: 4px;">₦50,000.00</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 10.5px; color: #A78BFA; font-weight: 700;">Wholesale Margin</div>
+              <div style="font-size: 13px; color: #10B981; font-weight: 800;">8.5% Off Retail</div>
+            </div>
+          </div>
+
+          <!-- Float Progress Gauge -->
+          <div style="margin-top: 12px;">
+            <div style="background: #252533; border-radius: 999px; height: 7px; overflow: hidden;">
+              <div id="agentFloatProgressBar" style="width: 100%; height: 100%; background: linear-gradient(90deg, #10B981 0%, #34D399 100%); transition: width 0.4s ease;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 10.5px; color: #9CA3AF; margin-top: 5px;">
+              <span id="agentFloatCapacityLabel">Float: ₦50,000 / ₦50,000</span>
+              <span>Low Alert: ₦5,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Low Float Warning Alert (Dynamic) -->
+        <div id="agentFloatLowAlert" style="display: none; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; font-size: 11.5px; color: #FCD34D;">
+          <strong> Low Credit Warning:</strong> Your wholesale float is under ₦5,000! Refill your float now so customer purchases on your storefront do not fail.
+        </div>
+
+        <!-- Top-Up Actions -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+          <button type="button" onclick="toggleAgentTopUpDrawer()" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 12.5px; font-weight: 700; padding: 10px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>Top-Up Float +</span>
+          </button>
+          <button type="button" onclick="simulateCustomerPurchase()" style="background: #1C1C26; border: 1px solid #313144; color: #DDD6FE; font-size: 11.5px; font-weight: 700; padding: 10px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Simulate Order</span>
+          </button>
+        </div>
+
+        <!-- Float Refill Drawer / Panel (Toggleable) -->
+        <div id="agentTopUpDrawer" style="display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid #262635;">
+          <div style="font-size: 12px; font-weight: 700; color: #E5E7EB; margin-bottom: 8px;">Quick Refill Amount:</div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px;">
+            <button type="button" onclick="selectTopUpAmount(5000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦5,000</button>
+            <button type="button" onclick="selectTopUpAmount(10000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦10,000</button>
+            <button type="button" onclick="selectTopUpAmount(25000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦25,000</button>
+            <button type="button" onclick="selectTopUpAmount(50000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦50,000</button>
+            <button type="button" onclick="selectTopUpAmount(100000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦100,000</button>
+            <button type="button" onclick="selectTopUpAmount(200000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦200,000</button>
+          </div>
+
+          <div style="margin-bottom: 10px;">
+            <label style="display: block; font-size: 11px; color: #9CA3AF; margin-bottom: 4px;">Or Custom Refill Amount (₦)</label>
+            <div style="background: #0E0E14; border: 1px solid #2E2E3E; border-radius: 8px; padding: 0 12px; height: 42px; display: flex; align-items: center;">
+              <span style="font-weight: 700; color: #E5E7EB; margin-right: 6px;">₦</span>
+              <input type="number" id="agentCustomRefillInput" value="10000" min="1000" step="1000" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 14px; font-weight: 700;" />
+            </div>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label style="display: block; font-size: 11px; color: #9CA3AF; margin-bottom: 4px;">Funding Source</label>
+            <select id="agentRefillSource" style="width: 100%; background: #0E0E14; border: 1px solid #2E2E3E; color: #E5E7EB; border-radius: 8px; padding: 10px 12px; font-size: 12px; outline: none;">
+              <option value="wallet">Payzani Main Wallet (Balance: ₦22,000.00)</option>
+              <option value="bank">Direct Bank Transfer / Dedicated Virtual Account</option>
+              <option value="card">Debit Card / Paystack Switch</option>
+            </select>
+          </div>
+
+          <button type="button" onclick="executeAgentFloatTopUp()" style="width: 100%; background: #10B981; border: none; color: #FFFFFF; font-size: 13px; font-weight: 800; padding: 11px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Confirm &amp; Refill Float Now</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- CARD 3: STOREFRONT PRIMARY COLOR CUSTOMIZER (USER REQUIREMENT) -->
+      <div style="margin: 0 16px 16px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2.5"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
+            <span>Storefront Primary Brand Color</span>
+          </div>
+          <span id="agentActiveColorLabel" style="font-size: 11px; font-weight: 700; color: #A78BFA; font-family: monospace;">#7C3AED</span>
+        </div>
+
+        <div style="color: #9CA3AF; font-size: 11px; margin-bottom: 12px; line-height: 1.4;">
+          Personalize your Payzani clone storefront! Choose your primary brand color to transform buttons, balance cards, and accents.
+        </div>
+
+        <!-- Color Preset Swatches -->
+        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 12px;">
+          <button type="button" onclick="selectAgentThemeColor('#7C3AED')" class="agent-theme-swatch active" data-color="#7C3AED" style="background: #7C3AED; height: 38px; border-radius: 10px; border: 2px solid #FFFFFF; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center;" title="Royal Purple (Default)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:block;"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button type="button" onclick="selectAgentThemeColor('#059669')" class="agent-theme-swatch" data-color="#059669" style="background: #059669; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Fintech Green">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button type="button" onclick="selectAgentThemeColor('#2563EB')" class="agent-theme-swatch" data-color="#2563EB" style="background: #2563EB; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Moniepoint Blue">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button type="button" onclick="selectAgentThemeColor('#EA580C')" class="agent-theme-swatch" data-color="#EA580C" style="background: #EA580C; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Telecom Orange">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button type="button" onclick="selectAgentThemeColor('#DC2626')" class="agent-theme-swatch" data-color="#DC2626" style="background: #DC2626; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Crimson Red">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button type="button" onclick="selectAgentThemeColor('#0891B2')" class="agent-theme-swatch" data-color="#0891B2" style="background: #0891B2; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Cyber Cyan">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Custom Color Picker Row -->
+        <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <input type="color" id="agentCustomColorInput" value="#7C3AED" oninput="handleAgentCustomColor(this.value)" style="width: 28px; height: 28px; border: none; border-radius: 6px; cursor: pointer; background: transparent;" />
+            <span style="font-size: 12px; color: #D1D5DB; font-weight: 600;">Custom Brand Color:</span>
+          </div>
+          <span id="agentCustomHexDisplay" style="font-size: 12px; color: #DDD6FE; font-family: monospace; font-weight: 700;">#7C3AED</span>
+        </div>
+
+        <!-- Mini Live Storefront Preview Box -->
+        <div id="agentMiniPreviewBox" style="background: linear-gradient(135deg, #1C1C26 0%, #101016 100%); border: 1px solid #2C2C3C; border-radius: 10px; padding: 12px; margin-bottom: 12px;">
+          <div style="font-size: 10.5px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; margin-bottom: 6px;">Live Color Theme Preview</div>
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div id="agentPreviewMiniCard" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 55%, #4C1D95 100%); border-radius: 8px; padding: 6px 10px; color: #FFF; font-size: 11px; font-weight: 800;">
+              <span>Storefront Balance: ₦24,500</span>
+            </div>
+            <button type="button" id="agentPreviewMiniBtn" style="background: #7C3AED; border: none; color: #FFF; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 6px; cursor: default;">
+              Recharge Airtime
+            </button>
+          </div>
+        </div>
+
+        <button type="button" onclick="saveAndApplyAgentColor()" style="width: 100%; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 13px; font-weight: 800; padding: 11px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Apply &amp; Save Storefront Theme</span>
+        </button>
+      </div>
+
+      <!-- CARD 4: STOREFRONT LIVE PERFORMANCE & RECENT CUSTOMER ORDERS -->
+      <div style="margin: 0 16px 24px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+            <span>Storefront Sales &amp; Reseller Profit</span>
+          </div>
+          <span style="font-size: 10.5px; color: #9CA3AF;">Today</span>
+        </div>
+
+        <!-- 3 Stats Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px;">
+          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 10px 8px; text-align: center;">
+            <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 2px;">Net Profit</div>
+            <div id="agentTodayProfit" style="font-size: 14px; font-weight: 900; color: #10B981;">+₦4,850</div>
+          </div>
+          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 10px 8px; text-align: center;">
+            <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 2px;">Orders Fulfilled</div>
+            <div id="agentTotalOrders" style="font-size: 14px; font-weight: 900; color: #DDD6FE;">28</div>
+          </div>
+          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 10px 8px; text-align: center;">
+            <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 2px;">Wholesale Rate</div>
+            <div style="font-size: 14px; font-weight: 900; color: #F59E0B;">8.5% Off</div>
+          </div>
+        </div>
+
+        <div style="font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 8px;">Recent Customer Storefront Orders:</div>
+
+        <div id="agentOrdersList" style="display: flex; flex-direction: column; gap: 8px;">
+          <div style="background: #181822; border: 1px solid #262635; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0803***891 &bull; MTN SME 2.5GB</div>
+              <div style="color: #9CA3AF; font-size: 10.5px;">Wholesale: -₦650.00 &bull; Retail: ₦800.00</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦150 Profit</div>
+              <div style="color: #6B7280; font-size: 10px;">Just now</div>
+            </div>
+          </div>
+
+          <div style="background: #181822; border: 1px solid #262635; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0701***442 &bull; Airtel ₦2,000 VTU</div>
+              <div style="color: #9CA3AF; font-size: 10.5px;">Wholesale: -₦1,920.00 &bull; Retail: ₦2,000.00</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦80 Profit</div>
+              <div style="color: #6B7280; font-size: 10px;">14 mins ago</div>
+            </div>
+          </div>
+
+          <div style="background: #181822; border: 1px solid #262635; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0905***109 &bull; DStv Compact</div>
+              <div style="color: #9CA3AF; font-size: 10.5px;">Wholesale: -₦12,300.00 &bull; Retail: ₦12,500.00</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦200 Profit</div>
+              <div style="color: #6B7280; font-size: 10px;">42 mins ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- PERSISTENT MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="opay-bottom-nav">
       <div class="opay-nav-item active" onclick="opaySwitchBottomTab(this, 'home')">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -8798,6 +9101,11 @@
       showCustomAlert(`Filtered to ${btn.innerText} plans`);
     }
 
+    let isPayzaniAgentRegistered = false;
+    try {
+      isPayzaniAgentRegistered = localStorage.getItem('payzani_is_agent') === 'true';
+    } catch(e) {}
+
     function opaySwitchBottomTab(el, tabKey) {
       document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
       el.classList.add('active');
@@ -8812,7 +9120,12 @@
       } else if (tabKey === 'transactions' || tabKey === 'finance') {
         opaySwitchScreen('opay-screen-transactions');
       } else if (tabKey === 'agent' || tabKey === 'me') {
-        opaySwitchScreen('opay-screen-agent');
+        if (isPayzaniAgentRegistered) {
+          opaySwitchScreen('opay-screen-agent-dashboard');
+          updateAgentDashboardUI();
+        } else {
+          opaySwitchScreen('opay-screen-agent');
+        }
       }
     }
 
@@ -8980,11 +9293,13 @@
     }
 
   
-    // Agent Subscreen Controller
+    // Agent Subscreen Controller & Dashboard Engine
     function submitAgentRegistration(e) {
       if (e) e.preventDefault();
       const nameInput = document.getElementById('agentRegName');
       const businessName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Victor Telecoms';
+      const phoneInput = document.getElementById('agentRegPhone');
+      const phone = phoneInput && phoneInput.value.trim() ? phoneInput.value.trim() : '0802 345 6789';
       const btn = document.getElementById('agentRegSubmitBtn');
       if (btn) {
         btn.disabled = true;
@@ -8995,16 +9310,36 @@
           btn.disabled = false;
           btn.innerHTML = 'Pay ₦2,500 &bull; Sign Up as Agent &rarr;';
         }
+
+        // Activate Agent State
+        isPayzaniAgentRegistered = true;
+        try {
+          localStorage.setItem('payzani_is_agent', 'true');
+          localStorage.setItem('payzani_agent_name', businessName);
+          localStorage.setItem('payzani_agent_phone', phone);
+          if (!localStorage.getItem('payzani_agent_float')) {
+            localStorage.setItem('payzani_agent_float', '50000');
+          }
+          if (!localStorage.getItem('payzani_agent_profit')) {
+            localStorage.setItem('payzani_agent_profit', '4850');
+          }
+          if (!localStorage.getItem('payzani_agent_orders')) {
+            localStorage.setItem('payzani_agent_orders', '28');
+          }
+        } catch(err) {}
+
         if (typeof showCustomAlert === 'function') {
-          showCustomAlert('Payment & Registration Successful! ₦2,500 Agent Fee debited from wallet. Welcome, ' + businessName + ' - your VIP Agent Storefront & Wholesale rates are now ACTIVE.');
+          showCustomAlert(' Payment & Registration Successful! ₦2,500 Agent Fee debited. Welcome, ' + businessName + ' - your VIP Agent Storefront & Wholesale Float are now LIVE!');
         }
+
         // Deduct ₦2,500 from mobile wallet display (₦24,500.00 -> ₦22,000.00)
         const walletEl = document.querySelector('.opay-balance-amount');
         if (walletEl) {
           walletEl.textContent = '₦22,000.00';
         }
+
         // Update mobile user badge to show Agent status
-        const avatarBadge = document.querySelector('.opay-avatar-badge');
+        const avatarBadge = document.querySelector('.opay-tier-badge');
         if (avatarBadge) {
           avatarBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
           avatarBadge.title = 'Authorized Payzani Agent';
@@ -9013,9 +9348,457 @@
         if (userName) {
           userName.innerHTML = 'Hi, Victor <span style="font-size:10px; font-weight:700; color:#A78BFA; background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.4); padding:2px 6px; border-radius:10px; margin-left:4px;">AGENT</span>';
         }
-        opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home');
+
+        // Switch directly into the new Agent Dashboard!
+        opaySwitchScreen('opay-screen-agent-dashboard');
+        updateAgentDashboardUI();
+        document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
+        const agentNav = document.getElementById('opayNavAgent');
+        if (agentNav) agentNav.classList.add('active');
       }, 900);
     }
+
+    function openAgentDashboard() {
+      isPayzaniAgentRegistered = true;
+      try {
+        localStorage.setItem('payzani_is_agent', 'true');
+        if (!localStorage.getItem('payzani_agent_float')) {
+          localStorage.setItem('payzani_agent_float', '50000');
+        }
+      } catch(e) {}
+      opaySwitchScreen('opay-screen-agent-dashboard');
+      updateAgentDashboardUI();
+      document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
+      const agentNav = document.getElementById('opayNavAgent');
+      if (agentNav) agentNav.classList.add('active');
+    }
+
+    function openAgentRegistrationScreen() {
+      opaySwitchScreen('opay-screen-agent');
+    }
+
+    // Agent Storefront Link Generator
+    function getAgentStorefrontUrl() {
+      const origin = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : 'https://payzani.vercel.app';
+      const path = window.location.pathname || '/';
+      let name = 'victor';
+      try {
+        const storedName = localStorage.getItem('payzani_agent_name');
+        if (storedName) name = storedName.toLowerCase().replace(/[^a-z0-9]/g, '');
+      } catch(e) {}
+      return `${origin}${path}?agent=${name || 'victor'}`;
+    }
+
+    function copyAgentStorefrontLink() {
+      const url = getAgentStorefrontUrl();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          showLinkCopiedFeedback();
+        }).catch(() => {
+          fallbackCopyText(url);
+        });
+      } else {
+        fallbackCopyText(url);
+      }
+    }
+
+    function fallbackCopyText(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showLinkCopiedFeedback();
+    }
+
+    function showLinkCopiedFeedback() {
+      const btn = document.getElementById('agentCopyLinkBtn');
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#10B981;">Copied!</span>';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+      }
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert('Storefront link copied! Share this exact link with your customers.');
+      }
+    }
+
+    function shareStorefrontWhatsApp() {
+      const url = getAgentStorefrontUrl();
+      let name = 'Victor Telecoms';
+      try {
+        name = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms';
+      } catch(e) {}
+      const msg = encodeURIComponent(`Buy instant cheap Data, Airtime & Pay Bills on my official ${name} Storefront: ${url}`);
+      window.open(`https://api.whatsapp.com/send?text=${msg}`, '_blank');
+    }
+
+    function openStorefrontPreview() {
+      const url = getAgentStorefrontUrl();
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert('Opening your live customer storefront preview...');
+      }
+      setTimeout(() => {
+        window.location.href = url;
+      }, 700);
+    }
+
+    // Wholesale Float Credit Manager
+    function getAgentFloat() {
+      try {
+        const saved = localStorage.getItem('payzani_agent_float');
+        return saved ? parseFloat(saved) : 50000;
+      } catch(e) {
+        return 50000;
+      }
+    }
+
+    function setAgentFloat(val) {
+      const num = Math.max(0, val);
+      try {
+        localStorage.setItem('payzani_agent_float', num.toString());
+      } catch(e) {}
+      updateAgentDashboardUI();
+    }
+
+    function toggleAgentTopUpDrawer() {
+      const drawer = document.getElementById('agentTopUpDrawer');
+      if (drawer) {
+        drawer.style.display = (drawer.style.display === 'none' || !drawer.style.display) ? 'block' : 'none';
+        if (drawer.style.display === 'block') {
+          drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+    }
+
+    function selectTopUpAmount(amt) {
+      const input = document.getElementById('agentCustomRefillInput');
+      if (input) input.value = amt;
+      document.querySelectorAll('.agent-refill-chip').forEach(c => {
+        if (c.textContent.includes(amt.toLocaleString())) {
+          c.style.borderColor = '#10B981';
+          c.style.background = 'rgba(16, 185, 129, 0.15)';
+          c.style.color = '#A7F3D0';
+        } else {
+          c.style.borderColor = '#2E2E3E';
+          c.style.background = '#181822';
+          c.style.color = '#D1D5DB';
+        }
+      });
+    }
+
+    function executeAgentFloatTopUp() {
+      const input = document.getElementById('agentCustomRefillInput');
+      const amt = input ? parseFloat(input.value) : 10000;
+      if (isNaN(amt) || amt <= 0) {
+        if (typeof showCustomAlert === 'function') showCustomAlert('Please enter a valid refill amount.');
+        return;
+      }
+
+      const cur = getAgentFloat();
+      const next = cur + amt;
+      setAgentFloat(next);
+
+      // close drawer
+      const drawer = document.getElementById('agentTopUpDrawer');
+      if (drawer) drawer.style.display = 'none';
+
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(` Wholesale Float Refilled! +₦${amt.toLocaleString()} credited. Remaining Credit: ₦${next.toLocaleString()}.00`);
+      }
+    }
+
+    // Simulate Customer Purchases on Agent's Storefront
+    function simulateCustomerPurchase() {
+      const cur = getAgentFloat();
+      const wholesaleCost = 650;
+      const retailPrice = 800;
+      const profit = retailPrice - wholesaleCost;
+
+      if (cur < wholesaleCost) {
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert(` Customer Purchase Blocked: Wholesale Float Exhausted (Remaining: ₦${cur.toLocaleString()}.00). Refill your float to fulfill customer orders!`);
+        }
+        return;
+      }
+
+      const next = cur - wholesaleCost;
+      setAgentFloat(next);
+
+      // update profit
+      let curProfit = 4850;
+      try {
+        curProfit = parseFloat(localStorage.getItem('payzani_agent_profit') || '4850');
+      } catch(e) {}
+      curProfit += profit;
+      try {
+        localStorage.setItem('payzani_agent_profit', curProfit.toString());
+      } catch(e) {}
+
+      // update orders count
+      let curOrders = 28;
+      try {
+        curOrders = parseInt(localStorage.getItem('payzani_agent_orders') || '28');
+      } catch(e) {}
+      curOrders += 1;
+      try {
+        localStorage.setItem('payzani_agent_orders', curOrders.toString());
+      } catch(e) {}
+
+      // add new simulated order item to top of list
+      const ordersList = document.getElementById('agentOrdersList');
+      if (ordersList) {
+        const phoneSuffix = Math.floor(100 + Math.random() * 899);
+        const newOrder = document.createElement('div');
+        newOrder.style.cssText = 'background: #1B241E; border: 1px solid #10B981; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; animation: pulse 0.5s ease;';
+        newOrder.innerHTML = `
+          <div>
+            <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0814***${phoneSuffix} &bull; MTN SME 2.5GB</div>
+            <div style="color: #A7F3D0; font-size: 10.5px;">Wholesale: -₦650.00 &bull; Retail: ₦800.00</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦150 Profit</div>
+            <div style="color: #9CA3AF; font-size: 10px;">Just now</div>
+          </div>
+        `;
+        ordersList.insertBefore(newOrder, ordersList.firstChild);
+      }
+
+      updateAgentDashboardUI();
+
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(` Customer Order Executed! 2.5GB SME Data delivered. -₦650.00 deducted from float. +₦150.00 Net Profit earned! Remaining Float: ₦${next.toLocaleString()}.00`);
+      }
+    }
+
+    // Storefront Primary Color Branding Engine
+    let currentAgentThemeColor = '#7C3AED';
+    try {
+      currentAgentThemeColor = localStorage.getItem('payzani_agent_color') || '#7C3AED';
+    } catch(e) {}
+
+    function selectAgentThemeColor(hex) {
+      currentAgentThemeColor = hex;
+      updateColorSelectorUI(hex);
+      previewAgentMiniTheme(hex);
+    }
+
+    function handleAgentCustomColor(hex) {
+      currentAgentThemeColor = hex;
+      const display = document.getElementById('agentCustomHexDisplay');
+      if (display) display.textContent = hex.toUpperCase();
+      const activeLabel = document.getElementById('agentActiveColorLabel');
+      if (activeLabel) activeLabel.textContent = hex.toUpperCase();
+      // unselect preset swatches
+      document.querySelectorAll('.agent-theme-swatch').forEach(s => {
+        s.style.border = '2px solid transparent';
+        const svg = s.querySelector('svg');
+        if (svg) svg.style.display = 'none';
+      });
+      previewAgentMiniTheme(hex);
+    }
+
+    function updateColorSelectorUI(hex) {
+      const activeLabel = document.getElementById('agentActiveColorLabel');
+      if (activeLabel) activeLabel.textContent = hex.toUpperCase();
+      const customInput = document.getElementById('agentCustomColorInput');
+      if (customInput) customInput.value = hex;
+      const customHex = document.getElementById('agentCustomHexDisplay');
+      if (customHex) customHex.textContent = hex.toUpperCase();
+
+      document.querySelectorAll('.agent-theme-swatch').forEach(s => {
+        const swatchColor = s.getAttribute('data-color');
+        const svg = s.querySelector('svg');
+        if (swatchColor && swatchColor.toLowerCase() === hex.toLowerCase()) {
+          s.style.border = '2px solid #FFFFFF';
+          if (svg) svg.style.display = 'block';
+        } else {
+          s.style.border = '2px solid transparent';
+          if (svg) svg.style.display = 'none';
+        }
+      });
+    }
+
+    function previewAgentMiniTheme(hex) {
+      const miniCard = document.getElementById('agentPreviewMiniCard');
+      if (miniCard) {
+        miniCard.style.background = `linear-gradient(135deg, ${hex} 0%, #1E1B4B 100%)`;
+      }
+      const miniBtn = document.getElementById('agentPreviewMiniBtn');
+      if (miniBtn) {
+        miniBtn.style.background = hex;
+      }
+    }
+
+    function saveAndApplyAgentColor() {
+      applyAgentStorefrontColor(currentAgentThemeColor, true);
+      try {
+        localStorage.setItem('payzani_agent_color', currentAgentThemeColor);
+      } catch(e) {}
+    }
+
+    function adjustHex(hex, factor) {
+      let c = hex.replace('#', '');
+      if (c.length === 3) c = c.split('').map(x => x + x).join('');
+      let num = parseInt(c, 16);
+      let r = Math.min(255, Math.max(0, Math.floor((num >> 16) * factor)));
+      let g = Math.min(255, Math.max(0, Math.floor(((num >> 8) & 0x00FF) * factor)));
+      let b = Math.min(255, Math.max(0, Math.floor((num & 0x0000FF) * factor)));
+      return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    function applyAgentStorefrontColor(color, showToast) {
+      if (!color) return;
+      const dark = adjustHex(color, 0.8);
+      const deep = adjustHex(color, 0.5);
+      const styleEl = document.getElementById('payzani-agent-theme-override') || document.createElement('style');
+      styleEl.id = 'payzani-agent-theme-override';
+      styleEl.innerHTML = `
+        :root {
+          --brand: ${color} !important;
+          --agent-primary: ${color} !important;
+        }
+        #mobile-opay-experience {
+          --opay-primary: ${color} !important;
+        }
+        .opay-balance-card {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 55%, ${deep} 100%) !important;
+        }
+        .opay-promo-btn, .opay-pay-action-btn, #payzaniLoginBtn, #payzaniSignupBtn {
+          background: ${color} !important;
+        }
+        .opay-bottom-nav .opay-nav-item.active {
+          color: ${color} !important;
+        }
+        .opay-filter-pill.active {
+          background: ${color} !important;
+          border-color: ${color} !important;
+        }
+        .opay-sub-banner-badge {
+          background: ${color} !important;
+        }
+      `;
+      if (!document.getElementById('payzani-agent-theme-override')) {
+        document.head.appendChild(styleEl);
+      }
+
+      previewAgentMiniTheme(color);
+      updateColorSelectorUI(color);
+
+      if (showToast && typeof showCustomAlert === 'function') {
+        showCustomAlert(` Storefront Theme Applied! Primary color is now ${color.toUpperCase()}. Your live clone storefront is updated.`);
+      }
+    }
+
+    // Refresh Dashboard State
+    function updateAgentDashboardUI() {
+      // Outlet name
+      let businessName = 'Victor Telecoms & POS';
+      try {
+        businessName = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms & POS';
+      } catch(e) {}
+      const outletNameEl = document.getElementById('agentDashboardOutletName');
+      if (outletNameEl) outletNameEl.textContent = businessName;
+
+      // Link input
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput) linkInput.value = getAgentStorefrontUrl();
+
+      // Float Balance
+      const floatVal = getAgentFloat();
+      const floatDisplay = document.getElementById('agentFloatDisplay');
+      if (floatDisplay) floatDisplay.textContent = `₦${floatVal.toLocaleString('en-NG', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+      // Capacity gauge
+      const maxFloat = 50000;
+      const pct = Math.min(100, Math.max(0, (floatVal / maxFloat) * 100));
+      const progressBar = document.getElementById('agentFloatProgressBar');
+      if (progressBar) {
+        progressBar.style.width = `${pct}%`;
+        if (floatVal < 5000) {
+          progressBar.style.background = 'linear-gradient(90deg, #EF4444 0%, #F59E0B 100%)';
+        } else {
+          progressBar.style.background = 'linear-gradient(90deg, #10B981 0%, #34D399 100%)';
+        }
+      }
+
+      const capacityLabel = document.getElementById('agentFloatCapacityLabel');
+      if (capacityLabel) capacityLabel.textContent = `Float: ₦${Math.round(floatVal).toLocaleString()} / ₦50,000 (${Math.round(pct)}%)`;
+
+      const statusBadge = document.getElementById('agentFloatStatusBadge');
+      if (statusBadge) {
+        if (floatVal <= 0) {
+          statusBadge.textContent = 'EXHAUSTED';
+          statusBadge.style.color = '#EF4444';
+          statusBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+          statusBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+        } else if (floatVal < 5000) {
+          statusBadge.textContent = 'LOW CREDIT';
+          statusBadge.style.color = '#F59E0B';
+          statusBadge.style.borderColor = 'rgba(245, 158, 11, 0.4)';
+          statusBadge.style.background = 'rgba(245, 158, 11, 0.15)';
+        } else {
+          statusBadge.textContent = 'HEALTHY';
+          statusBadge.style.color = '#10B981';
+          statusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+          statusBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+        }
+      }
+
+      const lowAlert = document.getElementById('agentFloatLowAlert');
+      if (lowAlert) {
+        lowAlert.style.display = (floatVal < 5000) ? 'block' : 'none';
+      }
+
+      // Profit and Orders
+      try {
+        const profit = parseFloat(localStorage.getItem('payzani_agent_profit') || '4850');
+        const profitEl = document.getElementById('agentTodayProfit');
+        if (profitEl) profitEl.textContent = `+₦${profit.toLocaleString()}`;
+
+        const orders = parseInt(localStorage.getItem('payzani_agent_orders') || '28');
+        const ordersEl = document.getElementById('agentTotalOrders');
+        if (ordersEl) ordersEl.textContent = orders.toString();
+      } catch(e) {}
+    }
+
+    // Auto-init on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        // Apply saved color if present
+        const savedColor = localStorage.getItem('payzani_agent_color');
+        if (savedColor) {
+          currentAgentThemeColor = savedColor;
+          applyAgentStorefrontColor(savedColor, false);
+        }
+
+        // Check if agent registered
+        if (localStorage.getItem('payzani_is_agent') === 'true') {
+          isPayzaniAgentRegistered = true;
+          const avatarBadge = document.querySelector('.opay-tier-badge');
+          if (avatarBadge) {
+            avatarBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+            avatarBadge.title = 'Authorized Payzani Agent';
+          }
+          const userName = document.querySelector('.opay-user-name');
+          if (userName) {
+            userName.innerHTML = 'Hi, Victor <span style="font-size:10px; font-weight:700; color:#A78BFA; background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.4); padding:2px 6px; border-radius:10px; margin-left:4px;">AGENT</span>';
+          }
+        }
+
+        // Storefront URL query param check (?agent=...)
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('agent')) {
+          const agentSlug = params.get('agent');
+          setTimeout(() => {
+            if (typeof showCustomAlert === 'function') {
+              showCustomAlert(`Welcome to ${agentSlug.toUpperCase()}'s Official Payzani Storefront Outlet! Instant Telecoms Switching Active.`);
+            }
+          }, 1200);
+        }
+      } catch(e) {}
+    });
 
   
     // Transactions Screen Controller
