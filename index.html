@@ -4541,7 +4541,8 @@
           background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
           box-shadow: 0 4px 14px ${glow} !important;
         }
-        button[onclick*="saveAndApplyAgentColor"] {
+        button[onclick*="saveAndApplyAgentColor"],
+        button[onclick*="saveAndApplyAgentBranding"] {
           background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
           box-shadow: 0 4px 14px ${glow} !important;
         }
@@ -5600,12 +5601,12 @@
       <div style="margin: 14px 16px; background: linear-gradient(135deg, #1A1A24 0%, #121217 100%); border: 1px solid #2B2B38; border-radius: 14px; padding: 14px 16px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
           <div style="display: flex; align-items: center; gap: 8px;">
-            <div style="width: 32px; height: 32px; border-radius: 10px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; color: #C4B5FD;">
+            <div id="agentDashboardHeaderLogoWrap" style="width: 34px; height: 34px; border-radius: 10px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; color: #C4B5FD;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
             <div>
               <div id="agentDashboardOutletName" style="color: #FFFFFF; font-size: 15px; font-weight: 800; line-height: 1.2;">Victor Telecoms &amp; POS</div>
-              <div style="color: #9CA3AF; font-size: 11px;">Wholesale Partner Outlet &bull; Tier 3 VIP</div>
+              <div id="agentDashboardOutletSlogan" style="color: #9CA3AF; font-size: 11px;">Wholesale Partner Outlet &bull; Tier 3 VIP</div>
             </div>
           </div>
           <span style="font-size: 10.5px; font-weight: 700; color: #A78BFA; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 3px 8px; border-radius: 20px;">
@@ -5741,67 +5742,155 @@
         </div>
       </div>
 
-      <!-- CARD 3: STOREFRONT PRIMARY COLOR CUSTOMIZER (USER REQUIREMENT) -->
+      <!-- CARD 3: STOREFRONT BRANDING, LOGO & COLOR STUDIO (USER REQUIREMENT) -->
       <div style="margin: 0 16px 16px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
           <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2.5"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
-            <span>Storefront Primary Brand Color</span>
+            <span>Storefront Branding, Logo &amp; Color Studio</span>
           </div>
-          <span id="agentActiveColorLabel" style="font-size: 11px; font-weight: 700; color: #A78BFA; font-family: monospace;">#7C3AED</span>
+          <span style="font-size: 10px; font-weight: 700; color: #EC4899; background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.3); padding: 2px 7px; border-radius: 12px;">
+            BRAND IDENTITY
+          </span>
         </div>
 
-        <div style="color: #9CA3AF; font-size: 11px; margin-bottom: 12px; line-height: 1.4;">
-          Personalize your Payzani clone storefront! Choose your primary brand color to transform buttons, balance cards, and accents.
+        <div style="color: #9CA3AF; font-size: 11px; margin-bottom: 14px; line-height: 1.4;">
+          Rename your Payzani clone website, upload your custom logo image, and pick your primary brand theme color.
         </div>
 
-        <!-- Color Preset Swatches -->
-        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 12px;">
-          <button type="button" onclick="selectAgentThemeColor('#7C3AED')" class="agent-theme-swatch active" data-color="#7C3AED" style="background: #7C3AED; height: 38px; border-radius: 10px; border: 2px solid #FFFFFF; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center;" title="Royal Purple (Default)">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:block;"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-          <button type="button" onclick="selectAgentThemeColor('#059669')" class="agent-theme-swatch" data-color="#059669" style="background: #059669; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Fintech Green">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-          <button type="button" onclick="selectAgentThemeColor('#2563EB')" class="agent-theme-swatch" data-color="#2563EB" style="background: #2563EB; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Moniepoint Blue">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-          <button type="button" onclick="selectAgentThemeColor('#EA580C')" class="agent-theme-swatch" data-color="#EA580C" style="background: #EA580C; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Telecom Orange">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-          <button type="button" onclick="selectAgentThemeColor('#DC2626')" class="agent-theme-swatch" data-color="#DC2626" style="background: #DC2626; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Crimson Red">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-          <button type="button" onclick="selectAgentThemeColor('#0891B2')" class="agent-theme-swatch" data-color="#0891B2" style="background: #0891B2; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Cyber Cyan">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-          </button>
-        </div>
-
-        <!-- Custom Color Picker Row -->
-        <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <input type="color" id="agentCustomColorInput" value="#7C3AED" oninput="handleAgentCustomColor(this.value)" style="width: 28px; height: 28px; border: none; border-radius: 6px; cursor: pointer; background: transparent;" />
-            <span style="font-size: 12px; color: #D1D5DB; font-weight: 600;">Custom Brand Color:</span>
+        <!-- 1. RENAME STOREFRONT WEBSITE -->
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 5px;">
+            Storefront Website Name
+          </label>
+          <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 0 12px; height: 42px; display: flex; align-items: center; gap: 8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" style="flex-shrink:0;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            <input type="text" id="agentStorefrontNameInput" value="Victor Telecoms &amp; POS" placeholder="e.g. Victor Telecoms &amp; POS" oninput="handleAgentStorefrontNameInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 13px; font-weight: 700;" />
           </div>
-          <span id="agentCustomHexDisplay" style="font-size: 12px; color: #DDD6FE; font-family: monospace; font-weight: 700;">#7C3AED</span>
         </div>
 
-        <!-- Mini Live Storefront Preview Box -->
-        <div id="agentMiniPreviewBox" style="background: linear-gradient(135deg, #1C1C26 0%, #101016 100%); border: 1px solid #2C2C3C; border-radius: 10px; padding: 12px; margin-bottom: 12px;">
-          <div style="font-size: 10.5px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; margin-bottom: 6px;">Live Color Theme Preview</div>
-          <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div id="agentPreviewMiniCard" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 55%, #4C1D95 100%); border-radius: 8px; padding: 6px 10px; color: #FFF; font-size: 11px; font-weight: 800;">
-              <span>Storefront Balance: ₦24,500</span>
+        <!-- 2. STOREFRONT SLOGAN / SUBTITLE -->
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 5px;">
+            Storefront Slogan / Tagline
+          </label>
+          <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 0 12px; height: 42px; display: flex; align-items: center; gap: 8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" style="flex-shrink:0;"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+            <input type="text" id="agentStorefrontSloganInput" value="Instant Switching &bull; Wholesale Telecoms" placeholder="e.g. Instant Switching &bull; Wholesale Telecoms" oninput="handleAgentStorefrontSloganInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #D1D5DB; font-size: 12px; font-weight: 500;" />
+          </div>
+        </div>
+
+        <!-- 3. BRAND LOGO STUDIO (UPLOAD & PRESETS) -->
+        <div style="margin-bottom: 14px; background: #0E0E14; border: 1px solid #252533; border-radius: 12px; padding: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <div style="font-size: 11.5px; font-weight: 700; color: #E5E7EB;">Storefront Website Logo</div>
+            <span style="font-size: 10px; color: #9CA3AF;">Upload or Preset</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <!-- Current Logo Preview -->
+            <div id="agentDashboardLogoPreviewWrap" style="width: 50px; height: 50px; border-radius: 14px; background: rgba(124, 58, 237, 0.25); border: 1.5px solid rgba(124, 58, 237, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+              <span id="agentDashboardLogoPreviewText" style="font-size: 24px; font-weight: 900; color: #FFF;">V</span>
             </div>
-            <button type="button" id="agentPreviewMiniBtn" style="background: #7C3AED; border: none; color: #FFF; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 6px; cursor: default;">
-              Recharge Airtime
+            
+            <!-- Logo Actions -->
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+              <input type="file" id="agentLogoFileInput" accept="image/*" style="display: none;" onchange="handleAgentLogoFileUpload(this)" />
+              <button type="button" onclick="document.getElementById('agentLogoFileInput').click()" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); border: none; color: #FFF; font-size: 11.5px; font-weight: 700; padding: 7px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Upload Custom Logo</span>
+              </button>
+              <button type="button" onclick="resetAgentLogo()" style="background: #181822; border: 1px solid #2B2B3A; color: #9CA3AF; font-size: 10.5px; font-weight: 600; padding: 5px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                <span>Reset to Initial / Default</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Preset Logo Icons -->
+          <div style="font-size: 10.5px; color: #9CA3AF; margin-bottom: 6px;">Or select a ready-to-use brand mark:</div>
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
+            <button type="button" onclick="selectAgentLogoPreset('bolt')" class="agent-logo-preset-btn" title="Bolt" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('diamond')" class="agent-logo-preset-btn" title="Diamond" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 3h12l4 6-10 13L2 9z"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('globe')" class="agent-logo-preset-btn" title="Globe" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('rocket')" class="agent-logo-preset-btn" title="Rocket" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('shield')" class="agent-logo-preset-btn" title="Shield" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('crown')" class="agent-logo-preset-btn" title="Crown" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="2 4 5 20 19 20 22 4 15 10 12 2 9 10 2 4"></polygon></svg>
             </button>
           </div>
         </div>
 
-        <button type="button" onclick="saveAndApplyAgentColor()" style="width: 100%; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 13px; font-weight: 800; padding: 11px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <!-- 4. PRIMARY BRAND COLOR -->
+        <div style="margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <label style="font-size: 11.5px; font-weight: 700; color: #E5E7EB;">Primary Theme Color</label>
+            <span id="agentActiveColorLabel" style="font-size: 11px; font-weight: 700; color: #A78BFA; font-family: monospace;">#7C3AED</span>
+          </div>
+
+          <!-- Color Preset Swatches -->
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 10px;">
+            <button type="button" onclick="selectAgentThemeColor('#7C3AED')" class="agent-theme-swatch active" data-color="#7C3AED" style="background: #7C3AED; height: 38px; border-radius: 10px; border: 2px solid #FFFFFF; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center;" title="Royal Purple">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:block;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#059669')" class="agent-theme-swatch" data-color="#059669" style="background: #059669; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Fintech Green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#2563EB')" class="agent-theme-swatch" data-color="#2563EB" style="background: #2563EB; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Moniepoint Blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#EA580C')" class="agent-theme-swatch" data-color="#EA580C" style="background: #EA580C; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Telecom Orange">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#DC2626')" class="agent-theme-swatch" data-color="#DC2626" style="background: #DC2626; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Crimson Red">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#0891B2')" class="agent-theme-swatch" data-color="#0891B2" style="background: #0891B2; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Cyber Cyan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+
+          <!-- Custom Color Picker Row -->
+          <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <input type="color" id="agentCustomColorInput" value="#7C3AED" oninput="handleAgentCustomColor(this.value)" style="width: 28px; height: 28px; border: none; border-radius: 6px; cursor: pointer; background: transparent;" />
+              <span style="font-size: 12px; color: #D1D5DB; font-weight: 600;">Custom Hex Color:</span>
+            </div>
+            <span id="agentCustomHexDisplay" style="font-size: 12px; color: #DDD6FE; font-family: monospace; font-weight: 700;">#7C3AED</span>
+          </div>
+        </div>
+
+        <!-- 5. LIVE STOREFRONT BRAND MOCKUP PREVIEW -->
+        <div id="agentMiniPreviewBox" style="background: linear-gradient(135deg, #1C1C26 0%, #101016 100%); border: 1px solid #2C2C3C; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <div style="font-size: 10px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;">Storefront Live Mockup Preview</div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="agentMiniPreviewLogo" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(124, 58, 237, 0.3); border: 1px solid rgba(124, 58, 237, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+              <span style="font-size: 16px; font-weight: 900; color: #FFF;">V</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <div id="agentPreviewMiniName" style="color: #FFF; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Victor Telecoms &amp; POS</div>
+              <div id="agentPreviewMiniSlogan" style="color: #9CA3AF; font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Instant Switching &bull; Wholesale Telecoms</div>
+            </div>
+            <button type="button" id="agentPreviewMiniBtn" style="background: #7C3AED; border: none; color: #FFF; font-size: 10.5px; font-weight: 700; padding: 6px 10px; border-radius: 6px; cursor: default; flex-shrink: 0;">
+              Buy VTU
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. SAVE & APPLY ALL BRANDING -->
+        <button type="button" onclick="saveAndApplyAgentBranding()" style="width: 100%; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 13px; font-weight: 800; padding: 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Apply &amp; Save Storefront Theme</span>
+          <span>Save Storefront Name, Logo &amp; Theme</span>
         </button>
       </div>
 
@@ -5866,6 +5955,102 @@
               <div style="color: #6B7280; font-size: 10px;">42 mins ago</div>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 9: STOREFRONT ME / CUSTOMER USER DASHBOARD -->
+    <div id="opay-screen-me" class="opay-subscreen">
+      <!-- Top Header -->
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>My Profile &amp; Storefront</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button type="button" onclick="contactStorefrontWhatsApp()" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #10B981; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>Outlet Support</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Storefront Outlet Info Banner -->
+      <div style="margin: 14px 16px; background: linear-gradient(135deg, #1A1A24 0%, #121217 100%); border: 1px solid #2B2B38; border-radius: 14px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="userOutletLogoWrap" style="width: 42px; height: 42px; border-radius: 12px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+              <span id="userOutletLogoLetter" style="font-size: 20px; font-weight: 900; color: #FFF;">V</span>
+            </div>
+            <div>
+              <div id="userOutletName" style="color: #FFFFFF; font-size: 15px; font-weight: 800; line-height: 1.2;">Victor Telecoms &amp; POS</div>
+              <div id="userOutletSlogan" style="color: #9CA3AF; font-size: 11px;">Instant Switching &bull; Wholesale Telecoms</div>
+            </div>
+          </div>
+          <span style="font-size: 10px; font-weight: 700; color: #10B981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 3px 8px; border-radius: 20px;">
+            VERIFIED
+          </span>
+        </div>
+      </div>
+
+      <!-- Customer Balance Card -->
+      <div style="margin: 0 16px 14px; background: linear-gradient(135deg, #1E1B4B 0%, #171536 100%); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 14px; padding: 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+          <span style="font-size: 11.5px; color: #C4B5FD; font-weight: 600;">Customer Wallet Balance</span>
+          <span style="font-size: 11px; color: #10B981; font-weight: 700;">Active Account</span>
+        </div>
+        <div style="font-size: 26px; font-weight: 900; color: #FFFFFF; line-height: 1.2;">₦24,500.00</div>
+        
+        <!-- Dedicated Virtual Account for Wallet Funding -->
+        <div style="margin-top: 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <div style="font-size: 10px; color: #9CA3AF; text-transform: uppercase;">Dedicated Top-Up Account (Wema Bank)</div>
+            <div style="font-size: 14px; font-weight: 800; color: #FFFFFF; font-family: monospace; letter-spacing: 1px; margin-top: 2px;">8201948219</div>
+          </div>
+          <button type="button" id="userCopyAccBtn" onclick="copyCustomerVirtualAccount()" style="background: rgba(124, 58, 237, 0.25); border: 1px solid rgba(124, 58, 237, 0.4); color: #DDD6FE; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- If Logged-in User is Outlet Owner: Switch to Agent Dashboard Card -->
+      <div id="outletOwnerSwitchCard" style="display: none; margin: 0 16px 14px; background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(109, 40, 217, 0.1) 100%); border: 1px solid rgba(124, 58, 237, 0.35); border-radius: 14px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <div style="font-size: 12px; font-weight: 800; color: #DDD6FE;">Storefront Owner Controls</div>
+            <div style="font-size: 11px; color: #9CA3AF; margin-top: 2px;">You are currently logged in as the store owner.</div>
+          </div>
+          <button type="button" onclick="openAgentDashboard()" style="background: #7C3AED; border: none; color: #FFF; font-size: 11.5px; font-weight: 700; padding: 7px 12px; border-radius: 8px; cursor: pointer;">
+            Manage Outlet &gt;
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Actions List -->
+      <div style="margin: 0 16px 20px; background: #14141A; border: 1px solid #242430; border-radius: 14px; overflow: hidden;">
+        <div onclick="showCustomAlert('Order History: All recent orders delivered in under 1.2s via Payzani Switch.')" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #21212B; cursor: pointer;">
+          <div style="display: flex; align-items: center; gap: 10px; color: #E5E7EB; font-size: 13px; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>My Order History</span>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+
+        <div onclick="contactStorefrontWhatsApp()" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #21212B; cursor: pointer;">
+          <div style="display: flex; align-items: center; gap: 10px; color: #E5E7EB; font-size: 13px; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <span>Contact Storefront WhatsApp Support</span>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+
+        <div onclick="handlePayzaniLogout()" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+          <div style="display: flex; align-items: center; gap: 10px; color: #EF4444; font-size: 13px; font-weight: 600;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <span>Log Out</span>
+          </div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
       </div>
     </div>
@@ -9504,6 +9689,32 @@
       }, 700);
     }
 
+    function renderAgentLogoContent(logoData, name, sizePx) {
+      sizePx = sizePx || 40;
+      if (!logoData) {
+        const initial = (name ? name.trim().charAt(0) : 'V').toUpperCase() || 'V';
+        return `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:${Math.round(sizePx * 0.52)}px; color:#FFFFFF; line-height:1;">${initial}</div>`;
+      }
+      if (logoData.startsWith('data:image/') || logoData.startsWith('http')) {
+        return `<img src="${logoData}" alt="Logo" style="width:100%; height:100%; object-fit:cover; border-radius:${Math.round(sizePx * 0.28)}px; display:block;" />`;
+      }
+      if (logoData.startsWith('preset:')) {
+        const presetId = logoData.replace('preset:', '');
+        const presetMap = {
+          bolt: '<svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+          diamond: '<svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 3h12l4 6-10 13L2 9z"/></svg>',
+          globe: '<svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+          rocket: '<svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>',
+          shield: '<svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+          crown: '<svg width="60%" height="60%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="2 4 5 20 19 20 22 4 15 10 12 2 9 10 2 4"/></svg>'
+        };
+        const icon = presetMap[presetId] || presetMap.bolt;
+        return `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#FFFFFF;">${icon}</div>`;
+      }
+      const initial = logoData.charAt(0).toUpperCase();
+      return `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-weight:900; font-size:${Math.round(sizePx * 0.52)}px; color:#FFFFFF; line-height:1;">${initial}</div>`;
+    }
+
     function applyStorefrontOrMainMode() {
       const isAgentSite = isAgentStorefront();
       const styleEl = document.getElementById('payzani-agent-theme-override');
@@ -9512,8 +9723,9 @@
         // ==========================================
         // 1. AGENT'S STOREFRONT WEBSITE (?agent=...)
         // ==========================================
-        // Apply Agent's chosen theme color
         const params = new URLSearchParams(window.location.search);
+        
+        // 1. Theme Color
         let agentColor = params.get('theme') || params.get('color');
         if (agentColor) {
           if (agentColor[0] !== '#') agentColor = '#' + agentColor;
@@ -9523,6 +9735,68 @@
         if (styleEl && agentColor && agentColor.toLowerCase() !== '#7c3aed') {
           styleEl.innerHTML = generatePayzaniThemeCSS(agentColor);
         }
+
+        // 2. Storefront Name & Slogan
+        let agentName = params.get('name');
+        if (!agentName) {
+          try {
+            agentName = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms & POS';
+          } catch(e) {
+            agentName = 'Victor Telecoms & POS';
+          }
+        }
+        let agentSlogan = params.get('slogan');
+        if (!agentSlogan) {
+          try {
+            agentSlogan = localStorage.getItem('payzani_agent_slogan') || 'Instant Switching • Wholesale Telecoms';
+          } catch(e) {
+            agentSlogan = 'Instant Switching • Wholesale Telecoms';
+          }
+        }
+
+        // 3. Storefront Logo
+        let agentLogo = params.get('logo');
+        if (agentLogo && !agentLogo.startsWith('preset:') && !agentLogo.startsWith('data:')) {
+          agentLogo = 'preset:' + agentLogo;
+        }
+        if (!agentLogo) {
+          try {
+            agentLogo = localStorage.getItem('payzani_agent_logo');
+          } catch(e) {}
+        }
+
+        // Apply Custom Branding to Page Title
+        try {
+          document.title = agentName + ' | Instant Telecom & VTU Storefront';
+        } catch(e) {}
+
+        // Apply Custom Branding to Splash Screen
+        const splashTitle = document.querySelector('.payzani-splash-headline');
+        if (splashTitle) splashTitle.textContent = agentName;
+        const splashSub = document.querySelector('.payzani-splash-sub');
+        if (splashSub) splashSub.textContent = agentSlogan;
+        const splashLogoCircle = document.querySelector('.payzani-splash-logo-circle');
+        if (splashLogoCircle) splashLogoCircle.innerHTML = renderAgentLogoContent(agentLogo, agentName, 88);
+
+        // Apply Custom Branding to Auth Screen
+        const authBrandLabel = document.querySelector('.payzani-auth-brand-label');
+        if (authBrandLabel) authBrandLabel.textContent = agentName;
+        const authMiniLogo = document.querySelector('.payzani-auth-mini-logo');
+        if (authMiniLogo) authMiniLogo.innerHTML = renderAgentLogoContent(agentLogo, agentName, 36);
+        const authHeroTitle = document.getElementById('payzaniAuthHeroTitle');
+        if (authHeroTitle) authHeroTitle.textContent = 'Welcome to ' + agentName;
+        const authHeroDesc = document.getElementById('payzaniAuthHeroDesc');
+        if (authHeroDesc) authHeroDesc.textContent = agentSlogan;
+        const loginBtn = document.getElementById('payzaniLoginBtn');
+        if (loginBtn && loginBtn.querySelector('span')) loginBtn.querySelector('span').textContent = 'Log In to ' + agentName;
+
+        // Apply Custom Branding to User Dashboard ('Me')
+        const userOutletName = document.getElementById('userOutletName');
+        if (userOutletName) userOutletName.textContent = agentName;
+        const userOutletSlogan = document.getElementById('userOutletSlogan');
+        if (userOutletSlogan) userOutletSlogan.textContent = agentSlogan;
+        const userOutletLogo = document.getElementById('userOutletLogoWrap');
+        if (userOutletLogo) userOutletLogo.innerHTML = renderAgentLogoContent(agentLogo, agentName, 42);
 
         // On an agent storefront: 4th Tab is STRICTLY "Me" (User Dashboard)
         const navTab = document.getElementById('opayNavMe');
@@ -9543,10 +9817,33 @@
         // ==========================================
         // 2. MAIN PAYZANI WEBSITE (STRICTLY PURPLE #7C3AED)
         // ==========================================
-        // Remove any custom theme override so the main site is ALWAYS Royal Purple!
         if (styleEl) {
           styleEl.innerHTML = '';
         }
+
+        try {
+          document.title = 'Payzani - Telecommunications Switch & VTU Wholesale API';
+        } catch(e) {}
+
+        // Reset Splash Screen to Payzani Default
+        const splashTitle = document.querySelector('.payzani-splash-headline');
+        if (splashTitle) splashTitle.textContent = 'We are Beyond Telecom';
+        const splashSub = document.querySelector('.payzani-splash-sub');
+        if (splashSub) splashSub.textContent = 'Instant Switching \u2022 Wholesale Margins';
+        const splashLogoCircle = document.querySelector('.payzani-splash-logo-circle');
+        if (splashLogoCircle) splashLogoCircle.innerHTML = '<div class="payzani-splash-p-mark">P</div>';
+
+        // Reset Auth Screen to Payzani Default
+        const authBrandLabel = document.querySelector('.payzani-auth-brand-label');
+        if (authBrandLabel) authBrandLabel.textContent = 'Payzani';
+        const authMiniLogo = document.querySelector('.payzani-auth-mini-logo');
+        if (authMiniLogo) authMiniLogo.innerHTML = 'P';
+        const authHeroTitle = document.getElementById('payzaniAuthHeroTitle');
+        if (authHeroTitle) authHeroTitle.textContent = 'Welcome Back';
+        const authHeroDesc = document.getElementById('payzaniAuthHeroDesc');
+        if (authHeroDesc) authHeroDesc.textContent = 'Log in to manage your telecom switch & wholesale wallet.';
+        const loginBtn = document.getElementById('payzaniLoginBtn');
+        if (loginBtn && loginBtn.querySelector('span')) loginBtn.querySelector('span').textContent = 'Log In to Payzani';
 
         // On the Main Payzani Website: 4th Tab is "Agent"
         const navTab = document.getElementById('opayNavMe');
@@ -9824,13 +10121,24 @@
     function getAgentStorefrontUrl() {
       const origin = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : 'https://payzani.vercel.app';
       const path = window.location.pathname || '/';
-      let name = 'victor';
+      let name = 'Victor Telecoms';
+      let slug = 'victor';
       try {
         const storedName = localStorage.getItem('payzani_agent_name');
-        if (storedName) name = storedName.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (storedName && storedName.trim()) {
+          name = storedName.trim();
+          slug = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        }
       } catch(e) {}
       const colorHex = (currentAgentThemeColor || '#7C3AED').replace('#', '');
-      return `${origin}${path}?agent=${name || 'victor'}&theme=${colorHex}`;
+      let url = `${origin}${path}?agent=${slug || 'victor'}&name=${encodeURIComponent(name)}&theme=${colorHex}`;
+      try {
+        const logo = localStorage.getItem('payzani_agent_logo');
+        if (logo && logo.startsWith('preset:')) {
+          url += `&logo=${encodeURIComponent(logo.replace('preset:', ''))}`;
+        }
+      } catch(e) {}
+      return url;
     }
 
     function copyAgentStorefrontLink() {
@@ -10272,7 +10580,8 @@
           background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
           box-shadow: 0 4px 14px ${glow} !important;
         }
-        button[onclick*="saveAndApplyAgentColor"] {
+        button[onclick*="saveAndApplyAgentColor"],
+        button[onclick*="saveAndApplyAgentBranding"] {
           background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
           box-shadow: 0 4px 14px ${glow} !important;
         }
@@ -10384,15 +10693,197 @@
       }
     }
 
+    // -------------------------------------------------------------
+    // AGENT STOREFRONT BRANDING & LOGO STUDIO CONTROLLER
+    // -------------------------------------------------------------
+    function handleAgentStorefrontNameInput(val) {
+      if (!val) val = 'Victor Telecoms & POS';
+      try {
+        localStorage.setItem('payzani_agent_name', val);
+      } catch(e) {}
+      
+      const outletNameEl = document.getElementById('agentDashboardOutletName');
+      if (outletNameEl) outletNameEl.textContent = val;
+      
+      const previewName = document.getElementById('agentPreviewMiniName');
+      if (previewName) previewName.textContent = val;
+      
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput) linkInput.value = getAgentStorefrontUrl();
+      
+      updateDashboardLogoPreview();
+    }
+
+    function handleAgentStorefrontSloganInput(val) {
+      if (!val) val = 'Instant Switching • Wholesale Telecoms';
+      try {
+        localStorage.setItem('payzani_agent_slogan', val);
+      } catch(e) {}
+      
+      const outletSloganEl = document.getElementById('agentDashboardOutletSlogan');
+      if (outletSloganEl) outletSloganEl.textContent = val;
+      
+      const previewSlogan = document.getElementById('agentPreviewMiniSlogan');
+      if (previewSlogan) previewSlogan.textContent = val;
+    }
+
+    function handleAgentLogoFileUpload(input) {
+      if (!input.files || !input.files[0]) return;
+      const file = input.files[0];
+      if (!file.type.startsWith('image/')) {
+        showCustomAlert('Please select a valid image file (PNG, JPG, SVG, WebP)');
+        return;
+      }
+      if (file.size > 2 * 1024 * 1024) {
+        showCustomAlert('Image is too large. Please select an image under 2MB.');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const dataUrl = e.target.result;
+        try {
+          localStorage.setItem('payzani_agent_logo', dataUrl);
+        } catch(err) {
+          console.warn('Storage quota', err);
+        }
+        updateDashboardLogoPreview();
+        const linkInput = document.getElementById('agentStorefrontLinkInput');
+        if (linkInput) linkInput.value = getAgentStorefrontUrl();
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Custom logo uploaded! Click "Save Storefront Name, Logo & Theme" to apply.');
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function selectAgentLogoPreset(presetId) {
+      try {
+        localStorage.setItem('payzani_agent_logo', 'preset:' + presetId);
+      } catch(e) {}
+      
+      document.querySelectorAll('.agent-logo-preset-btn').forEach(btn => {
+        btn.style.borderColor = '#2A2A3C';
+        btn.style.background = '#181824';
+      });
+      const activeBtn = document.querySelector(`.agent-logo-preset-btn[title="${presetId.charAt(0).toUpperCase() + presetId.slice(1)}"]`);
+      if (activeBtn) {
+        activeBtn.style.borderColor = currentAgentThemeColor || '#7C3AED';
+        activeBtn.style.background = 'rgba(124, 58, 237, 0.2)';
+      }
+      
+      updateDashboardLogoPreview();
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput) linkInput.value = getAgentStorefrontUrl();
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(`Preset logo "${presetId.toUpperCase()}" selected!`);
+      }
+    }
+
+    function resetAgentLogo() {
+      try {
+        localStorage.removeItem('payzani_agent_logo');
+      } catch(e) {}
+      
+      document.querySelectorAll('.agent-logo-preset-btn').forEach(btn => {
+        btn.style.borderColor = '#2A2A3C';
+        btn.style.background = '#181824';
+      });
+      
+      updateDashboardLogoPreview();
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput) linkInput.value = getAgentStorefrontUrl();
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert('Logo reset to default monogram letter.');
+      }
+    }
+
+    function updateDashboardLogoPreview() {
+      let logoData = null;
+      let name = 'Victor Telecoms & POS';
+      try {
+        logoData = localStorage.getItem('payzani_agent_logo');
+        name = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms & POS';
+      } catch(e) {}
+      
+      const previewWrap = document.getElementById('agentDashboardLogoPreviewWrap');
+      if (previewWrap) {
+        previewWrap.innerHTML = renderAgentLogoContent(logoData, name, 50);
+      }
+      
+      const headerLogoWrap = document.getElementById('agentDashboardHeaderLogoWrap');
+      if (headerLogoWrap) {
+        headerLogoWrap.innerHTML = renderAgentLogoContent(logoData, name, 34);
+      }
+      
+      const miniPreviewLogo = document.getElementById('agentMiniPreviewLogo');
+      if (miniPreviewLogo) {
+        miniPreviewLogo.innerHTML = renderAgentLogoContent(logoData, name, 36);
+      }
+    }
+
+    function saveAndApplyAgentBranding() {
+      const nameInput = document.getElementById('agentStorefrontNameInput');
+      const sloganInput = document.getElementById('agentStorefrontSloganInput');
+      
+      const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Victor Telecoms & POS';
+      const slogan = sloganInput && sloganInput.value.trim() ? sloganInput.value.trim() : 'Instant Switching • Wholesale Telecoms';
+      
+      try {
+        localStorage.setItem('payzani_agent_name', name);
+        localStorage.setItem('payzani_agent_slogan', slogan);
+        localStorage.setItem('payzani_agent_color', currentAgentThemeColor);
+      } catch(e) {}
+      
+      // Update link input
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput) linkInput.value = getAgentStorefrontUrl();
+      
+      // Update Dashboard header
+      const outletNameEl = document.getElementById('agentDashboardOutletName');
+      if (outletNameEl) outletNameEl.textContent = name;
+      const outletSloganEl = document.getElementById('agentDashboardOutletSlogan');
+      if (outletSloganEl) outletSloganEl.textContent = slogan;
+      
+      updateDashboardLogoPreview();
+      
+      // If currently on storefront or testing, apply live immediately
+      if (isAgentStorefront()) {
+        applyStorefrontOrMainMode();
+      }
+      
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(`Storefront Branding Saved!\nWebsite: "${name}"\nTheme: ${currentAgentThemeColor.toUpperCase()}\nLogo updated.`);
+      }
+    }
+
     // Refresh Dashboard State
     function updateAgentDashboardUI() {
-      // Outlet name
+      // Outlet name & slogan
       let businessName = 'Victor Telecoms & POS';
+      let businessSlogan = 'Instant Switching • Wholesale Telecoms';
       try {
         businessName = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms & POS';
+        businessSlogan = localStorage.getItem('payzani_agent_slogan') || 'Instant Switching • Wholesale Telecoms';
       } catch(e) {}
+      
       const outletNameEl = document.getElementById('agentDashboardOutletName');
       if (outletNameEl) outletNameEl.textContent = businessName;
+      const outletSloganEl = document.getElementById('agentDashboardOutletSlogan');
+      if (outletSloganEl) outletSloganEl.textContent = businessSlogan;
+      
+      const nameInput = document.getElementById('agentStorefrontNameInput');
+      if (nameInput) nameInput.value = businessName;
+      const sloganInput = document.getElementById('agentStorefrontSloganInput');
+      if (sloganInput) sloganInput.value = businessSlogan;
+      
+      const previewName = document.getElementById('agentPreviewMiniName');
+      if (previewName) previewName.textContent = businessName;
+      const previewSlogan = document.getElementById('agentPreviewMiniSlogan');
+      if (previewSlogan) previewSlogan.textContent = businessSlogan;
+
+      // Logo Preview
+      updateDashboardLogoPreview();
 
       // Link input
       const linkInput = document.getElementById('agentStorefrontLinkInput');
