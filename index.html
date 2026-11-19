@@ -3806,6 +3806,17 @@
     }
 
     @media (max-width: 860px) {
+      /* Keep mobile homepage strictly hidden while on login/sign-up screen */
+      body:not(.payzani-auth-done) #mobile-opay-experience {
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+      body.payzani-auth-done #mobile-opay-experience {
+        visibility: visible !important;
+        pointer-events: auto !important;
+      }
+
+      /* 100% Solid & Fully Opaque Background - Homepage NEVER shines through */
       #payzani-mobile-auth {
         display: flex !important;
         position: fixed;
@@ -3813,8 +3824,8 @@
         width: 100vw;
         height: 100vh;
         height: 100dvh;
-        background: #0B0E14;
-        background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.22) 0%, #0B0E14 65%, #07090D 100%);
+        background: #0B0E14 !important;
+        background: linear-gradient(180deg, #1A112C 0%, #0E1017 38%, #080A0F 100%) !important;
         z-index: 9999990;
         flex-direction: column;
         align-items: center;
@@ -3823,8 +3834,9 @@
         -webkit-overflow-scrolling: touch;
         padding: 0;
         box-sizing: border-box;
-        opacity: 1;
+        opacity: 1 !important;
         visibility: visible;
+        isolation: isolate;
         transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
       }
       #payzani-mobile-auth.dismissed {
@@ -8516,6 +8528,7 @@
       if (auth && !auth.classList.contains('dismissed')) {
         auth.classList.add('dismissed');
       }
+      document.body.classList.add('payzani-auth-done');
       if (isGuest && typeof showCustomAlert === 'function') {
         showCustomAlert('Entering Payzani Demo Dashboard...');
       }
@@ -8526,6 +8539,7 @@
       if (auth) {
         auth.classList.remove('dismissed');
       }
+      document.body.classList.remove('payzani-auth-done');
     }
 
     function handlePayzaniAuthSubmit(e, type) {
