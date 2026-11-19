@@ -3797,6 +3797,343 @@
       }
     }
 
+  
+    /* =============================================================
+       PAYZANI MOBILE LOGIN & SIGN-UP SCREEN (AFTER SPLASH)
+    ============================================================== */
+    #payzani-mobile-auth {
+      display: none;
+    }
+
+    @media (max-width: 860px) {
+      #payzani-mobile-auth {
+        display: flex !important;
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        background: #0B0E14;
+        background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.22) 0%, #0B0E14 65%, #07090D 100%);
+        z-index: 9999990;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 0;
+        box-sizing: border-box;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.45s;
+      }
+      #payzani-mobile-auth.dismissed {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+        transform: translateY(-16px) scale(0.985);
+      }
+      .payzani-auth-inner {
+        width: 100%;
+        max-width: 420px;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(24px, 4vh, 36px) 20px clamp(24px, 4vh, 36px);
+        box-sizing: border-box;
+        margin: 0 auto;
+      }
+      .payzani-auth-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 22px;
+      }
+      .payzani-auth-logo-badge {
+        width: 58px;
+        height: 58px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 24px rgba(124, 58, 237, 0.38);
+        color: #FFFFFF;
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+        font-size: 32px;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .payzani-auth-brand-name {
+        font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        color: #F8FAFC;
+        letter-spacing: -0.4px;
+        margin: 0 0 6px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .payzani-auth-brand-pill {
+        font-size: 10px;
+        font-weight: 700;
+        color: #DDD6FE;
+        background: rgba(124, 58, 237, 0.25);
+        border: 1px solid rgba(124, 58, 237, 0.4);
+        padding: 2px 7px;
+        border-radius: 12px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+      }
+      .payzani-auth-tagline {
+        font-size: 13px;
+        color: #94A3B8;
+        margin: 0;
+      }
+
+      /* Segmented Tab Switcher */
+      .payzani-auth-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background: #141822;
+        padding: 4px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .payzani-auth-tab-btn {
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 10px 16px;
+        color: #94A3B8;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        border-radius: 11px;
+        transition: all 0.25s ease;
+        text-align: center;
+      }
+      .payzani-auth-tab-btn.active {
+        background: #7C3AED;
+        color: #FFFFFF;
+        box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+      }
+
+      /* Form Panes */
+      .payzani-auth-form-card {
+        background: #12151D;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 22px 18px;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+        margin-bottom: 16px;
+      }
+      .payzani-auth-pane {
+        display: none;
+      }
+      .payzani-auth-pane.active {
+        display: block;
+        animation: payzaniPaneFade 0.25s ease;
+      }
+      @keyframes payzaniPaneFade {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .payzani-auth-field {
+        margin-bottom: 15px;
+      }
+      .payzani-auth-label {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #CBD5E1;
+        margin-bottom: 6px;
+      }
+      .payzani-auth-input-wrapper {
+        display: flex;
+        align-items: center;
+        background: #191E2A;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 0 14px;
+        height: 48px;
+        box-sizing: border-box;
+        transition: border-color 0.2s, box-shadow 0.2s;
+      }
+      .payzani-auth-input-wrapper:focus-within {
+        border-color: #7C3AED;
+        box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.22);
+      }
+      .payzani-auth-prefix {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #E2E8F0;
+        padding-right: 10px;
+        margin-right: 10px;
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
+        flex-shrink: 0;
+      }
+      .payzani-auth-input-wrapper svg.field-icon {
+        color: #7C3AED;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+      .payzani-auth-input {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #F8FAFC;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .payzani-auth-input::placeholder {
+        color: #64748B;
+        font-weight: 400;
+      }
+      .payzani-pwd-toggle {
+        background: transparent;
+        border: none;
+        color: #94A3B8;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .payzani-auth-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        margin: 12px 0 18px;
+      }
+      .payzani-auth-remember {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #94A3B8;
+        cursor: pointer;
+      }
+      .payzani-auth-remember input[type="checkbox"] {
+        accent-color: #7C3AED;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+      }
+      .payzani-auth-forgot {
+        color: #A78BFA;
+        text-decoration: none;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .payzani-auth-forgot:hover {
+        color: #C4B5FD;
+        text-decoration: underline;
+      }
+
+      .payzani-auth-terms {
+        font-size: 11px;
+        color: #94A3B8;
+        line-height: 1.45;
+        margin: 12px 0 16px;
+      }
+      .payzani-auth-terms a {
+        color: #A78BFA;
+        text-decoration: none;
+      }
+
+      /* Submit CTA */
+      .payzani-auth-submit-btn {
+        width: 100%;
+        height: 48px;
+        background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+        border: none;
+        outline: none;
+        border-radius: 12px;
+        color: #FFFFFF;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        box-shadow: 0 8px 22px rgba(124, 58, 237, 0.4);
+        transition: transform 0.15s, box-shadow 0.15s;
+      }
+      .payzani-auth-submit-btn:active {
+        transform: scale(0.98);
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+      }
+
+      /* Skip / Guest Preview Link */
+      .payzani-auth-guest-btn {
+        width: 100%;
+        margin-top: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 11px;
+        color: #CBD5E1;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        transition: background 0.2s, border-color 0.2s;
+      }
+      .payzani-auth-guest-btn:hover {
+        background: rgba(124, 58, 237, 0.12);
+        border-color: rgba(124, 58, 237, 0.3);
+      }
+
+      /* Footer Trust */
+      .payzani-auth-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .payzani-auth-trust-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 500;
+        color: #94A3B8;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 6px 12px;
+        border-radius: 16px;
+      }
+      .payzani-auth-trust-badge svg {
+        color: #10B981;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -3816,6 +4153,137 @@
       </div>
     </div>
   </div>
+
+  <!-- PAYZANI MOBILE AUTH SCREEN (LOGIN & SIGN UP BEFORE HOMEPAGE) -->
+  <div id="payzani-mobile-auth">
+    <div class="payzani-auth-inner">
+      <div class="payzani-auth-top">
+        <div class="payzani-auth-logo-badge">P</div>
+        <h2 class="payzani-auth-brand-name">
+          Payzani <span class="payzani-auth-brand-pill">Switch v2.4</span>
+        </h2>
+        <p class="payzani-auth-tagline" id="payzaniAuthTagline">Access your Telecom &amp; VTU Switching Account</p>
+      </div>
+
+      <!-- Segmented Tab Switcher -->
+      <div class="payzani-auth-tabs">
+        <button type="button" class="payzani-auth-tab-btn active" id="payzaniTabLogin" onclick="switchPayzaniAuthTab('login')">Log In</button>
+        <button type="button" class="payzani-auth-tab-btn" id="payzaniTabSignup" onclick="switchPayzaniAuthTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- Form Card -->
+      <div class="payzani-auth-form-card">
+        <!-- LOGIN PANE -->
+        <div class="payzani-auth-pane active" id="payzaniPaneLogin">
+          <form onsubmit="handlePayzaniAuthSubmit(event, 'login')">
+            <div class="payzani-auth-field">
+              <label class="payzani-auth-label">Phone Number or Email</label>
+              <div class="payzani-auth-input-wrapper">
+                <span class="payzani-auth-prefix">&#x1F1F3;&#x1F1EC; +234</span>
+                <input type="text" class="payzani-auth-input" id="payzaniLoginPhone" placeholder="0812 345 6789" value="0802 345 6789" required autocomplete="username">
+              </div>
+            </div>
+
+            <div class="payzani-auth-field">
+              <label class="payzani-auth-label">Password / 6-Digit PIN</label>
+              <div class="payzani-auth-input-wrapper">
+                <svg class="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <input type="password" class="payzani-auth-input" id="payzaniLoginPassword" placeholder="Enter your PIN / password" value="••••••" required autocomplete="current-password">
+                <button type="button" class="payzani-pwd-toggle" onclick="togglePayzaniPwd('payzaniLoginPassword', this)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="payzani-auth-row">
+              <label class="payzani-auth-remember">
+                <input type="checkbox" checked>
+                <span>Remember me</span>
+              </label>
+              <a href="javascript:void(0)" class="payzani-auth-forgot" onclick="showCustomAlert('Reset link has been dispatched to your registered SMS/Email.')">Forgot PIN?</a>
+            </div>
+
+            <button type="submit" class="payzani-auth-submit-btn" id="payzaniLoginBtn">
+              <span>Log In to Payzani</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </form>
+        </div>
+
+        <!-- SIGN UP PANE -->
+        <div class="payzani-auth-pane" id="payzaniPaneSignup">
+          <form onsubmit="handlePayzaniAuthSubmit(event, 'signup')">
+            <div class="payzani-auth-field">
+              <label class="payzani-auth-label">Full Name or Reseller Business</label>
+              <div class="payzani-auth-input-wrapper">
+                <svg class="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <input type="text" class="payzani-auth-input" id="payzaniSignupName" placeholder="e.g. Victor Okafor" required autocomplete="name">
+              </div>
+            </div>
+
+            <div class="payzani-auth-field">
+              <label class="payzani-auth-label">Phone Number</label>
+              <div class="payzani-auth-input-wrapper">
+                <span class="payzani-auth-prefix">&#x1F1F3;&#x1F1EC; +234</span>
+                <input type="tel" class="payzani-auth-input" id="payzaniSignupPhone" placeholder="0812 345 6789" required autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="payzani-auth-field">
+              <label class="payzani-auth-label">Email Address</label>
+              <div class="payzani-auth-input-wrapper">
+                <svg class="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <input type="email" class="payzani-auth-input" id="payzaniSignupEmail" placeholder="agent@payzani.com" required autocomplete="email">
+              </div>
+            </div>
+
+            <div class="payzani-auth-field">
+              <label class="payzani-auth-label">Create Security PIN (6 Digits)</label>
+              <div class="payzani-auth-input-wrapper">
+                <svg class="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                <input type="password" class="payzani-auth-input" id="payzaniSignupPassword" placeholder="Choose 6-digit transaction PIN" required autocomplete="new-password">
+                <button type="button" class="payzani-pwd-toggle" onclick="togglePayzaniPwd('payzaniSignupPassword', this)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="payzani-auth-field">
+              <label class="payzani-auth-label">Referral Code (Optional)</label>
+              <div class="payzani-auth-input-wrapper">
+                <svg class="field-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <input type="text" class="payzani-auth-input" id="payzaniSignupReferral" placeholder="e.g. PAYZANI-VIP">
+              </div>
+            </div>
+
+            <div class="payzani-auth-terms">
+              By registering, you agree to Payzani's <a href="javascript:void(0)" onclick="showCustomAlert('Payzani Terms: Real-time automated telecommunications switching and wholesale distribution.')">Reseller Terms</a> and <a href="javascript:void(0)">Privacy Policy</a>.
+            </div>
+
+            <button type="submit" class="payzani-auth-submit-btn" id="payzaniSignupBtn">
+              <span>Create Free Account</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Quick Demo Access / Bypass -->
+      <button type="button" class="payzani-auth-guest-btn" onclick="dismissPayzaniAuth(true)">
+        <span>Explore Homepage (Instant Preview)</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Trust Footer -->
+      <div class="payzani-auth-footer">
+        <div class="payzani-auth-trust-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>Licensed Telecom Switch &#8226; 256-bit SSL Protected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 
@@ -8007,6 +8475,91 @@
       });
     }
 
-</script>
+
+    // Payzani Auth Screen Controller
+    function switchPayzaniAuthTab(tab) {
+      const tabLogin = document.getElementById('payzaniTabLogin');
+      const tabSignup = document.getElementById('payzaniTabSignup');
+      const paneLogin = document.getElementById('payzaniPaneLogin');
+      const paneSignup = document.getElementById('payzaniPaneSignup');
+      const tagline = document.getElementById('payzaniAuthTagline');
+
+      if (tab === 'login') {
+        if (tabLogin) tabLogin.classList.add('active');
+        if (tabSignup) tabSignup.classList.remove('active');
+        if (paneLogin) paneLogin.classList.add('active');
+        if (paneSignup) paneSignup.classList.remove('active');
+        if (tagline) tagline.textContent = 'Access your Telecom & VTU Switching Account';
+      } else {
+        if (tabLogin) tabLogin.classList.remove('active');
+        if (tabSignup) tabSignup.classList.add('active');
+        if (paneLogin) paneLogin.classList.remove('active');
+        if (paneSignup) paneSignup.classList.add('active');
+        if (tagline) tagline.textContent = 'Create your Wholesale Reseller Account in 30s';
+      }
+    }
+
+    function togglePayzaniPwd(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+      } else {
+        input.type = 'password';
+        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+      }
+    }
+
+    function dismissPayzaniAuth(isGuest) {
+      const auth = document.getElementById('payzani-mobile-auth');
+      if (auth && !auth.classList.contains('dismissed')) {
+        auth.classList.add('dismissed');
+      }
+      if (isGuest && typeof showCustomAlert === 'function') {
+        showCustomAlert('Entering Payzani Demo Dashboard...');
+      }
+    }
+
+    function openPayzaniAuth() {
+      const auth = document.getElementById('payzani-mobile-auth');
+      if (auth) {
+        auth.classList.remove('dismissed');
+      }
+    }
+
+    function handlePayzaniAuthSubmit(e, type) {
+      if (e) e.preventDefault();
+      const btn = type === 'login' ? document.getElementById('payzaniLoginBtn') : document.getElementById('payzaniSignupBtn');
+      const origContent = btn ? btn.innerHTML : '';
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span style="display:inline-block;animation:spin 0.8s linear infinite;">&#8635;</span> <span>Processing...</span>';
+      }
+
+      setTimeout(() => {
+        if (btn) {
+          btn.innerHTML = origContent;
+          btn.disabled = false;
+        }
+        if (type === 'login') {
+          if (typeof showCustomAlert === 'function') {
+            showCustomAlert('Welcome back, Victor! Redirecting to Dashboard...');
+          }
+        } else {
+          const nameInput = document.getElementById('payzaniSignupName');
+          const userName = nameInput && nameInput.value.trim() ? nameInput.value.trim().split(' ')[0] : 'Partner';
+          if (typeof showCustomAlert === 'function') {
+            showCustomAlert('Account created! Welcome to Payzani, ' + userName + '.');
+          }
+          const userDisplay = document.getElementById('userWalletDisplay');
+          const avatarName = document.querySelector('.opay-user-name');
+          if (avatarName) avatarName.textContent = 'Hi, ' + userName;
+        }
+        dismissPayzaniAuth(false);
+      }, 700);
+    }
+
+  </script>
 </body>
 </html>
