@@ -4285,7 +4285,206 @@
       }
     }
   </style>
-  <style id="payzani-agent-theme-override"></style>
+    <style id="payzani-agent-theme-override"></style>
+  <script>
+    // Instant Head Theme Engine (Zero-Flicker)
+    (function() {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var qTheme = params.get('theme') || params.get('color');
+        if (qTheme) {
+          if (qTheme[0] !== '#') qTheme = '#' + qTheme;
+          localStorage.setItem('payzani_agent_color', qTheme);
+        }
+        var activeTheme = localStorage.getItem('payzani_agent_color');
+        if (activeTheme) {
+          function adjHex(hex, factor) {
+            var c = hex.replace('#', '');
+            if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
+            var num = parseInt(c, 16);
+            var r = Math.min(255, Math.max(0, Math.floor((num >> 16) * factor)));
+            var g = Math.min(255, Math.max(0, Math.floor(((num >> 8) & 0x00FF) * factor)));
+            var b = Math.min(255, Math.max(0, Math.floor((num & 0x0000FF) * factor)));
+            return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+          }
+          function hToRgba(hex, alpha) {
+            var c = hex.replace('#', '');
+            if (c.length === 3) c = c.split('').map(function(x) { return x + x; }).join('');
+            var num = parseInt(c, 16);
+            var r = (num >> 16) & 255;
+            var g = (num >> 8) & 255;
+            var b = num & 255;
+            return 'rgba(' + r + ',' + g + ',' + b + ',' + alpha + ')';
+          }
+          var dark = adjHex(activeTheme, 0.82);
+          var deep = adjHex(activeTheme, 0.55);
+          var darkest = adjHex(activeTheme, 0.28);
+          var blackTint = adjHex(activeTheme, 0.12);
+          var light = adjHex(activeTheme, 1.35);
+          var lighter = adjHex(activeTheme, 1.55);
+          var subtle = hToRgba(activeTheme, 0.15);
+          var subtle25 = hToRgba(activeTheme, 0.25);
+          var subtle35 = hToRgba(activeTheme, 0.35);
+          var glow = hToRgba(activeTheme, 0.40);
+          var glowStrong = hToRgba(activeTheme, 0.60);
+
+          var styleEl = document.getElementById('payzani-agent-theme-override');
+          if (styleEl) {
+            styleEl.innerHTML = `
+              :root {
+                --brand: ${activeTheme} !important;
+                --brand-hover: ${dark} !important;
+                --brand-subtle: ${subtle} !important;
+                --agent-primary: ${activeTheme} !important;
+                --agent-primary-hover: ${dark} !important;
+                --agent-primary-subtle: ${subtle} !important;
+              }
+              #mobile-opay-experience {
+                --opay-primary: ${activeTheme} !important;
+                --opay-primary-dark: ${dark} !important;
+                --opay-primary-deep: ${deep} !important;
+                --opay-primary-light: ${light} !important;
+              }
+              #payzani-mobile-splash {
+                background: linear-gradient(180deg, ${blackTint} 0%, #060608 100%) !important;
+              }
+              .payzani-splash-p-mark,
+              .payzani-auth-brand-logo,
+              .payzani-auth-mini-logo {
+                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
+                box-shadow: 0 0 35px ${glowStrong} !important;
+              }
+              .payzani-auth-pill.active,
+              .payzani-auth-tab-btn.active {
+                color: ${light} !important;
+                border-bottom-color: ${activeTheme} !important;
+              }
+              .payzani-auth-input-wrapper:focus-within {
+                border-color: ${activeTheme} !important;
+                box-shadow: 0 0 0 3px ${subtle25} !important;
+              }
+              .payzani-auth-input-wrapper svg.field-icon,
+              .payzani-auth-forgot,
+              .payzani-auth-switch-prompt a,
+              .payzani-auth-biometric-row svg {
+                color: ${light} !important;
+              }
+              .payzani-auth-remember input[type="checkbox"]:checked {
+                background: ${activeTheme} !important;
+                border-color: ${activeTheme} !important;
+              }
+              .payzani-auth-submit-btn,
+              #payzaniLoginBtn,
+              #payzaniSignupBtn {
+                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
+                box-shadow: 0 8px 24px ${glow} !important;
+              }
+              .payzani-auth-submit-btn:active,
+              #payzaniLoginBtn:active,
+              #payzaniSignupBtn:active {
+                background: ${dark} !important;
+              }
+              .opay-avatar-circle {
+                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
+              }
+              .opay-tier-badge {
+                background: ${activeTheme} !important;
+              }
+              .opay-balance-card {
+                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 55%, ${deep} 100%) !important;
+                box-shadow: 0 10px 30px ${glow} !important;
+              }
+              .opay-add-money-btn {
+                color: ${dark} !important;
+              }
+              .opay-balance-history,
+              .opay-recent-all,
+              .opay-sub-history {
+                color: ${lighter} !important;
+              }
+              .opay-promo-card:active {
+                border-color: ${activeTheme} !important;
+              }
+              .opay-promo-btn {
+                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
+              }
+              .opay-carousel-dot.active,
+              .opay-ad-dot.active {
+                background: ${activeTheme} !important;
+              }
+              .opay-promo-icon-wrap,
+              .opay-trans-circle,
+              .opay-quick-icon-wrap {
+                background: ${subtle} !important;
+                color: ${light} !important;
+              }
+              .opay-promo-sub,
+              .opay-pill-cashback {
+                color: ${light} !important;
+              }
+              .opay-invite-btn {
+                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
+                box-shadow: 0 4px 14px ${glow} !important;
+              }
+              .opay-bottom-nav .opay-nav-item.active {
+                color: ${activeTheme} !important;
+              }
+              .opay-bottom-nav .opay-nav-item.active svg {
+                stroke: ${activeTheme} !important;
+              }
+              .opay-sub-banner {
+                background: linear-gradient(135deg, ${darkest} 0%, #121020 100%) !important;
+                border-color: ${dark} !important;
+              }
+              .opay-sub-banner-badge {
+                background: ${activeTheme} !important;
+              }
+              .opay-voucher-bar {
+                background: linear-gradient(135deg, ${subtle} 0%, rgba(0,0,0,0) 100%) !important;
+                border-color: ${subtle35} !important;
+              }
+              .opay-voucher-badge {
+                background: ${activeTheme} !important;
+              }
+              .opay-amount-pill:active,
+              .opay-amount-pill.selected {
+                background: ${subtle25} !important;
+                border-color: ${activeTheme} !important;
+              }
+              .opay-custom-amt-input:focus {
+                border-color: ${activeTheme} !important;
+              }
+              .opay-pay-action-btn {
+                background: ${activeTheme} !important;
+                box-shadow: 0 6px 20px ${glow} !important;
+              }
+              .opay-subtab-btn.active {
+                color: ${light} !important;
+              }
+              .opay-subtab-btn.active::after {
+                background: ${activeTheme} !important;
+              }
+              .opay-filter-pill.active,
+              .opay-agent-tier-pill.active {
+                background: ${activeTheme} !important;
+                border-color: ${activeTheme} !important;
+                color: #FFFFFF !important;
+              }
+              div[style*="linear-gradient(135deg, rgba(124, 58, 237"] {
+                background: linear-gradient(135deg, ${subtle25} 0%, ${blackTint} 100%) !important;
+                border-color: ${subtle35} !important;
+              }
+              .btn-primary {
+                background: linear-gradient(135deg, ${activeTheme} 0%, ${dark} 100%) !important;
+                border-color: ${dark} !important;
+                box-shadow: 0 4px 14px ${glow} !important;
+              }
+            `;
+          }
+        }
+      } catch(e) {}
+    })();
+  </script>
 </head>
 <body>
   <!-- PAYZANI MOBILE SPLASH SCREEN (FIRST SCREEN ON LOAD) -->
@@ -9386,7 +9585,8 @@
         const storedName = localStorage.getItem('payzani_agent_name');
         if (storedName) name = storedName.toLowerCase().replace(/[^a-z0-9]/g, '');
       } catch(e) {}
-      return `${origin}${path}?agent=${name || 'victor'}`;
+      const colorHex = (currentAgentThemeColor || '#7C3AED').replace('#', '');
+      return `${origin}${path}?agent=${name || 'victor'}&theme=${colorHex}`;
     }
 
     function copyAgentStorefrontLink() {
@@ -9650,44 +9850,213 @@
 
     function applyAgentStorefrontColor(color, showToast) {
       if (!color) return;
-      const dark = adjustHex(color, 0.8);
-      const deep = adjustHex(color, 0.5);
+      currentAgentThemeColor = color;
+      
+      const dark = adjustHex(color, 0.82);
+      const deep = adjustHex(color, 0.55);
+      const darkest = adjustHex(color, 0.28);
+      const blackTint = adjustHex(color, 0.12);
+      const light = adjustHex(color, 1.35);
+      const lighter = adjustHex(color, 1.55);
+      
+      let c = color.replace('#', '');
+      if (c.length === 3) c = c.split('').map(x => x + x).join('');
+      const num = parseInt(c, 16);
+      const r = (num >> 16) & 255;
+      const g = (num >> 8) & 255;
+      const b = num & 255;
+      
+      const subtle = `rgba(${r}, ${g}, ${b}, 0.15)`;
+      const subtle25 = `rgba(${r}, ${g}, ${b}, 0.25)`;
+      const subtle35 = `rgba(${r}, ${g}, ${b}, 0.35)`;
+      const glow = `rgba(${r}, ${g}, ${b}, 0.40)`;
+      const glowStrong = `rgba(${r}, ${g}, ${b}, 0.60)`;
+
       const styleEl = document.getElementById('payzani-agent-theme-override') || document.createElement('style');
       styleEl.id = 'payzani-agent-theme-override';
       styleEl.innerHTML = `
         :root {
           --brand: ${color} !important;
+          --brand-hover: ${dark} !important;
+          --brand-subtle: ${subtle} !important;
           --agent-primary: ${color} !important;
+          --agent-primary-hover: ${dark} !important;
+          --agent-primary-subtle: ${subtle} !important;
         }
         #mobile-opay-experience {
           --opay-primary: ${color} !important;
+          --opay-primary-dark: ${dark} !important;
+          --opay-primary-deep: ${deep} !important;
+          --opay-primary-light: ${light} !important;
+        }
+        #payzani-mobile-splash {
+          background: linear-gradient(180deg, ${blackTint} 0%, #060608 100%) !important;
+        }
+        .payzani-splash-p-mark,
+        .payzani-auth-brand-logo,
+        .payzani-auth-mini-logo {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 0 35px ${glowStrong} !important;
+        }
+        .payzani-auth-pill.active,
+        .payzani-auth-tab-btn.active {
+          color: ${light} !important;
+          border-bottom-color: ${color} !important;
+        }
+        .payzani-auth-input-wrapper:focus-within {
+          border-color: ${color} !important;
+          box-shadow: 0 0 0 3px ${subtle25} !important;
+        }
+        .payzani-auth-input-wrapper svg.field-icon,
+        .payzani-auth-forgot,
+        .payzani-auth-switch-prompt a,
+        .payzani-auth-biometric-row svg {
+          color: ${light} !important;
+        }
+        .payzani-auth-remember input[type="checkbox"]:checked {
+          background: ${color} !important;
+          border-color: ${color} !important;
+        }
+        .payzani-auth-submit-btn,
+        #payzaniLoginBtn,
+        #payzaniSignupBtn {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 8px 24px ${glow} !important;
+        }
+        .payzani-auth-submit-btn:active,
+        #payzaniLoginBtn:active,
+        #payzaniSignupBtn:active {
+          background: ${dark} !important;
+        }
+        .opay-avatar-circle {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+        }
+        .opay-tier-badge {
+          background: ${color} !important;
         }
         .opay-balance-card {
           background: linear-gradient(135deg, ${color} 0%, ${dark} 55%, ${deep} 100%) !important;
+          box-shadow: 0 10px 30px ${glow} !important;
         }
-        .opay-promo-btn, .opay-pay-action-btn, #payzaniLoginBtn, #payzaniSignupBtn {
+        .opay-add-money-btn {
+          color: ${dark} !important;
+        }
+        .opay-balance-history,
+        .opay-recent-all,
+        .opay-sub-history {
+          color: ${lighter} !important;
+        }
+        .opay-promo-card:active {
+          border-color: ${color} !important;
+        }
+        .opay-promo-btn {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+        }
+        .opay-carousel-dot.active,
+        .opay-ad-dot.active {
           background: ${color} !important;
+        }
+        .opay-promo-icon-wrap,
+        .opay-trans-circle,
+        .opay-quick-icon-wrap {
+          background: ${subtle} !important;
+          color: ${light} !important;
+        }
+        .opay-promo-sub,
+        .opay-pill-cashback {
+          color: ${light} !important;
+        }
+        .opay-invite-btn {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 4px 14px ${glow} !important;
         }
         .opay-bottom-nav .opay-nav-item.active {
           color: ${color} !important;
         }
-        .opay-filter-pill.active {
-          background: ${color} !important;
-          border-color: ${color} !important;
+        .opay-bottom-nav .opay-nav-item.active svg {
+          stroke: ${color} !important;
+        }
+        .opay-sub-banner {
+          background: linear-gradient(135deg, ${darkest} 0%, #121020 100%) !important;
+          border-color: ${dark} !important;
         }
         .opay-sub-banner-badge {
           background: ${color} !important;
         }
+        .opay-voucher-bar {
+          background: linear-gradient(135deg, ${subtle} 0%, rgba(0,0,0,0) 100%) !important;
+          border-color: ${subtle35} !important;
+        }
+        .opay-voucher-badge {
+          background: ${color} !important;
+        }
+        .opay-amount-pill:active,
+        .opay-amount-pill.selected {
+          background: ${subtle25} !important;
+          border-color: ${color} !important;
+        }
+        .opay-custom-amt-input:focus {
+          border-color: ${color} !important;
+        }
+        .opay-pay-action-btn {
+          background: ${color} !important;
+          box-shadow: 0 6px 20px ${glow} !important;
+        }
+        .opay-subtab-btn.active {
+          color: ${light} !important;
+        }
+        .opay-subtab-btn.active::after {
+          background: ${color} !important;
+        }
+        .opay-filter-pill.active,
+        .opay-agent-tier-pill.active {
+          background: ${color} !important;
+          border-color: ${color} !important;
+          color: #FFFFFF !important;
+        }
+        div[style*="linear-gradient(135deg, rgba(124, 58, 237"] {
+          background: linear-gradient(135deg, ${subtle25} 0%, ${blackTint} 100%) !important;
+          border-color: ${subtle35} !important;
+        }
+        #agentDashboardOutletName {
+          color: #FFFFFF !important;
+        }
+        #agentStorefrontLinkInput {
+          color: ${light} !important;
+        }
+        #agentCopyLinkBtn {
+          background: ${subtle25} !important;
+          border-color: ${dark} !important;
+          color: ${lighter} !important;
+        }
+        button[onclick*="toggleAgentTopUpDrawer"] {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+        button[onclick*="saveAndApplyAgentColor"] {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
+        .btn-primary {
+          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
+          border-color: ${dark} !important;
+          box-shadow: 0 4px 14px ${glow} !important;
+        }
       `;
+
       if (!document.getElementById('payzani-agent-theme-override')) {
         document.head.appendChild(styleEl);
       }
 
       previewAgentMiniTheme(color);
       updateColorSelectorUI(color);
+      
+      // Update dynamic link input in dashboard
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput) linkInput.value = getAgentStorefrontUrl();
 
       if (showToast && typeof showCustomAlert === 'function') {
-        showCustomAlert(` Storefront Theme Applied! Primary color is now ${color.toUpperCase()}. Your live clone storefront is updated.`);
+        showCustomAlert('Storefront Theme Applied! Every purple element across Payzani has now transformed to ' + color.toUpperCase() + ' for your storefront.');
       }
     }
 
