@@ -3579,6 +3579,91 @@
       }
 
       /* Fixed Mobile Bottom Navigation Bar */
+      /* -------------------------------------------------------------
+         OPAY TRANSACTIONS SCREEN
+      -------------------------------------------------------------- */
+      .opay-tx-group-header {
+        font-size: 12px;
+        font-weight: 700;
+        color: #9CA3AF;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 12px 16px 6px;
+      }
+      .opay-tx-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 13px 16px;
+        border-bottom: 1px solid #1A1A22;
+        background: #111116;
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .opay-tx-item:active {
+        background: #1E1E28;
+      }
+      .opay-tx-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .opay-tx-icon-circle {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .opay-tx-title {
+        font-size: 13.5px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 3px;
+      }
+      .opay-tx-sub {
+        font-size: 11.5px;
+        color: #9CA3AF;
+      }
+      .opay-tx-right {
+        text-align: right;
+      }
+      .opay-tx-amt {
+        font-size: 14px;
+        font-weight: 800;
+      }
+      .opay-tx-status {
+        font-size: 10.5px;
+        font-weight: 600;
+        margin-top: 3px;
+      }
+      .opay-filter-scroll {
+        display: flex;
+        gap: 8px;
+        padding: 0 16px 14px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .opay-filter-pill {
+        padding: 6px 14px;
+        border-radius: 20px;
+        background: #18181F;
+        border: 1px solid #282833;
+        color: #9CA3AF;
+        font-size: 12px;
+        font-weight: 600;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .opay-filter-pill.active {
+        background: #7C3AED;
+        border-color: #7C3AED;
+        color: #FFFFFF;
+      }
+
       .opay-agent-tier-pill {
         background: #14141A;
         border: 1px solid #272733;
@@ -4836,6 +4921,184 @@
       </div>
     </div>
 
+        <!-- SCREEN 6: TRANSACTIONS & SETTLEMENTS SCREEN -->
+    <div id="opay-screen-transactions" class="opay-subscreen">
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Transactions History</span>
+        </div>
+        <span class="opay-sub-history" onclick="downloadTransactionStatement()">Statement</span>
+      </div>
+
+      <!-- Financial Summary Card -->
+      <div style="background: linear-gradient(135deg, #1C1233 0%, #0F0F16 100%); border: 1px solid #2B1D4C; border-radius: 16px; padding: 16px; margin: 14px 16px 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <span style="font-size: 12px; font-weight: 600; color: #C4B5FD;">November 2026 Overview</span>
+          <span style="font-size: 11px; background: rgba(124,58,237,0.25); color: #DDD6FE; padding: 3px 8px; border-radius: 10px; border: 1px solid rgba(124,58,237,0.4);">All Outlets</span>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <div style="font-size: 11px; color: #9CA3AF; margin-bottom: 2px;">Total Inflow</div>
+            <div style="font-size: 17px; font-weight: 800; color: #10B981;">+₦49,300.00</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; color: #9CA3AF; margin-bottom: 2px;">Total Spent / Orders</div>
+            <div style="font-size: 17px; font-weight: 800; color: #FFFFFF;">-₦24,800.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Scroll -->
+      <div class="opay-filter-scroll">
+        <div class="opay-filter-pill active" onclick="filterTransactions(this, 'all')">All</div>
+        <div class="opay-filter-pill" onclick="filterTransactions(this, 'data')">Airtime &amp; Data</div>
+        <div class="opay-filter-pill" onclick="filterTransactions(this, 'funding')">Wallet Funding</div>
+        <div class="opay-filter-pill" onclick="filterTransactions(this, 'bills')">Electricity &amp; TV</div>
+        <div class="opay-filter-pill" onclick="filterTransactions(this, 'betting')">Betting</div>
+      </div>
+
+      <!-- Transaction Items List -->
+      <div style="padding-bottom: 30px;">
+        <!-- Group 1: Today -->
+        <div class="opay-tx-group-header">Today &bull; 19 Nov 2026</div>
+
+        <div class="opay-tx-item" data-type="funding" onclick="showTxDetail('Wallet Funding via Paystack', '+₦10,000.00', 'Successful', 'PYZ-PSTK-882194', '19 Nov 2026, 04:12 PM', 'Direct Bank Transfer to Paystack Dedicated Virtual Account')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">Wallet Funded via Paystack</div>
+              <div class="opay-tx-sub">Paystack Webhook &bull; Auto-Credit</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #10B981;">+₦10,000.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Successful</div>
+          </div>
+        </div>
+
+        <div class="opay-tx-item" data-type="data" onclick="showTxDetail('MTN 5G SME Data Top-Up (2.5GB)', '-₦750.00', 'Delivered in 1.1s', 'PYZ-MTN-5G-90312', '19 Nov 2026, 03:24 PM', 'Recipient: 0803 123 4567 • Network Switch: MTN Nigeria')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(124, 58, 237, 0.15); color: #A78BFA;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">MTN 5G SME Data &bull; 2.5GB</div>
+              <div class="opay-tx-sub">0803 123 4567 &bull; Instant Delivery</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #FFFFFF;">-₦750.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Delivered in 1.1s</div>
+          </div>
+        </div>
+
+        <div class="opay-tx-item" data-type="data" onclick="showTxDetail('Airtel Airtime Wholesale Top-up', '-₦980.00', 'Successful', 'PYZ-AIR-440192', '19 Nov 2026, 01:15 PM', 'Recipient: 0902 987 6543 • Face Value: ₦1,000 (2% Discount Applied)')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(124, 58, 237, 0.15); color: #A78BFA;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">Airtel Airtime ₦1,000 Top-Up</div>
+              <div class="opay-tx-sub">0902 987 6543 &bull; Wholesale Price</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #FFFFFF;">-₦980.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Successful</div>
+          </div>
+        </div>
+
+        <!-- Group 2: Yesterday -->
+        <div class="opay-tx-group-header">Yesterday &bull; 18 Nov 2026</div>
+
+        <div class="opay-tx-item" data-type="bills" onclick="showTxDetail('IKEDC Prepaid Meter STS Token', '-₦5,000.00', 'Token Generated', 'BILL-IKEDC-552190', '18 Nov 2026, 06:30 PM', 'Meter: 01429910482 (Mr. Victor Okafor) • STS Token: 4819-2049-1192-3841 (23.4 Units)')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(245, 158, 11, 0.15); color: #F59E0B;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">IKEDC Prepaid Meter STS Token</div>
+              <div class="opay-tx-sub">Token: 4819-2049-1192-3841</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #FFFFFF;">-₦5,000.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Token Generated</div>
+          </div>
+        </div>
+
+        <div class="opay-tx-item" data-type="betting" onclick="showTxDetail('SportyBet Account Wallet Funding', '-₦1,500.00', 'Successful', 'BET-SPORTY-10938', '18 Nov 2026, 02:45 PM', 'SportyBet User ID: 982314 • Instant Wallet Credit')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(236, 72, 153, 0.15); color: #EC4899;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">SportyBet Account Funding</div>
+              <div class="opay-tx-sub">User ID: 982314 &bull; Zero Fees</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #FFFFFF;">-₦1,500.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Successful</div>
+          </div>
+        </div>
+
+        <div class="opay-tx-item" data-type="data" onclick="showTxDetail('Glo 4G SME Data Top-Up (5GB)', '-₦1,250.00', 'Delivered in 0.8s', 'PYZ-GLO-334182', '18 Nov 2026, 11:10 AM', 'Recipient: 0805 112 2334 • Network Switch: Globacom Nigeria')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(124, 58, 237, 0.15); color: #A78BFA;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">Glo 4G SME Data &bull; 5GB</div>
+              <div class="opay-tx-sub">0805 112 2334 &bull; Delivered</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #FFFFFF;">-₦1,250.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Delivered in 0.8s</div>
+          </div>
+        </div>
+
+        <!-- Group 3: Earlier -->
+        <div class="opay-tx-group-header">Earlier This Month</div>
+
+        <div class="opay-tx-item" data-type="bills" onclick="showTxDetail('DStv Compact Plus Monthly Renewal', '-₦19,800.00', 'Active', 'TV-DSTV-882109', '16 Nov 2026, 08:20 PM', 'Smartcard: 1048299102 • Package: Compact Plus (HD) • MultiChoice Switch')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(6, 182, 212, 0.15); color: #06B6D4;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">DStv Compact Plus Bouquet</div>
+              <div class="opay-tx-sub">Smartcard: 1048299102 &bull; Active</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #FFFFFF;">-₦19,800.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Active</div>
+          </div>
+        </div>
+
+        <div class="opay-tx-item" data-type="funding" onclick="showTxDetail('Weekly Agent Commission Payout', '+₦14,800.00', 'Credited', 'COMM-WEEK-02-NOV', '15 Nov 2026, 09:00 AM', 'Source: Payzani Automated Reseller Clearinghouse • Margin on 1,420 transactions')">
+          <div class="opay-tx-left">
+            <div class="opay-tx-icon-circle" style="background: rgba(16, 185, 129, 0.15); color: #10B981;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+            </div>
+            <div>
+              <div class="opay-tx-title">Agent Commission Payout</div>
+              <div class="opay-tx-sub">Weekly Clearinghouse Margin</div>
+            </div>
+          </div>
+          <div class="opay-tx-right">
+            <div class="opay-tx-amt" style="color: #10B981;">+₦14,800.00</div>
+            <div class="opay-tx-status" style="color: #10B981;">Credited</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
         <!-- SCREEN 7: AGENT SIGN-UP SCREEN -->
     <div id="opay-screen-agent" class="opay-subscreen">
       <div class="opay-sub-header">
@@ -4950,9 +5213,9 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
         <span>Rewards</span>
       </div>
-      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'finance')">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-        <span>Finance</span>
+      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'transactions')" id="opayNavTransactions">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+        <span>Transactions</span>
       </div>
       <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'cards')">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
@@ -8495,6 +8758,8 @@
         showCustomAlert('SafeVault & Reserve Savings: 18% Annual APY');
       } else if (tabKey === 'cards') {
         showCustomAlert('Payzani Virtual Card: Verified & Linked');
+      } else if (tabKey === 'transactions' || tabKey === 'finance') {
+        opaySwitchScreen('opay-screen-transactions');
       } else if (tabKey === 'agent' || tabKey === 'me') {
         opaySwitchScreen('opay-screen-agent');
       }
@@ -8699,6 +8964,42 @@
         }
         opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home');
       }, 900);
+    }
+
+  
+    // Transactions Screen Controller
+    function filterTransactions(el, filterType) {
+      document.querySelectorAll('.opay-filter-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      const items = document.querySelectorAll('.opay-tx-item');
+      items.forEach(item => {
+        const itemType = item.getAttribute('data-type');
+        if (filterType === 'all' || itemType === filterType) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function showTxDetail(title, amount, status, refId, dateStr, notes) {
+      const msg = title + "\n" +
+                  "Amount: " + amount + "\n" +
+                  "Status: " + status + "\n" +
+                  "Reference: " + refId + "\n" +
+                  "Date: " + dateStr + "\n\n" +
+                  notes;
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert(msg);
+      } else {
+        alert(msg);
+      }
+    }
+
+    function downloadTransactionStatement() {
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert('Statement dispatched: An encrypted PDF statement has been sent to your registered email.');
+      }
     }
 
   </script>
