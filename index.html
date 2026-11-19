@@ -5858,9 +5858,9 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
         <span>Transactions</span>
       </div>
-      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'agent')" id="opayNavAgent">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-        <span>Agent</span>
+      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'me')" id="opayNavMe">
+        <svg id="opayNavMeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span id="opayNavMeLabel">Me</span>
       </div>
     </nav>
 
@@ -9391,7 +9391,7 @@
 
     function opaySwitchBottomTab(el, tabKey) {
       document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
-      el.classList.add('active');
+      if (el) el.classList.add('active');
       if (tabKey === 'home') {
         opaySwitchScreen('opay-screen-home');
       } else if (tabKey === 'rewards') {
@@ -9400,16 +9400,65 @@
         showCustomAlert('SafeVault & Reserve Savings: 18% Annual APY');
       } else if (tabKey === 'cards') {
         showCustomAlert('Payzani Virtual Card: Verified & Linked');
-      } else if (tabKey === 'transactions' || tabKey === 'finance') {
+      } else if (tabKey === 'transactions') {
         opaySwitchScreen('opay-screen-transactions');
-      } else if (tabKey === 'agent' || tabKey === 'me') {
-        if (isPayzaniAgentRegistered) {
-          opaySwitchScreen('opay-screen-agent-dashboard');
-          updateAgentDashboardUI();
-        } else {
-          opaySwitchScreen('opay-screen-agent');
-        }
+      } else if (tabKey === 'me' || tabKey === 'agent') {
+        // On an agent website, tab 4 is strictly 'Me' (User Dashboard)
+        opaySwitchScreen('opay-screen-me');
+        updateUserDashboardUI();
       }
+    }
+
+    function updateUserDashboardUI() {
+      let outletName = 'Victor Telecoms & POS';
+      try {
+        outletName = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms & POS';
+      } catch(e) {}
+      const outletEl = document.getElementById('userOutletName');
+      if (outletEl) outletEl.textContent = outletName;
+
+      // Show outlet owner card only if the logged in user is the agent/owner
+      const ownerCard = document.getElementById('outletOwnerSwitchCard');
+      if (ownerCard) {
+        ownerCard.style.display = (isPayzaniAgentRegistered) ? 'block' : 'none';
+      }
+    }
+
+    function copyCustomerVirtualAccount() {
+      const acc = '8201948219';
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(acc);
+      }
+      const btn = document.getElementById('userCopyAccBtn');
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span style="color:#10B981;">Copied!</span>';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+      }
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert('Wema Bank Account 8201948219 copied! Transfer from any bank app to fund your wallet.');
+      }
+    }
+
+    function contactStorefrontWhatsApp() {
+      let outletName = 'Victor Telecoms';
+      let phone = '2348023456789';
+      try {
+        outletName = localStorage.getItem('payzani_agent_name') || 'Victor Telecoms';
+        phone = (localStorage.getItem('payzani_agent_phone') || '08023456789').replace(/[^0-9]/g, '');
+        if (phone.startsWith('0')) phone = '234' + phone.slice(1);
+      } catch(e) {}
+      const msg = encodeURIComponent(`Hello ${outletName}, I am shopping on your Payzani storefront website and need assistance.`);
+      window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${msg}`, '_blank');
+    }
+
+    function handlePayzaniLogout() {
+      if (typeof showCustomAlert === 'function') {
+        showCustomAlert('Signed out successfully. See you again!');
+      }
+      setTimeout(() => {
+        location.reload();
+      }, 700);
     }
 
     function opaySubmitPayment(serviceName) {
