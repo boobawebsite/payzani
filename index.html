@@ -3579,6 +3579,21 @@
       }
 
       /* Fixed Mobile Bottom Navigation Bar */
+      .opay-agent-tier-pill {
+        background: #14141A;
+        border: 1px solid #272733;
+        border-radius: 12px;
+        padding: 10px 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .opay-agent-tier-pill.active {
+        border-color: #7C3AED;
+        background: rgba(124, 58, 237, 0.15);
+        box-shadow: 0 0 0 1px #7C3AED;
+      }
+
       .opay-bottom-nav {
         position: fixed;
         bottom: 0;
@@ -4821,6 +4836,110 @@
       </div>
     </div>
 
+        <!-- SCREEN 7: AGENT SIGN-UP SCREEN -->
+    <div id="opay-screen-agent" class="opay-subscreen">
+      <div class="opay-sub-header">
+        <div class="opay-sub-back-title" onclick="opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Become a Payzani Agent</span>
+        </div>
+        <span class="opay-sub-history" onclick="showCustomAlert('Agent Helpline: 24/7 Priority Support Active')">Support</span>
+      </div>
+
+      <div class="opay-sub-banner" style="background: linear-gradient(135deg, #2E1065 0%, #1E1B4B 100%); border-color: #6D28D9;">
+        <span class="opay-sub-banner-text">START YOUR TELECOM VTU OUTLET &#8226; WHOLESALE MARGINS</span>
+        <span class="opay-sub-banner-badge" style="background: #7C3AED;">Earn Daily</span>
+      </div>
+
+      <!-- Agent Benefits Grid -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 16px 16px;">
+        <div style="background: #14141A; border: 1px solid #242430; border-radius: 12px; padding: 12px; text-align: left;">
+          <div style="color: #A78BFA; font-size: 16px; margin-bottom: 4px;">⚡ 8.5% Margin</div>
+          <div style="color: #E5E7EB; font-size: 12px; font-weight: 700;">Cheapest VTU Rates</div>
+          <div style="color: #9CA3AF; font-size: 11px;">Save up to ₦150/GB on SME data</div>
+        </div>
+        <div style="background: #14141A; border: 1px solid #242430; border-radius: 12px; padding: 12px; text-align: left;">
+          <div style="color: #10B981; font-size: 16px; margin-bottom: 4px;">💳 Free POS / Web</div>
+          <div style="color: #E5E7EB; font-size: 12px; font-weight: 700;">Agent Storefront</div>
+          <div style="color: #9CA3AF; font-size: 11px;">Instant branded billing website</div>
+        </div>
+        <div style="background: #14141A; border: 1px solid #242430; border-radius: 12px; padding: 12px; text-align: left;">
+          <div style="color: #F59E0B; font-size: 16px; margin-bottom: 4px;">🚀 Zero Delay</div>
+          <div style="color: #E5E7EB; font-size: 12px; font-weight: 700;">Instant Switching</div>
+          <div style="color: #9CA3AF; font-size: 11px;">Direct server API execution</div>
+        </div>
+        <div style="background: #14141A; border: 1px solid #242430; border-radius: 12px; padding: 12px; text-align: left;">
+          <div style="color: #EC4899; font-size: 16px; margin-bottom: 4px;">💰 Daily Payout</div>
+          <div style="color: #E5E7EB; font-size: 12px; font-weight: 700;">Auto-Settlement</div>
+          <div style="color: #9CA3AF; font-size: 11px;">Withdraw directly to any bank</div>
+        </div>
+      </div>
+
+      <!-- Agent Tier Selection -->
+      <div style="margin: 0 16px 16px;">
+        <div style="color: #D1D5DB; font-size: 13px; font-weight: 700; margin-bottom: 8px;">Select Agent Package:</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+          <div class="opay-agent-tier-pill" onclick="selectAgentTier(this, 'Starter Agent', 'Free')">
+            <div style="font-size: 11.5px; font-weight: 700; color: #FFF;">Starter</div>
+            <div style="font-size: 10px; color: #10B981; font-weight: 700;">FREE</div>
+          </div>
+          <div class="opay-agent-tier-pill active" onclick="selectAgentTier(this, 'Super Merchant', '₦5,000')">
+            <div style="font-size: 11.5px; font-weight: 700; color: #FFF;">VIP Merchant</div>
+            <div style="font-size: 10px; color: #A78BFA; font-weight: 700;">POPULAR</div>
+          </div>
+          <div class="opay-agent-tier-pill" onclick="selectAgentTier(this, 'API Switch Enterprise', 'Wholesale')">
+            <div style="font-size: 11.5px; font-weight: 700; color: #FFF;">API Switch</div>
+            <div style="font-size: 10px; color: #F59E0B; font-weight: 700;">ENTERPRISE</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <div style="margin: 0 16px 30px;">
+        <form onsubmit="submitAgentRegistration(event)">
+          <div style="margin-bottom: 12px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; color: #D1D5DB; margin-bottom: 6px;">Business or Agent Name</label>
+            <div style="background: #18181D; border: 1px solid #27272F; border-radius: 12px; padding: 0 14px; height: 48px; display: flex; align-items: center;">
+              <input type="text" id="agentRegName" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 14px;" placeholder="e.g. Victor Telecoms &amp; POS" value="Victor Telecoms &amp; POS" required />
+            </div>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; color: #D1D5DB; margin-bottom: 6px;">WhatsApp / Phone Number</label>
+            <div style="background: #18181D; border: 1px solid #27272F; border-radius: 12px; padding: 0 14px; height: 48px; display: flex; align-items: center;">
+              <span style="font-size: 13px; font-weight: 700; color: #E5E7EB; margin-right: 10px; padding-right: 10px; border-right: 1px solid #33333E;">&#x1F1F3;&#x1F1EC; +234</span>
+              <input type="tel" id="agentRegPhone" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 14px;" placeholder="0812 345 6789" value="0802 345 6789" required />
+            </div>
+          </div>
+
+          <div style="margin-bottom: 12px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; color: #D1D5DB; margin-bottom: 6px;">Location / State &amp; LGA</label>
+            <div style="background: #18181D; border: 1px solid #27272F; border-radius: 12px; padding: 0 14px; height: 48px; display: flex; align-items: center;">
+              <input type="text" id="agentRegLocation" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 14px;" placeholder="e.g. Ikeja, Lagos" value="Ikeja, Lagos" required />
+            </div>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="display: block; font-size: 12px; font-weight: 600; color: #D1D5DB; margin-bottom: 6px;">Business Outlet Type</label>
+            <select id="agentRegType" style="width: 100%; height: 48px; background: #18181D; border: 1px solid #27272F; border-radius: 12px; padding: 0 14px; color: #FFF; font-size: 14px; outline: none;">
+              <option value="POS Shop / Agency Banking">POS Shop / Agency Banking</option>
+              <option value="Cyber Cafe / Computer Center">Cyber Cafe / Computer Center</option>
+              <option value="Online / Social Media Reseller">Online / Social Media Reseller</option>
+              <option value="Retail Kiosk / Supermarket">Retail Kiosk / Supermarket</option>
+            </select>
+          </div>
+
+          <div style="font-size: 11px; color: #9CA3AF; text-align: center; margin-bottom: 16px;">
+            By submitting, your agent account is provisioned instantly on the Payzani Telecommunications Switch.
+          </div>
+
+          <button type="submit" id="agentRegSubmitBtn" class="opay-pay-action-btn" style="width: 100%; margin: 0;">
+            Sign Up as Payzani Agent &rarr;
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- PERSISTENT MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="opay-bottom-nav">
       <div class="opay-nav-item active" onclick="opaySwitchBottomTab(this, 'home')">
@@ -4839,9 +4958,9 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
         <span>Cards</span>
       </div>
-      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'me')">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <span>Me</span>
+      <div class="opay-nav-item" onclick="opaySwitchBottomTab(this, 'agent')" id="opayNavAgent">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+        <span>Agent</span>
       </div>
     </nav>
 
@@ -8376,8 +8495,8 @@
         showCustomAlert('SafeVault & Reserve Savings: 18% Annual APY');
       } else if (tabKey === 'cards') {
         showCustomAlert('Payzani Virtual Card: Verified & Linked');
-      } else if (tabKey === 'me') {
-        showCustomAlert('Account: Victor O. &bull; Tier 2 Verified');
+      } else if (tabKey === 'agent' || tabKey === 'me') {
+        opaySwitchScreen('opay-screen-agent');
       }
     }
 
@@ -8539,6 +8658,47 @@
         }
         dismissPayzaniAuth(false);
       }, 700);
+    }
+
+  
+    // Agent Subscreen Controller
+    function selectAgentTier(el, tierName, fee) {
+      document.querySelectorAll('.opay-agent-tier-pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      const btn = document.getElementById('agentRegSubmitBtn');
+      if (btn) {
+        btn.innerHTML = 'Sign Up as Payzani Agent (' + tierName + ') &rarr;';
+      }
+    }
+
+    function submitAgentRegistration(e) {
+      if (e) e.preventDefault();
+      const nameInput = document.getElementById('agentRegName');
+      const businessName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : 'Victor Telecoms';
+      const btn = document.getElementById('agentRegSubmitBtn');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span style="display:inline-block;animation:spin 0.8s linear infinite;">&#8635;</span> <span>Activating Agent Console...</span>';
+      }
+      setTimeout(() => {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = 'Sign Up as Payzani Agent &rarr;';
+        }
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Registration Successful! ' + businessName + ' is now an authorized Payzani VIP Agent.');
+        }
+        const avatarBadge = document.querySelector('.opay-avatar-badge');
+        if (avatarBadge) {
+          avatarBadge.textContent = '★';
+          avatarBadge.title = 'Authorized Payzani Agent';
+        }
+        const userName = document.querySelector('.opay-user-name');
+        if (userName) {
+          userName.innerHTML = 'Hi, Victor <span style="font-size:10px; font-weight:700; color:#A78BFA; background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.4); padding:2px 6px; border-radius:10px; margin-left:4px;">AGENT</span>';
+        }
+        opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home');
+      }, 900);
     }
 
   </script>
