@@ -5093,7 +5093,7 @@
           <button class="opay-subtab-btn" onclick="opaySwitchDataTab(this, 'monthly')">Monthly</button>
         </div>
 
-        <div class="opay-amounts-grid">
+        <div class="opay-amounts-grid" id="opayDataAmountsGrid">
           <div class="opay-amount-pill selected" onclick="opaySelectDataPlan(this, '1GB', 500)">
             <span class="opay-pill-val">1GB</span>
             <span style="font-size:11px; color:#9CA3AF;">1 Day &bull; ₦500</span>
@@ -5511,7 +5511,7 @@
           <div style="color: #9CA3AF; font-size: 11.5px;">Lifetime wholesale rates &bull; Free storefront &bull; No renewal</div>
         </div>
         <div style="text-align: right; flex-shrink: 0; margin-left: 12px;">
-          <div style="color: #FFFFFF; font-size: 20px; font-weight: 900; line-height: 1.1;">₦2,500</div>
+          <div id="agentActivationFeeDisplay" style="color: #FFFFFF; font-size: 20px; font-weight: 900; line-height: 1.1;">₦2,500</div>
           <div style="font-size: 10px; color: #10B981; font-weight: 700; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 8px; display: inline-block; margin-top: 3px;">ONE-TIME</div>
         </div>
       </div>
@@ -6029,6 +6029,18 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
 
+        <!-- MASTER ADMIN ACCESS PORTAL -->
+        <div onclick="openMasterAdminPanel()" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #21212B; cursor: pointer; background: rgba(124, 58, 237, 0.08);">
+          <div style="display: flex; align-items: center; gap: 10px; color: #DDD6FE; font-size: 13px; font-weight: 700;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Master Admin Control Panel</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 9.5px; font-weight: 800; background: #7C3AED; color: #FFF; padding: 2px 7px; border-radius: 4px; letter-spacing: 0.5px;">ROOT HQ</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+
         <div onclick="handlePayzaniLogout()" style="padding: 12px 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
           <div style="display: flex; align-items: center; gap: 10px; color: #EF4444; font-size: 13px; font-weight: 600;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
@@ -6039,7 +6051,309 @@
       </div>
     </div>
 
-<!-- PERSISTENT MOBILE BOTTOM NAVIGATION BAR -->
+<!-- SCREEN 10: PAYZANI MASTER ADMIN CONTROL PANEL -->
+    <div id="opay-screen-admin" class="opay-subscreen">
+      <!-- Top Header -->
+      <div class="opay-sub-header" style="padding: 10px 16px;">
+        <div class="opay-sub-back-title" onclick="opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span style="font-size: 15px; font-weight: 800;">Master Admin HQ</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span style="font-size: 9.5px; font-weight: 800; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); color: #C4B5FD; padding: 3px 8px; border-radius: 10px; letter-spacing: 0.5px;">
+            SUPERADMIN
+          </span>
+          <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(16, 185, 129, 0.12); color: #10B981; font-size: 9.5px; font-weight: 700; padding: 3px 8px; border-radius: 10px;">
+            <span style="width: 5px; height: 5px; background: #10B981; border-radius: 50%;"></span>
+            <span id="masterGatewayLiveIndicator">Switch Live</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Financial Health & Switch Stats Ticker -->
+      <div style="margin: 8px 16px 10px; background: #12121A; border: 1px solid #232332; border-radius: 12px; padding: 10px; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 4px;">
+        <div style="border-right: 1px solid rgba(255,255,255,0.06); padding: 0 2px;">
+          <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Platform GMV</div>
+          <div id="masterStatGmv" style="font-size: 11.5px; font-weight: 900; color: #FFFFFF; margin-top: 2px;">₦18.45M</div>
+        </div>
+        <div style="border-right: 1px solid rgba(255,255,255,0.06); padding: 0 2px;">
+          <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Net Profit</div>
+          <div id="masterStatProfit" style="font-size: 11.5px; font-weight: 900; color: #10B981; margin-top: 2px;">+₦1.64M</div>
+        </div>
+        <div style="border-right: 1px solid rgba(255,255,255,0.06); padding: 0 2px;">
+          <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Active Outlets</div>
+          <div id="masterStatAgents" style="font-size: 11.5px; font-weight: 900; color: #DDD6FE; margin-top: 2px;">142 Outlets</div>
+        </div>
+        <div style="padding: 0 2px;">
+          <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Upstream Float</div>
+          <div id="masterStatFloat" style="font-size: 11.5px; font-weight: 900; color: #60A5FA; margin-top: 2px;">₦3.85M</div>
+        </div>
+      </div>
+
+      <!-- Segmented Admin Navigation Tabs -->
+      <div style="margin: 0 16px 12px; display: flex; gap: 5px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px;">
+        <button type="button" onclick="switchMasterAdminTab('fees')" class="master-admin-tab-btn active" id="tabBtnAdminFees" style="flex-shrink: 0; background: #7C3AED; color: #FFF; border: none; font-size: 10.5px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+          Agent Fees &amp; Rules
+        </button>
+        <button type="button" onclick="switchMasterAdminTab('pricing')" class="master-admin-tab-btn" id="tabBtnAdminPricing" style="flex-shrink: 0; background: #14141E; color: #9CA3AF; border: 1px solid #262638; font-size: 10.5px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+          Data &amp; Telecom Pricing
+        </button>
+        <button type="button" onclick="switchMasterAdminTab('agents')" class="master-admin-tab-btn" id="tabBtnAdminAgents" style="flex-shrink: 0; background: #14141E; color: #9CA3AF; border: 1px solid #262638; font-size: 10.5px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+          Agent Outlets &amp; Floats
+        </button>
+        <button type="button" onclick="switchMasterAdminTab('gateways')" class="master-admin-tab-btn" id="tabBtnAdminGateways" style="flex-shrink: 0; background: #14141E; color: #9CA3AF; border: 1px solid #262638; font-size: 10.5px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+          Gateway Switches
+        </button>
+        <button type="button" onclick="switchMasterAdminTab('audit')" class="master-admin-tab-btn" id="tabBtnAdminAudit" style="flex-shrink: 0; background: #14141E; color: #9CA3AF; border: 1px solid #262638; font-size: 10.5px; font-weight: 700; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all 0.2s ease;">
+          Switch Audit Log
+        </button>
+      </div>
+
+      <!-- ======================================================================
+           TAB 1: AGENT FEES & RULES
+      ======================================================================= -->
+      <div id="masterAdminSectionFees" class="master-admin-section" style="display: block; margin: 0 16px 24px;">
+        <div style="background: #13131B; border: 1px solid #222230; border-radius: 14px; padding: 14px; margin-bottom: 12px;">
+          <div style="font-size: 12.5px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px;">Agent Onboarding &amp; Float Configuration</div>
+          <div style="font-size: 11px; color: #9CA3AF; margin-bottom: 14px;">Values set here immediately control agent signups, wholesale discounts, and float refill limits across Payzani.</div>
+
+          <!-- 1. Agent Onboarding Activation Fee -->
+          <div style="margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #E5E7EB;">One-Time Agent Activation Fee (₦)</label>
+              <span style="font-size: 9.5px; color: #A78BFA; font-weight: 600;">Registration charge</span>
+            </div>
+            <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #E5E7EB;">₦</span>
+              <input type="number" id="adminAgentOnboardingFee" value="2500" min="500" step="500" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+            </div>
+            <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">Changes the activation fee shown on the Agent Signup screen.</div>
+          </div>
+
+          <!-- 2. Default Wholesale Agent Margin % -->
+          <div style="margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #E5E7EB;">Default Wholesale Agent Margin (%)</label>
+              <span style="font-size: 9.5px; color: #10B981; font-weight: 600;">Agent Discount</span>
+            </div>
+            <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+              <input type="number" id="adminDefaultAgentMargin" value="8.5" min="1" max="25" step="0.5" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+              <span style="font-size: 12px; font-weight: 700; color: #A78BFA;">%</span>
+            </div>
+            <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">Standard margin split granted to new reseller outlets.</div>
+          </div>
+
+          <!-- 3. Minimum Wholesale Float Refill -->
+          <div style="margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #E5E7EB;">Minimum Wholesale Float Refill (₦)</label>
+              <span style="font-size: 9.5px; color: #60A5FA; font-weight: 600;">Min top-up</span>
+            </div>
+            <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #E5E7EB;">₦</span>
+              <input type="number" id="adminMinFloatRefill" value="5000" min="1000" step="1000" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+            </div>
+            <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">Prevents micro-refills on upstream switch.</div>
+          </div>
+
+          <!-- 4. Platform Cut / Markup per ₦5,000 Pack -->
+          <div style="margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #E5E7EB;">Platform Markup per ₦5,000 Refill (₦)</label>
+              <span style="font-size: 9.5px; color: #F59E0B; font-weight: 600;">Payzani Retained</span>
+            </div>
+            <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #E5E7EB;">₦</span>
+              <input type="number" id="adminPlatformTokenCut" value="200" min="50" step="50" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+            </div>
+            <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">Retained platform profit collected on each wholesale quota bundle.</div>
+          </div>
+
+          <!-- 5. Agent Bank Cashout / Withdrawal Fee -->
+          <div style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #E5E7EB;">Agent Bank Withdrawal Fee (₦)</label>
+              <span style="font-size: 9.5px; color: #9CA3AF; font-weight: 600;">Switch clearing</span>
+            </div>
+            <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: #E5E7EB;">₦</span>
+              <input type="number" id="adminAgentWithdrawalFee" value="50" min="0" step="10" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+            </div>
+            <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">Charged per settlement to Nigerian commercial bank accounts.</div>
+          </div>
+
+          <!-- Save Button -->
+          <button type="button" onclick="saveMasterFeeSettings()" style="width: 100%; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Save Agent Rules &amp; Fees</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           TAB 2: DATA & TELECOM PRICING ENGINE
+      ======================================================================= -->
+      <div id="masterAdminSectionPricing" class="master-admin-section" style="display: none; margin: 0 16px 24px;">
+        <div style="background: #13131B; border: 1px solid #222230; border-radius: 14px; padding: 14px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <div style="font-size: 12.5px; font-weight: 800; color: #FFFFFF;">Data Bundle Pricing Engine</div>
+            <span style="font-size: 9.5px; color: #10B981; font-weight: 700; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 8px;">LIVE CONTROLS</span>
+          </div>
+          <div style="font-size: 11px; color: #9CA3AF; margin-bottom: 12px;">Configure retail prices charged to customers and wholesale prices charged to agents.</div>
+
+          <!-- Network Tabs (MTN, Airtel, Glo, 9mobile) -->
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; margin-bottom: 14px;">
+            <button type="button" onclick="selectAdminPricingNetwork('mtn')" class="admin-network-tab-btn active" id="adminNetTab_mtn" style="background: #7C3AED; color: #FFF; border: none; font-size: 11px; font-weight: 800; padding: 6px 4px; border-radius: 6px; cursor: pointer;">MTN</button>
+            <button type="button" onclick="selectAdminPricingNetwork('airtel')" class="admin-network-tab-btn" id="adminNetTab_airtel" style="background: #14141E; color: #9CA3AF; border: 1px solid #262638; font-size: 11px; font-weight: 800; padding: 6px 4px; border-radius: 6px; cursor: pointer;">Airtel</button>
+            <button type="button" onclick="selectAdminPricingNetwork('glo')" class="admin-network-tab-btn" id="adminNetTab_glo" style="background: #14141E; color: #9CA3AF; border: 1px solid #262638; font-size: 11px; font-weight: 800; padding: 6px 4px; border-radius: 6px; cursor: pointer;">Glo</button>
+            <button type="button" onclick="selectAdminPricingNetwork('mobile9')" class="admin-network-tab-btn" id="adminNetTab_mobile9" style="background: #14141E; color: #9CA3AF; border: 1px solid #262638; font-size: 11px; font-weight: 800; padding: 6px 4px; border-radius: 6px; cursor: pointer;">9mobile</button>
+          </div>
+
+          <!-- Dynamic Plans Table / Cards Container -->
+          <div id="adminPricingPlansContainer" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px;">
+            <!-- Dynamically populated by renderAdminPricingPlans() -->
+          </div>
+
+          <!-- Airtime Discounts Block -->
+          <div style="background: #0D0D14; border: 1px solid #222230; border-radius: 10px; padding: 10px; margin-bottom: 14px;">
+            <div style="font-size: 11px; font-weight: 800; color: #E5E7EB; margin-bottom: 6px;">Airtime VTU Discounts (%)</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div>
+                <label style="font-size: 9.5px; color: #9CA3AF; display: block; margin-bottom: 2px;">Agent Wholesale Discount</label>
+                <div style="background: #0B0B10; border: 1px solid #262638; border-radius: 6px; padding: 0 8px; height: 32px; display: flex; align-items: center;">
+                  <input type="number" id="adminAirtimeAgentDiscount" value="3.0" step="0.1" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11.5px; font-weight: 700;" />
+                  <span style="font-size: 11px; color: #A78BFA; font-weight: 700;">%</span>
+                </div>
+              </div>
+              <div>
+                <label style="font-size: 9.5px; color: #9CA3AF; display: block; margin-bottom: 2px;">Customer Retail Discount</label>
+                <div style="background: #0B0B10; border: 1px solid #262638; border-radius: 6px; padding: 0 8px; height: 32px; display: flex; align-items: center;">
+                  <input type="number" id="adminAirtimeRetailDiscount" value="2.0" step="0.1" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11.5px; font-weight: 700;" />
+                  <span style="font-size: 11px; color: #A78BFA; font-weight: 700;">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Save Pricing Button -->
+          <button type="button" onclick="saveMasterPricingSettings()" style="width: 100%; background: linear-gradient(135deg, #10B981 0%, #059669 100%); border: none; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Save &amp; Apply Pricing Live</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           TAB 3: AGENT OUTLETS & FLOATS
+      ======================================================================= -->
+      <div id="masterAdminSectionAgents" class="master-admin-section" style="display: none; margin: 0 16px 24px;">
+        <!-- Search & Filter Bar -->
+        <div style="margin-bottom: 10px; background: #13131B; border: 1px solid #222230; border-radius: 10px; padding: 6px 10px; display: flex; align-items: center; gap: 6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="adminAgentSearchInput" placeholder="Search by name, phone, or slug..." oninput="filterMasterAgentsList(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11.5px;" />
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <div id="adminAgentsCountLabel" style="font-size: 10.5px; color: #9CA3AF; font-weight: 700;">Showing 5 Agent Outlets</div>
+          <button type="button" onclick="refreshMasterAgentsList()" style="background: transparent; border: none; color: #A78BFA; font-size: 10.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 3px;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            <span>Refresh</span>
+          </button>
+        </div>
+
+        <!-- Dynamic Agent Outlets List -->
+        <div id="masterAdminAgentsContainer" style="display: flex; flex-direction: column; gap: 8px;">
+          <!-- Dynamically populated by renderMasterAgentsList() -->
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           TAB 4: GATEWAY SWITCHES & FAILOVER
+      ======================================================================= -->
+      <div id="masterAdminSectionGateways" class="master-admin-section" style="display: none; margin: 0 16px 24px;">
+        <div style="background: #13131B; border: 1px solid #222230; border-radius: 14px; padding: 14px;">
+          <div style="font-size: 12.5px; font-weight: 800; color: #FFFFFF; margin-bottom: 4px;">Upstream Gateway Switch Controls</div>
+          <div style="font-size: 11px; color: #9CA3AF; margin-bottom: 12px;">Toggle live API routes or put individual telco switches into maintenance mode.</div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;" id="adminGatewaySwitchesList">
+            <!-- Dynamically populated by renderMasterGateways() -->
+          </div>
+
+          <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #222230;">
+            <button type="button" onclick="testMasterGatewayHealth()" style="width: 100%; background: #1C1929; border: 1px solid #3B3356; color: #DDD6FE; font-size: 11.5px; font-weight: 700; padding: 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              <span>Test All Upstream API Switches</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================================
+           TAB 5: GLOBAL SWITCH ORDER AUDIT LOG
+      ======================================================================= -->
+      <div id="masterAdminSectionAudit" class="master-admin-section" style="display: none; margin: 0 16px 24px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+          <div style="display: flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 800; color: #FFFFFF;">
+            <span style="width: 5px; height: 5px; border-radius: 50%; background: #10B981;"></span>
+            <span>Live Switch Transactions</span>
+          </div>
+          <button type="button" onclick="simulateMasterTransaction()" style="background: #1C1929; border: 1px solid #3B3356; color: #DDD6FE; font-size: 9.5px; font-weight: 700; padding: 3px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 3px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>+ Simulate Order</span>
+          </button>
+        </div>
+
+        <!-- Audit Feed List -->
+        <div id="masterAdminAuditFeed" style="display: flex; flex-direction: column; gap: 6px;">
+          <!-- Dynamically populated by renderMasterAuditFeed() -->
+        </div>
+      </div>
+    </div>
+
+    <!-- MASTER ADMIN FLOAT ADJUSTMENT MODAL -->
+    <div id="adminAdjustFloatModal" style="display: none; position: fixed; inset: 0; background: rgba(5, 5, 8, 0.85); z-index: 99999; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(5px);">
+      <div style="background: #14141E; border: 1px solid #2E2E42; border-radius: 14px; width: 100%; max-width: 340px; padding: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.6);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #222230; padding-bottom: 8px;">
+          <div>
+            <div style="color: #FFFFFF; font-size: 13.5px; font-weight: 800;">Adjust Agent Float</div>
+            <div id="adjustModalAgentName" style="color: #A78BFA; font-size: 11px; font-weight: 600;">Victor Telecoms &amp; POS</div>
+          </div>
+          <button type="button" onclick="closeAdminAdjustFloatModal()" style="background: transparent; border: none; color: #9CA3AF; cursor: pointer; padding: 4px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <input type="hidden" id="adjustModalAgentId" value="" />
+
+        <div style="margin-bottom: 10px;">
+          <label style="display: block; font-size: 10.5px; font-weight: 700; color: #9CA3AF; margin-bottom: 4px;">Adjustment Operation</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+            <button type="button" id="btnFloatOpCredit" onclick="selectFloatAdjustOp('credit')" style="background: #10B981; color: #FFF; border: none; font-size: 11px; font-weight: 800; padding: 6px; border-radius: 6px; cursor: pointer;">+ Credit Float</button>
+            <button type="button" id="btnFloatOpDebit" onclick="selectFloatAdjustOp('debit')" style="background: #1C1929; color: #9CA3AF; border: 1px solid #2E2E42; font-size: 11px; font-weight: 800; padding: 6px; border-radius: 6px; cursor: pointer;">- Debit Float</button>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 10px;">
+          <label style="display: block; font-size: 10.5px; font-weight: 700; color: #9CA3AF; margin-bottom: 4px;">Adjustment Amount (₦)</label>
+          <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+            <span style="font-size: 12px; font-weight: 700; color: #E5E7EB;">₦</span>
+            <input type="number" id="adjustModalAmount" value="10000" min="500" step="500" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+          </div>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 10.5px; font-weight: 700; color: #9CA3AF; margin-bottom: 4px;">Audit Note / Reason</label>
+          <input type="text" id="adjustModalReason" value="Admin Manual Credit Refill" placeholder="e.g. Bank transfer confirmed" style="width: 100%; background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 8px 10px; color: #FFF; font-size: 11px; outline: none; box-sizing: border-box;" />
+        </div>
+
+        <div style="display: flex; gap: 6px;">
+          <button type="button" onclick="closeAdminAdjustFloatModal()" style="flex: 1; background: #1C1C26; border: 1px solid #2B2B38; color: #9CA3AF; font-size: 11px; font-weight: 700; padding: 8px; border-radius: 7px; cursor: pointer;">Cancel</button>
+          <button type="button" onclick="executeAdminFloatAdjustment()" style="flex: 1.4; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFF; font-size: 11px; font-weight: 800; padding: 8px; border-radius: 7px; cursor: pointer;">Confirm Update</button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- PERSISTENT MOBILE BOTTOM NAVIGATION BAR -->
     <nav class="opay-bottom-nav">
       <div class="opay-nav-item active" onclick="opaySwitchBottomTab(this, 'home')">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -9433,7 +9747,11 @@
     function saveMasterSettings() {
       const fee = document.getElementById('adminAgentFee').value;
       const cut = document.getElementById('adminTokenCut').value;
-      showCustomAlert('Settings updated: Agent Fee = NGN ' + Number(fee).toLocaleString() + ', Margin = NGN ' + cut);
+      const cfg = getMasterAdminConfig();
+      if (fee) cfg.agentOnboardingFee = Number(fee);
+      if (cut) cfg.platformTokenCut = Number(cut);
+      saveMasterAdminConfig(cfg);
+      showCustomAlert('Platform Settings Updated: Agent Fee = NGN ' + Number(fee).toLocaleString() + ', Token Margin = NGN ' + cut);
     }
 
     let alertTimer = null;
@@ -9540,6 +9858,9 @@
       const c = OPAY_CARRIERS[opayCarrierIdx];
       const img = document.getElementById(`opay-${type}-carrier-img`);
       if (img) img.src = c.img;
+      if (type === 'data' && typeof renderCustomerDataPlans === 'function') {
+        renderCustomerDataPlans();
+      }
       showCustomAlert(`Network switched to ${c.name}`);
     }
 
@@ -11499,6 +11820,664 @@
     }
     setInterval(opayRotateBoosterAds, 3000);
 
-  </script>
+  
+    // ==============================================================================
+    // PAYZANI MASTER ADMIN CONTROL ENGINE (ROOT SUPERADMIN)
+    // ==============================================================================
+    const DEFAULT_MASTER_CONFIG = {
+      agentOnboardingFee: 2500,
+      defaultAgentMargin: 8.5,
+      minFloatRefill: 5000,
+      platformTokenCut: 200,
+      agentWithdrawalFee: 50,
+      currentAdminPricingNetwork: 'mtn',
+      dataPricing: {
+        mtn: [
+          { id: 'mtn_500m', name: '500MB SME', validity: '30 Days', apiCost: 115, agentPrice: 125, retailPrice: 150 },
+          { id: 'mtn_1gb',  name: '1.0GB SME', validity: '30 Days', apiCost: 235, agentPrice: 255, retailPrice: 290 },
+          { id: 'mtn_2gb',  name: '2.0GB SME', validity: '30 Days', apiCost: 470, agentPrice: 510, retailPrice: 580 },
+          { id: 'mtn_3gb',  name: '3.0GB SME', validity: '30 Days', apiCost: 705, agentPrice: 765, retailPrice: 870 },
+          { id: 'mtn_5gb',  name: '5.0GB SME', validity: '30 Days', apiCost: 1175, agentPrice: 1275, retailPrice: 1450 },
+          { id: 'mtn_10gb', name: '10.0GB SME', validity: '30 Days', apiCost: 2350, agentPrice: 2550, retailPrice: 2900 }
+        ],
+        airtel: [
+          { id: 'airtel_500m', name: '500MB CG', validity: '30 Days', apiCost: 120, agentPrice: 130, retailPrice: 160 },
+          { id: 'airtel_1gb',  name: '1.0GB CG', validity: '30 Days', apiCost: 240, agentPrice: 260, retailPrice: 300 },
+          { id: 'airtel_2gb',  name: '2.0GB CG', validity: '30 Days', apiCost: 480, agentPrice: 520, retailPrice: 600 },
+          { id: 'airtel_5gb',  name: '5.0GB CG', validity: '30 Days', apiCost: 1200, agentPrice: 1300, retailPrice: 1500 }
+        ],
+        glo: [
+          { id: 'glo_1gb', name: '1.0GB Direct', validity: '30 Days', apiCost: 225, agentPrice: 245, retailPrice: 280 },
+          { id: 'glo_2gb', name: '2.0GB Direct', validity: '30 Days', apiCost: 450, agentPrice: 490, retailPrice: 560 },
+          { id: 'glo_5gb', name: '5.0GB Direct', validity: '30 Days', apiCost: 1125, agentPrice: 1225, retailPrice: 1400 }
+        ],
+        mobile9: [
+          { id: '9mob_1gb', name: '1.0GB SME', validity: '30 Days', apiCost: 210, agentPrice: 230, retailPrice: 270 },
+          { id: '9mob_2gb', name: '2.0GB SME', validity: '30 Days', apiCost: 420, agentPrice: 460, retailPrice: 540 }
+        ]
+      },
+      airtimeDiscounts: {
+        mtn: { agent: 3.0, retail: 2.0 },
+        airtel: { agent: 3.5, retail: 2.5 },
+        glo: { agent: 4.5, retail: 3.0 },
+        mobile9: { agent: 5.0, retail: 3.5 }
+      },
+      gateways: {
+        mtnSme: true,
+        airtelCg: true,
+        gloDirect: true,
+        mobile9Sme: true,
+        cableTv: true,
+        socialBooster: true,
+        maintenanceMode: false
+      },
+      stats: {
+        platformGmv: 18450200,
+        platformProfit: 1642850,
+        totalAgents: 142,
+        activeAgentsToday: 94,
+        upstreamFloat: 3850000
+      },
+      agents: [
+        { id: 'agt-1', name: 'Victor Telecoms & POS', slug: 'victor', owner: 'Victor A.', phone: '08023456789', floatBalance: 38470, margin: 8.5, status: 'active', joined: '12 Nov 2026' },
+        { id: 'agt-2', name: 'Apex Connect', slug: 'apex', owner: 'Emeka O.', phone: '08139827110', floatBalance: 48200, margin: 8.5, status: 'active', joined: '05 Nov 2026' },
+        { id: 'agt-3', name: 'SwiftRecharge Hub', slug: 'swifthub', owner: 'Amina B.', phone: '09012384912', floatBalance: 112000, margin: 9.0, status: 'active', joined: '28 Oct 2026' },
+        { id: 'agt-4', name: 'Kano Telecom Direct', slug: 'kano', owner: 'Musa K.', phone: '07034567890', floatBalance: 19400, margin: 8.5, status: 'active', joined: '18 Nov 2026' },
+        { id: 'agt-5', name: 'Lekki Data Express', slug: 'lekkidata', owner: 'Folake T.', phone: '08051239841', floatBalance: 3200, margin: 8.0, status: 'active', joined: '20 Nov 2026' }
+      ],
+      auditLog: [
+        { id: 'SW-984210', outlet: 'Victor Telecoms & POS', type: 'order', item: 'MTN 1.0GB SME Data', retail: 290, wholesale: 255, profit: 35, status: '200 OK', time: 'Just now' },
+        { id: 'SW-984209', outlet: 'Direct Payzani', type: 'order', item: 'Airtel ₦1,000 Airtime', retail: 980, wholesale: 965, profit: 15, status: '200 OK', time: '2m ago' },
+        { id: 'SW-984208', outlet: 'Apex Connect', type: 'refill', item: 'Wholesale Float Refill', retail: 25000, wholesale: 25000, profit: 200, status: 'Settled', time: '14m ago' },
+        { id: 'SW-984207', outlet: 'SwiftRecharge Hub', type: 'order', item: 'Glo 2.0GB Direct Data', retail: 560, wholesale: 490, profit: 70, status: '200 OK', time: '21m ago' },
+        { id: 'SW-984206', outlet: 'Kano Telecom Direct', type: 'order', item: 'MTN 5.0GB SME Data', retail: 1450, wholesale: 1275, profit: 175, status: '200 OK', time: '35m ago' }
+      ]
+    };
+
+    let activeAdminTab = 'fees';
+    let currentAdminPricingNetwork = 'mtn';
+    let floatAdjustOperation = 'credit';
+
+    function getMasterAdminConfig() {
+      try {
+        const stored = localStorage.getItem('payzani_master_admin_config');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          return Object.assign({}, DEFAULT_MASTER_CONFIG, parsed);
+        }
+      } catch(e) {}
+      return JSON.parse(JSON.stringify(DEFAULT_MASTER_CONFIG));
+    }
+
+    function saveMasterAdminConfig(cfg) {
+      try {
+        localStorage.setItem('payzani_master_admin_config', JSON.stringify(cfg));
+      } catch(e) {}
+      applyMasterConfigToDOM(cfg);
+    }
+
+    function applyMasterConfigToDOM(cfg) {
+      // 1. Update Agent Activation Fee on Agent Onboarding Screen
+      const feeEl = document.getElementById('agentActivationFeeDisplay');
+      if (feeEl) {
+        feeEl.textContent = '₦' + Number(cfg.agentOnboardingFee || 2500).toLocaleString();
+      }
+
+      // 2. Update KPI Stats Ticker
+      const gmvEl = document.getElementById('masterStatGmv');
+      if (gmvEl) gmvEl.textContent = '₦' + (Number(cfg.stats.platformGmv || 18450200) / 1000000).toFixed(2) + 'M';
+      const profitEl = document.getElementById('masterStatProfit');
+      if (profitEl) profitEl.textContent = '+₦' + (Number(cfg.stats.platformProfit || 1642850) / 1000000).toFixed(2) + 'M';
+      const agentsEl = document.getElementById('masterStatAgents');
+      if (agentsEl) agentsEl.textContent = (cfg.agents.length || 5) + ' Outlets';
+      const floatEl = document.getElementById('masterStatFloat');
+      if (floatEl) floatEl.textContent = '₦' + (Number(cfg.stats.upstreamFloat || 3850000) / 1000000).toFixed(2) + 'M';
+
+      // 3. Sync Dynamic Customer Data Plans in #opay-screen-data
+      renderCustomerDataPlans();
+    }
+
+    function openMasterAdminPanel() {
+      const cfg = getMasterAdminConfig();
+      applyMasterConfigToDOM(cfg);
+
+      // Populate Fee Form fields
+      const inputFee = document.getElementById('adminAgentOnboardingFee');
+      if (inputFee) inputFee.value = cfg.agentOnboardingFee || 2500;
+      const inputMargin = document.getElementById('adminDefaultAgentMargin');
+      if (inputMargin) inputMargin.value = cfg.defaultAgentMargin || 8.5;
+      const inputMinFloat = document.getElementById('adminMinFloatRefill');
+      if (inputMinFloat) inputMinFloat.value = cfg.minFloatRefill || 5000;
+      const inputCut = document.getElementById('adminPlatformTokenCut');
+      if (inputCut) inputCut.value = cfg.platformTokenCut || 200;
+      const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
+      if (inputWithdraw) inputWithdraw.value = cfg.agentWithdrawalFee || 50;
+
+      // Render Active Tab & Contents
+      switchMasterAdminTab(activeAdminTab);
+      renderAdminPricingPlans();
+      renderMasterAgentsList();
+      renderMasterGateways();
+      renderMasterAuditFeed();
+
+      // Switch screen to Admin
+      if (typeof opaySwitchScreen === 'function') {
+        opaySwitchScreen('opay-screen-admin');
+      }
+
+      // Also support desktop view-master-admin if on desktop
+      if (typeof switchEcoView === 'function') {
+        const desktopAdmin = document.getElementById('view-master-admin');
+        if (desktopAdmin && window.innerWidth > 860) {
+          switchEcoView('master-admin');
+        }
+      }
+    }
+
+    function switchMasterAdminTab(tabKey) {
+      activeAdminTab = tabKey;
+      const tabs = ['fees', 'pricing', 'agents', 'gateways', 'audit'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tabBtnAdmin' + t.charAt(0).toUpperCase() + t.slice(1));
+        const sec = document.getElementById('masterAdminSection' + t.charAt(0).toUpperCase() + t.slice(1));
+        if (btn) {
+          if (t === tabKey) {
+            btn.classList.add('active');
+            btn.style.background = '#7C3AED';
+            btn.style.color = '#FFFFFF';
+            btn.style.border = 'none';
+          } else {
+            btn.classList.remove('active');
+            btn.style.background = '#14141E';
+            btn.style.color = '#9CA3AF';
+            btn.style.border = '1px solid #262638';
+          }
+        }
+        if (sec) {
+          sec.style.display = (t === tabKey) ? 'block' : 'none';
+        }
+      });
+    }
+
+    function saveMasterFeeSettings() {
+      const cfg = getMasterAdminConfig();
+      const inputFee = document.getElementById('adminAgentOnboardingFee');
+      const inputMargin = document.getElementById('adminDefaultAgentMargin');
+      const inputMinFloat = document.getElementById('adminMinFloatRefill');
+      const inputCut = document.getElementById('adminPlatformTokenCut');
+      const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
+
+      if (inputFee) cfg.agentOnboardingFee = Number(inputFee.value) || 2500;
+      if (inputMargin) cfg.defaultAgentMargin = Number(inputMargin.value) || 8.5;
+      if (inputMinFloat) cfg.minFloatRefill = Number(inputMinFloat.value) || 5000;
+      if (inputCut) cfg.platformTokenCut = Number(inputCut.value) || 200;
+      if (inputWithdraw) cfg.agentWithdrawalFee = Number(inputWithdraw.value) || 50;
+
+      saveMasterAdminConfig(cfg);
+      showCustomAlert('Master Agent Rules & Fees saved successfully!');
+    }
+
+    function selectAdminPricingNetwork(network) {
+      currentAdminPricingNetwork = network;
+      ['mtn', 'airtel', 'glo', 'mobile9'].forEach(n => {
+        const btn = document.getElementById('adminNetTab_' + n);
+        if (btn) {
+          if (n === network) {
+            btn.style.background = '#7C3AED';
+            btn.style.color = '#FFF';
+            btn.style.border = 'none';
+          } else {
+            btn.style.background = '#14141E';
+            btn.style.color = '#9CA3AF';
+            btn.style.border = '1px solid #262638';
+          }
+        }
+      });
+      renderAdminPricingPlans();
+    }
+
+    function renderAdminPricingPlans() {
+      const container = document.getElementById('adminPricingPlansContainer');
+      if (!container) return;
+
+      const cfg = getMasterAdminConfig();
+      const plans = (cfg.dataPricing && cfg.dataPricing[currentAdminPricingNetwork]) || [];
+
+      // Airtime inputs update
+      const airtimeCfg = (cfg.airtimeDiscounts && cfg.airtimeDiscounts[currentAdminPricingNetwork]) || { agent: 3.0, retail: 2.0 };
+      const agtAirtime = document.getElementById('adminAirtimeAgentDiscount');
+      const retAirtime = document.getElementById('adminAirtimeRetailDiscount');
+      if (agtAirtime) agtAirtime.value = airtimeCfg.agent;
+      if (retAirtime) retAirtime.value = airtimeCfg.retail;
+
+      if (!plans.length) {
+        container.innerHTML = '<div style="color:#9CA3AF; font-size:11px; text-align:center; padding:10px;">No bundles configured for this network.</div>';
+        return;
+      }
+
+      container.innerHTML = plans.map(p => {
+        const agentProfit = Math.max(0, p.retailPrice - p.agentPrice);
+        const platformProfit = Math.max(0, p.agentPrice - p.apiCost);
+        return `
+          <div style="background: #0B0B10; border: 1px solid #222230; border-radius: 10px; padding: 10px 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div>
+                <span style="color: #FFFFFF; font-size: 12.5px; font-weight: 800;">${p.name}</span>
+                <span style="color: #9CA3AF; font-size: 10px; margin-left: 6px;">${p.validity}</span>
+              </div>
+              <span style="font-size: 9.5px; color: #A78BFA; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 2px 6px; border-radius: 6px;">
+                API Switch Cost: ₦${p.apiCost}
+              </span>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 6px;">
+              <div>
+                <label style="font-size: 9px; color: #9CA3AF; display: block; margin-bottom: 2px;">Agent Wholesale (₦)</label>
+                <div style="background: #14141E; border: 1px solid #28283C; border-radius: 6px; padding: 0 6px; height: 30px; display: flex; align-items: center;">
+                  <span style="font-size: 10.5px; color: #9CA3AF; margin-right: 3px;">₦</span>
+                  <input type="number" id="adminDataAgentPrice_${p.id}" value="${p.agentPrice}" step="5" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11px; font-weight: 700;" />
+                </div>
+              </div>
+              <div>
+                <label style="font-size: 9px; color: #9CA3AF; display: block; margin-bottom: 2px;">Customer Retail (₦)</label>
+                <div style="background: #14141E; border: 1px solid #28283C; border-radius: 6px; padding: 0 6px; height: 30px; display: flex; align-items: center;">
+                  <span style="font-size: 10.5px; color: #9CA3AF; margin-right: 3px;">₦</span>
+                  <input type="number" id="adminDataRetailPrice_${p.id}" value="${p.retailPrice}" step="5" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11px; font-weight: 700;" />
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 9.5px; color: #9CA3AF; padding-top: 4px; border-top: 1px solid #1A1A24;">
+              <span>Agent Margin: <strong style="color: #10B981;">+₦${agentProfit}</strong></span>
+              <span>Platform Cut: <strong style="color: #DDD6FE;">+₦${platformProfit}</strong></span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function saveMasterPricingSettings() {
+      const cfg = getMasterAdminConfig();
+      const plans = (cfg.dataPricing && cfg.dataPricing[currentAdminPricingNetwork]) || [];
+
+      plans.forEach(p => {
+        const agtInput = document.getElementById(`adminDataAgentPrice_${p.id}`);
+        const retInput = document.getElementById(`adminDataRetailPrice_${p.id}`);
+        if (agtInput && agtInput.value) p.agentPrice = Number(agtInput.value);
+        if (retInput && retInput.value) p.retailPrice = Number(retInput.value);
+      });
+
+      // Airtime discount update
+      const agtAirtime = document.getElementById('adminAirtimeAgentDiscount');
+      const retAirtime = document.getElementById('adminAirtimeRetailDiscount');
+      if (!cfg.airtimeDiscounts) cfg.airtimeDiscounts = {};
+      cfg.airtimeDiscounts[currentAdminPricingNetwork] = {
+        agent: agtAirtime ? Number(agtAirtime.value) : 3.0,
+        retail: retAirtime ? Number(retAirtime.value) : 2.0
+      };
+
+      saveMasterAdminConfig(cfg);
+      renderAdminPricingPlans();
+      showCustomAlert('Telecom Pricing saved & applied live across Payzani!');
+    }
+
+    function renderCustomerDataPlans() {
+      const grid = document.getElementById('opayDataAmountsGrid');
+      if (!grid) return;
+
+      const cfg = getMasterAdminConfig();
+      // Detect network from opayCarrierIdx or default 'mtn'
+      let netKey = 'mtn';
+      if (typeof opayCarrierIdx !== 'undefined') {
+        const carrierNames = ['mtn', 'airtel', 'glo', 'mobile9'];
+        netKey = carrierNames[opayCarrierIdx] || 'mtn';
+      }
+
+      const plans = (cfg.dataPricing && cfg.dataPricing[netKey]) || (cfg.dataPricing && cfg.dataPricing['mtn']) || [];
+      if (!plans.length) return;
+
+      grid.innerHTML = plans.map((p, idx) => {
+        const isSel = idx === 0 ? 'selected' : '';
+        const cashback = (p.retailPrice * 0.035).toFixed(2);
+        return `
+          <div class="opay-amount-pill ${isSel}" onclick="opaySelectDataPlan(this, '${p.name}', ${p.retailPrice})">
+            <span class="opay-pill-val">${p.name.replace(' SME', '').replace(' CG', '').replace(' Direct', '')}</span>
+            <span style="font-size:11px; color:#9CA3AF;">${p.validity} &bull; ₦${Number(p.retailPrice).toLocaleString()}</span>
+            <span class="opay-pill-cashback">₦${cashback} Cashback</span>
+          </div>
+        `;
+      }).join('');
+
+      // Also pre-select first plan in pay button label
+      const label = document.getElementById('opay-data-pay-label');
+      if (label && plans.length > 0) {
+        label.innerText = Number(plans[0].retailPrice).toLocaleString();
+      }
+    }
+
+    function renderMasterAgentsList(filterQuery = '') {
+      const container = document.getElementById('masterAdminAgentsContainer');
+      if (!container) return;
+
+      const cfg = getMasterAdminConfig();
+      let list = cfg.agents || [];
+
+      if (filterQuery) {
+        const q = filterQuery.toLowerCase();
+        list = list.filter(a => a.name.toLowerCase().includes(q) || a.owner.toLowerCase().includes(q) || a.phone.includes(q) || a.slug.toLowerCase().includes(q));
+      }
+
+      const countLabel = document.getElementById('adminAgentsCountLabel');
+      if (countLabel) countLabel.innerText = `Showing ${list.length} Agent Outlets`;
+
+      if (list.length === 0) {
+        container.innerHTML = '<div style="color:#9CA3AF; font-size:11px; text-align:center; padding:16px;">No agent outlets match your search.</div>';
+        return;
+      }
+
+      container.innerHTML = list.map(a => {
+        const isSuspended = a.status === 'suspended';
+        const statusBadge = isSuspended 
+          ? '<span style="font-size: 9px; font-weight: 800; color: #EF4444; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 8px;">SUSPENDED</span>'
+          : '<span style="font-size: 9px; font-weight: 800; color: #10B981; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 8px;">ACTIVE</span>';
+
+        return `
+          <div style="background: #13131B; border: 1px solid #222230; border-radius: 12px; padding: 12px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(124, 58, 237, 0.25); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 800; font-size: 13px;">
+                  ${a.name.charAt(0)}
+                </div>
+                <div>
+                  <div style="color: #FFFFFF; font-size: 12.5px; font-weight: 800;">${a.name}</div>
+                  <div style="color: #9CA3AF; font-size: 10px;">${a.owner} &bull; ${a.phone}</div>
+                </div>
+              </div>
+              ${statusBadge}
+            </div>
+
+            <!-- Agent Balance & Margin Bar -->
+            <div style="background: #0B0B10; border: 1px solid #1F1F2B; border-radius: 8px; padding: 6px 10px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div>
+                <span style="font-size: 9px; color: #9CA3AF; text-transform: uppercase;">Wholesale Float:</span>
+                <span style="font-size: 13px; font-weight: 900; color: #FFFFFF; margin-left: 4px;">₦${Number(a.floatBalance || 0).toLocaleString()}</span>
+              </div>
+              <span style="font-size: 10px; font-weight: 700; color: #DDD6FE;">${a.margin || 8.5}% Margin</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 5px;">
+              <button type="button" onclick="openAdminAdjustFloatModal('${a.id}')" style="flex: 1; background: #201736; border: 1px solid #4C2889; color: #DDD6FE; font-size: 10.5px; font-weight: 700; padding: 5px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 3px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                <span>Adjust Float</span>
+              </button>
+              <button type="button" onclick="toggleAgentStatus('${a.id}')" style="flex: 0.9; background: ${isSuspended ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.12)'}; border: 1px solid ${isSuspended ? 'rgba(16,185,129,0.3)' : 'rgba(239,68,68,0.3)'}; color: ${isSuspended ? '#34D399' : '#F87171'}; font-size: 10.5px; font-weight: 700; padding: 5px; border-radius: 6px; cursor: pointer;">
+                ${isSuspended ? 'Unfreeze' : 'Freeze'}
+              </button>
+              <button type="button" onclick="previewAgentStorefront('${a.slug}')" title="Preview Storefront" style="width: 28px; height: 28px; background: #181822; border: 1px solid #282838; color: #E5E7EB; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterMasterAgentsList(val) {
+      renderMasterAgentsList(val);
+    }
+
+    function refreshMasterAgentsList() {
+      renderMasterAgentsList();
+      showCustomAlert('Agent outlets list synchronized with database.');
+    }
+
+    function previewAgentStorefront(slug) {
+      const origin = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : 'https://payzani-smoky.vercel.app';
+      const url = origin + '/?agent=' + encodeURIComponent(slug);
+      window.open(url, '_blank');
+    }
+
+    function toggleAgentStatus(agentId) {
+      const cfg = getMasterAdminConfig();
+      const agent = (cfg.agents || []).find(a => a.id === agentId);
+      if (!agent) return;
+
+      agent.status = (agent.status === 'suspended') ? 'active' : 'suspended';
+      saveMasterAdminConfig(cfg);
+      renderMasterAgentsList();
+      showCustomAlert(`${agent.name} is now ${agent.status.toUpperCase()}.`);
+    }
+
+    function openAdminAdjustFloatModal(agentId) {
+      const cfg = getMasterAdminConfig();
+      const agent = (cfg.agents || []).find(a => a.id === agentId);
+      if (!agent) return;
+
+      const modal = document.getElementById('adminAdjustFloatModal');
+      const nameEl = document.getElementById('adjustModalAgentName');
+      const idInput = document.getElementById('adjustModalAgentId');
+      if (modal && nameEl && idInput) {
+        nameEl.innerText = `${agent.name} (Current: ₦${Number(agent.floatBalance || 0).toLocaleString()})`;
+        idInput.value = agentId;
+        floatAdjustOperation = 'credit';
+        selectFloatAdjustOp('credit');
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeAdminAdjustFloatModal() {
+      const modal = document.getElementById('adminAdjustFloatModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function selectFloatAdjustOp(op) {
+      floatAdjustOperation = op;
+      const btnCredit = document.getElementById('btnFloatOpCredit');
+      const btnDebit = document.getElementById('btnFloatOpDebit');
+      if (btnCredit && btnDebit) {
+        if (op === 'credit') {
+          btnCredit.style.background = '#10B981';
+          btnCredit.style.color = '#FFF';
+          btnCredit.style.border = 'none';
+          btnDebit.style.background = '#1C1929';
+          btnDebit.style.color = '#9CA3AF';
+          btnDebit.style.border = '1px solid #2E2E42';
+        } else {
+          btnDebit.style.background = '#EF4444';
+          btnDebit.style.color = '#FFF';
+          btnDebit.style.border = 'none';
+          btnCredit.style.background = '#1C1929';
+          btnCredit.style.color = '#9CA3AF';
+          btnCredit.style.border = '1px solid #2E2E42';
+        }
+      }
+    }
+
+    function executeAdminFloatAdjustment() {
+      const idInput = document.getElementById('adjustModalAgentId');
+      const amtInput = document.getElementById('adjustModalAmount');
+      const reasonInput = document.getElementById('adjustModalReason');
+      if (!idInput || !amtInput) return;
+
+      const agentId = idInput.value;
+      const amt = Number(amtInput.value) || 0;
+      const reason = reasonInput ? reasonInput.value : 'Admin Manual Adjustment';
+
+      if (amt <= 0) {
+        showCustomAlert('Please enter a valid adjustment amount.');
+        return;
+      }
+
+      const cfg = getMasterAdminConfig();
+      const agent = (cfg.agents || []).find(a => a.id === agentId);
+      if (!agent) return;
+
+      if (floatAdjustOperation === 'credit') {
+        agent.floatBalance = (agent.floatBalance || 0) + amt;
+      } else {
+        agent.floatBalance = Math.max(0, (agent.floatBalance || 0) - amt);
+      }
+
+      // If this agent is Victor Telecoms, update the Agent Dashboard float display in real time
+      if (agent.slug === 'victor') {
+        const floatDisplay = document.getElementById('agentFloatDisplay');
+        if (floatDisplay) {
+          floatDisplay.innerText = '₦' + Number(agent.floatBalance).toLocaleString() + '.00';
+        }
+      }
+
+      // Record to Switch Audit Log
+      const newRef = 'SW-' + Math.floor(100000 + Math.random() * 900000);
+      if (!cfg.auditLog) cfg.auditLog = [];
+      cfg.auditLog.unshift({
+        id: newRef,
+        outlet: agent.name,
+        type: 'refill',
+        item: `Float ${floatAdjustOperation.toUpperCase()}: ${reason}`,
+        retail: amt,
+        wholesale: amt,
+        profit: 0,
+        status: 'Settled',
+        time: 'Just now'
+      });
+
+      saveMasterAdminConfig(cfg);
+      renderMasterAgentsList();
+      renderMasterAuditFeed();
+      closeAdminAdjustFloatModal();
+      showCustomAlert(`Successfully ${floatAdjustOperation === 'credit' ? 'credited' : 'debited'} ₦${amt.toLocaleString()} to ${agent.name}.`);
+    }
+
+    function renderMasterGateways() {
+      const container = document.getElementById('adminGatewaySwitchesList');
+      if (!container) return;
+
+      const cfg = getMasterAdminConfig();
+      const gws = cfg.gateways || {};
+
+      const gatewayDefs = [
+        { key: 'mtnSme', title: 'MTN SME Gateway Switch', desc: 'Auto-switches between MTN Direct and SME Host' },
+        { key: 'airtelCg', title: 'Airtel Corporate Gifting Switch', desc: 'Direct SIM Server & CG Gateway' },
+        { key: 'gloDirect', title: 'Glo Direct Switch', desc: 'Glo Gifting API and instant switching' },
+        { key: 'mobile9Sme', title: '9mobile SME Switch', desc: '9mobile wholesale router' },
+        { key: 'cableTv', title: 'Cable TV & Bills Switch', desc: 'DStv, GOtv, Startimes & Discos' },
+        { key: 'socialBooster', title: 'Social Media Booster Gateway', desc: 'Instagram, TikTok, YouTube growth switch' },
+        { key: 'maintenanceMode', title: 'Platform Maintenance Freeze', desc: 'Emergency order freeze across all storefronts' }
+      ];
+
+      container.innerHTML = gatewayDefs.map(g => {
+        const isActive = !!gws[g.key];
+        const isMaint = g.key === 'maintenanceMode';
+        return `
+          <div style="background: #0B0B10; border: 1px solid #1F1F2B; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="color: #FFFFFF; font-size: 12px; font-weight: 800;">${g.title}</div>
+              <div style="color: #9CA3AF; font-size: 10px; margin-top: 1px;">${g.desc}</div>
+            </div>
+            <button type="button" onclick="toggleMasterGateway('${g.key}')" style="background: ${isActive ? (isMaint ? '#EF4444' : '#10B981') : '#232332'}; border: none; color: #FFF; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; cursor: pointer;">
+              ${isActive ? (isMaint ? 'FREEZE ACTIVE' : 'ONLINE') : 'OFFLINE'}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleMasterGateway(gwKey) {
+      const cfg = getMasterAdminConfig();
+      if (!cfg.gateways) cfg.gateways = {};
+      cfg.gateways[gwKey] = !cfg.gateways[gwKey];
+
+      saveMasterAdminConfig(cfg);
+      renderMasterGateways();
+      showCustomAlert(`Gateway ${gwKey} status updated.`);
+    }
+
+    function testMasterGatewayHealth() {
+      showCustomAlert('Switch latency check: MTN 210ms (OK) • Airtel 184ms (OK) • Glo 310ms (OK) • 9mobile 240ms (OK).');
+    }
+
+    function renderMasterAuditFeed() {
+      const container = document.getElementById('masterAdminAuditFeed');
+      if (!container) return;
+
+      const cfg = getMasterAdminConfig();
+      const logs = cfg.auditLog || [];
+
+      if (!logs.length) {
+        container.innerHTML = '<div style="color:#9CA3AF; font-size:11px; text-align:center; padding:16px;">No transactions recorded.</div>';
+        return;
+      }
+
+      container.innerHTML = logs.map(l => {
+        return `
+          <div style="background: #14141C; border: 1px solid #22222E; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="color: #FFFFFF; font-size: 11.5px; font-weight: 700;">
+                <span>${l.outlet}</span>
+                <span style="font-size: 8.5px; padding: 1px 4px; border-radius: 3px; background: rgba(124,58,237,0.2); color: #DDD6FE; font-weight: 800; margin-left: 4px;">${l.id}</span>
+              </div>
+              <div style="color: #9CA3AF; font-size: 9.5px; margin-top: 1px;">${l.item}</div>
+            </div>
+            <div style="text-align: right; flex-shrink: 0; margin-left: 8px;">
+              <div style="color: #10B981; font-size: 11px; font-weight: 800;">+₦${Number(l.profit || 0).toLocaleString()} Profit</div>
+              <div style="color: #6B7280; font-size: 9px; margin-top: 1px;">${l.time}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function simulateMasterTransaction() {
+      const cfg = getMasterAdminConfig();
+      const outlets = ['Victor Telecoms & POS', 'Apex Connect', 'SwiftRecharge Hub', 'Kano Telecom Direct', 'Direct Payzani'];
+      const items = [
+        { name: 'MTN 1.0GB SME Data', retail: 290, wholesale: 255, profit: 35 },
+        { name: 'Airtel 2.0GB CG Data', retail: 600, wholesale: 520, profit: 80 },
+        { name: 'Glo 1.0GB Direct Data', retail: 280, wholesale: 245, profit: 35 },
+        { name: 'MTN ₦1,000 Airtime Recharge', retail: 980, wholesale: 970, profit: 10 },
+        { name: '9mobile 1.5GB SME Data', retail: 450, wholesale: 390, profit: 60 }
+      ];
+
+      const chosenOutlet = outlets[Math.floor(Math.random() * outlets.length)];
+      const chosenItem = items[Math.floor(Math.random() * items.length)];
+      const newRef = 'SW-' + Math.floor(100000 + Math.random() * 900000);
+
+      if (!cfg.auditLog) cfg.auditLog = [];
+      cfg.auditLog.unshift({
+        id: newRef,
+        outlet: chosenOutlet,
+        type: 'order',
+        item: chosenItem.name,
+        retail: chosenItem.retail,
+        wholesale: chosenItem.wholesale,
+        profit: chosenItem.profit,
+        status: '200 OK',
+        time: 'Just now'
+      });
+
+      // Update platform stats
+      cfg.stats.platformGmv = (cfg.stats.platformGmv || 18450200) + chosenItem.retail;
+      cfg.stats.platformProfit = (cfg.stats.platformProfit || 1642850) + chosenItem.profit;
+
+      saveMasterAdminConfig(cfg);
+      renderMasterAuditFeed();
+      showCustomAlert(`Simulated live switch order: ${chosenItem.name} via ${chosenOutlet}!`);
+    }
+
+    // Auto-detect ?admin=1 or ?view=admin in URL on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('admin') === '1' || params.get('view') === 'admin') {
+          setTimeout(openMasterAdminPanel, 300);
+        } else {
+          // Initialize customer data plans from master admin pricing
+          renderCustomerDataPlans();
+        }
+      } catch(e) {}
+    });
+
+</script>
 </body>
 </html>
