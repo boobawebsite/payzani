@@ -5894,67 +5894,124 @@
         </button>
       </div>
 
-      <!-- CARD 4: STOREFRONT LIVE PERFORMANCE & RECENT CUSTOMER ORDERS -->
+      <!-- CARD 4: STOREFRONT LIVE PERFORMANCE & COMMAND CENTER ACTIVITY RADAR -->
       <div style="margin: 0 16px 24px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
+        <!-- Header -->
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
-            <span>Storefront Sales &amp; Reseller Profit</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
+            </div>
+            <div>
+              <div style="color: #FFFFFF; font-size: 13.5px; font-weight: 800; display: flex; align-items: center; gap: 6px;">
+                <span>Storefront Live Activity &amp; Radar</span>
+                <span style="font-size: 9px; padding: 2px 6px; border-radius: 10px; background: rgba(16, 185, 129, 0.2); color: #34D399; font-weight: 800; border: 1px solid rgba(16, 185, 129, 0.4); display: flex; align-items: center; gap: 4px;">
+                  <span style="width: 5px; height: 5px; border-radius: 50%; background: #10B981; animation: pulse 1.5s infinite;"></span>
+                  <span>LIVE</span>
+                </span>
+              </div>
+              <div style="font-size: 10.5px; color: #9CA3AF;">Real-time feed of all customer events on your website</div>
+            </div>
           </div>
-          <span style="font-size: 10.5px; color: #9CA3AF;">Today</span>
+          <span style="font-size: 10px; color: #A78BFA; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 2px 7px; border-radius: 6px; font-weight: 700;">24/7 Switch</span>
         </div>
 
-        <!-- 3 Stats Grid -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px;">
-          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 10px 8px; text-align: center;">
-            <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 2px;">Net Profit</div>
-            <div id="agentTodayProfit" style="font-size: 14px; font-weight: 900; color: #10B981;">+₦4,850</div>
+        <!-- 4-Stat Live Metrics Grid -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 12px;">
+          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+            <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Net Profit</div>
+            <div id="agentTodayProfit" style="font-size: 13px; font-weight: 900; color: #10B981;">+₦4,850</div>
           </div>
-          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 10px 8px; text-align: center;">
-            <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 2px;">Orders Fulfilled</div>
-            <div id="agentTotalOrders" style="font-size: 14px; font-weight: 900; color: #DDD6FE;">28</div>
+          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+            <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Orders</div>
+            <div id="agentTotalOrders" style="font-size: 13px; font-weight: 900; color: #DDD6FE;">28</div>
           </div>
-          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 10px 8px; text-align: center;">
-            <div style="font-size: 10px; color: #9CA3AF; margin-bottom: 2px;">Wholesale Rate</div>
-            <div style="font-size: 14px; font-weight: 900; color: #F59E0B;">8.5% Off</div>
+          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+            <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Customers</div>
+            <div id="agentTotalCustomers" style="font-size: 13px; font-weight: 900; color: #60A5FA;">19</div>
+          </div>
+          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+            <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Live Online</div>
+            <div id="agentActiveVisitors" style="font-size: 13px; font-weight: 900; color: #34D399; display: flex; align-items: center; justify-content: center; gap: 3px;">
+              <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: pulse 1.5s infinite;"></span>
+              <span>4</span>
+            </div>
           </div>
         </div>
 
-        <div style="font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 8px;">Recent Customer Storefront Orders:</div>
+        <!-- Action Controls: Manual Simulator & Auto Radar Toggle -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
+          <button type="button" onclick="simulateAgentStorefrontActivity()" style="background: #1C1C26; border: 1px solid #313144; color: #DDD6FE; font-size: 11px; font-weight: 700; padding: 8px 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            <span>Simulate Activity +</span>
+          </button>
+          <button type="button" id="agentRadarToggleBtn" onclick="toggleAgentLiveRadar()" style="background: #13241B; border: 1px solid #10B981; color: #34D399; font-size: 11px; font-weight: 700; padding: 8px 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: pulse 1s infinite;"></span>
+            <span id="agentRadarStatusText">Live Radar: Active</span>
+          </button>
+        </div>
 
-        <div id="agentOrdersList" style="display: flex; flex-direction: column; gap: 8px;">
-          <div style="background: #181822; border: 1px solid #262635; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0803***891 &bull; MTN SME 2.5GB</div>
-              <div style="color: #9CA3AF; font-size: 10.5px;">Wholesale: -₦650.00 &bull; Retail: ₦800.00</div>
+        <!-- Filter Pills Bar -->
+        <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 10px; scrollbar-width: none;">
+          <button type="button" onclick="filterAgentActivity(this, 'all')" class="agent-activity-pill active" style="flex-shrink: 0; background: #7C3AED; color: #FFF; border: none; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">All Events</button>
+          <button type="button" onclick="filterAgentActivity(this, 'order')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Orders</button>
+          <button type="button" onclick="filterAgentActivity(this, 'signup')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Signups</button>
+          <button type="button" onclick="filterAgentActivity(this, 'wallet')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Wallet Top-ups</button>
+          <button type="button" onclick="filterAgentActivity(this, 'visitor')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Live Visitors</button>
+        </div>
+
+        <!-- Live Activity Feed Container -->
+        <div id="agentActivityStreamList" style="display: flex; flex-direction: column; gap: 8px;">
+          <!-- Dynamically populated by renderAgentActivityFeed() -->
+        </div>
+      </div>
+
+      <!-- ACTIVITY AUDIT DETAIL MODAL -->
+      <div id="agentAuditModal" style="display: none; position: fixed; inset: 0; background: rgba(5, 5, 8, 0.82); z-index: 99999; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(5px);">
+        <div style="background: #14141E; border: 1px solid #2E2E42; border-radius: 16px; width: 100%; max-width: 360px; padding: 18px; box-shadow: 0 16px 40px rgba(0,0,0,0.6);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid #222230; padding-bottom: 10px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div id="agentAuditModalIcon" style="width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center;"></div>
+              <div>
+                <div id="agentAuditModalTitle" style="color: #FFFFFF; font-size: 13.5px; font-weight: 800;">Storefront Event Audit</div>
+                <div id="agentAuditModalId" style="color: #9CA3AF; font-size: 10.5px;">EVT-772189</div>
+              </div>
             </div>
-            <div style="text-align: right;">
-              <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦150 Profit</div>
-              <div style="color: #6B7280; font-size: 10px;">Just now</div>
+            <button type="button" onclick="closeActivityAuditModal()" style="background: transparent; border: none; color: #9CA3AF; cursor: pointer; padding: 4px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 11.5px; margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px solid #1C1C26;">
+              <span style="color: #9CA3AF;">Customer / Entity</span>
+              <span id="agentAuditCustomer" style="color: #FFFFFF; font-weight: 700;">Customer 0803***891</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px solid #1C1C26;">
+              <span style="color: #9CA3AF;">Storefront Action</span>
+              <span id="agentAuditAction" style="color: #DDD6FE; font-weight: 700;">MTN SME 2.5GB Data</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px solid #1C1C26;">
+              <span style="color: #9CA3AF;">Retail &bull; Wholesale Cost</span>
+              <span id="agentAuditCost" style="color: #E5E7EB; font-weight: 700;">₦800.00 &bull; ₦650.00</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px solid #1C1C26;">
+              <span style="color: #9CA3AF;">Agent Net Margin Earned</span>
+              <span id="agentAuditProfit" style="color: #10B981; font-weight: 900;">+₦150.00 Profit</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding-bottom: 6px; border-bottom: 1px solid #1C1C26;">
+              <span style="color: #9CA3AF;">Telecom Switch Status</span>
+              <span id="agentAuditStatus" style="color: #34D399; font-weight: 700;">Instant 200 OK (0.9s)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: #9CA3AF;">Timestamp</span>
+              <span id="agentAuditTime" style="color: #9CA3AF;">Today, 03:42 PM</span>
             </div>
           </div>
 
-          <div style="background: #181822; border: 1px solid #262635; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0701***442 &bull; Airtel ₦2,000 VTU</div>
-              <div style="color: #9CA3AF; font-size: 10.5px;">Wholesale: -₦1,920.00 &bull; Retail: ₦2,000.00</div>
-            </div>
-            <div style="text-align: right;">
-              <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦80 Profit</div>
-              <div style="color: #6B7280; font-size: 10px;">14 mins ago</div>
-            </div>
-          </div>
-
-          <div style="background: #181822; border: 1px solid #262635; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0905***109 &bull; DStv Compact</div>
-              <div style="color: #9CA3AF; font-size: 10.5px;">Wholesale: -₦12,300.00 &bull; Retail: ₦12,500.00</div>
-            </div>
-            <div style="text-align: right;">
-              <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦200 Profit</div>
-              <div style="color: #6B7280; font-size: 10px;">42 mins ago</div>
-            </div>
-          </div>
+          <button type="button" onclick="closeActivityAuditModal()" style="width: 100%; background: #222230; border: 1px solid #323246; color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 10px; border-radius: 8px; cursor: pointer;">
+            Close Audit Inspector
+          </button>
         </div>
       </div>
     </div>
@@ -9866,6 +9923,43 @@
     }
 
     function opaySubmitPayment(serviceName) {
+      if (typeof isAgentStorefront === 'function' && isAgentStorefront()) {
+        const retail = 1000;
+        const wholesale = 880;
+        const profit = 120;
+        const phone = 'Customer 0802***' + Math.floor(100 + Math.random() * 899);
+        const evt = {
+          id: 'EVT-' + Math.floor(10000 + Math.random() * 89999),
+          type: 'order',
+          customer: phone,
+          action: `${serviceName} Payment Delivered`,
+          retail: retail,
+          wholesale: wholesale,
+          profit: profit,
+          status: 'Switch 200 OK • Delivered in 0.8s',
+          timeText: 'Just now',
+          timestamp: Date.now()
+        };
+        if (typeof recordStorefrontEvent === 'function') {
+          recordStorefrontEvent(evt);
+        }
+        if (typeof getAgentFloat === 'function' && typeof setAgentFloat === 'function') {
+          const curFloat = getAgentFloat();
+          if (curFloat >= wholesale) {
+            setAgentFloat(curFloat - wholesale);
+          }
+        }
+        let curProfit = 4850;
+        try { curProfit = parseFloat(localStorage.getItem('payzani_agent_profit') || '4850'); } catch(e) {}
+        curProfit += profit;
+        try { localStorage.setItem('payzani_agent_profit', curProfit.toString()); } catch(e) {}
+
+        let curOrders = 28;
+        try { curOrders = parseInt(localStorage.getItem('payzani_agent_orders') || '28'); } catch(e) {}
+        curOrders += 1;
+        try { localStorage.setItem('payzani_agent_orders', curOrders.toString()); } catch(e) {}
+      }
+
       showCustomAlert(`${serviceName} payment of ₦1,000 processed instantly via switch!`);
       setTimeout(() => {
         opaySwitchScreen('opay-screen-home');
@@ -10021,6 +10115,27 @@
         } else {
           const nameInput = document.getElementById('payzaniSignupName');
           const userName = nameInput && nameInput.value.trim() ? nameInput.value.trim().split(' ')[0] : 'Partner';
+          if (typeof isAgentStorefront === 'function' && isAgentStorefront()) {
+            const evt = {
+              id: 'EVT-' + Math.floor(10000 + Math.random() * 89999),
+              type: 'signup',
+              customer: 'New Customer (' + userName + ')',
+              action: 'Storefront Account Created & Phone Verified',
+              retail: 0,
+              wholesale: 0,
+              profit: 0,
+              status: 'Verified OTP • Active Wallet',
+              timeText: 'Just now',
+              timestamp: Date.now()
+            };
+            if (typeof recordStorefrontEvent === 'function') {
+              recordStorefrontEvent(evt);
+            }
+            let custs = 19;
+            try { custs = parseInt(localStorage.getItem('payzani_agent_customers') || '19'); } catch(e) {}
+            custs += 1;
+            try { localStorage.setItem('payzani_agent_customers', custs.toString()); } catch(e) {}
+          }
           if (typeof showCustomAlert === 'function') {
             showCustomAlert('Account created! Welcome to Payzani, ' + userName + '.');
           }
@@ -10261,67 +10376,451 @@
       }
     }
 
-    // Simulate Customer Purchases on Agent's Storefront
-    function simulateCustomerPurchase() {
-      const cur = getAgentFloat();
-      const wholesaleCost = 650;
-      const retailPrice = 800;
-      const profit = retailPrice - wholesaleCost;
+    // Storefront Live Activity Feed, Radar & Auditing Engine
+    const defaultStorefrontEvents = [
+      {
+        id: 'EVT-98102',
+        type: 'order',
+        customer: 'Customer 0803***891',
+        action: 'MTN SME 2.5GB Data Delivered',
+        retail: 800,
+        wholesale: 650,
+        profit: 150,
+        status: 'Delivered in 1.1s • 200 OK',
+        timeText: 'Just now',
+        timestamp: Date.now() - 30000
+      },
+      {
+        id: 'EVT-98075',
+        type: 'signup',
+        customer: 'New Customer 0902***814',
+        action: 'Signed Up & Verified Phone Number',
+        retail: 0,
+        wholesale: 0,
+        profit: 0,
+        status: 'Verified OTP • Active Wallet',
+        timeText: '6 mins ago',
+        timestamp: Date.now() - 360000
+      },
+      {
+        id: 'EVT-98041',
+        type: 'order',
+        customer: 'Customer 0701***442',
+        action: 'Airtel ₦2,000 VTU Airtime Recharge',
+        retail: 2000,
+        wholesale: 1920,
+        profit: 80,
+        status: 'Delivered in 0.9s • 200 OK',
+        timeText: '14 mins ago',
+        timestamp: Date.now() - 840000
+      },
+      {
+        id: 'EVT-98012',
+        type: 'wallet',
+        customer: 'Customer 0802***345',
+        action: 'Funded Wallet +₦10,000 via Paystack NUBAN',
+        retail: 10000,
+        wholesale: 10000,
+        profit: 50,
+        status: 'Credited via Virtual Account Webhook',
+        timeText: '25 mins ago',
+        timestamp: Date.now() - 1500000
+      },
+      {
+        id: 'EVT-97984',
+        type: 'order',
+        customer: 'Customer 0905***109',
+        action: 'DStv Compact Monthly Subscription',
+        retail: 12500,
+        wholesale: 12300,
+        profit: 200,
+        status: 'Smartcard 4102*** Confirmed',
+        timeText: '42 mins ago',
+        timestamp: Date.now() - 2520000
+      },
+      {
+        id: 'EVT-97940',
+        type: 'visitor',
+        customer: 'Visitor #8210 (Ikeja, Lagos)',
+        action: 'Browsing SME Data & Booster Packages',
+        retail: 0,
+        wholesale: 0,
+        profit: 0,
+        status: 'Active Session • Mobile Chrome',
+        timeText: 'Active Now',
+        timestamp: Date.now() - 120000
+      }
+    ];
 
-      if (cur < wholesaleCost) {
-        if (typeof showCustomAlert === 'function') {
-          showCustomAlert(` Customer Purchase Blocked: Wholesale Float Exhausted (Remaining: ₦${cur.toLocaleString()}.00). Refill your float to fulfill customer orders!`);
+    function getStorefrontEvents() {
+      try {
+        const stored = localStorage.getItem('payzani_storefront_events');
+        if (stored) {
+          const parsed = JSON.parse(stored);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
         }
+      } catch(e) {}
+      return defaultStorefrontEvents;
+    }
+
+    function recordStorefrontEvent(evt) {
+      try {
+        const events = getStorefrontEvents();
+        events.unshift(evt);
+        if (events.length > 40) events.length = 40;
+        localStorage.setItem('payzani_storefront_events', JSON.stringify(events));
+      } catch(e) {}
+      if (typeof updateAgentDashboardUI === 'function') {
+        updateAgentDashboardUI();
+      }
+    }
+
+    let agentActivityFilter = 'all';
+    function filterAgentActivity(btn, type) {
+      agentActivityFilter = type;
+      const pills = document.querySelectorAll('.agent-activity-pill');
+      pills.forEach(p => {
+        p.classList.remove('active');
+        p.style.background = '#191922';
+        p.style.color = '#9CA3AF';
+        p.style.border = '1px solid #292938';
+      });
+      if (btn) {
+        btn.classList.add('active');
+        btn.style.background = '#7C3AED';
+        btn.style.color = '#FFFFFF';
+        btn.style.border = 'none';
+      }
+      renderAgentActivityFeed();
+    }
+
+    function renderAgentActivityFeed() {
+      const container = document.getElementById('agentActivityStreamList');
+      if (!container) return;
+
+      const events = getStorefrontEvents();
+      const filtered = agentActivityFilter === 'all' 
+        ? events 
+        : events.filter(e => e.type === agentActivityFilter);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="background: #181822; border: 1px dashed #2E2E40; border-radius: 10px; padding: 20px 16px; text-align: center; color: #9CA3AF; font-size: 11.5px;">
+            No ${agentActivityFilter} events recorded yet. Run simulation or activate live radar!
+          </div>
+        `;
         return;
       }
 
-      const next = cur - wholesaleCost;
-      setAgentFloat(next);
+      container.innerHTML = filtered.map(evt => {
+        let iconBg = 'rgba(124, 58, 237, 0.15)';
+        let iconBorder = 'rgba(124, 58, 237, 0.3)';
+        let iconSvg = '';
+        let badgeBg = 'rgba(124, 58, 237, 0.2)';
+        let badgeColor = '#DDD6FE';
+        let badgeText = 'ORDER';
+        let profitDisplay = '';
 
-      // update profit
-      let curProfit = 4850;
-      try {
-        curProfit = parseFloat(localStorage.getItem('payzani_agent_profit') || '4850');
-      } catch(e) {}
-      curProfit += profit;
-      try {
-        localStorage.setItem('payzani_agent_profit', curProfit.toString());
-      } catch(e) {}
+        if (evt.type === 'order') {
+          iconBg = 'rgba(16, 185, 129, 0.15)';
+          iconBorder = 'rgba(16, 185, 129, 0.3)';
+          badgeBg = 'rgba(16, 185, 129, 0.2)';
+          badgeColor = '#34D399';
+          badgeText = 'ORDER';
+          iconSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>';
+          profitDisplay = `<div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦${Number(evt.profit || 0).toLocaleString()} Profit</div>`;
+        } else if (evt.type === 'signup') {
+          iconBg = 'rgba(59, 130, 246, 0.15)';
+          iconBorder = 'rgba(59, 130, 246, 0.3)';
+          badgeBg = 'rgba(59, 130, 246, 0.2)';
+          badgeColor = '#60A5FA';
+          badgeText = 'SIGNUP';
+          iconSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>';
+          profitDisplay = `<div style="color: #60A5FA; font-size: 11px; font-weight: 700;">+1 Customer</div>`;
+        } else if (evt.type === 'wallet') {
+          iconBg = 'rgba(139, 92, 246, 0.15)';
+          iconBorder = 'rgba(139, 92, 246, 0.3)';
+          badgeBg = 'rgba(139, 92, 246, 0.2)';
+          badgeColor = '#A78BFA';
+          badgeText = 'WALLET';
+          iconSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>';
+          profitDisplay = `<div style="color: #A78BFA; font-size: 11.5px; font-weight: 800;">+₦${Number(evt.retail || 0).toLocaleString()}</div>`;
+        } else {
+          // visitor
+          iconBg = 'rgba(245, 158, 11, 0.15)';
+          iconBorder = 'rgba(245, 158, 11, 0.3)';
+          badgeBg = 'rgba(245, 158, 11, 0.2)';
+          badgeColor = '#FBBF24';
+          badgeText = 'VISITOR';
+          iconSvg = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>';
+          profitDisplay = `<div style="color: #34D399; font-size: 11px; font-weight: 700;">Online</div>`;
+        }
 
-      // update orders count
-      let curOrders = 28;
-      try {
-        curOrders = parseInt(localStorage.getItem('payzani_agent_orders') || '28');
-      } catch(e) {}
-      curOrders += 1;
-      try {
-        localStorage.setItem('payzani_agent_orders', curOrders.toString());
-      } catch(e) {}
-
-      // add new simulated order item to top of list
-      const ordersList = document.getElementById('agentOrdersList');
-      if (ordersList) {
-        const phoneSuffix = Math.floor(100 + Math.random() * 899);
-        const newOrder = document.createElement('div');
-        newOrder.style.cssText = 'background: #1B241E; border: 1px solid #10B981; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; animation: pulse 0.5s ease;';
-        newOrder.innerHTML = `
-          <div>
-            <div style="color: #FFF; font-size: 12px; font-weight: 700;">Customer 0814***${phoneSuffix} &bull; MTN SME 2.5GB</div>
-            <div style="color: #A7F3D0; font-size: 10.5px;">Wholesale: -₦650.00 &bull; Retail: ₦800.00</div>
-          </div>
-          <div style="text-align: right;">
-            <div style="color: #10B981; font-size: 12px; font-weight: 800;">+₦150 Profit</div>
-            <div style="color: #9CA3AF; font-size: 10px;">Just now</div>
+        return `
+          <div onclick="showActivityAuditDetail('${evt.id}')" style="background: #181822; border: 1px solid #262635; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s ease;">
+            <div style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+              <div style="width: 32px; height: 32px; border-radius: 8px; background: ${iconBg}; border: 1px solid ${iconBorder}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                ${iconSvg}
+              </div>
+              <div style="min-width: 0;">
+                <div style="color: #FFFFFF; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                  <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${evt.customer}</span>
+                  <span style="font-size: 9px; padding: 1px 5px; border-radius: 4px; background: ${badgeBg}; color: ${badgeColor}; font-weight: 800; flex-shrink: 0;">${badgeText}</span>
+                </div>
+                <div style="color: #9CA3AF; font-size: 10.5px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${evt.action}</div>
+              </div>
+            </div>
+            <div style="text-align: right; flex-shrink: 0; margin-left: 8px;">
+              ${profitDisplay}
+              <div style="color: #6B7280; font-size: 10px; margin-top: 2px;">${evt.timeText || 'Just now'}</div>
+            </div>
           </div>
         `;
-        ordersList.insertBefore(newOrder, ordersList.firstChild);
-      }
+      }).join('');
+    }
 
-      updateAgentDashboardUI();
+    function showActivityAuditDetail(id) {
+      const events = getStorefrontEvents();
+      const evt = events.find(e => e.id === id) || events[0];
+      if (!evt) return;
 
-      if (typeof showCustomAlert === 'function') {
-        showCustomAlert(` Customer Order Executed! 2.5GB SME Data delivered. -₦650.00 deducted from float. +₦150.00 Net Profit earned! Remaining Float: ₦${next.toLocaleString()}.00`);
+      const modal = document.getElementById('agentAuditModal');
+      const iconEl = document.getElementById('agentAuditModalIcon');
+      const titleEl = document.getElementById('agentAuditModalTitle');
+      const idEl = document.getElementById('agentAuditModalId');
+      const custEl = document.getElementById('agentAuditCustomer');
+      const actEl = document.getElementById('agentAuditAction');
+      const costEl = document.getElementById('agentAuditCost');
+      const profitEl = document.getElementById('agentAuditProfit');
+      const statEl = document.getElementById('agentAuditStatus');
+      const timeEl = document.getElementById('agentAuditTime');
+
+      if (idEl) idEl.textContent = evt.id;
+      if (custEl) custEl.textContent = evt.customer;
+      if (actEl) actEl.textContent = evt.action;
+      if (costEl) {
+        if (evt.type === 'order') {
+          costEl.textContent = `₦${Number(evt.retail).toLocaleString()}.00 • Wholesale: ₦${Number(evt.wholesale).toLocaleString()}.00`;
+        } else if (evt.type === 'wallet') {
+          costEl.textContent = `Deposit: +₦${Number(evt.retail).toLocaleString()}.00`;
+        } else {
+          costEl.textContent = 'Non-monetary Event';
+        }
       }
+      if (profitEl) {
+        if (evt.type === 'order') {
+          profitEl.textContent = `+₦${Number(evt.profit).toLocaleString()}.00 Profit`;
+          profitEl.style.color = '#10B981';
+        } else if (evt.type === 'signup') {
+          profitEl.textContent = 'New Customer Added';
+          profitEl.style.color = '#60A5FA';
+        } else if (evt.type === 'wallet') {
+          profitEl.textContent = 'Account Funded';
+          profitEl.style.color = '#A78BFA';
+        } else {
+          profitEl.textContent = 'Live Visitor Session';
+          profitEl.style.color = '#F59E0B';
+        }
+      }
+      if (statEl) statEl.textContent = evt.status || 'Verified 200 OK';
+      if (timeEl) timeEl.textContent = evt.timeText || 'Today';
+
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeActivityAuditModal() {
+      const modal = document.getElementById('agentAuditModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    // Comprehensive Simulation & Live Radar Engine
+    function simulateAgentStorefrontActivity() {
+      const types = ['order', 'order', 'signup', 'wallet', 'visitor'];
+      const chosenType = types[Math.floor(Math.random() * types.length)];
+      const randomPhone = '0' + [803, 814, 701, 905, 802, 902, 816, 706][Math.floor(Math.random()*8)] + '***' + Math.floor(100 + Math.random()*899);
+      const evtId = 'EVT-' + Math.floor(10000 + Math.random() * 89999);
+
+      if (chosenType === 'order') {
+        const orderVariants = [
+          { action: 'MTN SME 2.5GB Data Delivered', retail: 800, wholesale: 650, profit: 150 },
+          { action: 'MTN SME 1.0GB Data Delivered', retail: 350, wholesale: 280, profit: 70 },
+          { action: 'Airtel ₦1,500 VTU Top-Up', retail: 1500, wholesale: 1440, profit: 60 },
+          { action: 'Glo 5.75GB Monthly Data', retail: 1400, wholesale: 1200, profit: 200 },
+          { action: 'DStv Yanga Monthly Renewal', retail: 5100, wholesale: 4950, profit: 150 },
+          { action: '1,000 TikTok Followers Booster', retail: 1200, wholesale: 950, profit: 250 }
+        ];
+        const ord = orderVariants[Math.floor(Math.random() * orderVariants.length)];
+        const floatCur = getAgentFloat();
+
+        if (floatCur < ord.wholesale) {
+          if (typeof showCustomAlert === 'function') {
+            showCustomAlert('Storefront Order Blocked: Wholesale Float Exhausted (Remaining: ₦' + floatCur.toLocaleString() + '.00). Top up float to continue fulfilling customer orders!');
+          }
+          return;
+        }
+
+        // Deduct float
+        const nextFloat = floatCur - ord.wholesale;
+        setAgentFloat(nextFloat);
+
+        // Update profit & orders
+        let curProfit = 4850;
+        try { curProfit = parseFloat(localStorage.getItem('payzani_agent_profit') || '4850'); } catch(e) {}
+        curProfit += ord.profit;
+        try { localStorage.setItem('payzani_agent_profit', curProfit.toString()); } catch(e) {}
+
+        let curOrders = 28;
+        try { curOrders = parseInt(localStorage.getItem('payzani_agent_orders') || '28'); } catch(e) {}
+        curOrders += 1;
+        try { localStorage.setItem('payzani_agent_orders', curOrders.toString()); } catch(e) {}
+
+        const evt = {
+          id: evtId,
+          type: 'order',
+          customer: 'Customer ' + randomPhone,
+          action: ord.action,
+          retail: ord.retail,
+          wholesale: ord.wholesale,
+          profit: ord.profit,
+          status: 'Delivered in 0.8s • Switch 200 OK',
+          timeText: 'Just now',
+          timestamp: Date.now()
+        };
+        recordStorefrontEvent(evt);
+
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Storefront Sale! ' + ord.action + ' for ' + evt.customer + '. Wholesale: -₦' + ord.wholesale.toLocaleString() + ' • Net Profit: +₦' + ord.profit.toLocaleString());
+        }
+      } else if (chosenType === 'signup') {
+        let customers = 19;
+        try { customers = parseInt(localStorage.getItem('payzani_agent_customers') || '19'); } catch(e) {}
+        customers += 1;
+        try { localStorage.setItem('payzani_agent_customers', customers.toString()); } catch(e) {}
+
+        const evt = {
+          id: evtId,
+          type: 'signup',
+          customer: 'New Customer ' + randomPhone,
+          action: 'Signed Up & Created Storefront Account',
+          retail: 0,
+          wholesale: 0,
+          profit: 0,
+          status: 'OTP Verified • Phone Bound',
+          timeText: 'Just now',
+          timestamp: Date.now()
+        };
+        recordStorefrontEvent(evt);
+
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('New Customer Registered! ' + evt.customer + ' just created an account on your website.');
+        }
+      } else if (chosenType === 'wallet') {
+        const amounts = [5000, 10000, 20000, 50000];
+        const amt = amounts[Math.floor(Math.random() * amounts.length)];
+        const evt = {
+          id: evtId,
+          type: 'wallet',
+          customer: 'Customer ' + randomPhone,
+          action: 'Funded Storefront Wallet via Dedicated NUBAN',
+          retail: amt,
+          wholesale: amt,
+          profit: 50,
+          status: 'Automated Instant Credit (Monnify)',
+          timeText: 'Just now',
+          timestamp: Date.now()
+        };
+        recordStorefrontEvent(evt);
+
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Wallet Top-up! ' + evt.customer + ' deposited +₦' + amt.toLocaleString() + ' into their storefront balance.');
+        }
+      } else {
+        // visitor
+        const cities = ['Ikeja, Lagos', 'Lekki, Lagos', 'Abuja FCT', 'Port Harcourt', 'Ibadan', 'Enugu'];
+        const city = cities[Math.floor(Math.random() * cities.length)];
+        const sessId = Math.floor(1000 + Math.random() * 8999);
+        const evt = {
+          id: evtId,
+          type: 'visitor',
+          customer: 'Visitor #' + sessId + ' (' + city + ')',
+          action: 'Browsing SME Bundles & Bill Payment Catalog',
+          retail: 0,
+          wholesale: 0,
+          profit: 0,
+          status: 'Active Browsing Session',
+          timeText: 'Active Now',
+          timestamp: Date.now()
+        };
+        recordStorefrontEvent(evt);
+
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Storefront Visitor: New active visitor from ' + city + ' browsing your catalog.');
+        }
+      }
+    }
+
+    // Keep backward-compatible simulateCustomerPurchase alias
+    function simulateCustomerPurchase() {
+      simulateAgentStorefrontActivity();
+    }
+
+    // Live Radar Auto-Pulse Toggle
+    let agentRadarInterval = null;
+    let isAgentRadarActive = true;
+
+    function toggleAgentLiveRadar() {
+      isAgentRadarActive = !isAgentRadarActive;
+      const toggleBtn = document.getElementById('agentRadarToggleBtn');
+      const statusText = document.getElementById('agentRadarStatusText');
+
+      if (isAgentRadarActive) {
+        if (toggleBtn) {
+          toggleBtn.style.background = '#13241B';
+          toggleBtn.style.borderColor = '#10B981';
+          toggleBtn.style.color = '#34D399';
+        }
+        if (statusText) statusText.textContent = 'Live Radar: Active';
+        startAgentRadarInterval();
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Storefront Live Radar Activated. Monitoring live visitors & transactions.');
+        }
+      } else {
+        if (toggleBtn) {
+          toggleBtn.style.background = '#191922';
+          toggleBtn.style.borderColor = '#2E2E3E';
+          toggleBtn.style.color = '#9CA3AF';
+        }
+        if (statusText) statusText.textContent = 'Live Radar: Paused';
+        if (agentRadarInterval) {
+          clearInterval(agentRadarInterval);
+          agentRadarInterval = null;
+        }
+        if (typeof showCustomAlert === 'function') {
+          showCustomAlert('Storefront Live Radar Paused.');
+        }
+      }
+    }
+
+    function startAgentRadarInterval() {
+      if (agentRadarInterval) clearInterval(agentRadarInterval);
+      agentRadarInterval = setInterval(() => {
+        // Only trigger radar pulse if agent dashboard is visible or in background
+        const dashboard = document.getElementById('opay-screen-agent-dashboard');
+        if (dashboard && dashboard.classList.contains('active') && isAgentRadarActive) {
+          // Dynamic visitors count jitter
+          const visEl = document.getElementById('agentActiveVisitors');
+          if (visEl) {
+            const count = Math.floor(3 + Math.random() * 4);
+            visEl.innerHTML = `<span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: pulse 1.5s infinite;"></span><span>${count}</span>`;
+          }
+          // 40% chance of an event trigger per tick
+          if (Math.random() < 0.4) {
+            simulateAgentStorefrontActivity();
+          }
+        }
+      }, 16000);
     }
 
         // Storefront Primary Color Branding Engine
@@ -10935,7 +11434,7 @@
         lowAlert.style.display = (floatVal < 5000) ? 'block' : 'none';
       }
 
-      // Profit and Orders
+      // Profit, Orders, Customers & Activity Feed
       try {
         const profit = parseFloat(localStorage.getItem('payzani_agent_profit') || '4850');
         const profitEl = document.getElementById('agentTodayProfit');
@@ -10944,6 +11443,14 @@
         const orders = parseInt(localStorage.getItem('payzani_agent_orders') || '28');
         const ordersEl = document.getElementById('agentTotalOrders');
         if (ordersEl) ordersEl.textContent = orders.toString();
+
+        const custs = parseInt(localStorage.getItem('payzani_agent_customers') || '19');
+        const custEl = document.getElementById('agentTotalCustomers');
+        if (custEl) custEl.textContent = custs.toString();
+
+        if (typeof renderAgentActivityFeed === 'function') {
+          renderAgentActivityFeed();
+        }
       } catch(e) {}
     }
 
@@ -10952,6 +11459,11 @@
       try {
         // Enforce Main Site (Purple) vs Agent Storefront (Custom Color + Me Tab)
         applyStorefrontOrMainMode();
+
+        // Start Live Storefront Radar auto-pulse
+        if (typeof startAgentRadarInterval === 'function') {
+          startAgentRadarInterval();
+        }
 
         // Storefront URL query param check (?agent=...)
         const params = new URLSearchParams(window.location.search);
