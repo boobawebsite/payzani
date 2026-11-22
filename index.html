@@ -5676,7 +5676,7 @@
       <!-- SLIM STOREFRONT LINK STRIP -->
       <div style="margin: 0 16px 10px; background: #121218; border: 1px solid #22222E; border-radius: 10px; padding: 5px 8px 5px 10px; display: flex; align-items: center; gap: 6px;">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-        <input type="text" id="agentStorefrontLinkInput" readonly value="https://payzani.vercel.app/?agent=victor" style="width: 100%; background: transparent; border: none; outline: none; color: #C4B5FD; font-size: 11px; font-family: monospace; font-weight: 600; text-overflow: ellipsis;" />
+        <input type="text" id="agentStorefrontLinkInput" readonly value="https://payzani-smoky.vercel.app/?agent=victor" style="width: 100%; background: transparent; border: none; outline: none; color: #C4B5FD; font-size: 11px; font-family: monospace; font-weight: 600; text-overflow: ellipsis;" />
         <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
           <button type="button" id="agentCopyLinkBtn" onclick="copyAgentStorefrontLink()" style="background: #251B38; border: 1px solid #582CA6; color: #DDD6FE; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 3px;">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
@@ -9934,7 +9934,7 @@
 
 
     function opayTriggerReferral() {
-      const refLink = 'https://payzani.vercel.app/?ref=PAYZANI-' + Math.floor(100000 + Math.random() * 900000);
+      const refLink = 'https://payzani-smoky.vercel.app/?ref=PAYZANI-' + Math.floor(100000 + Math.random() * 900000);
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(refLink).catch(() => {});
       }
@@ -10161,7 +10161,7 @@
 
     // Agent Storefront Link Generator
     function getAgentStorefrontUrl() {
-      const origin = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : 'https://payzani.vercel.app';
+      const origin = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : 'https://payzani-smoky.vercel.app';
       const path = window.location.pathname || '/';
       let name = 'Victor Telecoms';
       let slug = 'victor';
