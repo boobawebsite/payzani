@@ -5587,350 +5587,153 @@
           <span>Agent Dashboard</span>
         </div>
         <div style="display: flex; align-items: center; gap: 8px;">
-          <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #10B981; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 12px; letter-spacing: 0.3px;">
-            <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; display: inline-block;"></span>
-            <span>STOREFRONT LIVE</span>
+          <span style="display: inline-flex; align-items: center; gap: 5px; background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.25); color: #10B981; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;">
+            <span style="width: 6px; height: 6px; background: #10B981; border-radius: 50%; box-shadow: 0 0 8px #10B981;"></span>
+            <span>Storefront Live</span>
           </span>
-          <button type="button" onclick="openAgentRegistrationScreen()" style="background: transparent; border: 1px solid #2B2B38; border-radius: 8px; color: #9CA3AF; font-size: 11px; padding: 4px 8px; cursor: pointer;">
-            Onboarding
-          </button>
         </div>
       </div>
 
-      <!-- Agent Storefront Overview Banner -->
-      <div style="margin: 14px 16px; background: linear-gradient(135deg, #1A1A24 0%, #121217 100%); border: 1px solid #2B2B38; border-radius: 14px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <div id="agentDashboardHeaderLogoWrap" style="width: 34px; height: 34px; border-radius: 10px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; color: #C4B5FD;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <!-- CONSOLIDATED EXECUTIVE OUTLET & WHOLESALE FLOAT CARD -->
+      <div style="margin: 12px 16px; background: linear-gradient(145deg, #181528 0%, #100F1A 100%); border: 1px solid rgba(139, 92, 246, 0.22); border-radius: 18px; padding: 16px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35); position: relative; overflow: hidden;">
+        <!-- Subtle ambient radial glow -->
+        <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%); pointer-events: none;"></div>
+
+        <!-- Top Row: Outlet Identity & Wholesale Margin -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="agentDashboardHeaderLogoWrap" style="width: 38px; height: 38px; border-radius: 12px; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; color: #C4B5FD; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
             <div>
               <div id="agentDashboardOutletName" style="color: #FFFFFF; font-size: 15px; font-weight: 800; line-height: 1.2;">Victor Telecoms &amp; POS</div>
-              <div id="agentDashboardOutletSlogan" style="color: #9CA3AF; font-size: 11px;">Wholesale Partner Outlet &bull; Tier 3 VIP</div>
+              <div id="agentDashboardOutletSlogan" style="color: #9CA3AF; font-size: 11px; margin-top: 2px;">Instant Switching &bull; Wholesale Telecoms</div>
             </div>
           </div>
-          <span style="font-size: 10.5px; font-weight: 700; color: #A78BFA; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 3px 8px; border-radius: 20px;">
-            8.5% MARGIN
-          </span>
-        </div>
-        <div style="font-size: 11.5px; color: #9CA3AF; margin-top: 6px; line-height: 1.4;">
-          Your independent branded Payzani clone is active. All end-user orders are fulfilled instantly via your wholesale credit float.
-        </div>
-      </div>
-
-      <!-- CARD 1: STOREFRONT LINK & CLONE ACCESS -->
-      <div style="margin: 0 16px 16px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            <span>Your Branded Storefront Link</span>
-          </div>
-          <span style="font-size: 10.5px; color: #10B981; font-weight: 700;">Payzani Clone</span>
-        </div>
-
-        <div style="background: #0E0E12; border: 1px solid #272733; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" style="flex-shrink:0;"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-          <input type="text" id="agentStorefrontLinkInput" readonly value="https://payzani.vercel.app/?agent=victor" style="width: 100%; background: transparent; border: none; outline: none; color: #C4B5FD; font-size: 12px; font-family: monospace; font-weight: 600; text-overflow: ellipsis;" />
-          <button type="button" id="agentCopyLinkBtn" onclick="copyAgentStorefrontLink()" style="background: #251B38; border: 1px solid #582CA6; color: #DDD6FE; font-size: 11px; font-weight: 700; padding: 5px 10px; border-radius: 6px; cursor: pointer; flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>Copy</span>
-          </button>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-          <button type="button" onclick="shareStorefrontWhatsApp()" style="background: #064E3B; border: 1px solid #059669; color: #A7F3D0; font-size: 11.5px; font-weight: 700; padding: 8px 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-            <span>WhatsApp Share</span>
-          </button>
-          <button type="button" onclick="openStorefrontPreview()" style="background: #1F1F2A; border: 1px solid #333344; color: #E5E7EB; font-size: 11.5px; font-weight: 700; padding: 8px 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            <span>Test Customer View</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- CARD 2: WHOLESALE API CREDIT / REMAINING FLOAT (USER REQUIREMENT) -->
-      <div style="margin: 0 16px 16px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
-            <span>Wholesale API Credit / Remaining Float</span>
-          </div>
-          <span id="agentFloatStatusBadge" style="font-size: 10px; font-weight: 700; color: #10B981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 6px;">
-            100% HEALTHY
+          <span style="font-size: 10.5px; font-weight: 700; color: #DDD6FE; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.35); padding: 3px 8px; border-radius: 20px; white-space: nowrap;">
+            8.5% Margin
           </span>
         </div>
 
-        <div style="color: #9CA3AF; font-size: 11px; margin-bottom: 12px; line-height: 1.4;">
-          Your storefront orders (Data, Airtime, Cable TV) are deducted from this wholesale float balance at discounted dealer rates.
-        </div>
-
-        <div style="background: linear-gradient(135deg, #1B1B26 0%, #12121A 100%); border: 1px solid #2A2A38; border-radius: 12px; padding: 14px; margin-bottom: 12px;">
-          <div style="display: flex; align-items: baseline; justify-content: space-between;">
-            <div>
-              <div style="font-size: 11px; color: #9CA3AF; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">Remaining Wholesale Credit</div>
-              <div id="agentFloatDisplay" style="font-size: 28px; font-weight: 900; color: #FFFFFF; line-height: 1.2; margin-top: 4px;">₦50,000.00</div>
-            </div>
-            <div style="text-align: right;">
-              <div style="font-size: 10.5px; color: #A78BFA; font-weight: 700;">Wholesale Margin</div>
-              <div style="font-size: 13px; color: #10B981; font-weight: 800;">8.5% Off Retail</div>
-            </div>
+        <!-- Float Balance Section -->
+        <div style="background: rgba(10, 10, 16, 0.55); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+            <span style="font-size: 10px; color: #9CA3AF; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase;">Wholesale Credit Float</span>
+            <span id="agentFloatStatusBadge" style="font-size: 10px; font-weight: 700; color: #10B981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 7px; border-radius: 20px;">
+              HEALTHY
+            </span>
           </div>
+
+          <div id="agentFloatDisplay" style="font-size: 28px; font-weight: 900; color: #FFFFFF; letter-spacing: -0.5px; line-height: 1.1; margin: 6px 0 10px;">₦50,000.00</div>
 
           <!-- Float Progress Gauge -->
-          <div style="margin-top: 12px;">
-            <div style="background: #252533; border-radius: 999px; height: 7px; overflow: hidden;">
-              <div id="agentFloatProgressBar" style="width: 100%; height: 100%; background: linear-gradient(90deg, #10B981 0%, #34D399 100%); transition: width 0.4s ease;"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 10.5px; color: #9CA3AF; margin-top: 5px;">
-              <span id="agentFloatCapacityLabel">Float: ₦50,000 / ₦50,000</span>
-              <span>Low Alert: ₦5,000</span>
-            </div>
+          <div style="background: rgba(255, 255, 255, 0.08); border-radius: 999px; height: 6px; overflow: hidden;">
+            <div id="agentFloatProgressBar" style="width: 100%; height: 100%; background: linear-gradient(90deg, #10B981 0%, #34D399 100%); transition: width 0.4s ease;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 10px; color: #9CA3AF; margin-top: 6px;">
+            <span id="agentFloatCapacityLabel">Float: ₦50,000 / ₦50,000</span>
+            <span>Low Alert: ₦5,000</span>
           </div>
         </div>
 
-        <!-- Low Float Warning Alert (Dynamic) -->
-        <div id="agentFloatLowAlert" style="display: none; background: rgba(245, 158, 11, 0.15); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; font-size: 11.5px; color: #FCD34D;">
-          <strong> Low Credit Warning:</strong> Your wholesale float is under ₦5,000! Refill your float now so customer purchases on your storefront do not fail.
+        <!-- Dynamic Low Float Alert -->
+        <div id="agentFloatLowAlert" style="display: none; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 10px; padding: 10px 12px; margin-bottom: 12px; font-size: 11px; color: #FCD34D;">
+          <strong>Low Float Warning:</strong> Wholesale credit under ₦5,000. Refill now so customer purchases do not fail.
         </div>
 
-        <!-- Top-Up Actions -->
+        <!-- Primary Action Buttons -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-          <button type="button" onclick="toggleAgentTopUpDrawer()" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 12.5px; font-weight: 700; padding: 10px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);">
+          <button type="button" onclick="toggleAgentTopUpDrawer()" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 12px; font-weight: 700; padding: 10px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
             <span>Top-Up Float +</span>
           </button>
-          <button type="button" onclick="simulateCustomerPurchase()" style="background: #1C1C26; border: 1px solid #313144; color: #DDD6FE; font-size: 11.5px; font-weight: 700; padding: 10px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <button type="button" onclick="simulateAgentStorefrontActivity()" style="background: #1F1D2B; border: 1px solid #332F47; color: #DDD6FE; font-size: 12px; font-weight: 700; padding: 10px 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            <span>Simulate Order</span>
+            <span>Simulate Sale</span>
           </button>
         </div>
 
-        <!-- Float Refill Drawer / Panel (Toggleable) -->
-        <div id="agentTopUpDrawer" style="display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid #262635;">
-          <div style="font-size: 12px; font-weight: 700; color: #E5E7EB; margin-bottom: 8px;">Quick Refill Amount:</div>
+        <!-- Top-Up Refill Panel (Toggleable) -->
+        <div id="agentTopUpDrawer" style="display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+          <div style="font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 8px;">Quick Refill Amount:</div>
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px;">
-            <button type="button" onclick="selectTopUpAmount(5000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦5,000</button>
-            <button type="button" onclick="selectTopUpAmount(10000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦10,000</button>
-            <button type="button" onclick="selectTopUpAmount(25000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦25,000</button>
-            <button type="button" onclick="selectTopUpAmount(50000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦50,000</button>
-            <button type="button" onclick="selectTopUpAmount(100000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦100,000</button>
-            <button type="button" onclick="selectTopUpAmount(200000)" class="agent-refill-chip" style="background: #181822; border: 1px solid #2E2E3E; color: #D1D5DB; font-size: 11.5px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦200,000</button>
+            <button type="button" onclick="selectTopUpAmount(5000)" class="agent-refill-chip" style="background: #151322; border: 1px solid #2F2A4A; color: #D1D5DB; font-size: 11px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦5,000</button>
+            <button type="button" onclick="selectTopUpAmount(10000)" class="agent-refill-chip" style="background: #151322; border: 1px solid #2F2A4A; color: #D1D5DB; font-size: 11px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦10,000</button>
+            <button type="button" onclick="selectTopUpAmount(25000)" class="agent-refill-chip" style="background: #151322; border: 1px solid #2F2A4A; color: #D1D5DB; font-size: 11px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦25,000</button>
+            <button type="button" onclick="selectTopUpAmount(50000)" class="agent-refill-chip" style="background: #151322; border: 1px solid #2F2A4A; color: #D1D5DB; font-size: 11px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦50,000</button>
+            <button type="button" onclick="selectTopUpAmount(100000)" class="agent-refill-chip" style="background: #151322; border: 1px solid #2F2A4A; color: #D1D5DB; font-size: 11px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦100,000</button>
+            <button type="button" onclick="selectTopUpAmount(200000)" class="agent-refill-chip" style="background: #151322; border: 1px solid #2F2A4A; color: #D1D5DB; font-size: 11px; font-weight: 700; padding: 7px 4px; border-radius: 8px; cursor: pointer;">+₦200,000</button>
           </div>
 
           <div style="margin-bottom: 10px;">
-            <label style="display: block; font-size: 11px; color: #9CA3AF; margin-bottom: 4px;">Or Custom Refill Amount (₦)</label>
-            <div style="background: #0E0E14; border: 1px solid #2E2E3E; border-radius: 8px; padding: 0 12px; height: 42px; display: flex; align-items: center;">
+            <div style="background: #0D0C14; border: 1px solid #28243C; border-radius: 8px; padding: 0 12px; height: 40px; display: flex; align-items: center;">
               <span style="font-weight: 700; color: #E5E7EB; margin-right: 6px;">₦</span>
-              <input type="number" id="agentCustomRefillInput" value="10000" min="1000" step="1000" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 14px; font-weight: 700;" />
+              <input type="number" id="agentCustomRefillInput" value="10000" min="1000" step="1000" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 13px; font-weight: 700;" />
             </div>
           </div>
 
           <div style="margin-bottom: 12px;">
-            <label style="display: block; font-size: 11px; color: #9CA3AF; margin-bottom: 4px;">Funding Source</label>
-            <select id="agentRefillSource" style="width: 100%; background: #0E0E14; border: 1px solid #2E2E3E; color: #E5E7EB; border-radius: 8px; padding: 10px 12px; font-size: 12px; outline: none;">
+            <select id="agentRefillSource" style="width: 100%; background: #0D0C14; border: 1px solid #28243C; color: #E5E7EB; border-radius: 8px; padding: 9px 12px; font-size: 11.5px; outline: none;">
               <option value="wallet">Payzani Main Wallet (Balance: ₦22,000.00)</option>
-              <option value="bank">Direct Bank Transfer / Dedicated Virtual Account</option>
-              <option value="card">Debit Card / Paystack Switch</option>
+              <option value="bank">Dedicated Virtual Bank Transfer</option>
+              <option value="card">Debit Card / Instant Switch</option>
             </select>
           </div>
 
-          <button type="button" onclick="executeAgentFloatTopUp()" style="width: 100%; background: #10B981; border: none; color: #FFFFFF; font-size: 13px; font-weight: 800; padding: 11px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <button type="button" onclick="executeAgentFloatTopUp()" style="width: 100%; background: #10B981; border: none; color: #FFFFFF; font-size: 12.5px; font-weight: 800; padding: 10px; border-radius: 9px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Confirm &amp; Refill Float Now</span>
+            <span>Confirm &amp; Refill Float</span>
           </button>
         </div>
       </div>
 
-      <!-- CARD 3: STOREFRONT BRANDING, LOGO & COLOR STUDIO (USER REQUIREMENT) -->
-      <div style="margin: 0 16px 16px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
-          <div style="display: flex; align-items: center; gap: 6px; color: #E5E7EB; font-size: 13px; font-weight: 700;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="2.5"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path></svg>
-            <span>Storefront Branding, Logo &amp; Color Studio</span>
-          </div>
-          <span style="font-size: 10px; font-weight: 700; color: #EC4899; background: rgba(236, 72, 153, 0.15); border: 1px solid rgba(236, 72, 153, 0.3); padding: 2px 7px; border-radius: 12px;">
-            BRAND IDENTITY
-          </span>
+      <!-- COMPACT STOREFRONT URL & SHARE BAR -->
+      <div style="margin: 0 16px 14px; background: #13131A; border: 1px solid #242432; border-radius: 12px; padding: 7px 10px; display: flex; align-items: center; gap: 8px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        <input type="text" id="agentStorefrontLinkInput" readonly value="https://payzani.vercel.app/?agent=victor" style="width: 100%; background: transparent; border: none; outline: none; color: #DDD6FE; font-size: 11.5px; font-family: monospace; font-weight: 600; text-overflow: ellipsis;" />
+        <div style="display: flex; align-items: center; gap: 5px; flex-shrink: 0;">
+          <button type="button" id="agentCopyLinkBtn" onclick="copyAgentStorefrontLink()" style="background: #251B38; border: 1px solid #582CA6; color: #DDD6FE; font-size: 10.5px; font-weight: 700; padding: 5px 9px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy</span>
+          </button>
+          <button type="button" onclick="shareStorefrontWhatsApp()" title="Share on WhatsApp" style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          </button>
+          <button type="button" onclick="openStorefrontPreview()" title="Open Customer View" style="background: #1B1B26; border: 1px solid #2E2E40; color: #E5E7EB; width: 28px; height: 28px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          </button>
         </div>
+      </div>
 
-        <div style="color: #9CA3AF; font-size: 11px; margin-bottom: 14px; line-height: 1.4;">
-          Rename your Payzani clone website, upload your custom logo image, and pick your primary brand theme color.
-        </div>
-
-        <!-- 1. RENAME STOREFRONT WEBSITE -->
-        <div style="margin-bottom: 12px;">
-          <label style="display: block; font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 5px;">
-            Storefront Website Name
-          </label>
-          <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 0 12px; height: 42px; display: flex; align-items: center; gap: 8px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" style="flex-shrink:0;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-            <input type="text" id="agentStorefrontNameInput" value="Victor Telecoms &amp; POS" placeholder="e.g. Victor Telecoms &amp; POS" oninput="handleAgentStorefrontNameInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 13px; font-weight: 700;" />
-          </div>
-        </div>
-
-        <!-- 2. STOREFRONT SLOGAN / SUBTITLE -->
-        <div style="margin-bottom: 14px;">
-          <label style="display: block; font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 5px;">
-            Storefront Slogan / Tagline
-          </label>
-          <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 0 12px; height: 42px; display: flex; align-items: center; gap: 8px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" style="flex-shrink:0;"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
-            <input type="text" id="agentStorefrontSloganInput" value="Instant Switching &bull; Wholesale Telecoms" placeholder="e.g. Instant Switching &bull; Wholesale Telecoms" oninput="handleAgentStorefrontSloganInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #D1D5DB; font-size: 12px; font-weight: 500;" />
-          </div>
-        </div>
-
-        <!-- 3. BRAND LOGO STUDIO (UPLOAD & PRESETS) -->
-        <div style="margin-bottom: 14px; background: #0E0E14; border: 1px solid #252533; border-radius: 12px; padding: 12px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-            <div style="font-size: 11.5px; font-weight: 700; color: #E5E7EB;">Storefront Website Logo</div>
-            <span style="font-size: 10px; color: #9CA3AF;">Upload or Preset</span>
-          </div>
-
-          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
-            <!-- Current Logo Preview -->
-            <div id="agentDashboardLogoPreviewWrap" style="width: 50px; height: 50px; border-radius: 14px; background: rgba(124, 58, 237, 0.25); border: 1.5px solid rgba(124, 58, 237, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-              <span id="agentDashboardLogoPreviewText" style="font-size: 24px; font-weight: 900; color: #FFF;">V</span>
-            </div>
-            
-            <!-- Logo Actions -->
-            <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
-              <input type="file" id="agentLogoFileInput" accept="image/*" style="display: none;" onchange="handleAgentLogoFileUpload(this)" />
-              <button type="button" onclick="document.getElementById('agentLogoFileInput').click()" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); border: none; color: #FFF; font-size: 11.5px; font-weight: 700; padding: 7px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                <span>Upload Custom Logo</span>
-              </button>
-              <button type="button" onclick="resetAgentLogo()" style="background: #181822; border: 1px solid #2B2B3A; color: #9CA3AF; font-size: 10.5px; font-weight: 600; padding: 5px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
-                <span>Reset to Initial / Default</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Quick Preset Logo Icons -->
-          <div style="font-size: 10.5px; color: #9CA3AF; margin-bottom: 6px;">Or select a ready-to-use brand mark:</div>
-          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
-            <button type="button" onclick="selectAgentLogoPreset('bolt')" class="agent-logo-preset-btn" title="Bolt" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-            </button>
-            <button type="button" onclick="selectAgentLogoPreset('diamond')" class="agent-logo-preset-btn" title="Diamond" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 3h12l4 6-10 13L2 9z"/></svg>
-            </button>
-            <button type="button" onclick="selectAgentLogoPreset('globe')" class="agent-logo-preset-btn" title="Globe" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </button>
-            <button type="button" onclick="selectAgentLogoPreset('rocket')" class="agent-logo-preset-btn" title="Rocket" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path></svg>
-            </button>
-            <button type="button" onclick="selectAgentLogoPreset('shield')" class="agent-logo-preset-btn" title="Shield" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-            </button>
-            <button type="button" onclick="selectAgentLogoPreset('crown')" class="agent-logo-preset-btn" title="Crown" style="background: #181824; border: 1px solid #2A2A3C; color: #A78BFA; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="2 4 5 20 19 20 22 4 15 10 12 2 9 10 2 4"></polygon></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- 4. PRIMARY BRAND COLOR -->
-        <div style="margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-            <label style="font-size: 11.5px; font-weight: 700; color: #E5E7EB;">Primary Theme Color</label>
-            <span id="agentActiveColorLabel" style="font-size: 11px; font-weight: 700; color: #A78BFA; font-family: monospace;">#7C3AED</span>
-          </div>
-
-          <!-- Color Preset Swatches -->
-          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-bottom: 10px;">
-            <button type="button" onclick="selectAgentThemeColor('#7C3AED')" class="agent-theme-swatch active" data-color="#7C3AED" style="background: #7C3AED; height: 38px; border-radius: 10px; border: 2px solid #FFFFFF; cursor: pointer; position: relative; display: flex; align-items: center; justify-content: center;" title="Royal Purple">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:block;"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <button type="button" onclick="selectAgentThemeColor('#059669')" class="agent-theme-swatch" data-color="#059669" style="background: #059669; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Fintech Green">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <button type="button" onclick="selectAgentThemeColor('#2563EB')" class="agent-theme-swatch" data-color="#2563EB" style="background: #2563EB; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Moniepoint Blue">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <button type="button" onclick="selectAgentThemeColor('#EA580C')" class="agent-theme-swatch" data-color="#EA580C" style="background: #EA580C; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Telecom Orange">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <button type="button" onclick="selectAgentThemeColor('#DC2626')" class="agent-theme-swatch" data-color="#DC2626" style="background: #DC2626; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Crimson Red">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-            <button type="button" onclick="selectAgentThemeColor('#0891B2')" class="agent-theme-swatch" data-color="#0891B2" style="background: #0891B2; height: 38px; border-radius: 10px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Cyber Cyan">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
-            </button>
-          </div>
-
-          <!-- Custom Color Picker Row -->
-          <div style="background: #0E0E14; border: 1px solid #272733; border-radius: 10px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <input type="color" id="agentCustomColorInput" value="#7C3AED" oninput="handleAgentCustomColor(this.value)" style="width: 28px; height: 28px; border: none; border-radius: 6px; cursor: pointer; background: transparent;" />
-              <span style="font-size: 12px; color: #D1D5DB; font-weight: 600;">Custom Hex Color:</span>
-            </div>
-            <span id="agentCustomHexDisplay" style="font-size: 12px; color: #DDD6FE; font-family: monospace; font-weight: 700;">#7C3AED</span>
-          </div>
-        </div>
-
-        <!-- 5. LIVE STOREFRONT BRAND MOCKUP PREVIEW -->
-        <div id="agentMiniPreviewBox" style="background: linear-gradient(135deg, #1C1C26 0%, #101016 100%); border: 1px solid #2C2C3C; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
-          <div style="font-size: 10px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;">Storefront Live Mockup Preview</div>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <div id="agentMiniPreviewLogo" style="width: 36px; height: 36px; border-radius: 10px; background: rgba(124, 58, 237, 0.3); border: 1px solid rgba(124, 58, 237, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
-              <span style="font-size: 16px; font-weight: 900; color: #FFF;">V</span>
-            </div>
-            <div style="flex: 1; min-width: 0;">
-              <div id="agentPreviewMiniName" style="color: #FFF; font-size: 13px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Victor Telecoms &amp; POS</div>
-              <div id="agentPreviewMiniSlogan" style="color: #9CA3AF; font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Instant Switching &bull; Wholesale Telecoms</div>
-            </div>
-            <button type="button" id="agentPreviewMiniBtn" style="background: #7C3AED; border: none; color: #FFF; font-size: 10.5px; font-weight: 700; padding: 6px 10px; border-radius: 6px; cursor: default; flex-shrink: 0;">
-              Buy VTU
-            </button>
-          </div>
-        </div>
-
-        <!-- 6. SAVE & APPLY ALL BRANDING -->
-        <button type="button" onclick="saveAndApplyAgentBranding()" style="width: 100%; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 13px; font-weight: 800; padding: 12px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Save Storefront Name, Logo &amp; Theme</span>
+      <!-- SEGMENTED TABS: LIVE ACTIVITY vs BRAND STUDIO -->
+      <div style="margin: 0 16px 14px; background: #13131A; border: 1px solid #22222E; border-radius: 12px; padding: 3px; display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+        <button type="button" id="agentTabBtnActivity" onclick="switchAgentDashTab('activity')" class="agent-dash-tab active" style="background: #7C3AED; color: #FFFFFF; border: none; border-radius: 9px; padding: 8px 10px; font-size: 11.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          <span>Live Activity &amp; Radar</span>
+        </button>
+        <button type="button" id="agentTabBtnBranding" onclick="switchAgentDashTab('branding')" class="agent-dash-tab" style="background: transparent; color: #9CA3AF; border: none; border-radius: 9px; padding: 8px 10px; font-size: 11.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s ease;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <span>Brand Studio &amp; Logo</span>
         </button>
       </div>
 
-      <!-- CARD 4: STOREFRONT LIVE PERFORMANCE & COMMAND CENTER ACTIVITY RADAR -->
-      <div style="margin: 0 16px 24px; background: #14141A; border: 1px solid #242430; border-radius: 14px; padding: 16px;">
-        <!-- Header -->
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <div style="width: 28px; height: 28px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; justify-content: center;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"></path></svg>
-            </div>
-            <div>
-              <div style="color: #FFFFFF; font-size: 13.5px; font-weight: 800; display: flex; align-items: center; gap: 6px;">
-                <span>Storefront Live Activity &amp; Radar</span>
-                <span style="font-size: 9px; padding: 2px 6px; border-radius: 10px; background: rgba(16, 185, 129, 0.2); color: #34D399; font-weight: 800; border: 1px solid rgba(16, 185, 129, 0.4); display: flex; align-items: center; gap: 4px;">
-                  <span style="width: 5px; height: 5px; border-radius: 50%; background: #10B981; animation: pulse 1.5s infinite;"></span>
-                  <span>LIVE</span>
-                </span>
-              </div>
-              <div style="font-size: 10.5px; color: #9CA3AF;">Real-time feed of all customer events on your website</div>
-            </div>
-          </div>
-          <span style="font-size: 10px; color: #A78BFA; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 2px 7px; border-radius: 6px; font-weight: 700;">24/7 Switch</span>
-        </div>
-
+      <!-- TAB 1: LIVE ACTIVITY & RADAR STREAM -->
+      <div id="agentDashSectionActivity" style="display: block; margin: 0 16px 24px;">
         <!-- 4-Stat Live Metrics Grid -->
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 12px;">
-          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+          <div style="background: #14141C; border: 1px solid #232332; border-radius: 10px; padding: 9px 6px; text-align: center;">
             <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Net Profit</div>
             <div id="agentTodayProfit" style="font-size: 13px; font-weight: 900; color: #10B981;">+₦4,850</div>
           </div>
-          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+          <div style="background: #14141C; border: 1px solid #232332; border-radius: 10px; padding: 9px 6px; text-align: center;">
             <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Orders</div>
             <div id="agentTotalOrders" style="font-size: 13px; font-weight: 900; color: #DDD6FE;">28</div>
           </div>
-          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+          <div style="background: #14141C; border: 1px solid #232332; border-radius: 10px; padding: 9px 6px; text-align: center;">
             <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Customers</div>
             <div id="agentTotalCustomers" style="font-size: 13px; font-weight: 900; color: #60A5FA;">19</div>
           </div>
-          <div style="background: #191922; border: 1px solid #292938; border-radius: 10px; padding: 8px 6px; text-align: center;">
+          <div style="background: #14141C; border: 1px solid #232332; border-radius: 10px; padding: 9px 6px; text-align: center;">
             <div style="font-size: 9px; color: #9CA3AF; margin-bottom: 2px; text-transform: uppercase; font-weight: 700;">Live Online</div>
             <div id="agentActiveVisitors" style="font-size: 13px; font-weight: 900; color: #34D399; display: flex; align-items: center; justify-content: center; gap: 3px;">
               <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: pulse 1.5s infinite;"></span>
@@ -5939,13 +5742,13 @@
           </div>
         </div>
 
-        <!-- Action Controls: Manual Simulator & Auto Radar Toggle -->
+        <!-- Action Controls -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
-          <button type="button" onclick="simulateAgentStorefrontActivity()" style="background: #1C1C26; border: 1px solid #313144; color: #DDD6FE; font-size: 11px; font-weight: 700; padding: 8px 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+          <button type="button" onclick="simulateAgentStorefrontActivity()" style="background: #191924; border: 1px solid #2A2A3C; color: #DDD6FE; font-size: 11px; font-weight: 700; padding: 8px 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
             <span>Simulate Activity +</span>
           </button>
-          <button type="button" id="agentRadarToggleBtn" onclick="toggleAgentLiveRadar()" style="background: #13241B; border: 1px solid #10B981; color: #34D399; font-size: 11px; font-weight: 700; padding: 8px 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+          <button type="button" id="agentRadarToggleBtn" onclick="toggleAgentLiveRadar()" style="background: #101E17; border: 1px solid #10B981; color: #34D399; font-size: 11px; font-weight: 700; padding: 8px 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background: #10B981; animation: pulse 1s infinite;"></span>
             <span id="agentRadarStatusText">Live Radar: Active</span>
           </button>
@@ -5954,16 +5757,148 @@
         <!-- Filter Pills Bar -->
         <div style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 10px; scrollbar-width: none;">
           <button type="button" onclick="filterAgentActivity(this, 'all')" class="agent-activity-pill active" style="flex-shrink: 0; background: #7C3AED; color: #FFF; border: none; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">All Events</button>
-          <button type="button" onclick="filterAgentActivity(this, 'order')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Orders</button>
-          <button type="button" onclick="filterAgentActivity(this, 'signup')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Signups</button>
-          <button type="button" onclick="filterAgentActivity(this, 'wallet')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Wallet Top-ups</button>
-          <button type="button" onclick="filterAgentActivity(this, 'visitor')" class="agent-activity-pill" style="flex-shrink: 0; background: #191922; color: #9CA3AF; border: 1px solid #292938; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Live Visitors</button>
+          <button type="button" onclick="filterAgentActivity(this, 'order')" class="agent-activity-pill" style="flex-shrink: 0; background: #14141C; color: #9CA3AF; border: 1px solid #242432; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Orders</button>
+          <button type="button" onclick="filterAgentActivity(this, 'signup')" class="agent-activity-pill" style="flex-shrink: 0; background: #14141C; color: #9CA3AF; border: 1px solid #242432; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Signups</button>
+          <button type="button" onclick="filterAgentActivity(this, 'wallet')" class="agent-activity-pill" style="flex-shrink: 0; background: #14141C; color: #9CA3AF; border: 1px solid #242432; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Wallet Top-ups</button>
+          <button type="button" onclick="filterAgentActivity(this, 'visitor')" class="agent-activity-pill" style="flex-shrink: 0; background: #14141C; color: #9CA3AF; border: 1px solid #242432; font-size: 10.5px; font-weight: 700; padding: 5px 10px; border-radius: 14px; cursor: pointer;">Live Visitors</button>
         </div>
 
         <!-- Live Activity Feed Container -->
         <div id="agentActivityStreamList" style="display: flex; flex-direction: column; gap: 8px;">
           <!-- Dynamically populated by renderAgentActivityFeed() -->
         </div>
+      </div>
+
+      <!-- TAB 2: STOREFRONT BRANDING, LOGO & COLOR STUDIO -->
+      <div id="agentDashSectionBranding" style="display: none; margin: 0 16px 24px; background: #13131B; border: 1px solid #222230; border-radius: 16px; padding: 16px;">
+        <!-- 1. Storefront Website Name -->
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 5px;">
+            Storefront Website Name
+          </label>
+          <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 10px; padding: 0 12px; height: 42px; display: flex; align-items: center; gap: 8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2" style="flex-shrink:0;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+            <input type="text" id="agentStorefrontNameInput" value="Victor Telecoms &amp; POS" placeholder="e.g. Victor Telecoms &amp; POS" oninput="handleAgentStorefrontNameInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 13px; font-weight: 700;" />
+          </div>
+        </div>
+
+        <!-- 2. Storefront Slogan / Tagline -->
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 11.5px; font-weight: 700; color: #E5E7EB; margin-bottom: 5px;">
+            Storefront Slogan / Tagline
+          </label>
+          <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 10px; padding: 0 12px; height: 42px; display: flex; align-items: center; gap: 8px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" style="flex-shrink:0;"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
+            <input type="text" id="agentStorefrontSloganInput" value="Instant Switching &bull; Wholesale Telecoms" placeholder="e.g. Instant Switching &bull; Wholesale Telecoms" oninput="handleAgentStorefrontSloganInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #D1D5DB; font-size: 12px; font-weight: 500;" />
+          </div>
+        </div>
+
+        <!-- 3. Storefront Logo Studio -->
+        <div style="margin-bottom: 14px; background: #0B0B10; border: 1px solid #232333; border-radius: 12px; padding: 12px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+            <div style="font-size: 11.5px; font-weight: 700; color: #E5E7EB;">Website Logo Mark</div>
+            <span style="font-size: 10px; color: #9CA3AF;">Upload or Preset</span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
+            <div id="agentDashboardLogoPreviewWrap" style="width: 46px; height: 46px; border-radius: 12px; background: rgba(124, 58, 237, 0.25); border: 1.5px solid rgba(124, 58, 237, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+              <span id="agentDashboardLogoPreviewText" style="font-size: 22px; font-weight: 900; color: #FFF;">V</span>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 6px; width: 100%;">
+              <input type="file" id="agentLogoFileInput" accept="image/*" style="display: none;" onchange="handleAgentLogoFileUpload(this)" />
+              <button type="button" onclick="document.getElementById('agentLogoFileInput').click()" style="background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%); border: none; color: #FFF; font-size: 11px; font-weight: 700; padding: 7px 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Upload Custom Logo</span>
+              </button>
+              <button type="button" onclick="resetAgentLogo()" style="background: #14141E; border: 1px solid #28283C; color: #9CA3AF; font-size: 10.5px; font-weight: 600; padding: 5px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                <span>Reset to Default</span>
+              </button>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px;">
+            <button type="button" onclick="selectAgentLogoPreset('bolt')" class="agent-logo-preset-btn" title="Bolt" style="background: #14141E; border: 1px solid #28283C; color: #A78BFA; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('diamond')" class="agent-logo-preset-btn" title="Diamond" style="background: #14141E; border: 1px solid #28283C; color: #A78BFA; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 3h12l4 6-10 13L2 9z"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('globe')" class="agent-logo-preset-btn" title="Globe" style="background: #14141E; border: 1px solid #28283C; color: #A78BFA; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('rocket')" class="agent-logo-preset-btn" title="Rocket" style="background: #14141E; border: 1px solid #28283C; color: #A78BFA; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('shield')" class="agent-logo-preset-btn" title="Shield" style="background: #14141E; border: 1px solid #28283C; color: #A78BFA; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </button>
+            <button type="button" onclick="selectAgentLogoPreset('crown')" class="agent-logo-preset-btn" title="Crown" style="background: #14141E; border: 1px solid #28283C; color: #A78BFA; height: 32px; border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="2 4 5 20 19 20 22 4 15 10 12 2 9 10 2 4"></polygon></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Primary Brand Color -->
+        <div style="margin-bottom: 14px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <label style="font-size: 11.5px; font-weight: 700; color: #E5E7EB;">Primary Theme Color</label>
+            <span id="agentActiveColorLabel" style="font-size: 11px; font-weight: 700; color: #A78BFA; font-family: monospace;">#7C3AED</span>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-bottom: 8px;">
+            <button type="button" onclick="selectAgentThemeColor('#7C3AED')" class="agent-theme-swatch active" data-color="#7C3AED" style="background: #7C3AED; height: 36px; border-radius: 9px; border: 2px solid #FFFFFF; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Royal Purple">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:block;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#059669')" class="agent-theme-swatch" data-color="#059669" style="background: #059669; height: 36px; border-radius: 9px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Fintech Green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#2563EB')" class="agent-theme-swatch" data-color="#2563EB" style="background: #2563EB; height: 36px; border-radius: 9px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Electric Blue">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#EA580C')" class="agent-theme-swatch" data-color="#EA580C" style="background: #EA580C; height: 36px; border-radius: 9px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Telecom Orange">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#DC2626')" class="agent-theme-swatch" data-color="#DC2626" style="background: #DC2626; height: 36px; border-radius: 9px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Crimson Red">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+            <button type="button" onclick="selectAgentThemeColor('#0891B2')" class="agent-theme-swatch" data-color="#0891B2" style="background: #0891B2; height: 36px; border-radius: 9px; border: 2px solid transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;" title="Cyber Cyan">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="3" style="display:none;"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+
+          <div style="background: #0B0B10; border: 1px solid #232333; border-radius: 9px; padding: 7px 12px; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <input type="color" id="agentCustomColorInput" value="#7C3AED" oninput="handleAgentCustomColor(this.value)" style="width: 26px; height: 26px; border: none; border-radius: 6px; cursor: pointer; background: transparent;" />
+              <span style="font-size: 11.5px; color: #D1D5DB; font-weight: 600;">Custom Hex Color:</span>
+            </div>
+            <span id="agentCustomHexDisplay" style="font-size: 11.5px; color: #DDD6FE; font-family: monospace; font-weight: 700;">#7C3AED</span>
+          </div>
+        </div>
+
+        <!-- 5. Mockup Preview -->
+        <div id="agentMiniPreviewBox" style="background: #0B0B10; border: 1px solid #232333; border-radius: 12px; padding: 12px; margin-bottom: 14px;">
+          <div style="font-size: 9.5px; font-weight: 700; color: #9CA3AF; text-transform: uppercase; margin-bottom: 8px;">Live Storefront Preview</div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div id="agentMiniPreviewLogo" style="width: 34px; height: 34px; border-radius: 10px; background: rgba(124, 58, 237, 0.3); border: 1px solid rgba(124, 58, 237, 0.5); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0;">
+              <span style="font-size: 16px; font-weight: 900; color: #FFF;">V</span>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <div id="agentPreviewMiniName" style="color: #FFF; font-size: 12.5px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Victor Telecoms &amp; POS</div>
+              <div id="agentPreviewMiniSlogan" style="color: #9CA3AF; font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Instant Switching &bull; Wholesale Telecoms</div>
+            </div>
+            <button type="button" id="agentPreviewMiniBtn" style="background: #7C3AED; border: none; color: #FFF; font-size: 10.5px; font-weight: 700; padding: 5px 9px; border-radius: 6px; cursor: default; flex-shrink: 0;">
+              Buy VTU
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. Save Button -->
+        <button type="button" onclick="saveAndApplyAgentBranding()" style="width: 100%; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 12.5px; font-weight: 800; padding: 11px; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Save Storefront Branding</span>
+        </button>
       </div>
 
       <!-- ACTIVITY AUDIT DETAIL MODAL -->
@@ -11318,6 +11253,43 @@
       const miniPreviewLogo = document.getElementById('agentMiniPreviewLogo');
       if (miniPreviewLogo) {
         miniPreviewLogo.innerHTML = renderAgentLogoContent(logoData, name, 36);
+      }
+    }
+
+    function switchAgentDashTab(tab) {
+      const btnAct = document.getElementById('agentTabBtnActivity');
+      const btnBrand = document.getElementById('agentTabBtnBranding');
+      const secAct = document.getElementById('agentDashSectionActivity');
+      const secBrand = document.getElementById('agentDashSectionBranding');
+
+      const primaryColor = currentAgentThemeColor || '#7C3AED';
+
+      if (tab === 'branding') {
+        if (btnAct) {
+          btnAct.classList.remove('active');
+          btnAct.style.background = 'transparent';
+          btnAct.style.color = '#9CA3AF';
+        }
+        if (btnBrand) {
+          btnBrand.classList.add('active');
+          btnBrand.style.background = primaryColor;
+          btnBrand.style.color = '#FFFFFF';
+        }
+        if (secAct) secAct.style.display = 'none';
+        if (secBrand) secBrand.style.display = 'block';
+      } else {
+        if (btnAct) {
+          btnAct.classList.add('active');
+          btnAct.style.background = primaryColor;
+          btnAct.style.color = '#FFFFFF';
+        }
+        if (btnBrand) {
+          btnBrand.classList.remove('active');
+          btnBrand.style.background = 'transparent';
+          btnBrand.style.color = '#9CA3AF';
+        }
+        if (secAct) secAct.style.display = 'block';
+        if (secBrand) secBrand.style.display = 'none';
       }
     }
 
