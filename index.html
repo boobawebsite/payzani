@@ -5447,18 +5447,12 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
           <span style="font-size: 15px; font-weight: 800;">Agent Dashboard</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 6px;">
-          <span style="display: inline-flex; align-items: center; gap: 4px; background: rgba(16, 185, 129, 0.12); color: #10B981; font-size: 10.5px; font-weight: 700; padding: 3px 8px; border-radius: 12px;">
-            <span style="width: 5px; height: 5px; background: #10B981; border-radius: 50%;"></span>
-            <span>Live</span>
-          </span>
-        </div>
       </div>
 
       <!-- SLEEK COMPACT HERO FLOAT & OUTLET CARD -->
       <div style="margin: 8px 16px 10px; background: linear-gradient(135deg, #181528 0%, #0F0E17 100%); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 14px; padding: 12px 14px; position: relative;">
         <!-- Top: Outlet Logo, Name & Margin Pill -->
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+        <div style="display: flex; align-items: center; margin-bottom: 8px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <div id="agentDashboardHeaderLogoWrap" style="width: 28px; height: 28px; border-radius: 8px; background: rgba(124, 58, 237, 0.25); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; color: #C4B5FD;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
@@ -5468,9 +5462,6 @@
               <div id="agentDashboardOutletSlogan" style="display: none;">Instant Switching &bull; Wholesale Telecoms</div>
             </div>
           </div>
-          <span style="font-size: 10px; font-weight: 700; color: #DDD6FE; background: rgba(124, 58, 237, 0.2); border: 1px solid rgba(124, 58, 237, 0.35); padding: 2px 7px; border-radius: 12px;">
-            8.5% Margin
-          </span>
         </div>
 
         <!-- Middle: Float Balance + Quick Top Up Pill -->
@@ -5479,15 +5470,10 @@
             <div style="font-size: 9px; color: #9CA3AF; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">Wholesale Float Balance</div>
             <div id="agentFloatDisplay" style="font-size: 22px; font-weight: 900; color: #FFFFFF; letter-spacing: -0.3px; line-height: 1.2; margin-top: 1px;">₦50,000.00</div>
           </div>
-          <div style="display: flex; align-items: center; gap: 6px;">
-            <span id="agentFloatStatusBadge" style="font-size: 9px; font-weight: 700; color: #10B981; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 10px;">
-              HEALTHY
-            </span>
-            <button type="button" onclick="toggleAgentTopUpDrawer()" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 6px 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              <span>+ Refill</span>
-            </button>
-          </div>
+          <button type="button" onclick="toggleAgentTopUpDrawer()" style="background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 11px; font-weight: 700; padding: 6px 10px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span>+ Refill</span>
+          </button>
         </div>
 
         <!-- Slim Progress Bar -->
@@ -5589,24 +5575,6 @@
 
       <!-- TAB 1: LIVE ACTIVITY STREAM -->
       <div id="agentDashSectionActivity" style="display: block; margin: 0 16px 20px;">
-        <!-- Activity Stream Header with discreet simulate action -->
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-          <div style="display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 800; color: #FFFFFF;">
-            <span style="width: 5px; height: 5px; border-radius: 50%; background: #10B981;"></span>
-            <span>Live Events</span>
-          </div>
-          <div style="display: flex; align-items: center; gap: 5px;">
-            <button type="button" id="agentRadarToggleBtn" onclick="toggleAgentLiveRadar()" title="Toggle Live Radar" style="background: #111E16; border: 1px solid #10B981; color: #34D399; font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 3px;">
-              <span style="width: 4px; height: 4px; border-radius: 50%; background: #10B981;"></span>
-              <span id="agentRadarStatusText">Radar On</span>
-            </button>
-            <button type="button" onclick="simulateAgentStorefrontActivity()" style="background: #1C1929; border: 1px solid #3B3356; color: #DDD6FE; font-size: 9.5px; font-weight: 700; padding: 2px 7px; border-radius: 5px; cursor: pointer; display: inline-flex; align-items: center; gap: 3px;">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-              <span>+ Simulate</span>
-            </button>
-          </div>
-        </div>
-
         <!-- Filter Pills Bar -->
         <div style="display: flex; gap: 5px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; scrollbar-width: none;">
           <button type="button" onclick="filterAgentActivity(this, 'all')" class="agent-activity-pill active" style="flex-shrink: 0; background: #7C3AED; color: #FFF; border: none; font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 12px; cursor: pointer;">All</button>
