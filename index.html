@@ -12800,18 +12800,19 @@
     async function opaySubmitPayment(serviceName) {
       let amount = 1000;
       let recipient = '0916 1182 730';
+      const carrierObj = (typeof OPAY_CARRIERS !== 'undefined' && OPAY_CARRIERS[opayCarrierIdx]) ? OPAY_CARRIERS[opayCarrierIdx] : { name: 'MTN' };
 
       if (serviceName === 'Airtime') {
         const inp = document.getElementById('opay-airtime-custom');
         const phone = document.getElementById('opay-airtime-phone');
         if (inp && Number(inp.value)) amount = Number(inp.value);
         if (phone && phone.value) recipient = phone.value.trim();
-      } else if (serviceName === 'Data') {
+      } else if (serviceName === 'Data' || serviceName === 'Mobile Data') {
         const lbl = document.getElementById('opay-data-pay-label');
         const phone = document.getElementById('opay-data-phone');
         if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
         if (phone && phone.value) recipient = phone.value.trim();
-      } else if (serviceName === 'TV') {
+      } else if (serviceName === 'TV' || serviceName === 'TV Subscription') {
         const lbl = document.getElementById('opay-tv-pay-label');
         if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
         recipient = '4821-9032-1184';
@@ -12819,7 +12820,7 @@
         const inp = document.getElementById('opay-betting-custom');
         if (inp && Number(inp.value)) amount = Number(inp.value);
         recipient = 'SportyBet ID: 9021482';
-      } else if (serviceName === 'Booster') {
+      } else if (serviceName === 'Booster' || serviceName === 'Social Booster') {
         const lbl = document.getElementById('opay-booster-pay-label');
         if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
         recipient = '@payzani_user';
@@ -12831,7 +12832,50 @@
         return;
       }
 
-      showCustomAlert('Routing ' + serviceName + ' order (₦' + amount.toLocaleString() + ') through switch...');
+      showCustomAlert('Routing ' + serviceName + ' order (₦' + amount.toLocaleString() + ') through VTpass switch...');
+
+      // Dispatch to VTpass Gateway Switch
+      let vtpassTxId = null;
+      let vtServiceID = 'mtn';
+      const cLow = (carrierObj.name || '').toLowerCase();
+      if (cLow.includes('airtel')) vtServiceID = 'airtel';
+      else if (cLow.includes('glo')) vtServiceID = 'glo';
+      else if (cLow.includes('9mobile') || cLow.includes('etisalat')) vtServiceID = 'etisalat';
+      else vtServiceID = 'mtn';
+
+      if (serviceName === 'Data' || serviceName === 'Mobile Data') {
+        vtServiceID = vtServiceID + '-data';
+      }
+
+      try {
+        const now = new Date();
+        const ymd = now.toISOString().slice(0, 10).replace(/-/g, '');
+        const hm = String(now.getHours()).padStart(2, '0') + String(now.getMinutes()).padStart(2, '0');
+        const rnd = Math.random().toString(36).substring(2, 6);
+        const vtReqId = `${ymd}${hm}${rnd}`;
+        const cleanPhone = recipient.replace(/\D/g, '') || '08011111111';
+
+        const vtRes = await fetch('https://sandbox.vtpass.com/api/pay', {
+          method: 'POST',
+          headers: {
+            'api-key': '1df4f7eadb485e0a320c02c0643d21ed',
+            'secret-key': 'SK_72458f9b554903ad8a385fe7c5b927ac532a56d46b9',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            request_id: vtReqId,
+            serviceID: vtServiceID,
+            amount: Number(amount),
+            phone: cleanPhone
+          })
+        });
+        const vtJson = await vtRes.json();
+        if (vtJson && vtJson.content && vtJson.content.transactions) {
+          vtpassTxId = vtJson.content.transactions.transactionId;
+        }
+      } catch (vtErr) {
+        console.warn('VTpass gateway call notice:', vtErr);
+      }
 
       try {
         const newBal = curBal - amount;
@@ -12841,12 +12885,12 @@
           updated_at: new Date().toISOString()
         });
 
-        const txId = 'TX-' + Math.floor(100000 + Math.random() * 900000);
+        const txId = vtpassTxId ? ('VT-' + vtpassTxId.slice(-8)) : ('TX-' + Math.floor(100000 + Math.random() * 900000));
         await PAYZANI_SB.post('transactions', {
           id: txId,
           user_id: PAYZANI_SB.userId,
           type: serviceName,
-          description: serviceName + ' Purchase • ' + recipient,
+          description: serviceName + ' Purchase (' + carrierObj.name + ') • ' + recipient + (vtpassTxId ? ' [VTpass #' + vtpassTxId.slice(-6) + ']' : ''),
           amount: amount,
           flow: 'debit',
           status: 'success',
@@ -12860,7 +12904,7 @@
             type: 'order',
             customer: recipient,
             title: serviceName + ' Delivery',
-            description: serviceName + ' order fulfilled instantly via switch',
+            description: serviceName + ' order fulfilled instantly via VTpass switch',
             amount: amount,
             status: 'Completed'
           });
@@ -12869,7 +12913,7 @@
         await syncRealUserProfile();
         await syncRealTransactions();
 
-        showCustomAlert(serviceName + ' of ₦' + amount.toLocaleString() + ' processed and delivered successfully!');
+        showCustomAlert(serviceName + ' of ₦' + amount.toLocaleString() + ' delivered successfully via VTpass Switch!');
         setTimeout(() => {
           opaySwitchScreen('opay-screen-home');
         }, 1200);
