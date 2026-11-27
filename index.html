@@ -4162,11 +4162,14 @@
         opacity: 1;
       }
       .payzani-auth-prefix.is-hidden {
+        display: none !important;
+        width: 0 !important;
+        min-width: 0 !important;
         max-width: 0 !important;
         opacity: 0 !important;
-        padding-right: 0 !important;
-        margin-right: 0 !important;
-        border-right: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
         pointer-events: none !important;
       }
       .payzani-auth-email-icon {
@@ -4685,7 +4688,7 @@
                 <span class="payzani-auth-email-icon" id="payzaniLoginEmailIcon">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                 </span>
-                <input type="text" class="payzani-auth-input" id="payzaniLoginPhone" oninput="handleLoginIdentifierInput(this)" placeholder="0812 345 6789 or email" required autocomplete="username">
+                <input type="text" class="payzani-auth-input" id="payzaniLoginPhone" oninput="handleLoginIdentifierInput(this)" onkeyup="handleLoginIdentifierInput(this)" onchange="handleLoginIdentifierInput(this)" onpaste="setTimeout(() => handleLoginIdentifierInput(this), 20)" placeholder="0812 345 6789 or email" required autocomplete="username">
               </div>
             </div>
 
@@ -4939,30 +4942,72 @@
 
       <div class="opay-sheet-body">
         <div class="opay-sheet-title">Top up</div>
-        <div class="opay-amounts-grid">
-          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 100, 'airtime')">
-            <span class="opay-pill-val">₦100</span>
+        <div class="opay-amounts-grid" id="opayAirtimeAmountsGrid">
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 100, 'airtime', 98)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">₦100</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">-2%</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦100</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 12.5px;">₦98</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 200, 'airtime')">
-            <span class="opay-pill-val">₦200</span>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 200, 'airtime', 196)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">₦200</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">-2%</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦200</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 12.5px;">₦196</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 300, 'airtime')">
-            <span class="opay-pill-val">₦300</span>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 500, 'airtime', 490)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">₦500</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">-2%</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦500</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 12.5px;">₦490</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 500, 'airtime')">
-            <span class="opay-pill-val">₦500</span>
+          <div class="opay-amount-pill selected" onclick="opaySelectAmount(this, 1000, 'airtime', 980)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">₦1,000</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦20</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦1,000</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 12.5px;">₦980</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill selected" onclick="opaySelectAmount(this, 1000, 'airtime')">
-            <span class="opay-pill-val">₦1,000</span>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 2000, 'airtime', 1960)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">₦2,000</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦40</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦2,000</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 12.5px;">₦1,960</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 2000, 'airtime')">
-            <span class="opay-pill-val">₦2,000</span>
+          <div class="opay-amount-pill" onclick="opaySelectAmount(this, 5000, 'airtime', 4900)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">₦5,000</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦100</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦5,000</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 12.5px;">₦4,900</strong>
+            </div>
           </div>
         </div>
 
         <input type="number" class="opay-custom-amt-input" id="opay-airtime-custom" placeholder="₦ 50-500,000" value="1000" />
         <button class="opay-pay-action-btn" onclick="opaySubmitPayment('Airtime')">
-          Pay ₦<span id="opay-airtime-pay-label">1,000</span>
+          Pay ₦<span id="opay-airtime-pay-label">980</span>
         </button>
       </div>
     </div>
@@ -5050,22 +5095,46 @@
 
       <div class="opay-sheet-body">
         <div class="opay-sheet-title">Hot Offers</div>
-        <div class="opay-amounts-grid" style="grid-template-columns: repeat(2, 1fr);">
-          <div class="opay-amount-pill selected" onclick="opaySelectTvPlan(this, 'STARTERE36', 5800)">
-            <span class="opay-pill-val">STARTERE36</span>
-            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+        <div class="opay-amounts-grid" id="opayTvAmountsGrid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="opay-amount-pill selected" onclick="opaySelectTvPlan(this, 'STARTERE36', 5800, 6200)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">STARTERE36</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦400</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦6,200</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦5,800</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SELECTE36', 10800)">
-            <span class="opay-pill-val">SELECTE36</span>
-            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SELECTE36', 10800, 11500)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">SELECTE36</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦700</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦11,500</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦10,800</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SPORTSE36', 20800)">
-            <span class="opay-pill-val">SPORTSE36</span>
-            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SPORTSE36', 20800, 22000)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">SPORTSE36</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦1,200</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦22,000</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦20,800</strong>
+            </div>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'DStv Compact', 15700)">
-            <span class="opay-pill-val">Compact</span>
-            <span style="font-size:11px; color:#F59E0B;">1 Month</span>
+          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'DStv Compact', 15700, 16500)">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">Compact</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦800</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦16,500</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦15,700</strong>
+            </div>
           </div>
         </div>
 
@@ -5936,8 +6005,90 @@
             </div>
           </div>
 
+          <!-- Cable TV Subscription Packages Pricing -->
+          <div style="background: #0D0D14; border: 1px solid #222230; border-radius: 10px; padding: 10px; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="font-size: 11px; font-weight: 800; color: #E5E7EB;">Cable TV Subscription Packages (MSRP vs Selling)</div>
+              <span style="font-size: 9px; color: #60A5FA; font-weight: 700;">DStv / GOtv</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+                <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">STARTERE36</div>
+                <div>
+                  <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
+                  <input type="number" id="admin_tv_orig_STARTERE36" value="6200" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+                <div>
+                  <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
+                  <input type="number" id="admin_tv_retail_STARTERE36" value="5800" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+              </div>
+              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+                <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">SELECTE36</div>
+                <div>
+                  <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
+                  <input type="number" id="admin_tv_orig_SELECTE36" value="11500" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+                <div>
+                  <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
+                  <input type="number" id="admin_tv_retail_SELECTE36" value="10800" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+              </div>
+              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+                <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">SPORTSE36</div>
+                <div>
+                  <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
+                  <input type="number" id="admin_tv_orig_SPORTSE36" value="22000" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+                <div>
+                  <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
+                  <input type="number" id="admin_tv_retail_SPORTSE36" value="20800" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+              </div>
+              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+                <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">DStv Compact</div>
+                <div>
+                  <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
+                  <input type="number" id="admin_tv_orig_Compact" value="16500" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+                <div>
+                  <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
+                  <input type="number" id="admin_tv_retail_Compact" value="15700" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Power & Electricity Settings -->
+          <div style="background: #0D0D14; border: 1px solid #222230; border-radius: 10px; padding: 10px; margin-bottom: 14px;">
+            <div style="font-size: 11px; font-weight: 800; color: #E5E7EB; margin-bottom: 6px;">Power &amp; Electricity Fee Policy</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div>
+                <label style="font-size: 9.5px; color: #9CA3AF; display: block; margin-bottom: 2px;">Original Fee (<s>MSRP</s>)</label>
+                <div style="background: #0B0B10; border: 1px solid #262638; border-radius: 6px; padding: 0 8px; height: 32px; display: flex; align-items: center;">
+                  <span style="font-size: 11px; color: #9CA3AF; margin-right: 4px;">₦</span>
+                  <input type="number" id="adminPowerOrigFee" value="100" style="width: 100%; background: transparent; border: none; outline: none; color: #9CA3AF; text-decoration: line-through; font-size: 11.5px; font-weight: 700;" />
+                </div>
+              </div>
+              <div>
+                <label style="font-size: 9.5px; color: #9CA3AF; display: block; margin-bottom: 2px;">Charged Fee (0 = Free)</label>
+                <div style="background: #0B0B10; border: 1px solid #262638; border-radius: 6px; padding: 0 8px; height: 32px; display: flex; align-items: center;">
+                  <span style="font-size: 11px; color: #34D399; margin-right: 4px;">₦</span>
+                  <input type="number" id="adminPowerChargedFee" value="0" style="width: 100%; background: transparent; border: none; outline: none; color: #34D399; font-size: 11.5px; font-weight: 800;" />
+                </div>
+              </div>
+            </div>
+            <div style="margin-top: 8px;">
+              <label style="font-size: 9.5px; color: #9CA3AF; display: block; margin-bottom: 2px;">Customer Cashback (%)</label>
+              <div style="background: #0B0B10; border: 1px solid #262638; border-radius: 6px; padding: 0 8px; height: 32px; display: flex; align-items: center;">
+                <input type="number" id="adminPowerCashback" value="0.5" step="0.1" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11.5px; font-weight: 700;" />
+                <span style="font-size: 11px; color: #A78BFA; font-weight: 700;">%</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Save Pricing Button -->
-          <button type="button" onclick="saveMasterPricingSettings()" style="width: 100%; background: linear-gradient(135deg, #10B981 0%, #059669 100%); border: none; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <button type="button" onclick="saveAdminPricingTariff()" style="width: 100%; background: linear-gradient(135deg, #10B981 0%, #059669 100%); border: none; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Save &amp; Apply Pricing Live</span>
           </button>
@@ -9661,23 +9812,68 @@
       showCustomAlert(`Network switched to ${c.name}`);
     }
 
-    function opaySelectAmount(el, val, type) {
+    function renderCustomerDataPlans() {
+      const grid = document.getElementById('opayDataAmountsGrid');
+      if (!grid) return;
+
+      const carrier = OPAY_CARRIERS[opayCarrierIdx] || { name: 'MTN' };
+      let netKey = 'mtn';
+      const cName = carrier.name.toLowerCase();
+      if (cName.includes('airtel')) netKey = 'airtel';
+      else if (cName.includes('glo')) netKey = 'glo';
+      else if (cName.includes('9mobile') || cName.includes('mobile')) netKey = 'mobile9';
+
+      const cfg = getMasterAdminConfig();
+      const plans = (cfg.dataPricing && cfg.dataPricing[netKey]) || [];
+
+      if (!plans.length) return;
+
+      grid.innerHTML = plans.map((p, idx) => {
+        const origPrice = p.originalPrice || Math.round(Number(p.retailPrice) * 1.25);
+        const retPrice = Number(p.retailPrice);
+        const saveAmt = Math.max(15, origPrice - retPrice);
+        const isSelected = idx === 0 ? 'selected' : '';
+
+        return `
+          <div class="opay-amount-pill ${isSelected}" onclick="opaySelectDataPlan(this, '${escapeHtml(p.name)}', ${retPrice}, ${origPrice})">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-weight: 800; font-size: 13.5px;">${escapeHtml(p.name)}</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 5px; border-radius: 4px;">SAVE ₦${saveAmt.toLocaleString()}</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 3px; display: flex; align-items: baseline; gap: 5px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600;">₦${origPrice.toLocaleString()}</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦${retPrice.toLocaleString()}</strong>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Set initial pay label
+      if (plans.length > 0) {
+        const firstPrice = Number(plans[0].retailPrice);
+        const label = document.getElementById('opay-data-pay-label');
+        if (label) label.innerText = firstPrice.toLocaleString();
+      }
+    }
+
+    function opaySelectAmount(el, val, type, discountedVal) {
       el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
       const input = document.getElementById(`opay-${type}-custom`);
       if (input) input.value = val;
+      const finalPrice = discountedVal ? Number(discountedVal) : Number(val);
       const label = document.getElementById(`opay-${type}-pay-label`);
-      if (label) label.innerText = Number(val).toLocaleString();
+      if (label) label.innerText = finalPrice.toLocaleString();
     }
 
-    function opaySelectDataPlan(el, planName, price) {
+    function opaySelectDataPlan(el, planName, price, origPrice) {
       el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
       const label = document.getElementById('opay-data-pay-label');
       if (label) label.innerText = Number(price).toLocaleString();
     }
 
-    function opaySelectTvPlan(el, planName, price) {
+    function opaySelectTvPlan(el, planName, price, origPrice) {
       el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
       const label = document.getElementById('opay-tv-pay-label');
@@ -10117,25 +10313,55 @@
 
     function handleLoginIdentifierInput(input) {
       if (!input) return;
-      const val = input.value.trim();
+      const val = (input.value || '').trim();
       const prefix = document.getElementById('payzaniLoginPrefix');
       const emailIcon = document.getElementById('payzaniLoginEmailIcon');
       const label = document.getElementById('payzaniLoginLabel');
 
-      // Check if user has typed any letter or @
+      // Check if user has typed any letter or @ symbol (indicates email)
       const isEmail = /[a-zA-Z@]/.test(val);
 
       if (isEmail) {
-        if (prefix) prefix.classList.add('is-hidden');
-        if (emailIcon) emailIcon.classList.add('is-visible');
+        if (prefix) {
+          prefix.classList.add('is-hidden');
+          prefix.style.display = 'none';
+        }
+        if (emailIcon) {
+          emailIcon.classList.add('is-visible');
+          emailIcon.style.display = 'inline-flex';
+        }
         if (label) label.textContent = 'Email Address';
         input.placeholder = 'name@example.com';
       } else {
-        if (prefix) prefix.classList.remove('is-hidden');
-        if (emailIcon) emailIcon.classList.remove('is-visible');
+        if (prefix) {
+          prefix.classList.remove('is-hidden');
+          prefix.style.display = 'inline-flex';
+        }
+        if (emailIcon) {
+          emailIcon.classList.remove('is-visible');
+          emailIcon.style.display = 'none';
+        }
         if (label) label.textContent = 'Mobile Number or Email';
         input.placeholder = '0812 345 6789 or email';
       }
+    }
+
+    // Auto-detect email if browser autofills or on startup
+    function initLoginFieldWatcher() {
+      const loginInp = document.getElementById('payzaniLoginPhone');
+      if (loginInp) {
+        handleLoginIdentifierInput(loginInp);
+        loginInp.addEventListener('input', () => handleLoginIdentifierInput(loginInp));
+        loginInp.addEventListener('change', () => handleLoginIdentifierInput(loginInp));
+        loginInp.addEventListener('keyup', () => handleLoginIdentifierInput(loginInp));
+        loginInp.addEventListener('focus', () => handleLoginIdentifierInput(loginInp));
+        loginInp.addEventListener('blur', () => handleLoginIdentifierInput(loginInp));
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLoginFieldWatcher);
+    } else {
+      initLoginFieldWatcher();
     }
 
     // Agent Subscreen Controller & Dashboard Engine
@@ -11850,6 +12076,32 @@
       if (inputFee && document.activeElement !== inputFee) inputFee.value = fee;
       const deskFee = document.getElementById('adminAgentFee');
       if (deskFee && document.activeElement !== deskFee) deskFee.value = fee;
+
+      // Sync Cable TV admin inputs and customer grid
+      if (cfg.tvPricing) {
+        Object.keys(cfg.tvPricing).forEach(pkg => {
+          const item = cfg.tvPricing[pkg];
+          const origInp = document.getElementById('admin_tv_orig_' + pkg);
+          const retInp = document.getElementById('admin_tv_retail_' + pkg);
+          if (origInp && item.orig) origInp.value = item.orig;
+          if (retInp && item.retail) retInp.value = item.retail;
+        });
+      }
+
+      // Sync Power admin inputs
+      if (cfg.powerPricing) {
+        const pOrig = document.getElementById('adminPowerOrigFee');
+        const pChg = document.getElementById('adminPowerChargedFee');
+        const pCash = document.getElementById('adminPowerCashback');
+        if (pOrig && cfg.powerPricing.origFee !== undefined) pOrig.value = cfg.powerPricing.origFee;
+        if (pChg && cfg.powerPricing.chargedFee !== undefined) pChg.value = cfg.powerPricing.chargedFee;
+        if (pCash && cfg.powerPricing.cashback !== undefined) pCash.value = cfg.powerPricing.cashback;
+      }
+
+      // Automatically sync dynamic customer data plans and tariffs
+      if (typeof renderCustomerDataPlans === 'function') {
+        renderCustomerDataPlans();
+      }
     }
 
     async function openMasterAdminPanel() {
@@ -11965,28 +12217,52 @@
       if (agtAirtime) agtAirtime.value = airtimeCfg.agent;
       if (retAirtime) retAirtime.value = airtimeCfg.retail;
 
+      // TV & Power values
+      if (cfg.tvPricing) {
+        ['STARTERE36', 'SELECTE36', 'SPORTSE36', 'Compact'].forEach(pkg => {
+          if (cfg.tvPricing[pkg]) {
+            const origInp = document.getElementById('admin_tv_orig_' + pkg);
+            const retInp = document.getElementById('admin_tv_retail_' + pkg);
+            if (origInp && cfg.tvPricing[pkg].orig) origInp.value = cfg.tvPricing[pkg].orig;
+            if (retInp && cfg.tvPricing[pkg].retail) retInp.value = cfg.tvPricing[pkg].retail;
+          }
+        });
+      }
+      if (cfg.powerPricing) {
+        const pOrig = document.getElementById('adminPowerOrigFee');
+        const pChg = document.getElementById('adminPowerChargedFee');
+        const pCash = document.getElementById('adminPowerCashback');
+        if (pOrig && cfg.powerPricing.origFee !== undefined) pOrig.value = cfg.powerPricing.origFee;
+        if (pChg && cfg.powerPricing.chargedFee !== undefined) pChg.value = cfg.powerPricing.chargedFee;
+        if (pCash && cfg.powerPricing.cashback !== undefined) pCash.value = cfg.powerPricing.cashback;
+      }
+
       if (!plans.length) {
         container.innerHTML = '<div style="color: #9CA3AF; font-size: 11px; text-align: center; padding: 16px;">No data plans configured for this network.</div>';
         return;
       }
 
       container.innerHTML = plans.map(p => `
-        <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 8px; padding: 8px 10px; display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr; align-items: center; gap: 6px; font-size: 11px;">
+        <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 8px; padding: 8px 10px; display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr 1fr; align-items: center; gap: 6px; font-size: 11px;">
           <div>
             <div style="color: #FFFFFF; font-weight: 700;">${p.name}</div>
             <div style="color: #6B7280; font-size: 9px;">${p.validity} • Cost: ₦${p.apiCost}</div>
           </div>
           <div>
-            <div style="font-size: 8px; color: #9CA3AF;">API Cost</div>
-            <input type="number" id="plan_cost_${p.id}" value="${p.apiCost}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #FFF; font-size: 10.5px; padding: 3px 6px; border-radius: 4px;" />
+            <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
+            <input type="number" id="plan_orig_${p.id}" value="${p.originalPrice || Math.round(Number(p.retailPrice) * 1.25)}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 3px 6px; border-radius: 4px;" />
+          </div>
+          <div>
+            <div style="font-size: 8px; color: #9CA3AF;">Selling (Bold)</div>
+            <input type="number" id="plan_retail_${p.id}" value="${p.retailPrice}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #60A5FA; font-size: 10.5px; font-weight: 800; padding: 3px 6px; border-radius: 4px;" />
           </div>
           <div>
             <div style="font-size: 8px; color: #9CA3AF;">Agent Price</div>
-            <input type="number" id="plan_agent_${p.id}" value="${p.agentPrice}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 700; padding: 3px 6px; border-radius: 4px;" />
+            <input type="number" id="plan_agent_${p.id}" value="${p.agentPrice}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 3px 6px; border-radius: 4px;" />
           </div>
           <div>
-            <div style="font-size: 8px; color: #9CA3AF;">Retail Price</div>
-            <input type="number" id="plan_retail_${p.id}" value="${p.retailPrice}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #60A5FA; font-size: 10.5px; font-weight: 700; padding: 3px 6px; border-radius: 4px;" />
+            <div style="font-size: 8px; color: #9CA3AF;">API Cost</div>
+            <input type="number" id="plan_cost_${p.id}" value="${p.apiCost}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #FFF; font-size: 10.5px; padding: 3px 6px; border-radius: 4px;" />
           </div>
         </div>
       `).join('');
@@ -11997,9 +12273,11 @@
       const plans = (cfg.dataPricing && cfg.dataPricing[currentAdminPricingNetwork]) || [];
 
       plans.forEach(p => {
+        const origEl = document.getElementById('plan_orig_' + p.id);
         const costEl = document.getElementById('plan_cost_' + p.id);
         const agtEl = document.getElementById('plan_agent_' + p.id);
         const retEl = document.getElementById('plan_retail_' + p.id);
+        if (origEl && origEl.value) p.originalPrice = Number(origEl.value);
         if (costEl && costEl.value) p.apiCost = Number(costEl.value);
         if (agtEl && agtEl.value) p.agentPrice = Number(agtEl.value);
         if (retEl && retEl.value) p.retailPrice = Number(retEl.value);
@@ -12013,6 +12291,27 @@
         retail: retAirtime ? Number(retAirtime.value) : 2.0
       };
 
+      // Cable TV Pricing (DStv / GOtv)
+      if (!cfg.tvPricing) cfg.tvPricing = {};
+      ['STARTERE36', 'SELECTE36', 'SPORTSE36', 'Compact'].forEach(pkg => {
+        const origEl = document.getElementById('admin_tv_orig_' + pkg);
+        const retEl = document.getElementById('admin_tv_retail_' + pkg);
+        cfg.tvPricing[pkg] = {
+          orig: origEl && origEl.value ? Number(origEl.value) : (pkg === 'STARTERE36' ? 6200 : pkg === 'SELECTE36' ? 11500 : pkg === 'SPORTSE36' ? 22000 : 16500),
+          retail: retEl && retEl.value ? Number(retEl.value) : (pkg === 'STARTERE36' ? 5800 : pkg === 'SELECTE36' ? 10800 : pkg === 'SPORTSE36' ? 20800 : 15700)
+        };
+      });
+
+      // Power / Electricity Pricing & Waiver Policy
+      const pOrig = document.getElementById('adminPowerOrigFee');
+      const pChg = document.getElementById('adminPowerChargedFee');
+      const pCash = document.getElementById('adminPowerCashback');
+      cfg.powerPricing = {
+        origFee: pOrig && pOrig.value !== '' ? Number(pOrig.value) : 100,
+        chargedFee: pChg && pChg.value !== '' ? Number(pChg.value) : 0,
+        cashback: pCash && pCash.value !== '' ? Number(pCash.value) : 0.5
+      };
+
       await saveMasterAdminConfig(cfg);
 
       // Sync customer data plans across the application
@@ -12020,7 +12319,7 @@
         renderCustomerDataPlans();
       }
 
-      showCustomAlert(`Updated ${currentAdminPricingNetwork.toUpperCase()} pricing saved live to database!`);
+      showCustomAlert(`Updated pricing for Data, Airtime, Cable TV and Power saved live to database!`);
     }
 
     function renderMasterAgentsList(filterQuery = '') {
