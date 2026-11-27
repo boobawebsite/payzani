@@ -9546,15 +9546,7 @@
       showCustomAlert(serviceName + ' processed and delivered successfully');
     }
 
-    function saveMasterSettings() {
-      const fee = document.getElementById('adminAgentFee').value;
-      const cut = document.getElementById('adminTokenCut').value;
-      const cfg = getMasterAdminConfig();
-      if (fee) cfg.agentOnboardingFee = Number(fee);
-      if (cut) cfg.platformTokenCut = Number(cut);
-      saveMasterAdminConfig(cfg);
-      showCustomAlert('Platform Settings Updated: Agent Fee = NGN ' + Number(fee).toLocaleString() + ', Token Margin = NGN ' + cut);
-    }
+// saveMasterSettings unified in Superadmin section below
 
     let alertTimer = null;
     function showCustomAlert(msg) {
@@ -10169,7 +10161,7 @@
       userEmail = userEmail.replace(/\s+/g, '');
 
       const cfg = (typeof getMasterAdminConfig === 'function') ? getMasterAdminConfig() : { agentOnboardingFee: 4700 };
-      const fee = Number(cfg.agentOnboardingFee || 2500);
+      const fee = Number(cfg.agentOnboardingFee || 4700);
 
       if (btn) {
         btn.disabled = true;
@@ -11678,8 +11670,14 @@
     let currentAdjustingAgentId = null;
 
     // Real Supabase Cache for Master Admin HQ
+    let initialMasterConfig = JSON.parse(JSON.stringify(DEFAULT_MASTER_CONFIG));
+    try {
+      const storedCfg = localStorage.getItem('payzani_master_admin_config');
+      if (storedCfg) initialMasterConfig = Object.assign({}, DEFAULT_MASTER_CONFIG, JSON.parse(storedCfg));
+    } catch(e) {}
+
     let MASTER_ADMIN_CACHE = {
-      config: JSON.parse(JSON.stringify(DEFAULT_MASTER_CONFIG)),
+      config: initialMasterConfig,
       agents: [],
       transactions: [],
       vtpass: null,
@@ -11687,6 +11685,12 @@
     };
 
     function getMasterAdminConfig() {
+      if (!MASTER_ADMIN_CACHE.config) {
+        try {
+          const stored = localStorage.getItem('payzani_master_admin_config');
+          if (stored) MASTER_ADMIN_CACHE.config = Object.assign({}, DEFAULT_MASTER_CONFIG, JSON.parse(stored));
+        } catch(e) {}
+      }
       return MASTER_ADMIN_CACHE.config || DEFAULT_MASTER_CONFIG;
     }
 
@@ -11806,27 +11810,29 @@
       MASTER_ADMIN_CACHE.config = cfg;
       try {
         localStorage.setItem('payzani_master_admin_config', JSON.stringify(cfg));
-        if (PAYZANI_SB && typeof PAYZANI_SB.upsert === 'function') {
-          await PAYZANI_SB.upsert('admin_settings', {
-            key: 'master_admin_config',
-            value: cfg,
-            updated_at: new Date().toISOString()
-          });
-        } else if (PAYZANI_SB && typeof PAYZANI_SB.patch === 'function') {
+      } catch(e) {}
+
+      // Direct PATCH to Supabase admin_settings table
+      try {
+        if (PAYZANI_SB && typeof PAYZANI_SB.patch === 'function') {
           await PAYZANI_SB.patch('admin_settings', 'key=eq.master_admin_config', {
             value: cfg,
             updated_at: new Date().toISOString()
           });
+          console.log('Saved master_admin_config to Supabase:', cfg.agentOnboardingFee);
         }
       } catch(e) {
-        console.warn('Save master admin config to Supabase notice:', e);
+        console.warn('Supabase patch retry with upsert:', e);
         try {
-          await PAYZANI_SB.patch('admin_settings', 'key=eq.master_admin_config', {
-            value: cfg,
-            updated_at: new Date().toISOString()
-          });
+          if (PAYZANI_SB && typeof PAYZANI_SB.upsert === 'function') {
+            await PAYZANI_SB.upsert('admin_settings', {
+              key: 'master_admin_config',
+              value: cfg,
+              updated_at: new Date().toISOString()
+            });
+          }
         } catch(err2) {
-          console.error('Fallback patch failed:', err2);
+          console.error('Supabase save error:', err2);
         }
       }
       applyMasterConfigToDOM(cfg);
@@ -11891,32 +11897,40 @@
     async function saveMasterFeeSettings() {
       const cfg = getMasterAdminConfig();
       const inputFee = document.getElementById('adminAgentOnboardingFee');
-      const inputMargin = document.getElementById('adminDefaultAgentMargin');
-      const inputMinFloat = document.getElementById('adminMinFloatRefill');
-      const inputCut = document.getElementById('adminPlatformTokenCut');
-      const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
+      const deskFee = document.getElementById('adminAgentFee');
+      let feeVal = 4700;
+      if (inputFee && inputFee.value) feeVal = Number(inputFee.value);
+      else if (deskFee && deskFee.value) feeVal = Number(deskFee.value);
 
-      if (inputFee && inputFee.value) cfg.agentOnboardingFee = Number(inputFee.value); else if (deskFee && deskFee.value) cfg.agentOnboardingFee = Number(deskFee.value);
+      cfg.agentOnboardingFee = feeVal;
+
+      const inputMargin = document.getElementById('adminDefaultAgentMargin');
       if (inputMargin) cfg.defaultAgentMargin = Number(inputMargin.value) || 8.5;
+      const inputMinFloat = document.getElementById('adminMinFloatRefill');
       if (inputMinFloat) cfg.minFloatRefill = Number(inputMinFloat.value) || 5000;
+      const inputCut = document.getElementById('adminPlatformTokenCut');
       if (inputCut) cfg.platformTokenCut = Number(inputCut.value) || 200;
+      const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
       if (inputWithdraw) cfg.agentWithdrawalFee = Number(inputWithdraw.value) || 50;
 
       await saveMasterAdminConfig(cfg);
-      showCustomAlert('Master Agent Rules & Fees saved live to Supabase!');
+      showCustomAlert('Agent Activation Fee updated to ₦' + feeVal.toLocaleString() + ' & saved live!');
     }
 
     async function saveMasterSettings() {
+      const cfg = getMasterAdminConfig();
       const deskFee = document.getElementById('adminAgentFee');
       const inputFee = document.getElementById('adminAgentOnboardingFee');
-      const feeVal = (deskFee && deskFee.value) ? Number(deskFee.value) : ((inputFee && inputFee.value) ? Number(inputFee.value) : 4700);
+      let feeVal = 4700;
+      if (deskFee && deskFee.value) feeVal = Number(deskFee.value);
+      else if (inputFee && inputFee.value) feeVal = Number(inputFee.value);
+
       const cut = document.getElementById('adminTokenCut') ? document.getElementById('adminTokenCut').value : 200;
-      const cfg = getMasterAdminConfig();
       cfg.agentOnboardingFee = feeVal;
       if (cut) cfg.platformTokenCut = Number(cut);
 
       await saveMasterAdminConfig(cfg);
-      showCustomAlert('Platform Settings Updated & Saved Live to Supabase!');
+      showCustomAlert('Agent Activation Fee updated to ₦' + feeVal.toLocaleString() + ' & saved live!');
     }
 
     function selectAdminPricingNetwork(network) {
