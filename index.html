@@ -12156,17 +12156,24 @@
       showCustomAlert(`Simulated live switch order: ${chosenItem.name} via ${chosenOutlet}!`);
     }
 
-    // Auto-detect ?admin=1 or ?view=admin in URL on page load
+    // Auto-detect admin in URL parameters or hash on load
     window.addEventListener('DOMContentLoaded', () => {
       try {
         const params = new URLSearchParams(window.location.search);
-        if (params.get('admin') === '1' || params.get('view') === 'admin') {
-          setTimeout(openMasterAdminPanel, 300);
+        const hasAdmin = params.has('admin') || params.get('view') === 'admin' || window.location.hash.toLowerCase().includes('admin');
+        if (hasAdmin) {
+          setTimeout(openMasterAdminPanel, 200);
         } else {
           // Initialize customer data plans from master admin pricing
           renderCustomerDataPlans();
         }
       } catch(e) {}
+    });
+
+    window.addEventListener('hashchange', () => {
+      if (window.location.hash.toLowerCase().includes('admin')) {
+        openMasterAdminPanel();
+      }
     });
 
 
