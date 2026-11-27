@@ -12768,6 +12768,36 @@
         const vtReqId = `${ymd}${hm}${rnd}`;
         const cleanPhone = recipient.replace(/\D/g, '') || '08011111111';
 
+        const vtPayload = {
+          request_id: vtReqId,
+          serviceID: vtServiceID,
+          amount: Number(amount),
+          phone: cleanPhone
+        };
+
+        if (serviceName.toLowerCase().includes('data')) {
+          vtPayload.billersCode = cleanPhone;
+          if (vtServiceID === 'mtn-data') {
+            if (amount <= 100) vtPayload.variation_code = 'mtn-10mb-100';
+            else if (amount <= 200) vtPayload.variation_code = 'mtn-50mb-200';
+            else if (amount <= 500) vtPayload.variation_code = 'mtn-500mb-500';
+            else if (amount <= 1000) vtPayload.variation_code = 'mtn-100mb-1000';
+            else if (amount <= 1500) vtPayload.variation_code = 'mtn-20hrs-1500';
+            else vtPayload.variation_code = 'mtn-3gb-2500';
+          } else if (vtServiceID === 'airtel-data') {
+            if (amount <= 100) vtPayload.variation_code = 'airt-100';
+            else if (amount <= 300) vtPayload.variation_code = 'airt-300';
+            else if (amount <= 500) vtPayload.variation_code = 'airt-500';
+            else vtPayload.variation_code = 'airt-1000';
+          } else if (vtServiceID === 'glo-data') {
+            if (amount <= 100) vtPayload.variation_code = 'glo100';
+            else if (amount <= 500) vtPayload.variation_code = 'glo500';
+            else vtPayload.variation_code = 'glo1000';
+          } else {
+            vtPayload.variation_code = 'eti-100';
+          }
+        }
+
         const vtRes = await fetch('https://sandbox.vtpass.com/api/pay', {
           method: 'POST',
           headers: {
@@ -12775,12 +12805,7 @@
             'secret-key': 'SK_72458f9b554903ad8a385fe7c5b927ac532a56d46b9',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            request_id: vtReqId,
-            serviceID: vtServiceID,
-            amount: Number(amount),
-            phone: cleanPhone
-          })
+          body: JSON.stringify(vtPayload)
         });
         const vtJson = await vtRes.json();
         if (vtJson && vtJson.content && vtJson.content.transactions) {
