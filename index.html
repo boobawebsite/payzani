@@ -5578,11 +5578,11 @@
           <div style="display: flex; flex-direction: column; gap: 8px; font-size: 11px; margin-bottom: 14px;">
             <div style="display: flex; justify-content: space-between; padding-bottom: 5px; border-bottom: 1px solid #1C1C26;">
               <span style="color: #9CA3AF;">Customer / Entity</span>
-              <span id="agentAuditCustomer" style="color: #FFFFFF; font-weight: 700;">Customer 0803***891</span>
+              <span id="agentAuditCustomer" style="color: #FFFFFF; font-weight: 700;">-</span>
             </div>
             <div style="display: flex; justify-content: space-between; padding-bottom: 5px; border-bottom: 1px solid #1C1C26;">
               <span style="color: #9CA3AF;">Storefront Action</span>
-              <span id="agentAuditAction" style="color: #DDD6FE; font-weight: 700;">MTN SME 2.5GB Data</span>
+              <span id="agentAuditAction" style="color: #DDD6FE; font-weight: 700;">-</span>
             </div>
             <div style="display: flex; justify-content: space-between; padding-bottom: 5px; border-bottom: 1px solid #1C1C26;">
               <span style="color: #9CA3AF;">Retail &bull; Wholesale Cost</span>
@@ -6072,7 +6072,7 @@
         </div>
         
         <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px;">
-          <div id="referralClaimableBalance" style="font-size: 24px; font-weight: 900; color: #FFFFFF; line-height: 1.1;">₦8,500.00</div>
+          <div id="referralClaimableBalance" style="font-size: 24px; font-weight: 900; color: #FFFFFF; line-height: 1.1;">₦0.00</div>
           <button type="button" onclick="claimReferralRewardsToWallet()" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); border: none; color: #FFFFFF; font-size: 11.5px; font-weight: 800; padding: 6px 12px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             <span>Transfer to Wallet</span>
@@ -6083,15 +6083,15 @@
         <div style="background: rgba(0, 0, 0, 0.35); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 10px; padding: 8px 10px; display: grid; grid-template-columns: repeat(3, 1fr); text-align: center;">
           <div style="border-right: 1px solid rgba(255, 255, 255, 0.08); padding: 0 4px;">
             <div style="font-size: 8.5px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Friends Invited</div>
-            <div id="referralCountFriends" style="font-size: 13px; font-weight: 900; color: #DDD6FE; margin-top: 2px;">14</div>
+            <div id="referralCountFriends" style="font-size: 13px; font-weight: 900; color: #DDD6FE; margin-top: 2px;">0</div>
           </div>
           <div style="border-right: 1px solid rgba(255, 255, 255, 0.08); padding: 0 4px;">
             <div style="font-size: 8.5px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Signup Bonus</div>
-            <div id="referralTotalSignupBonus" style="font-size: 13px; font-weight: 900; color: #60A5FA; margin-top: 2px;">₦14,000</div>
+            <div id="referralTotalSignupBonus" style="font-size: 13px; font-weight: 900; color: #60A5FA; margin-top: 2px;">₦0</div>
           </div>
           <div style="padding: 0 4px;">
             <div style="font-size: 8.5px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Top-Up Cuts</div>
-            <div id="referralTotalCommissions" style="font-size: 13px; font-weight: 900; color: #34D399; margin-top: 2px;">₦10,200</div>
+            <div id="referralTotalCommissions" style="font-size: 13px; font-weight: 900; color: #34D399; margin-top: 2px;">₦0</div>
           </div>
         </div>
       </div>
@@ -6100,10 +6100,10 @@
       <div style="margin: 0 16px 12px; background: #121218; border: 1px solid #22222E; border-radius: 12px; padding: 10px 12px;">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
           <span style="font-size: 10.5px; color: #9CA3AF; font-weight: 700; text-transform: uppercase;">Your Unique Referral Link</span>
-          <span style="font-size: 10px; color: #A78BFA; font-weight: 700; font-family: monospace;">CODE: PAYZANI-782910</span>
+          <span id="referralScreenCodeLabel" style="font-size: 10px; color: #A78BFA; font-weight: 700; font-family: monospace;">CODE: PAYZANI</span>
         </div>
         <div style="display: flex; align-items: center; gap: 6px; background: #0A0A0F; border: 1px solid #222230; border-radius: 8px; padding: 4px 8px;">
-          <input type="text" id="referralScreenLinkInput" readonly value="https://payzani-smoky.vercel.app/?ref=PAYZANI-782910" style="width: 100%; background: transparent; border: none; outline: none; color: #DDD6FE; font-size: 11px; font-family: monospace; font-weight: 600; text-overflow: ellipsis;" />
+          <input type="text" id="referralScreenLinkInput" readonly placeholder="Sign in to generate referral link" value="" style="width: 100%; background: transparent; border: none; outline: none; color: #DDD6FE; font-size: 11px; font-family: monospace; font-weight: 600; text-overflow: ellipsis;" />
           <button type="button" id="btnCopyReferralScreenLink" onclick="copyReferralScreenLink()" style="background: #251B38; border: 1px solid #582CA6; color: #DDD6FE; font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 5px; cursor: pointer; flex-shrink: 0; display: inline-flex; align-items: center; gap: 3px;">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>Copy</span>
@@ -6132,7 +6132,7 @@
 
         <!-- Dynamic List of Referral Rewards -->
         <div id="referralRewardsListContainer" style="display: flex; flex-direction: column; gap: 6px;">
-          <!-- Dynamically populated by renderReferralRewardsList() -->
+          <div style="color:#9CA3AF; font-size:11.5px; text-align:center; padding:24px; background:#14141E; border-radius:10px;">No referral rewards yet. Share your invite link to start earning real bonuses and commissions!</div>
         </div>
       </div>
     </div>
@@ -8757,7 +8757,7 @@
       <div class="stat-cards-row">
         <div class="stat-card">
           <div class="stat-title">Available Server Quota</div>
-          <div class="stat-num" id="agentTokenDisplay">NGN 48,200</div>
+          <div class="stat-num" id="agentTokenDisplay">NGN 0.00</div>
           <div class="stat-sub">
             <svg class="svg-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             Ready for customer orders
@@ -8765,7 +8765,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-title">Orders Fulfilled</div>
-          <div class="stat-num">384</div>
+          <div class="stat-num" id="agentOrdersCountDisplay">0</div>
           <div class="stat-sub">
             <svg class="svg-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             Active this week
@@ -8773,7 +8773,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-title">Monthly Volume</div>
-          <div class="stat-num">NGN 348,500</div>
+          <div class="stat-num" id="agentMonthlyVolumeDisplay">NGN 0.00</div>
           <div class="stat-sub">
             <svg class="svg-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
             Node active
@@ -9958,49 +9958,7 @@
       }
     }
 
-    function opaySubmitPayment(serviceName) {
-      if (typeof isAgentStorefront === 'function' && isAgentStorefront()) {
-        const retail = 1000;
-        const wholesale = 880;
-        const profit = 120;
-        const phone = 'Customer 0802***' + Math.floor(100 + Math.random() * 899);
-        const evt = {
-          id: 'EVT-' + Math.floor(10000 + Math.random() * 89999),
-          type: 'order',
-          customer: phone,
-          action: `${serviceName} Payment Delivered`,
-          retail: retail,
-          wholesale: wholesale,
-          profit: profit,
-          status: 'Switch 200 OK • Delivered in 0.8s',
-          timeText: 'Just now',
-          timestamp: Date.now()
-        };
-        if (typeof recordStorefrontEvent === 'function') {
-          recordStorefrontEvent(evt);
-        }
-        if (typeof getAgentFloat === 'function' && typeof setAgentFloat === 'function') {
-          const curFloat = getAgentFloat();
-          if (curFloat >= wholesale) {
-            setAgentFloat(curFloat - wholesale);
-          }
-        }
-        let curProfit = 0;
-        try { curProfit = parseFloat(localStorage.getItem('payzani_agent_profit') || '0'); } catch(e) {}
-        curProfit += profit;
-        try { localStorage.setItem('payzani_agent_profit', curProfit.toString()); } catch(e) {}
 
-        let curOrders = 28;
-        try { curOrders = parseInt(localStorage.getItem('payzani_agent_orders') || '0'); } catch(e) {}
-        curOrders += 1;
-        try { localStorage.setItem('payzani_agent_orders', curOrders.toString()); } catch(e) {}
-      }
-
-      showCustomAlert(`${serviceName} payment of ₦1,000 processed instantly via switch!`);
-      setTimeout(() => {
-        opaySwitchScreen('opay-screen-home');
-      }, 1200);
-    }
 
 
 
@@ -10236,10 +10194,16 @@
           showCustomAlert(' Payment & Registration Successful! ₦2,500 Agent Fee debited. Welcome, ' + businessName + ' - your VIP Agent Storefront & Wholesale Float are now LIVE!');
         }
 
-        // Deduct ₦2,500 from mobile wallet display (₦24,500.00 -> ₦22,000.00)
-        const walletEl = document.querySelector('.opay-balance-amount');
-        if (walletEl) {
-          walletEl.textContent = '₦22,000.00';
+        // Deduct ₦2,500 from real user balance in Supabase
+        if (PAYZANI_SB.profile) {
+          const curBal = Number(PAYZANI_SB.profile.wallet_balance || 0);
+          const newBal = Math.max(0, curBal - 2500);
+          PAYZANI_SB.patch('profiles', 'id=eq.' + encodeURIComponent(PAYZANI_SB.userId), {
+            wallet_balance: newBal,
+            updated_at: new Date().toISOString()
+          }).then(() => {
+            syncRealUserProfile();
+          }).catch(() => {});
         }
 
         // Update mobile user badge to show Agent status
@@ -10425,81 +10389,8 @@
       }
     }
 
-    // Storefront Live Activity Feed, Radar & Auditing Engine
-    const defaultStorefrontEvents = [
-      {
-        id: 'EVT-98102',
-        type: 'order',
-        customer: 'Customer 0803***891',
-        action: 'MTN SME 2.5GB Data Delivered',
-        retail: 800,
-        wholesale: 650,
-        profit: 150,
-        status: 'Delivered in 1.1s • 200 OK',
-        timeText: 'Just now',
-        timestamp: Date.now() - 30000
-      },
-      {
-        id: 'EVT-98075',
-        type: 'signup',
-        customer: 'New Customer 0902***814',
-        action: 'Signed Up & Verified Phone Number',
-        retail: 0,
-        wholesale: 0,
-        profit: 0,
-        status: 'Verified OTP • Active Wallet',
-        timeText: '6 mins ago',
-        timestamp: Date.now() - 360000
-      },
-      {
-        id: 'EVT-98041',
-        type: 'order',
-        customer: 'Customer 0701***442',
-        action: 'Airtel ₦2,000 VTU Airtime Recharge',
-        retail: 2000,
-        wholesale: 1920,
-        profit: 80,
-        status: 'Delivered in 0.9s • 200 OK',
-        timeText: '14 mins ago',
-        timestamp: Date.now() - 840000
-      },
-      {
-        id: 'EVT-98012',
-        type: 'wallet',
-        customer: 'Customer 0802***345',
-        action: 'Funded Wallet +₦10,000 via Paystack NUBAN',
-        retail: 10000,
-        wholesale: 10000,
-        profit: 50,
-        status: 'Credited via Virtual Account Webhook',
-        timeText: '25 mins ago',
-        timestamp: Date.now() - 1500000
-      },
-      {
-        id: 'EVT-97984',
-        type: 'order',
-        customer: 'Customer 0905***109',
-        action: 'DStv Compact Monthly Subscription',
-        retail: 12500,
-        wholesale: 12300,
-        profit: 200,
-        status: 'Smartcard 4102*** Confirmed',
-        timeText: '42 mins ago',
-        timestamp: Date.now() - 2520000
-      },
-      {
-        id: 'EVT-97940',
-        type: 'visitor',
-        customer: 'Visitor #8210 (Ikeja, Lagos)',
-        action: 'Browsing SME Data & Booster Packages',
-        retail: 0,
-        wholesale: 0,
-        profit: 0,
-        status: 'Active Session • Mobile Chrome',
-        timeText: 'Active Now',
-        timestamp: Date.now() - 120000
-      }
-    ];
+    // Storefront Live Activity Feed, Radar & Auditing Engine (100% Real Live Events)
+    const defaultStorefrontEvents = [];
 
     function getStorefrontEvents() {
       try {
@@ -12291,65 +12182,14 @@
 
 
     // ==============================================================================
-    // PAYZANI REFERRAL REWARDS CONTROLLER
+    // PAYZANI REFERRAL REWARDS CONTROLLER (100% Real Live Engine)
     // ==============================================================================
     let currentReferralFilter = 'all';
-    let referralRewardsData = [
-      { id: 'REF-1092', type: 'signup', friend: 'Customer 0803***891', item: 'Friend Activation & Wallet Fund Bonus', amount: 1000, status: 'Claimable', time: 'Today, 01:14 PM' },
-      { id: 'REF-1091', type: 'commission', friend: 'Customer 0812***340', item: 'MTN 2.5GB SME Data Top-Up (5% cut)', amount: 75, status: 'Claimable', time: 'Today, 11:30 AM' },
-      { id: 'REF-1090', type: 'commission', friend: 'Customer 0905***612', item: 'Airtel ₦2,000 Airtime Top-Up (3% cut)', amount: 60, status: 'Claimable', time: 'Yesterday, 04:22 PM' },
-      { id: 'REF-1089', type: 'signup', friend: 'Customer 0704***992', item: 'Friend Activation & Wallet Fund Bonus', amount: 1000, status: 'Claimable', time: '20 Nov 2026' },
-      { id: 'REF-1088', type: 'commission', friend: 'Customer 0806***551', item: 'DStv Compact Cable TV Subscription (3% cut)', amount: 150, status: 'Claimable', time: '19 Nov 2026' },
-      { id: 'REF-1087', type: 'commission', friend: 'Customer 0802***331', item: 'TikTok Followers Growth Booster (5% cut)', amount: 120, status: 'Claimable', time: '18 Nov 2026' }
-    ];
+    let referralRewardsData = [];
 
     function renderReferralRewardsList(filter = 'all') {
       currentReferralFilter = filter;
-      const container = document.getElementById('referralRewardsListContainer');
-      if (!container) return;
-
-      let list = referralRewardsData;
-      if (filter !== 'all') {
-        list = list.filter(r => r.type === filter);
-      }
-
-      if (list.length === 0) {
-        container.innerHTML = '<div style="color:#9CA3AF; font-size:11.5px; text-align:center; padding:16px; background:#14141E; border-radius:10px;">No referral rewards in this category yet. Share your invite link to start earning!</div>';
-        return;
-      }
-
-      container.innerHTML = list.map(r => {
-        const isSignup = r.type === 'signup';
-        const iconBg = isSignup ? 'rgba(59, 130, 246, 0.15)' : 'rgba(16, 185, 129, 0.15)';
-        const iconBorder = isSignup ? 'rgba(59, 130, 246, 0.3)' : 'rgba(16, 185, 129, 0.3)';
-        const iconSvg = isSignup
-          ? '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2.2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>'
-          : '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="2.2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>';
-        const badgeColor = isSignup ? '#60A5FA' : '#34D399';
-        const badgeBg = isSignup ? 'rgba(59, 130, 246, 0.15)' : 'rgba(16, 185, 129, 0.15)';
-        const badgeText = isSignup ? 'SIGNUP BONUS' : 'COMMISSION';
-
-        return `
-          <div style="background: #14141C; border: 1px solid #22222E; border-radius: 9px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 8px; min-width: 0;">
-              <div style="width: 28px; height: 28px; border-radius: 7px; background: ${iconBg}; border: 1px solid ${iconBorder}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                ${iconSvg}
-              </div>
-              <div style="min-width: 0;">
-                <div style="color: #FFFFFF; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; gap: 5px;">
-                  <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${r.friend}</span>
-                  <span style="font-size: 8px; padding: 1px 4px; border-radius: 3px; background: ${badgeBg}; color: ${badgeColor}; font-weight: 800;">${badgeText}</span>
-                </div>
-                <div style="color: #9CA3AF; font-size: 9.5px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${r.item}</div>
-              </div>
-            </div>
-            <div style="text-align: right; flex-shrink: 0; margin-left: 8px;">
-              <div style="color: #10B981; font-size: 12px; font-weight: 900;">+₦${Number(r.amount).toLocaleString()}.00</div>
-              <div style="color: #6B7280; font-size: 9px; margin-top: 1px;">${r.time}</div>
-            </div>
-          </div>
-        `;
-      }).join('');
+      renderRealReferralUI(PAYZANI_SB.rewards || []);
     }
 
     function filterReferralRewards(btn, type) {
@@ -12365,56 +12205,60 @@
         btn.style.color = '#FFF';
         btn.style.border = 'none';
       }
-      renderReferralRewardsList(type);
+      currentReferralTab = type;
+      renderRealReferralUI(PAYZANI_SB.rewards || []);
     }
 
     function claimReferralRewardsToWallet() {
-      const claimEl = document.getElementById('referralClaimableBalance');
-      if (!claimEl) return;
-      const current = claimEl.innerText.replace(/[₦, ]/g, '');
-      const amount = Number(current) || 0;
+      claimReferralReward();
+    }
 
-      if (amount <= 0) {
-        showCustomAlert('You currently have no unclaimed referral rewards.');
-        return;
+    function getPayzaniReferralCode() {
+      if (PAYZANI_SB.profile && PAYZANI_SB.profile.phone) {
+        return 'PAYZANI-' + PAYZANI_SB.profile.phone.replace(/\D/g, '').slice(-6);
       }
+      if (PAYZANI_SB.userId) {
+        return 'PAYZANI-' + PAYZANI_SB.userId.slice(0, 6).toUpperCase();
+      }
+      return 'PAYZANI';
+    }
 
-      // Reset claimable
-      claimEl.innerText = '₦0.00';
-      
-      // Update User Wallet Balance if available
-      try {
-        const balEl = document.querySelector('.opay-balance-amount');
-        if (balEl) {
-          const bal = Number(balEl.innerText.replace(/[₦, ]/g, '')) || 24500;
-          balEl.innerText = '₦' + (bal + amount).toLocaleString() + '.00';
-        }
-      } catch(e) {}
-
-      showCustomAlert(`Success! ₦${amount.toLocaleString()}.00 referral earnings transferred directly into your Payzani wallet!`);
+    function getPayzaniReferralUrl() {
+      const code = getPayzaniReferralCode();
+      return window.location.origin + window.location.pathname + '?ref=' + code;
     }
 
     function copyReferralScreenLink() {
-      const input = document.getElementById('referralScreenLinkInput');
-      if (input) {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(input.value).catch(() => {});
-        }
-        const btn = document.getElementById('btnCopyReferralScreenLink');
-        if (btn) {
-          btn.innerHTML = '<span style="color:#34D399;">Copied!</span>';
-          setTimeout(() => {
-            btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> <span>Copy</span>';
-          }, 2000);
-        }
-        showCustomAlert('Referral Link Copied! Share with friends to earn ₦1,000 on their first top-up.');
+      if (!PAYZANI_SB.userId) {
+        showCustomAlert('Please sign in to generate your unique referral link.');
+        openPayzaniAuth();
+        return;
       }
+      const refUrl = getPayzaniReferralUrl();
+      const input = document.getElementById('referralScreenLinkInput');
+      if (input) input.value = refUrl;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(refUrl).catch(() => {});
+      }
+      const btn = document.getElementById('btnCopyReferralScreenLink');
+      if (btn) {
+        btn.innerHTML = '<span style="color:#34D399;">Copied!</span>';
+        setTimeout(() => {
+          btn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> <span>Copy</span>';
+        }, 2000);
+      }
+      showCustomAlert('Referral Link Copied! Share with friends to earn real commissions on every transaction.');
     }
 
     function shareReferralWhatsApp() {
-      const input = document.getElementById('referralScreenLinkInput');
-      const url = input ? input.value : 'https://payzani-smoky.vercel.app/?ref=PAYZANI-782910';
-      const msg = encodeURIComponent("Join me on Payzani to buy super cheap MTN, Airtel & Glo data and pay zero fees on bills! Sign up here: " + url);
+      if (!PAYZANI_SB.userId) {
+        showCustomAlert('Please sign in to share your referral link.');
+        openPayzaniAuth();
+        return;
+      }
+      const url = getPayzaniReferralUrl();
+      const msg = encodeURIComponent("Join me on Payzani to buy cheap MTN, Airtel & Glo data and pay zero fees on bills! Sign up here: " + url);
       window.open('https://api.whatsapp.com/send?text=' + msg, '_blank');
     }
 
@@ -13035,7 +12879,7 @@
       const claimEl = document.getElementById('referralClaimableBalance');
       if (claimEl) claimEl.innerText = '₦' + claimable.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-      const friendsEl = document.getElementById('referralTotalFriendsCount');
+      const friendsEl = document.getElementById('referralCountFriends') || document.getElementById('referralTotalFriendsCount');
       if (friendsEl) friendsEl.innerText = list.length.toString();
 
       const signupsEl = document.getElementById('referralTotalSignupBonus');
@@ -13043,6 +12887,21 @@
 
       const commsEl = document.getElementById('referralTotalCommissions');
       if (commsEl) commsEl.innerText = '₦' + commissionTotal.toLocaleString();
+
+      const linkInp = document.getElementById('referralScreenLinkInput');
+      if (linkInp) {
+        if (PAYZANI_SB.userId) {
+          linkInp.value = getPayzaniReferralUrl();
+        } else {
+          linkInp.value = '';
+          linkInp.placeholder = 'Sign in to generate referral link';
+        }
+      }
+
+      const codeLbl = document.getElementById('referralScreenCodeLabel');
+      if (codeLbl) {
+        codeLbl.innerText = 'CODE: ' + (PAYZANI_SB.userId ? getPayzaniReferralCode() : 'PAYZANI');
+      }
 
       const container = document.getElementById('referralRewardsListContainer');
       if (!container) return;
