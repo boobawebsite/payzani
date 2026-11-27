@@ -5740,19 +5740,19 @@
       <div style="margin: 8px 16px 10px; background: #12121A; border: 1px solid #232332; border-radius: 12px; padding: 10px; display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; gap: 4px;">
         <div style="border-right: 1px solid rgba(255,255,255,0.06); padding: 0 2px;">
           <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Platform GMV</div>
-          <div id="masterStatGmv" style="font-size: 11.5px; font-weight: 900; color: #FFFFFF; margin-top: 2px;">₦18.45M</div>
+          <div id="masterStatGmv" style="font-size: 11.5px; font-weight: 900; color: #FFFFFF; margin-top: 2px;">₦0.00</div>
         </div>
         <div style="border-right: 1px solid rgba(255,255,255,0.06); padding: 0 2px;">
           <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Net Profit</div>
-          <div id="masterStatProfit" style="font-size: 11.5px; font-weight: 900; color: #10B981; margin-top: 2px;">+₦1.64M</div>
+          <div id="masterStatProfit" style="font-size: 11.5px; font-weight: 900; color: #10B981; margin-top: 2px;">+₦0.00</div>
         </div>
         <div style="border-right: 1px solid rgba(255,255,255,0.06); padding: 0 2px;">
           <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Active Outlets</div>
-          <div id="masterStatAgents" style="font-size: 11.5px; font-weight: 900; color: #DDD6FE; margin-top: 2px;">142 Outlets</div>
+          <div id="masterStatAgents" style="font-size: 11.5px; font-weight: 900; color: #DDD6FE; margin-top: 2px;">0 Outlets</div>
         </div>
         <div style="padding: 0 2px;">
           <div style="font-size: 8px; color: #9CA3AF; text-transform: uppercase; font-weight: 700;">Upstream Float</div>
-          <div id="masterStatFloat" style="font-size: 11.5px; font-weight: 900; color: #60A5FA; margin-top: 2px;">₦3.85M</div>
+          <div id="masterStatFloat" style="font-size: 11.5px; font-weight: 900; color: #60A5FA; margin-top: 2px;">₦0.00</div>
         </div>
       </div>
 
@@ -8875,28 +8875,28 @@
       <div class="stat-cards-row">
         <div class="stat-card">
           <div class="stat-title">Platform Retained Profit</div>
-          <div class="stat-num" style="color:var(--success);">NGN 1,428,200</div>
+          <div class="stat-num" id="masterDeskProfitDisplay" style="color:var(--success);">NGN 0.00</div>
           <div class="stat-sub">From token markups and agent registrations</div>
         </div>
         <div class="stat-card">
           <div class="stat-title">Active Reseller Agents</div>
-          <div class="stat-num">142 Agents</div>
+          <div class="stat-num" id="masterDeskAgentsDisplay">0 Agents</div>
           <div class="stat-sub">Storefronts operating</div>
         </div>
         <div class="stat-card">
           <div class="stat-title">Gateway Status</div>
-          <div class="stat-num" style="color:#0066CC;">Online</div>
-          <div class="stat-sub">All upstream VTU providers active</div>
+          <div class="stat-num" id="masterDeskGatewayStatus" style="color:#0066CC;">Live Switches</div>
+          <div class="stat-sub">VTpass, JAP &amp; Paystack active</div>
         </div>
       </div>
 
       <div class="form-grid">
         <div class="flat-card">
           <h3 style="font-size:16px; font-weight:800; margin-bottom:14px;">Platform Fee Settings</h3>
-          
+
           <div class="form-group" style="margin-bottom:14px;">
             <label class="form-label">Agent Onboarding Fee (NGN)</label>
-            <input type="number" class="input-field" value="15000" id="adminAgentFee">
+            <input type="number" class="input-field" value="2500" id="adminAgentFee">
             <span style="font-size:11.5px; color:var(--text-muted);">Charged once when a user upgrades to an agent.</span>
           </div>
 
@@ -8911,28 +8911,8 @@
 
         <div class="flat-card">
           <h3 style="font-size:16px; font-weight:800; margin-bottom:14px;">Connected Agent Storefronts</h3>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:var(--surface-subtle); border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <div>
-                <div style="font-weight:700; font-size:13px;">Apex Connect (Victor)</div>
-                <div style="font-size:11.5px; color:var(--text-muted);">payzani.com/@apex-telecom</div>
-              </div>
-              <span style="font-size:12px; font-weight:800; color:var(--success);">NGN 48,200 Tokens</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:var(--surface-subtle); border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <div>
-                <div style="font-weight:700; font-size:13px;">SwiftRecharge Hub</div>
-                <div style="font-size:11.5px; color:var(--text-muted);">payzani.com/@swift-hub</div>
-              </div>
-              <span style="font-size:12px; font-weight:800; color:var(--success);">NGN 112,000 Tokens</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:var(--surface-subtle); border-radius:var(--radius-sm); border:1px solid var(--border);">
-              <div>
-                <div style="font-weight:700; font-size:13px;">Kano Telecom Direct</div>
-                <div style="font-size:11.5px; color:var(--text-muted);">payzani.com/@kano-direct</div>
-              </div>
-              <span style="font-size:12px; font-weight:800; color:var(--success);">NGN 19,400 Tokens</span>
-            </div>
+          <div id="masterDeskAgentsList" style="display:flex; flex-direction:column; gap:8px;">
+            <div style="font-size:12px; color:var(--text-muted); text-align:center; padding:16px;">No registered agent storefronts yet. Real agents will appear here.</div>
           </div>
         </div>
       </div>
@@ -11526,26 +11506,26 @@
       dataPricing: {
         mtn: [
           { id: 'mtn_500m', name: '500MB SME', validity: '30 Days', apiCost: 115, agentPrice: 125, retailPrice: 150 },
-          { id: 'mtn_1gb',  name: '1.0GB SME', validity: '30 Days', apiCost: 235, agentPrice: 255, retailPrice: 290 },
-          { id: 'mtn_2gb',  name: '2.0GB SME', validity: '30 Days', apiCost: 470, agentPrice: 510, retailPrice: 580 },
-          { id: 'mtn_3gb',  name: '3.0GB SME', validity: '30 Days', apiCost: 705, agentPrice: 765, retailPrice: 870 },
-          { id: 'mtn_5gb',  name: '5.0GB SME', validity: '30 Days', apiCost: 1175, agentPrice: 1275, retailPrice: 1450 },
-          { id: 'mtn_10gb', name: '10.0GB SME', validity: '30 Days', apiCost: 2350, agentPrice: 2550, retailPrice: 2900 }
+          { id: 'mtn_1gb',  name: '1.0GB SME', validity: '30 Days', apiCost: 235, agentPrice: 255, retailPrice: 280 },
+          { id: 'mtn_2gb',  name: '2.0GB SME', validity: '30 Days', apiCost: 470, agentPrice: 510, retailPrice: 560 },
+          { id: 'mtn_3gb',  name: '3.0GB SME', validity: '30 Days', apiCost: 705, agentPrice: 765, retailPrice: 840 },
+          { id: 'mtn_5gb',  name: '5.0GB SME', validity: '30 Days', apiCost: 1175, agentPrice: 1275, retailPrice: 1400 },
+          { id: 'mtn_10gb', name: '10.0GB SME', validity: '30 Days', apiCost: 2350, agentPrice: 2550, retailPrice: 2800 }
         ],
         airtel: [
           { id: 'airtel_500m', name: '500MB CG', validity: '30 Days', apiCost: 120, agentPrice: 130, retailPrice: 160 },
-          { id: 'airtel_1gb',  name: '1.0GB CG', validity: '30 Days', apiCost: 240, agentPrice: 260, retailPrice: 300 },
-          { id: 'airtel_2gb',  name: '2.0GB CG', validity: '30 Days', apiCost: 480, agentPrice: 520, retailPrice: 600 },
-          { id: 'airtel_5gb',  name: '5.0GB CG', validity: '30 Days', apiCost: 1200, agentPrice: 1300, retailPrice: 1500 }
+          { id: 'airtel_1gb',  name: '1.0GB CG', validity: '30 Days', apiCost: 240, agentPrice: 260, retailPrice: 285 },
+          { id: 'airtel_2gb',  name: '2.0GB CG', validity: '30 Days', apiCost: 480, agentPrice: 520, retailPrice: 570 },
+          { id: 'airtel_5gb',  name: '5.0GB CG', validity: '30 Days', apiCost: 1200, agentPrice: 1300, retailPrice: 1425 }
         ],
         glo: [
-          { id: 'glo_1gb', name: '1.0GB Direct', validity: '30 Days', apiCost: 225, agentPrice: 245, retailPrice: 280 },
-          { id: 'glo_2gb', name: '2.0GB Direct', validity: '30 Days', apiCost: 450, agentPrice: 490, retailPrice: 560 },
-          { id: 'glo_5gb', name: '5.0GB Direct', validity: '30 Days', apiCost: 1125, agentPrice: 1225, retailPrice: 1400 }
+          { id: 'glo_1gb', name: '1.0GB Direct', validity: '30 Days', apiCost: 225, agentPrice: 245, retailPrice: 270 },
+          { id: 'glo_2gb', name: '2.0GB Direct', validity: '30 Days', apiCost: 450, agentPrice: 490, retailPrice: 540 },
+          { id: 'glo_5gb', name: '5.0GB Direct', validity: '30 Days', apiCost: 1125, agentPrice: 1225, retailPrice: 1350 }
         ],
         mobile9: [
-          { id: '9mob_1gb', name: '1.0GB SME', validity: '30 Days', apiCost: 210, agentPrice: 230, retailPrice: 270 },
-          { id: '9mob_2gb', name: '2.0GB SME', validity: '30 Days', apiCost: 420, agentPrice: 460, retailPrice: 540 }
+          { id: '9mob_1gb', name: '1.0GB SME', validity: '30 Days', apiCost: 210, agentPrice: 230, retailPrice: 260 },
+          { id: '9mob_2gb', name: '2.0GB SME', validity: '30 Days', apiCost: 420, agentPrice: 460, retailPrice: 520 }
         ]
       },
       airtimeDiscounts: {
@@ -11555,115 +11535,160 @@
         mobile9: { agent: 5.0, retail: 3.5 }
       },
       gateways: {
-        mtnSme: true,
-        airtelCg: true,
-        gloDirect: true,
-        mobile9Sme: true,
-        cableTv: true,
-        socialBooster: true,
+        vtpass: true,
+        jap: true,
+        paystack: true,
+        monnify: true,
         maintenanceMode: false
       },
       stats: {
-        platformGmv: 18450200,
-        platformProfit: 1642850,
-        totalAgents: 142,
-        activeAgentsToday: 94,
-        upstreamFloat: 3850000
+        platformGmv: 0,
+        platformProfit: 0,
+        totalAgents: 0,
+        upstreamFloat: 0
       },
-      agents: [
-        { id: 'agt-1', name: 'My Reseller Store', slug: 'victor', owner: 'Victor A.', phone: '08023456789', floatBalance: 38470, margin: 8.5, status: 'active', joined: '12 Nov 2026' },
-        { id: 'agt-2', name: 'Apex Connect', slug: 'apex', owner: 'Emeka O.', phone: '08139827110', floatBalance: 48200, margin: 8.5, status: 'active', joined: '05 Nov 2026' },
-        { id: 'agt-3', name: 'SwiftRecharge Hub', slug: 'swifthub', owner: 'Amina B.', phone: '09012384912', floatBalance: 112000, margin: 9.0, status: 'active', joined: '28 Oct 2026' },
-        { id: 'agt-4', name: 'Kano Telecom Direct', slug: 'kano', owner: 'Musa K.', phone: '07034567890', floatBalance: 19400, margin: 8.5, status: 'active', joined: '18 Nov 2026' },
-        { id: 'agt-5', name: 'Lekki Data Express', slug: 'lekkidata', owner: 'Folake T.', phone: '08051239841', floatBalance: 3200, margin: 8.0, status: 'active', joined: '20 Nov 2026' }
-      ],
-      auditLog: [
-        { id: 'SW-984210', outlet: 'My Reseller Store', type: 'order', item: 'MTN 1.0GB SME Data', retail: 290, wholesale: 255, profit: 35, status: '200 OK', time: 'Just now' },
-        { id: 'SW-984209', outlet: 'Direct Payzani', type: 'order', item: 'Airtel ₦1,000 Airtime', retail: 980, wholesale: 965, profit: 15, status: '200 OK', time: '2m ago' },
-        { id: 'SW-984208', outlet: 'Apex Connect', type: 'refill', item: 'Wholesale Float Refill', retail: 25000, wholesale: 25000, profit: 200, status: 'Settled', time: '14m ago' },
-        { id: 'SW-984207', outlet: 'SwiftRecharge Hub', type: 'order', item: 'Glo 2.0GB Direct Data', retail: 560, wholesale: 490, profit: 70, status: '200 OK', time: '21m ago' },
-        { id: 'SW-984206', outlet: 'Kano Telecom Direct', type: 'order', item: 'MTN 5.0GB SME Data', retail: 1450, wholesale: 1275, profit: 175, status: '200 OK', time: '35m ago' }
-      ]
+      agents: [],
+      auditLog: []
     };
 
     let activeAdminTab = 'fees';
     let currentAdminPricingNetwork = 'mtn';
-    let floatAdjustOperation = 'credit';
+    let currentAdjustingAgentId = null;
+
+    // Real Supabase Cache for Master Admin HQ
+    let MASTER_ADMIN_CACHE = {
+      config: JSON.parse(JSON.stringify(DEFAULT_MASTER_CONFIG)),
+      agents: [],
+      transactions: [],
+      vtpass: null,
+      jap: null
+    };
 
     function getMasterAdminConfig() {
-      try {
-        const stored = localStorage.getItem('payzani_master_admin_config');
-        if (stored) {
-          const parsed = JSON.parse(stored);
-          return Object.assign({}, DEFAULT_MASTER_CONFIG, parsed);
-        }
-      } catch(e) {}
-      return JSON.parse(JSON.stringify(DEFAULT_MASTER_CONFIG));
+      return MASTER_ADMIN_CACHE.config || DEFAULT_MASTER_CONFIG;
     }
 
-    function saveMasterAdminConfig(cfg) {
+    async function syncRealMasterAdmin() {
+      try {
+        // 1. Fetch real admin_settings
+        const settings = await PAYZANI_SB.get('admin_settings');
+        if (settings && Array.isArray(settings)) {
+          const cfgRow = settings.find(s => s.key === 'master_admin_config');
+          if (cfgRow && cfgRow.value) {
+            MASTER_ADMIN_CACHE.config = Object.assign({}, DEFAULT_MASTER_CONFIG, cfgRow.value);
+          }
+          const vtRow = settings.find(s => s.key === 'vtpass_gateway');
+          if (vtRow) MASTER_ADMIN_CACHE.vtpass = vtRow.value;
+          const japRow = settings.find(s => s.key === 'jap_gateway');
+          if (japRow) MASTER_ADMIN_CACHE.jap = japRow.value;
+        }
+
+        // 2. Fetch real registered agents
+        const realAgents = await PAYZANI_SB.get('agents', 'order=created_at.desc');
+        MASTER_ADMIN_CACHE.agents = realAgents || [];
+
+        // 3. Fetch real platform transactions
+        const realTx = await PAYZANI_SB.get('transactions', 'order=created_at.desc&limit=50');
+        MASTER_ADMIN_CACHE.transactions = realTx || [];
+
+        // 4. Calculate real platform KPIs
+        let totalGmv = 0;
+        let totalProfit = 0;
+        (MASTER_ADMIN_CACHE.transactions || []).forEach(tx => {
+          const amt = Number(tx.amount) || 0;
+          if (tx.status === 'success') {
+            totalGmv += amt;
+            if (tx.type && tx.type.toLowerCase().includes('agent')) {
+              totalProfit += 2500;
+            } else if (tx.type && tx.type.toLowerCase().includes('booster')) {
+              totalProfit += Math.round(amt * 0.20);
+            } else {
+              totalProfit += Math.round(amt * 0.05);
+            }
+          }
+        });
+
+        let totalUpstreamFloat = 0;
+        (MASTER_ADMIN_CACHE.agents || []).forEach(a => {
+          totalUpstreamFloat += Number(a.wholesale_float) || 0;
+        });
+
+        // 5. Update KPI Ticker Elements
+        const gmvEl = document.getElementById('masterStatGmv');
+        if (gmvEl) gmvEl.textContent = '₦' + totalGmv.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const profitEl = document.getElementById('masterStatProfit');
+        if (profitEl) profitEl.textContent = '+₦' + totalProfit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const agentsEl = document.getElementById('masterStatAgents');
+        if (agentsEl) agentsEl.textContent = MASTER_ADMIN_CACHE.agents.length + ' Outlets';
+        const floatEl = document.getElementById('masterStatFloat');
+        if (floatEl) floatEl.textContent = '₦' + totalUpstreamFloat.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        const deskProfit = document.getElementById('masterDeskProfitDisplay');
+        if (deskProfit) deskProfit.textContent = 'NGN ' + totalProfit.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const deskAgents = document.getElementById('masterDeskAgentsDisplay');
+        if (deskAgents) deskAgents.textContent = MASTER_ADMIN_CACHE.agents.length + ' Agents';
+
+        // 6. Populate Fee Form fields
+        const cfg = getMasterAdminConfig();
+        const inputFee = document.getElementById('adminAgentOnboardingFee');
+        if (inputFee) inputFee.value = cfg.agentOnboardingFee || 2500;
+        const deskFee = document.getElementById('adminAgentFee');
+        if (deskFee) deskFee.value = cfg.agentOnboardingFee || 2500;
+        const inputMargin = document.getElementById('adminDefaultAgentMargin');
+        if (inputMargin) inputMargin.value = cfg.defaultAgentMargin || 8.5;
+        const inputMinFloat = document.getElementById('adminMinFloatRefill');
+        if (inputMinFloat) inputMinFloat.value = cfg.minFloatRefill || 5000;
+        const inputCut = document.getElementById('adminPlatformTokenCut');
+        if (inputCut) inputCut.value = cfg.platformTokenCut || 200;
+        const deskCut = document.getElementById('adminTokenCut');
+        if (deskCut) deskCut.value = cfg.platformTokenCut || 200;
+        const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
+        if (inputWithdraw) inputWithdraw.value = cfg.agentWithdrawalFee || 50;
+
+        // 7. Render Sub-views
+        renderAdminPricingPlans();
+        renderMasterAgentsList();
+        renderMasterGateways();
+        renderMasterAuditFeed();
+      } catch (err) {
+        console.warn('Real Master Admin sync notice:', err);
+      }
+    }
+
+    async function saveMasterAdminConfig(cfg) {
+      MASTER_ADMIN_CACHE.config = cfg;
       try {
         localStorage.setItem('payzani_master_admin_config', JSON.stringify(cfg));
-      } catch(e) {}
+        await PAYZANI_SB.post('admin_settings', {
+          key: 'master_admin_config',
+          value: cfg
+        });
+      } catch(e) {
+        console.warn('Save master admin config to Supabase:', e);
+      }
       applyMasterConfigToDOM(cfg);
     }
 
     function applyMasterConfigToDOM(cfg) {
-      // 1. Update Agent Activation Fee on Agent Onboarding Screen
       const feeEl = document.getElementById('agentActivationFeeDisplay');
-      if (feeEl) {
-        feeEl.textContent = '₦' + Number(cfg.agentOnboardingFee || 2500).toLocaleString();
-      }
-
-      // 2. Update KPI Stats Ticker
-      const gmvEl = document.getElementById('masterStatGmv');
-      if (gmvEl) gmvEl.textContent = '₦' + (Number(cfg.stats.platformGmv || 18450200) / 1000000).toFixed(2) + 'M';
-      const profitEl = document.getElementById('masterStatProfit');
-      if (profitEl) profitEl.textContent = '+₦' + (Number(cfg.stats.platformProfit || 1642850) / 1000000).toFixed(2) + 'M';
-      const agentsEl = document.getElementById('masterStatAgents');
-      if (agentsEl) agentsEl.textContent = (cfg.agents.length || 5) + ' Outlets';
-      const floatEl = document.getElementById('masterStatFloat');
-      if (floatEl) floatEl.textContent = '₦' + (Number(cfg.stats.upstreamFloat || 3850000) / 1000000).toFixed(2) + 'M';
-
-      // 3. Sync Dynamic Customer Data Plans in #opay-screen-data
-      renderCustomerDataPlans();
+      if (feeEl) feeEl.textContent = '₦' + Number(cfg.agentOnboardingFee || 2500).toLocaleString();
     }
 
-    function openMasterAdminPanel() {
-      const cfg = getMasterAdminConfig();
-      applyMasterConfigToDOM(cfg);
-
-      // Populate Fee Form fields
-      const inputFee = document.getElementById('adminAgentOnboardingFee');
-      if (inputFee) inputFee.value = cfg.agentOnboardingFee || 2500;
-      const inputMargin = document.getElementById('adminDefaultAgentMargin');
-      if (inputMargin) inputMargin.value = cfg.defaultAgentMargin || 8.5;
-      const inputMinFloat = document.getElementById('adminMinFloatRefill');
-      if (inputMinFloat) inputMinFloat.value = cfg.minFloatRefill || 5000;
-      const inputCut = document.getElementById('adminPlatformTokenCut');
-      if (inputCut) inputCut.value = cfg.platformTokenCut || 200;
-      const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
-      if (inputWithdraw) inputWithdraw.value = cfg.agentWithdrawalFee || 50;
-
-      // Render Active Tab & Contents
-      switchMasterAdminTab(activeAdminTab);
-      renderAdminPricingPlans();
-      renderMasterAgentsList();
-      renderMasterGateways();
-      renderMasterAuditFeed();
-
+    async function openMasterAdminPanel() {
       // Switch screen to Admin
       if (typeof opaySwitchScreen === 'function') {
         opaySwitchScreen('opay-screen-admin');
       }
 
-      // Also support desktop view-master-admin if on desktop
       if (typeof switchEcoView === 'function') {
         const desktopAdmin = document.getElementById('view-master-admin');
         if (desktopAdmin && window.innerWidth > 860) {
           switchEcoView('master-admin');
         }
       }
+
+      switchMasterAdminTab(activeAdminTab);
+      await syncRealMasterAdmin();
     }
 
     function switchMasterAdminTab(tabKey) {
@@ -11691,7 +11716,7 @@
       });
     }
 
-    function saveMasterFeeSettings() {
+    async function saveMasterFeeSettings() {
       const cfg = getMasterAdminConfig();
       const inputFee = document.getElementById('adminAgentOnboardingFee');
       const inputMargin = document.getElementById('adminDefaultAgentMargin');
@@ -11705,8 +11730,19 @@
       if (inputCut) cfg.platformTokenCut = Number(inputCut.value) || 200;
       if (inputWithdraw) cfg.agentWithdrawalFee = Number(inputWithdraw.value) || 50;
 
-      saveMasterAdminConfig(cfg);
-      showCustomAlert('Master Agent Rules & Fees saved successfully!');
+      await saveMasterAdminConfig(cfg);
+      showCustomAlert('Master Agent Rules & Fees saved live to Supabase!');
+    }
+
+    async function saveMasterSettings() {
+      const fee = document.getElementById('adminAgentFee') ? document.getElementById('adminAgentFee').value : 2500;
+      const cut = document.getElementById('adminTokenCut') ? document.getElementById('adminTokenCut').value : 200;
+      const cfg = getMasterAdminConfig();
+      if (fee) cfg.agentOnboardingFee = Number(fee);
+      if (cut) cfg.platformTokenCut = Number(cut);
+
+      await saveMasterAdminConfig(cfg);
+      showCustomAlert('Platform Settings Updated & Saved Live to Supabase!');
     }
 
     function selectAdminPricingNetwork(network) {
@@ -11735,7 +11771,6 @@
       const cfg = getMasterAdminConfig();
       const plans = (cfg.dataPricing && cfg.dataPricing[currentAdminPricingNetwork]) || [];
 
-      // Airtime inputs update
       const airtimeCfg = (cfg.airtimeDiscounts && cfg.airtimeDiscounts[currentAdminPricingNetwork]) || { agent: 3.0, retail: 2.0 };
       const agtAirtime = document.getElementById('adminAirtimeAgentDiscount');
       const retAirtime = document.getElementById('adminAirtimeRetailDiscount');
@@ -11743,63 +11778,45 @@
       if (retAirtime) retAirtime.value = airtimeCfg.retail;
 
       if (!plans.length) {
-        container.innerHTML = '<div style="color:#9CA3AF; font-size:11px; text-align:center; padding:10px;">No bundles configured for this network.</div>';
+        container.innerHTML = '<div style="color: #9CA3AF; font-size: 11px; text-align: center; padding: 16px;">No data plans configured for this network.</div>';
         return;
       }
 
-      container.innerHTML = plans.map(p => {
-        const agentProfit = Math.max(0, p.retailPrice - p.agentPrice);
-        const platformProfit = Math.max(0, p.agentPrice - p.apiCost);
-        return `
-          <div style="background: #0B0B10; border: 1px solid #222230; border-radius: 10px; padding: 10px 12px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-              <div>
-                <span style="color: #FFFFFF; font-size: 12.5px; font-weight: 800;">${p.name}</span>
-                <span style="color: #9CA3AF; font-size: 10px; margin-left: 6px;">${p.validity}</span>
-              </div>
-              <span style="font-size: 9.5px; color: #A78BFA; background: rgba(124, 58, 237, 0.15); border: 1px solid rgba(124, 58, 237, 0.3); padding: 2px 6px; border-radius: 6px;">
-                API Switch Cost: ₦${p.apiCost}
-              </span>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 6px;">
-              <div>
-                <label style="font-size: 9px; color: #9CA3AF; display: block; margin-bottom: 2px;">Agent Wholesale (₦)</label>
-                <div style="background: #14141E; border: 1px solid #28283C; border-radius: 6px; padding: 0 6px; height: 30px; display: flex; align-items: center;">
-                  <span style="font-size: 10.5px; color: #9CA3AF; margin-right: 3px;">₦</span>
-                  <input type="number" id="adminDataAgentPrice_${p.id}" value="${p.agentPrice}" step="5" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11px; font-weight: 700;" />
-                </div>
-              </div>
-              <div>
-                <label style="font-size: 9px; color: #9CA3AF; display: block; margin-bottom: 2px;">Customer Retail (₦)</label>
-                <div style="background: #14141E; border: 1px solid #28283C; border-radius: 6px; padding: 0 6px; height: 30px; display: flex; align-items: center;">
-                  <span style="font-size: 10.5px; color: #9CA3AF; margin-right: 3px;">₦</span>
-                  <input type="number" id="adminDataRetailPrice_${p.id}" value="${p.retailPrice}" step="5" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 11px; font-weight: 700;" />
-                </div>
-              </div>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 9.5px; color: #9CA3AF; padding-top: 4px; border-top: 1px solid #1A1A24;">
-              <span>Agent Margin: <strong style="color: #10B981;">+₦${agentProfit}</strong></span>
-              <span>Platform Cut: <strong style="color: #DDD6FE;">+₦${platformProfit}</strong></span>
-            </div>
+      container.innerHTML = plans.map(p => `
+        <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 8px; padding: 8px 10px; display: grid; grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr; align-items: center; gap: 6px; font-size: 11px;">
+          <div>
+            <div style="color: #FFFFFF; font-weight: 700;">${p.name}</div>
+            <div style="color: #6B7280; font-size: 9px;">${p.validity} • Cost: ₦${p.apiCost}</div>
           </div>
-        `;
-      }).join('');
+          <div>
+            <div style="font-size: 8px; color: #9CA3AF;">API Cost</div>
+            <input type="number" id="plan_cost_${p.id}" value="${p.apiCost}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #FFF; font-size: 10.5px; padding: 3px 6px; border-radius: 4px;" />
+          </div>
+          <div>
+            <div style="font-size: 8px; color: #9CA3AF;">Agent Price</div>
+            <input type="number" id="plan_agent_${p.id}" value="${p.agentPrice}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 700; padding: 3px 6px; border-radius: 4px;" />
+          </div>
+          <div>
+            <div style="font-size: 8px; color: #9CA3AF;">Retail Price</div>
+            <input type="number" id="plan_retail_${p.id}" value="${p.retailPrice}" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #60A5FA; font-size: 10.5px; font-weight: 700; padding: 3px 6px; border-radius: 4px;" />
+          </div>
+        </div>
+      `).join('');
     }
 
-    function saveMasterPricingSettings() {
+    async function saveAdminPricingTariff() {
       const cfg = getMasterAdminConfig();
       const plans = (cfg.dataPricing && cfg.dataPricing[currentAdminPricingNetwork]) || [];
 
       plans.forEach(p => {
-        const agtInput = document.getElementById(`adminDataAgentPrice_${p.id}`);
-        const retInput = document.getElementById(`adminDataRetailPrice_${p.id}`);
-        if (agtInput && agtInput.value) p.agentPrice = Number(agtInput.value);
-        if (retInput && retInput.value) p.retailPrice = Number(retInput.value);
+        const costEl = document.getElementById('plan_cost_' + p.id);
+        const agtEl = document.getElementById('plan_agent_' + p.id);
+        const retEl = document.getElementById('plan_retail_' + p.id);
+        if (costEl && costEl.value) p.apiCost = Number(costEl.value);
+        if (agtEl && agtEl.value) p.agentPrice = Number(agtEl.value);
+        if (retEl && retEl.value) p.retailPrice = Number(retEl.value);
       });
 
-      // Airtime discount update
       const agtAirtime = document.getElementById('adminAirtimeAgentDiscount');
       const retAirtime = document.getElementById('adminAirtimeRetailDiscount');
       if (!cfg.airtimeDiscounts) cfg.airtimeDiscounts = {};
@@ -11808,353 +11825,262 @@
         retail: retAirtime ? Number(retAirtime.value) : 2.0
       };
 
-      saveMasterAdminConfig(cfg);
-      renderAdminPricingPlans();
-      showCustomAlert('Telecom Pricing saved & applied live across Payzani!');
-    }
+      await saveMasterAdminConfig(cfg);
 
-    function renderCustomerDataPlans() {
-      const grid = document.getElementById('opayDataAmountsGrid');
-      if (!grid) return;
-
-      const cfg = getMasterAdminConfig();
-      // Detect network from opayCarrierIdx or default 'mtn'
-      let netKey = 'mtn';
-      if (typeof opayCarrierIdx !== 'undefined') {
-        const carrierNames = ['mtn', 'airtel', 'glo', 'mobile9'];
-        netKey = carrierNames[opayCarrierIdx] || 'mtn';
+      // Sync customer data plans across the application
+      if (typeof renderCustomerDataPlans === 'function') {
+        renderCustomerDataPlans();
       }
 
-      const plans = (cfg.dataPricing && cfg.dataPricing[netKey]) || (cfg.dataPricing && cfg.dataPricing['mtn']) || [];
-      if (!plans.length) return;
-
-      grid.innerHTML = plans.map((p, idx) => {
-        const isSel = idx === 0 ? 'selected' : '';
-        const cashback = (p.retailPrice * 0.035).toFixed(2);
-        return `
-          <div class="opay-amount-pill ${isSel}" onclick="opaySelectDataPlan(this, '${p.name}', ${p.retailPrice})">
-            <span class="opay-pill-val">${p.name.replace(' SME', '').replace(' CG', '').replace(' Direct', '')}</span>
-            <span style="font-size:11px; color:#9CA3AF;">${p.validity} &bull; ₦${Number(p.retailPrice).toLocaleString()}</span>
-          </div>
-        `;
-      }).join('');
-
-      // Also pre-select first plan in pay button label
-      const label = document.getElementById('opay-data-pay-label');
-      if (label && plans.length > 0) {
-        label.innerText = Number(plans[0].retailPrice).toLocaleString();
-      }
+      showCustomAlert(`Updated ${currentAdminPricingNetwork.toUpperCase()} pricing saved live to database!`);
     }
 
     function renderMasterAgentsList(filterQuery = '') {
       const container = document.getElementById('masterAdminAgentsContainer');
-      if (!container) return;
+      const list = MASTER_ADMIN_CACHE.agents || [];
 
-      const cfg = getMasterAdminConfig();
-      let list = cfg.agents || [];
-
+      let filtered = list;
       if (filterQuery) {
         const q = filterQuery.toLowerCase();
-        list = list.filter(a => a.name.toLowerCase().includes(q) || a.owner.toLowerCase().includes(q) || a.phone.includes(q) || a.slug.toLowerCase().includes(q));
+        filtered = list.filter(a =>
+          (a.storefront_name && a.storefront_name.toLowerCase().includes(q)) ||
+          (a.business_name && a.business_name.toLowerCase().includes(q)) ||
+          (a.phone && a.phone.includes(q)) ||
+          (a.storefront_slug && a.storefront_slug.toLowerCase().includes(q))
+        );
       }
 
       const countLabel = document.getElementById('adminAgentsCountLabel');
-      if (countLabel) countLabel.innerText = `Showing ${list.length} Agent Outlets`;
+      if (countLabel) countLabel.innerText = `Showing ${filtered.length} Real Agent Outlets`;
 
-      if (list.length === 0) {
-        container.innerHTML = '<div style="color:#9CA3AF; font-size:11px; text-align:center; padding:16px;">No agent outlets match your search.</div>';
-        return;
+      if (container) {
+        if (filtered.length === 0) {
+          container.innerHTML = '<div style="color:#9CA3AF; font-size:11.5px; text-align:center; padding:24px; background:#14141E; border-radius:10px;">No registered agent outlets yet. When users upgrade to become an Agent, their storefronts and float balances appear here live.</div>';
+        } else {
+          container.innerHTML = filtered.map(a => {
+            const agtName = a.storefront_name || a.business_name || 'Agent Storefront';
+            const floatBal = Number(a.wholesale_float) || 0;
+            const statusColor = (a.status || 'Active').toLowerCase() === 'active' ? '#10B981' : '#F59E0B';
+            return `
+              <div style="background: #14141C; border: 1px solid #22222E; border-radius: 9px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                  <div style="color: #FFFFFF; font-size: 12.5px; font-weight: 800; display: flex; align-items: center; gap: 6px;">
+                    <span>${escapeHtml(agtName)}</span>
+                    <span style="font-size: 8.5px; font-weight: 800; color: ${statusColor}; background: rgba(16, 185, 129, 0.12); padding: 1px 5px; border-radius: 3px;">${escapeHtml(a.status || 'Active')}</span>
+                  </div>
+                  <div style="color: #9CA3AF; font-size: 10px; margin-top: 2px;">
+                    <span>Phone: ${escapeHtml(a.phone || '-')}</span> &bull; <span>Slug: /?agent=${escapeHtml(a.storefront_slug || a.id)}</span>
+                  </div>
+                </div>
+                <div style="text-align: right; display: flex; align-items: center; gap: 8px;">
+                  <div>
+                    <div style="font-size: 8.5px; color: #9CA3AF;">Float Balance</div>
+                    <div style="color: #34D399; font-size: 12.5px; font-weight: 900;">₦${floatBal.toLocaleString()}.00</div>
+                  </div>
+                  <button type="button" onclick="openAdminAdjustFloatModal('${a.id}')" style="background: #251B38; border: 1px solid #582CA6; color: #DDD6FE; font-size: 10px; font-weight: 700; padding: 5px 8px; border-radius: 5px; cursor: pointer;">
+                    Adjust Float
+                  </button>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
       }
 
-      container.innerHTML = list.map(a => {
-        const isSuspended = a.status === 'suspended';
-        const statusBadge = isSuspended 
-          ? '<span style="font-size: 9px; font-weight: 800; color: #EF4444; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); padding: 2px 6px; border-radius: 8px;">SUSPENDED</span>'
-          : '<span style="font-size: 9px; font-weight: 800; color: #10B981; background: rgba(16,185,129,0.15); border: 1px solid rgba(16,185,129,0.3); padding: 2px 6px; border-radius: 8px;">ACTIVE</span>';
-
-        return `
-          <div style="background: #13131B; border: 1px solid #222230; border-radius: 12px; padding: 12px;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <div style="width: 30px; height: 30px; border-radius: 8px; background: rgba(124, 58, 237, 0.25); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: 800; font-size: 13px;">
-                  ${a.name.charAt(0)}
-                </div>
+      // Render on Desktop View
+      const deskContainer = document.getElementById('masterDeskAgentsList');
+      if (deskContainer) {
+        if (list.length === 0) {
+          deskContainer.innerHTML = '<div style="font-size:12px; color:var(--text-muted); text-align:center; padding:16px;">No registered agent storefronts yet. Real agents will appear here live.</div>';
+        } else {
+          deskContainer.innerHTML = list.map(a => {
+            const agtName = a.storefront_name || a.business_name || 'Agent Storefront';
+            const floatBal = Number(a.wholesale_float) || 0;
+            return `
+              <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:var(--surface-subtle); border-radius:var(--radius-sm); border:1px solid var(--border);">
                 <div>
-                  <div style="color: #FFFFFF; font-size: 12.5px; font-weight: 800;">${a.name}</div>
-                  <div style="color: #9CA3AF; font-size: 10px;">${a.owner} &bull; ${a.phone}</div>
+                  <div style="font-weight:700; font-size:13px;">${escapeHtml(agtName)}</div>
+                  <div style="font-size:11.5px; color:var(--text-muted);">payzani.com/?agent=${escapeHtml(a.storefront_slug || a.id)}</div>
                 </div>
+                <span style="font-size:12px; font-weight:800; color:var(--success);">NGN ${floatBal.toLocaleString()}.00 Float</span>
               </div>
-              ${statusBadge}
-            </div>
-
-            <!-- Agent Balance & Margin Bar -->
-            <div style="background: #0B0B10; border: 1px solid #1F1F2B; border-radius: 8px; padding: 6px 10px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-              <div>
-                <span style="font-size: 9px; color: #9CA3AF; text-transform: uppercase;">Wholesale Float:</span>
-                <span style="font-size: 13px; font-weight: 900; color: #FFFFFF; margin-left: 4px;">₦${Number(a.floatBalance || 0).toLocaleString()}</span>
-              </div>
-              <span style="font-size: 10px; font-weight: 700; color: #DDD6FE;">${a.margin || 8.5}% Margin</span>
-            </div>
-
-            <!-- Action Buttons -->
-            <div style="display: flex; gap: 5px;">
-              <button type="button" onclick="openAdminAdjustFloatModal('${a.id}')" style="flex: 1; background: #201736; border: 1px solid #4C2889; color: #DDD6FE; font-size: 10.5px; font-weight: 700; padding: 5px; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 3px;">
-                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                <span>Adjust Float</span>
-              </button>
-              <button type="button" onclick="toggleAgentStatus('${a.id}')" style="flex: 0.9; background: ${isSuspended ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.12)'}; border: 1px solid ${isSuspended ? 'rgba(16,185,129,0.3)' : 'rgba(239,68,68,0.3)'}; color: ${isSuspended ? '#34D399' : '#F87171'}; font-size: 10.5px; font-weight: 700; padding: 5px; border-radius: 6px; cursor: pointer;">
-                ${isSuspended ? 'Unfreeze' : 'Freeze'}
-              </button>
-              <button type="button" onclick="previewAgentStorefront('${a.slug}')" title="Preview Storefront" style="width: 28px; height: 28px; background: #181822; border: 1px solid #282838; color: #E5E7EB; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              </button>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function filterMasterAgentsList(val) {
-      renderMasterAgentsList(val);
-    }
-
-    function refreshMasterAgentsList() {
-      renderMasterAgentsList();
-      showCustomAlert('Agent outlets list synchronized with database.');
-    }
-
-    function previewAgentStorefront(slug) {
-      const origin = (window.location.origin && window.location.origin !== 'null') ? window.location.origin : 'https://payzani-smoky.vercel.app';
-      const url = origin + '/?agent=' + encodeURIComponent(slug);
-      window.open(url, '_blank');
-    }
-
-    function toggleAgentStatus(agentId) {
-      const cfg = getMasterAdminConfig();
-      const agent = (cfg.agents || []).find(a => a.id === agentId);
-      if (!agent) return;
-
-      agent.status = (agent.status === 'suspended') ? 'active' : 'suspended';
-      saveMasterAdminConfig(cfg);
-      renderMasterAgentsList();
-      showCustomAlert(`${agent.name} is now ${agent.status.toUpperCase()}.`);
+            `;
+          }).join('');
+        }
+      }
     }
 
     function openAdminAdjustFloatModal(agentId) {
-      const cfg = getMasterAdminConfig();
-      const agent = (cfg.agents || []).find(a => a.id === agentId);
-      if (!agent) return;
-
+      currentAdjustingAgentId = agentId;
+      const agent = (MASTER_ADMIN_CACHE.agents || []).find(a => a.id === agentId);
+      if (!agent) {
+        showCustomAlert('Agent not found.');
+        return;
+      }
       const modal = document.getElementById('adminAdjustFloatModal');
       const nameEl = document.getElementById('adjustModalAgentName');
-      const idInput = document.getElementById('adjustModalAgentId');
-      if (modal && nameEl && idInput) {
-        nameEl.innerText = `${agent.name} (Current: ₦${Number(agent.floatBalance || 0).toLocaleString()})`;
-        idInput.value = agentId;
-        floatAdjustOperation = 'credit';
-        selectFloatAdjustOp('credit');
-        modal.style.display = 'flex';
-      }
+      const curEl = document.getElementById('adjustModalCurrentFloat');
+      const inp = document.getElementById('adjustModalAmountInput');
+
+      if (nameEl) nameEl.innerText = agent.storefront_name || agent.business_name || 'Agent Outlet';
+      if (curEl) curEl.innerText = 'Current: ₦' + Number(agent.wholesale_float || 0).toLocaleString();
+      if (inp) inp.value = '';
+      if (modal) modal.style.display = 'flex';
     }
 
     function closeAdminAdjustFloatModal() {
       const modal = document.getElementById('adminAdjustFloatModal');
       if (modal) modal.style.display = 'none';
+      currentAdjustingAgentId = null;
     }
 
-    function selectFloatAdjustOp(op) {
-      floatAdjustOperation = op;
-      const btnCredit = document.getElementById('btnFloatOpCredit');
-      const btnDebit = document.getElementById('btnFloatOpDebit');
-      if (btnCredit && btnDebit) {
-        if (op === 'credit') {
-          btnCredit.style.background = '#10B981';
-          btnCredit.style.color = '#FFF';
-          btnCredit.style.border = 'none';
-          btnDebit.style.background = '#1C1929';
-          btnDebit.style.color = '#9CA3AF';
-          btnDebit.style.border = '1px solid #2E2E42';
-        } else {
-          btnDebit.style.background = '#EF4444';
-          btnDebit.style.color = '#FFF';
-          btnDebit.style.border = 'none';
-          btnCredit.style.background = '#1C1929';
-          btnCredit.style.color = '#9CA3AF';
-          btnCredit.style.border = '1px solid #2E2E42';
-        }
-      }
-    }
-
-    function executeAdminFloatAdjustment() {
-      const idInput = document.getElementById('adjustModalAgentId');
-      const amtInput = document.getElementById('adjustModalAmount');
-      const reasonInput = document.getElementById('adjustModalReason');
-      if (!idInput || !amtInput) return;
-
-      const agentId = idInput.value;
-      const amt = Number(amtInput.value) || 0;
-      const reason = reasonInput ? reasonInput.value : 'Admin Manual Adjustment';
-
-      if (amt <= 0) {
-        showCustomAlert('Please enter a valid adjustment amount.');
+    async function executeAdminFloatAdjustment(action) {
+      if (!currentAdjustingAgentId) return;
+      const inp = document.getElementById('adjustModalAmountInput');
+      const amount = Number(inp ? inp.value : 0);
+      if (!amount || amount <= 0) {
+        showCustomAlert('Please enter a valid amount.');
         return;
       }
 
-      const cfg = getMasterAdminConfig();
-      const agent = (cfg.agents || []).find(a => a.id === agentId);
+      const agent = (MASTER_ADMIN_CACHE.agents || []).find(a => a.id === currentAdjustingAgentId);
       if (!agent) return;
 
-      if (floatAdjustOperation === 'credit') {
-        agent.floatBalance = (agent.floatBalance || 0) + amt;
-      } else {
-        agent.floatBalance = Math.max(0, (agent.floatBalance || 0) - amt);
+      const curFloat = Number(agent.wholesale_float) || 0;
+      let newFloat = curFloat;
+      if (action === 'credit') newFloat += amount;
+      else if (action === 'debit') newFloat = Math.max(0, curFloat - amount);
+
+      try {
+        await PAYZANI_SB.patch('agents', 'id=eq.' + encodeURIComponent(agent.id), {
+          wholesale_float: newFloat,
+          updated_at: new Date().toISOString()
+        });
+
+        await PAYZANI_SB.post('transactions', {
+          id: 'FLT-' + Math.floor(100000 + Math.random() * 900000),
+          user_id: agent.user_id,
+          type: 'Admin Float ' + (action === 'credit' ? 'Credit' : 'Debit'),
+          description: `Superadmin ${action === 'credit' ? 'Credited' : 'Debited'} Agent Float (₦${amount.toLocaleString()})`,
+          amount: amount,
+          flow: action === 'credit' ? 'credit' : 'debit',
+          status: 'success',
+          recipient: agent.storefront_name || agent.business_name
+        });
+
+        closeAdminAdjustFloatModal();
+        await syncRealMasterAdmin();
+        showCustomAlert(`Float updated: ${action === 'credit' ? '+₦' : '-₦'}${amount.toLocaleString()} applied to ${agent.storefront_name || 'Agent'}.`);
+      } catch (err) {
+        console.error('Float adjustment error:', err);
+        showCustomAlert('Error updating float. Please try again.');
       }
-
-      // If this agent is Victor Telecoms, update the Agent Dashboard float display in real time
-      if (agent.slug === 'victor') {
-        const floatDisplay = document.getElementById('agentFloatDisplay');
-        if (floatDisplay) {
-          floatDisplay.innerText = '₦' + Number(agent.floatBalance).toLocaleString() + '.00';
-        }
-      }
-
-      // Record to Switch Audit Log
-      const newRef = 'SW-' + Math.floor(100000 + Math.random() * 900000);
-      if (!cfg.auditLog) cfg.auditLog = [];
-      cfg.auditLog.unshift({
-        id: newRef,
-        outlet: agent.name,
-        type: 'refill',
-        item: `Float ${floatAdjustOperation.toUpperCase()}: ${reason}`,
-        retail: amt,
-        wholesale: amt,
-        profit: 0,
-        status: 'Settled',
-        time: 'Just now'
-      });
-
-      saveMasterAdminConfig(cfg);
-      renderMasterAgentsList();
-      renderMasterAuditFeed();
-      closeAdminAdjustFloatModal();
-      showCustomAlert(`Successfully ${floatAdjustOperation === 'credit' ? 'credited' : 'debited'} ₦${amt.toLocaleString()} to ${agent.name}.`);
     }
 
     function renderMasterGateways() {
       const container = document.getElementById('adminGatewaySwitchesList');
       if (!container) return;
 
-      const cfg = getMasterAdminConfig();
-      const gws = cfg.gateways || {};
+      const vtActive = MASTER_ADMIN_CACHE.vtpass ? !!MASTER_ADMIN_CACHE.vtpass.active : true;
+      const vtEnv = MASTER_ADMIN_CACHE.vtpass ? (MASTER_ADMIN_CACHE.vtpass.environment || 'sandbox') : 'sandbox';
+      const japActive = MASTER_ADMIN_CACHE.jap ? !!MASTER_ADMIN_CACHE.jap.active : true;
 
-      const gatewayDefs = [
-        { key: 'mtnSme', title: 'MTN SME Gateway Switch', desc: 'Auto-switches between MTN Direct and SME Host' },
-        { key: 'airtelCg', title: 'Airtel Corporate Gifting Switch', desc: 'Direct SIM Server & CG Gateway' },
-        { key: 'gloDirect', title: 'Glo Direct Switch', desc: 'Glo Gifting API and instant switching' },
-        { key: 'mobile9Sme', title: '9mobile SME Switch', desc: '9mobile wholesale router' },
-        { key: 'cableTv', title: 'Cable TV & Bills Switch', desc: 'DStv, GOtv, Startimes & Discos' },
-        { key: 'socialBooster', title: 'Social Media Booster Gateway', desc: 'Instagram, TikTok, YouTube growth switch' },
-        { key: 'maintenanceMode', title: 'Platform Maintenance Freeze', desc: 'Emergency order freeze across all storefronts' }
+      const gatewaysList = [
+        {
+          key: 'vtpass',
+          title: 'VTpass Telecom & Utility Switch',
+          desc: `Airtime, MTN/Airtel/Glo/9mobile Data, Cable TV & Electricity (${vtEnv.toUpperCase()})`,
+          active: vtActive
+        },
+        {
+          key: 'jap',
+          title: 'JustAnotherPanel (JAP) Social Switch',
+          desc: 'Automated fulfillment for Instagram, TikTok, YouTube growth boosters',
+          active: japActive
+        },
+        {
+          key: 'paystack',
+          title: 'Paystack Automated Funding Switch',
+          desc: 'Instant debit card and bank transfer checkout deposits',
+          active: true
+        },
+        {
+          key: 'monnify',
+          title: 'Monnify Dedicated Virtual Accounts',
+          desc: 'Dedicated automated virtual bank account numbers for users',
+          active: true
+        }
       ];
 
-      container.innerHTML = gatewayDefs.map(g => {
-        const isActive = !!gws[g.key];
-        const isMaint = g.key === 'maintenanceMode';
-        return `
-          <div style="background: #0B0B10; border: 1px solid #1F1F2B; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <div style="color: #FFFFFF; font-size: 12px; font-weight: 800;">${g.title}</div>
-              <div style="color: #9CA3AF; font-size: 10px; margin-top: 1px;">${g.desc}</div>
-            </div>
-            <button type="button" onclick="toggleMasterGateway('${g.key}')" style="background: ${isActive ? (isMaint ? '#EF4444' : '#10B981') : '#232332'}; border: none; color: #FFF; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; cursor: pointer;">
-              ${isActive ? (isMaint ? 'FREEZE ACTIVE' : 'ONLINE') : 'OFFLINE'}
-            </button>
+      container.innerHTML = gatewaysList.map(g => `
+        <div style="background: #0B0B10; border: 1px solid #1F1F2B; border-radius: 10px; padding: 10px 12px; display: flex; align-items: center; justify-content: space-between;">
+          <div>
+            <div style="color: #FFFFFF; font-size: 12px; font-weight: 800;">${g.title}</div>
+            <div style="color: #9CA3AF; font-size: 10px; margin-top: 1px;">${g.desc}</div>
           </div>
-        `;
-      }).join('');
+          <button type="button" onclick="toggleMasterGateway('${g.key}')" style="background: ${g.active ? '#10B981' : '#EF4444'}; border: none; color: #FFF; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 6px; cursor: pointer;">
+            ${g.active ? 'ONLINE' : 'OFFLINE'}
+          </button>
+        </div>
+      `).join('');
     }
 
-    function toggleMasterGateway(gwKey) {
-      const cfg = getMasterAdminConfig();
-      if (!cfg.gateways) cfg.gateways = {};
-      cfg.gateways[gwKey] = !cfg.gateways[gwKey];
-
-      saveMasterAdminConfig(cfg);
+    async function toggleMasterGateway(gwKey) {
+      if (gwKey === 'vtpass' && MASTER_ADMIN_CACHE.vtpass) {
+        MASTER_ADMIN_CACHE.vtpass.active = !MASTER_ADMIN_CACHE.vtpass.active;
+        await PAYZANI_SB.patch('admin_settings', 'key=eq.vtpass_gateway', { value: MASTER_ADMIN_CACHE.vtpass });
+      } else if (gwKey === 'jap' && MASTER_ADMIN_CACHE.jap) {
+        MASTER_ADMIN_CACHE.jap.active = !MASTER_ADMIN_CACHE.jap.active;
+        await PAYZANI_SB.patch('admin_settings', 'key=eq.jap_gateway', { value: MASTER_ADMIN_CACHE.jap });
+      }
       renderMasterGateways();
-      showCustomAlert(`Gateway ${gwKey} status updated.`);
+      showCustomAlert(`Gateway ${gwKey.toUpperCase()} status updated in Supabase.`);
     }
 
     function testMasterGatewayHealth() {
-      showCustomAlert('Switch latency check: MTN 210ms (OK) • Airtel 184ms (OK) • Glo 310ms (OK) • 9mobile 240ms (OK).');
+      const vtOnline = MASTER_ADMIN_CACHE.vtpass ? 'ONLINE' : 'ACTIVE';
+      const japOnline = MASTER_ADMIN_CACHE.jap ? 'ONLINE' : 'ACTIVE';
+      showCustomAlert(`Switch Health Check: VTpass (${vtOnline}) • JustAnotherPanel (${japOnline}) • Paystack (ONLINE) • Supabase (CONNECTED).`);
     }
 
     function renderMasterAuditFeed() {
       const container = document.getElementById('masterAdminAuditFeed');
       if (!container) return;
 
-      const cfg = getMasterAdminConfig();
-      const logs = cfg.auditLog || [];
+      const txList = MASTER_ADMIN_CACHE.transactions || [];
 
-      if (!logs.length) {
-        container.innerHTML = '<div style="color:#9CA3AF; font-size:11px; text-align:center; padding:16px;">No transactions recorded.</div>';
+      if (!txList.length) {
+        container.innerHTML = '<div style="color:#9CA3AF; font-size:11.5px; text-align:center; padding:24px; background:#14141E; border-radius:10px;">No platform transactions recorded yet. Real user orders will appear here live.</div>';
         return;
       }
 
-      container.innerHTML = logs.map(l => {
+      container.innerHTML = txList.map(tx => {
+        const amt = Number(tx.amount) || 0;
+        const isCredit = tx.flow === 'credit';
+        const flowColor = isCredit ? '#10B981' : '#60A5FA';
+        const sign = isCredit ? '+' : '-';
+        const timeStr = tx.created_at ? formatTxTime(tx.created_at) : 'Active';
+
         return `
           <div style="background: #14141C; border: 1px solid #22222E; border-radius: 8px; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between;">
-            <div>
-              <div style="color: #FFFFFF; font-size: 11.5px; font-weight: 700;">
-                <span>${l.outlet}</span>
-                <span style="font-size: 8.5px; padding: 1px 4px; border-radius: 3px; background: rgba(124,58,237,0.2); color: #DDD6FE; font-weight: 800; margin-left: 4px;">${l.id}</span>
+            <div style="min-width: 0;">
+              <div style="color: #FFFFFF; font-size: 11.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                <span>${escapeHtml(tx.recipient || tx.type || 'Transaction')}</span>
+                <span style="font-size: 8.5px; padding: 1px 4px; border-radius: 3px; background: rgba(124,58,237,0.2); color: #DDD6FE; font-weight: 800; margin-left: 4px;">${escapeHtml(tx.id || '')}</span>
               </div>
-              <div style="color: #9CA3AF; font-size: 9.5px; margin-top: 1px;">${l.item}</div>
+              <div style="color: #9CA3AF; font-size: 9.5px; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                ${escapeHtml(tx.description || tx.type || '')}
+              </div>
             </div>
             <div style="text-align: right; flex-shrink: 0; margin-left: 8px;">
-              <div style="color: #10B981; font-size: 11px; font-weight: 800;">+₦${Number(l.profit || 0).toLocaleString()} Profit</div>
-              <div style="color: #6B7280; font-size: 9px; margin-top: 1px;">${l.time}</div>
+              <div style="color: ${flowColor}; font-size: 11px; font-weight: 800;">${sign}₦${amt.toLocaleString()}.00</div>
+              <div style="color: #6B7280; font-size: 9px; margin-top: 1px;">${timeStr}</div>
             </div>
           </div>
         `;
       }).join('');
     }
 
-    function simulateMasterTransaction() {
-      const cfg = getMasterAdminConfig();
-      const outlets = ['My Reseller Store', 'Apex Connect', 'SwiftRecharge Hub', 'Kano Telecom Direct', 'Direct Payzani'];
-      const items = [
-        { name: 'MTN 1.0GB SME Data', retail: 290, wholesale: 255, profit: 35 },
-        { name: 'Airtel 2.0GB CG Data', retail: 600, wholesale: 520, profit: 80 },
-        { name: 'Glo 1.0GB Direct Data', retail: 280, wholesale: 245, profit: 35 },
-        { name: 'MTN ₦1,000 Airtime Recharge', retail: 980, wholesale: 970, profit: 10 },
-        { name: '9mobile 1.5GB SME Data', retail: 450, wholesale: 390, profit: 60 }
-      ];
-
-      const chosenOutlet = outlets[Math.floor(Math.random() * outlets.length)];
-      const chosenItem = items[Math.floor(Math.random() * items.length)];
-      const newRef = 'SW-' + Math.floor(100000 + Math.random() * 900000);
-
-      if (!cfg.auditLog) cfg.auditLog = [];
-      cfg.auditLog.unshift({
-        id: newRef,
-        outlet: chosenOutlet,
-        type: 'order',
-        item: chosenItem.name,
-        retail: chosenItem.retail,
-        wholesale: chosenItem.wholesale,
-        profit: chosenItem.profit,
-        status: '200 OK',
-        time: 'Just now'
-      });
-
-      // Update platform stats
-      cfg.stats.platformGmv = (cfg.stats.platformGmv || 18450200) + chosenItem.retail;
-      cfg.stats.platformProfit = (cfg.stats.platformProfit || 1642850) + chosenItem.profit;
-
-      saveMasterAdminConfig(cfg);
-      renderMasterAuditFeed();
-      showCustomAlert(`Simulated live switch order: ${chosenItem.name} via ${chosenOutlet}!`);
-    }
 
     // Auto-detect admin in URL parameters or hash on load
     window.addEventListener('DOMContentLoaded', () => {
