@@ -5237,7 +5237,7 @@
           <div style="color: #9CA3AF; font-size: 11.5px;">Lifetime wholesale rates &bull; Free storefront &bull; No renewal</div>
         </div>
         <div style="text-align: right; flex-shrink: 0; margin-left: 12px;">
-          <div id="agentActivationFeeDisplay" style="color: #FFFFFF; font-size: 20px; font-weight: 900; line-height: 1.1;">₦2,500</div>
+          <div id="agentActivationFeeDisplay" style="color: #FFFFFF; font-size: 20px; font-weight: 900; line-height: 1.1;">₦4,700</div>
           <div style="font-size: 10px; color: #10B981; font-weight: 700; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 2px 6px; border-radius: 8px; display: inline-block; margin-top: 3px;">ONE-TIME</div>
         </div>
       </div>
@@ -5296,7 +5296,7 @@
           </div>
 
           <button type="submit" id="agentRegSubmitBtn" class="opay-pay-action-btn" style="width: 100%; margin: 0;">
-            Pay ₦2,500 &bull; Sign Up as Agent &rarr;
+            Pay ₦4,700 &bull; Sign Up as Agent &rarr;
           </button>
 
           <div style="text-align: center; margin-top: 14px;">
@@ -5826,7 +5826,7 @@
             </div>
             <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 12px; font-weight: 700; color: #E5E7EB;">₦</span>
-              <input type="number" id="adminAgentOnboardingFee" value="2500" min="500" step="500" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+              <input type="number" id="adminAgentOnboardingFee" value="4700" min="500" step="500" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
             </div>
             <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">Changes the activation fee shown on the Agent Signup screen.</div>
           </div>
@@ -8931,7 +8931,7 @@
 
           <div class="form-group" style="margin-bottom:14px;">
             <label class="form-label">Agent Onboarding Fee (NGN)</label>
-            <input type="number" class="input-field" value="2500" id="adminAgentFee">
+            <input type="number" class="input-field" value="4700" id="adminAgentFee">
             <span style="font-size:11.5px; color:var(--text-muted);">Charged once when a user upgrades to an agent.</span>
           </div>
 
@@ -10168,7 +10168,7 @@
       }
       userEmail = userEmail.replace(/\s+/g, '');
 
-      const cfg = (typeof getMasterAdminConfig === 'function') ? getMasterAdminConfig() : { agentOnboardingFee: 2500 };
+      const cfg = (typeof getMasterAdminConfig === 'function') ? getMasterAdminConfig() : { agentOnboardingFee: 4700 };
       const fee = Number(cfg.agentOnboardingFee || 2500);
 
       if (btn) {
@@ -11619,7 +11619,7 @@
     // PAYZANI MASTER ADMIN CONTROL ENGINE (ROOT SUPERADMIN)
     // ==============================================================================
     const DEFAULT_MASTER_CONFIG = {
-      agentOnboardingFee: 2500,
+      agentOnboardingFee: 4700,
       defaultAgentMargin: 8.5,
       minFloatRefill: 5000,
       platformTokenCut: 200,
@@ -11690,6 +11690,28 @@
       return MASTER_ADMIN_CACHE.config || DEFAULT_MASTER_CONFIG;
     }
 
+    async function syncRealPlatformSettings() {
+      try {
+        if (!PAYZANI_SB) return;
+        const settings = await PAYZANI_SB.get('admin_settings');
+        if (settings && Array.isArray(settings)) {
+          const cfgRow = settings.find(s => s.key === 'master_admin_config');
+          if (cfgRow && cfgRow.value) {
+            MASTER_ADMIN_CACHE.config = Object.assign({}, DEFAULT_MASTER_CONFIG, cfgRow.value);
+            applyMasterConfigToDOM(MASTER_ADMIN_CACHE.config);
+          }
+          const vtRow = settings.find(s => s.key === 'vtpass_gateway');
+          if (vtRow) MASTER_ADMIN_CACHE.vtpass = vtRow.value;
+          const japRow = settings.find(s => s.key === 'jap_gateway');
+          if (japRow) MASTER_ADMIN_CACHE.jap = japRow.value;
+          const paystackRow = settings.find(s => s.key === 'paystack_gateway');
+          if (paystackRow) MASTER_ADMIN_CACHE.paystack = paystackRow.value;
+        }
+      } catch (err) {
+        console.warn('Real platform settings sync error:', err);
+      }
+    }
+
     async function syncRealMasterAdmin() {
       try {
         // 1. Fetch real admin_settings
@@ -11756,9 +11778,9 @@
         const cfg = getMasterAdminConfig();
         applyMasterConfigToDOM(cfg);
         const inputFee = document.getElementById('adminAgentOnboardingFee');
-        if (inputFee) inputFee.value = cfg.agentOnboardingFee || 2500;
+        if (inputFee) inputFee.value = cfg.agentOnboardingFee || 4700;
         const deskFee = document.getElementById('adminAgentFee');
-        if (deskFee) deskFee.value = cfg.agentOnboardingFee || 2500;
+        if (deskFee) deskFee.value = cfg.agentOnboardingFee || 4700;
         const inputMargin = document.getElementById('adminDefaultAgentMargin');
         if (inputMargin) inputMargin.value = cfg.defaultAgentMargin || 8.5;
         const inputMinFloat = document.getElementById('adminMinFloatRefill');
@@ -11784,23 +11806,44 @@
       MASTER_ADMIN_CACHE.config = cfg;
       try {
         localStorage.setItem('payzani_master_admin_config', JSON.stringify(cfg));
-        await PAYZANI_SB.post('admin_settings', {
-          key: 'master_admin_config',
-          value: cfg
-        });
+        if (PAYZANI_SB && typeof PAYZANI_SB.upsert === 'function') {
+          await PAYZANI_SB.upsert('admin_settings', {
+            key: 'master_admin_config',
+            value: cfg,
+            updated_at: new Date().toISOString()
+          });
+        } else if (PAYZANI_SB && typeof PAYZANI_SB.patch === 'function') {
+          await PAYZANI_SB.patch('admin_settings', 'key=eq.master_admin_config', {
+            value: cfg,
+            updated_at: new Date().toISOString()
+          });
+        }
       } catch(e) {
-        console.warn('Save master admin config to Supabase:', e);
+        console.warn('Save master admin config to Supabase notice:', e);
+        try {
+          await PAYZANI_SB.patch('admin_settings', 'key=eq.master_admin_config', {
+            value: cfg,
+            updated_at: new Date().toISOString()
+          });
+        } catch(err2) {
+          console.error('Fallback patch failed:', err2);
+        }
       }
       applyMasterConfigToDOM(cfg);
     }
 
     function applyMasterConfigToDOM(cfg) {
       if (!cfg) return;
-      const fee = Number(cfg.agentOnboardingFee || 2500);
+      const fee = Number(cfg.agentOnboardingFee || 4700);
       const feeEl = document.getElementById('agentActivationFeeDisplay');
       if (feeEl) feeEl.textContent = '₦' + fee.toLocaleString();
       const btnEl = document.getElementById('agentRegSubmitBtn');
       if (btnEl) btnEl.innerHTML = 'Pay ₦' + fee.toLocaleString() + ' &bull; Sign Up as Agent &rarr;';
+
+      const inputFee = document.getElementById('adminAgentOnboardingFee');
+      if (inputFee && document.activeElement !== inputFee) inputFee.value = fee;
+      const deskFee = document.getElementById('adminAgentFee');
+      if (deskFee && document.activeElement !== deskFee) deskFee.value = fee;
     }
 
     async function openMasterAdminPanel() {
@@ -11853,7 +11896,7 @@
       const inputCut = document.getElementById('adminPlatformTokenCut');
       const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
 
-      if (inputFee) cfg.agentOnboardingFee = Number(inputFee.value) || 2500;
+      if (inputFee && inputFee.value) cfg.agentOnboardingFee = Number(inputFee.value); else if (deskFee && deskFee.value) cfg.agentOnboardingFee = Number(deskFee.value);
       if (inputMargin) cfg.defaultAgentMargin = Number(inputMargin.value) || 8.5;
       if (inputMinFloat) cfg.minFloatRefill = Number(inputMinFloat.value) || 5000;
       if (inputCut) cfg.platformTokenCut = Number(inputCut.value) || 200;
@@ -11864,10 +11907,12 @@
     }
 
     async function saveMasterSettings() {
-      const fee = document.getElementById('adminAgentFee') ? document.getElementById('adminAgentFee').value : 2500;
+      const deskFee = document.getElementById('adminAgentFee');
+      const inputFee = document.getElementById('adminAgentOnboardingFee');
+      const feeVal = (deskFee && deskFee.value) ? Number(deskFee.value) : ((inputFee && inputFee.value) ? Number(inputFee.value) : 4700);
       const cut = document.getElementById('adminTokenCut') ? document.getElementById('adminTokenCut').value : 200;
       const cfg = getMasterAdminConfig();
-      if (fee) cfg.agentOnboardingFee = Number(fee);
+      cfg.agentOnboardingFee = feeVal;
       if (cut) cfg.platformTokenCut = Number(cut);
 
       await saveMasterAdminConfig(cfg);
@@ -12369,6 +12414,23 @@
           body: JSON.stringify(data)
         });
         if (!resp.ok) throw new Error('Supabase POST ' + table + ' failed: ' + resp.status);
+        return await resp.json();
+      },
+
+      async upsert(table, data) {
+        const resp = await fetch(this.url + '/rest/v1/' + table, {
+          method: 'POST',
+          headers: Object.assign({}, this.headers(), {
+            'Prefer': 'resolution=merge-duplicates,return=representation'
+          }),
+          body: JSON.stringify(data)
+        });
+        if (!resp.ok) {
+          if (data && data.key) {
+            return await this.patch(table, 'key=eq.' + encodeURIComponent(data.key), data);
+          }
+          throw new Error('Supabase UPSERT ' + table + ' failed: ' + resp.status);
+        }
         return await resp.json();
       },
 
@@ -13368,6 +13430,7 @@
 
     // Auto-initialize real database sync when page loads
     window.addEventListener('DOMContentLoaded', () => {
+      syncRealPlatformSettings();
       syncRealUserProfile();
       syncRealTransactions();
       syncRealReferralRewards();
