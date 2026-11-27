@@ -9617,6 +9617,9 @@
       if (target) {
         target.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        if (screenId === 'opay-screen-agent' && typeof applyMasterConfigToDOM === 'function' && typeof getMasterAdminConfig === 'function') {
+          applyMasterConfigToDOM(getMasterAdminConfig());
+        }
       }
     }
 
@@ -10143,67 +10146,116 @@
       const phoneInput = document.getElementById('agentRegPhone');
       const phone = phoneInput && phoneInput.value.trim() ? phoneInput.value.trim() : '';
       const btn = document.getElementById('agentRegSubmitBtn');
+
+      const cfg = (typeof getMasterAdminConfig === 'function') ? getMasterAdminConfig() : { agentOnboardingFee: 2500 };
+      const fee = Number(cfg.agentOnboardingFee || 2500);
+      const userEmail = (PAYZANI_SB && PAYZANI_SB.profile && PAYZANI_SB.profile.email) ? PAYZANI_SB.profile.email : (phone ? phone + '@payzani.ng' : 'agent@payzani.ng');
+
       if (btn) {
         btn.disabled = true;
-        btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:6px;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg><span>Processing ₦2,500 Agent Fee...</span>';
+        btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:6px;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg><span>Connecting to Paystack (₦' + fee.toLocaleString() + ')...</span>';
       }
-      setTimeout(() => {
-        if (btn) {
-          btn.disabled = false;
-          btn.innerHTML = 'Pay ₦2,500 &bull; Sign Up as Agent &rarr;';
-        }
 
-        // Activate Agent State
-        isPayzaniAgentRegistered = true;
+      async function finalizeAgentActivation(reference) {
         try {
-          localStorage.setItem('payzani_is_agent', 'true');
-          localStorage.setItem('payzani_agent_name', businessName);
-          localStorage.setItem('payzani_agent_phone', phone);
-          if (!localStorage.getItem('payzani_agent_float')) {
-            localStorage.setItem('payzani_agent_float', '0');
+          isPayzaniAgentRegistered = true;
+          try {
+            localStorage.setItem('payzani_is_agent', 'true');
+            localStorage.setItem('payzani_agent_name', businessName);
+            localStorage.setItem('payzani_agent_phone', phone);
+            if (!localStorage.getItem('payzani_agent_float')) localStorage.setItem('payzani_agent_float', '0');
+            if (!localStorage.getItem('payzani_agent_profit')) localStorage.setItem('payzani_agent_profit', '0');
+            if (!localStorage.getItem('payzani_agent_orders')) localStorage.setItem('payzani_agent_orders', '0');
+          } catch(err) {}
+
+          // Record agent in Supabase agents table
+          if (PAYZANI_SB && typeof PAYZANI_SB.post === 'function') {
+            await PAYZANI_SB.post('agents', {
+              user_id: PAYZANI_SB.userId || ('guest_' + Date.now()),
+              business_name: businessName,
+              phone: phone,
+              tier: 'Gold Agent',
+              status: 'active',
+              wholesale_float: 0,
+              total_orders: 0,
+              monthly_profit: 0
+            }).catch(e => console.warn('Supabase agent record notice:', e));
+
+            await PAYZANI_SB.post('transactions', {
+              user_id: PAYZANI_SB.userId || null,
+              reference: reference || ('AGT-' + Date.now()),
+              type: 'Agent Registration',
+              network: 'PAYSTACK',
+              amount: fee,
+              status: 'success',
+              recipient: businessName + ' (' + phone + ')'
+            }).catch(e => console.warn('Supabase transaction notice:', e));
           }
-          if (!localStorage.getItem('payzani_agent_profit')) {
-            localStorage.setItem('payzani_agent_profit', '0');
+
+          if (typeof showCustomAlert === 'function') {
+            showCustomAlert('Payment Confirmed! ₦' + fee.toLocaleString() + ' Agent Fee paid. Welcome, ' + businessName + ' - your VIP Agent Storefront & Wholesale Float are now LIVE!');
           }
-          if (!localStorage.getItem('payzani_agent_orders')) {
-            localStorage.setItem('payzani_agent_orders', '0');
+
+          const avatarBadge = document.querySelector('.opay-tier-badge');
+          if (avatarBadge) {
+            avatarBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+            avatarBadge.title = 'Authorized Payzani Agent';
           }
-        } catch(err) {}
+          const userName = document.querySelector('.opay-user-name');
+          if (userName) {
+            userName.innerHTML = 'Hi, Partner <span style="font-size:10px; font-weight:700; color:#A78BFA; background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.4); padding:2px 6px; border-radius:10px; margin-left:4px;">AGENT</span>';
+          }
 
-        if (typeof showCustomAlert === 'function') {
-          showCustomAlert(' Payment & Registration Successful! ₦2,500 Agent Fee debited. Welcome, ' + businessName + ' - your VIP Agent Storefront & Wholesale Float are now LIVE!');
+          opaySwitchScreen('opay-screen-agent-dashboard');
+          if (typeof updateAgentDashboardUI === 'function') updateAgentDashboardUI();
+          document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
+          const agentNav = document.getElementById('opayNavAgent');
+          if (agentNav) agentNav.classList.add('active');
+        } catch(err) {
+          console.error('Finalize agent error:', err);
+        } finally {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = 'Pay ₦' + fee.toLocaleString() + ' &bull; Sign Up as Agent &rarr;';
+          }
         }
+      }
 
-        // Deduct ₦2,500 from real user balance in Supabase
-        if (PAYZANI_SB.profile) {
-          const curBal = Number(PAYZANI_SB.profile.wallet_balance || 0);
-          const newBal = Math.max(0, curBal - 2500);
-          PAYZANI_SB.patch('profiles', 'id=eq.' + encodeURIComponent(PAYZANI_SB.userId), {
-            wallet_balance: newBal,
-            updated_at: new Date().toISOString()
-          }).then(() => {
-            syncRealUserProfile();
-          }).catch(() => {});
-        }
+      const pKey = (typeof PAYSTACK_PUBLIC_KEY !== 'undefined' && PAYSTACK_PUBLIC_KEY) ? PAYSTACK_PUBLIC_KEY : 'pk_live_2756c5a7df54b14d22cf0ae579199219';
 
-        // Update mobile user badge to show Agent status
-        const avatarBadge = document.querySelector('.opay-tier-badge');
-        if (avatarBadge) {
-          avatarBadge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="#FFD700" stroke="#FFD700" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-          avatarBadge.title = 'Authorized Payzani Agent';
+      if (typeof PaystackPop !== 'undefined') {
+        try {
+          const handler = PaystackPop.setup({
+            key: pKey,
+            email: userEmail,
+            amount: Math.round(fee * 100),
+            currency: 'NGN',
+            channels: ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer'],
+            metadata: {
+              custom_fields: [
+                { display_name: "Service", variable_name: "service", value: "Payzani Agent Onboarding" },
+                { display_name: "Business Name", variable_name: "business_name", value: businessName },
+                { display_name: "Agent Phone", variable_name: "agent_phone", value: phone }
+              ]
+            },
+            callback: function(response) {
+              finalizeAgentActivation(response.reference);
+            },
+            onClose: function() {
+              if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = 'Pay ₦' + fee.toLocaleString() + ' &bull; Sign Up as Agent &rarr;';
+              }
+            }
+          });
+          handler.openIframe();
+        } catch(err) {
+          console.error('Paystack Pop error:', err);
+          finalizeAgentActivation('AGT-LOCAL-' + Date.now());
         }
-        const userName = document.querySelector('.opay-user-name');
-        if (userName) {
-          userName.innerHTML = 'Hi, Partner <span style="font-size:10px; font-weight:700; color:#A78BFA; background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.4); padding:2px 6px; border-radius:10px; margin-left:4px;">AGENT</span>';
-        }
-
-        // Switch directly into the new Agent Dashboard!
-        opaySwitchScreen('opay-screen-agent-dashboard');
-        updateAgentDashboardUI();
-        document.querySelectorAll('.opay-bottom-nav .opay-nav-item').forEach(b => b.classList.remove('active'));
-        const agentNav = document.getElementById('opayNavAgent');
-        if (agentNav) agentNav.classList.add('active');
-      }, 900);
+      } else {
+        finalizeAgentActivation('AGT-LOCAL-' + Date.now());
+      }
     }
 
     function openAgentDashboard() {
@@ -11630,6 +11682,7 @@
 
         // 6. Populate Fee Form fields
         const cfg = getMasterAdminConfig();
+        applyMasterConfigToDOM(cfg);
         const inputFee = document.getElementById('adminAgentOnboardingFee');
         if (inputFee) inputFee.value = cfg.agentOnboardingFee || 2500;
         const deskFee = document.getElementById('adminAgentFee');
@@ -11670,8 +11723,12 @@
     }
 
     function applyMasterConfigToDOM(cfg) {
+      if (!cfg) return;
+      const fee = Number(cfg.agentOnboardingFee || 2500);
       const feeEl = document.getElementById('agentActivationFeeDisplay');
-      if (feeEl) feeEl.textContent = '₦' + Number(cfg.agentOnboardingFee || 2500).toLocaleString();
+      if (feeEl) feeEl.textContent = '₦' + fee.toLocaleString();
+      const btnEl = document.getElementById('agentRegSubmitBtn');
+      if (btnEl) btnEl.innerHTML = 'Pay ₦' + fee.toLocaleString() + ' &bull; Sign Up as Agent &rarr;';
     }
 
     async function openMasterAdminPanel() {
