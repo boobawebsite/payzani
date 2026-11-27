@@ -4155,6 +4155,30 @@
         margin-right: 12px;
         border-right: 1px solid #262B3D;
         flex-shrink: 0;
+        transition: max-width 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, padding 0.2s ease, margin 0.2s ease;
+        overflow: hidden;
+        white-space: nowrap;
+        max-width: 120px;
+        opacity: 1;
+      }
+      .payzani-auth-prefix.is-hidden {
+        max-width: 0 !important;
+        opacity: 0 !important;
+        padding-right: 0 !important;
+        margin-right: 0 !important;
+        border-right: none !important;
+        pointer-events: none !important;
+      }
+      .payzani-auth-email-icon {
+        display: none;
+        align-items: center;
+        color: var(--theme-primary, #A78BFA);
+        margin-right: 10px;
+        flex-shrink: 0;
+        animation: fadeIn 0.2s ease-out;
+      }
+      .payzani-auth-email-icon.is-visible {
+        display: flex;
       }
       .payzani-auth-input-wrapper svg.field-icon {
         color: var(--theme-primary, #A78BFA);
@@ -4650,15 +4674,18 @@
         <div class="payzani-auth-pane active" id="payzaniPaneLogin">
           <form onsubmit="handlePayzaniAuthSubmit(event, 'login')">
             <div class="payzani-auth-field">
-              <label class="payzani-auth-label">Mobile Number or Email</label>
+              <label class="payzani-auth-label" id="payzaniLoginLabel">Mobile Number or Email</label>
               <div class="payzani-auth-input-wrapper">
-                <span class="payzani-auth-prefix"><svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 2px; flex-shrink: 0; display: inline-block; vertical-align: middle;">
+                <span class="payzani-auth-prefix" id="payzaniLoginPrefix"><svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 2px; flex-shrink: 0; display: inline-block; vertical-align: middle;">
                   <rect width="6.67" height="14" fill="#008751"/>
                   <rect x="6.67" width="6.67" height="14" fill="#FFFFFF"/>
                   <rect x="13.33" width="6.67" height="14" fill="#008751"/>
                 </svg>
                 <span>+234</span></span>
-                <input type="text" class="payzani-auth-input" id="payzaniLoginPhone" placeholder="0812 345 6789 or email" required autocomplete="username">
+                <span class="payzani-auth-email-icon" id="payzaniLoginEmailIcon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </span>
+                <input type="text" class="payzani-auth-input" id="payzaniLoginPhone" oninput="handleLoginIdentifierInput(this)" placeholder="0812 345 6789 or email" required autocomplete="username">
               </div>
             </div>
 
@@ -10090,62 +10117,35 @@
         auth.classList.remove('dismissed');
       }
       document.body.classList.remove('payzani-auth-done');
-    }
-
-    function handlePayzaniAuthSubmit(e, type) {
-      if (e) e.preventDefault();
-      const btn = type === 'login' ? document.getElementById('payzaniLoginBtn') : document.getElementById('payzaniSignupBtn');
-      const origContent = btn ? btn.innerHTML : '';
-      if (btn) {
-        btn.disabled = true;
-        btn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;animation:spin 0.8s linear infinite;vertical-align:middle;margin-right:6px;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg><span>Processing...</span>';
+      const loginInp = document.getElementById('payzaniLoginPhone');
+      if (loginInp && typeof handleLoginIdentifierInput === 'function') {
+        handleLoginIdentifierInput(loginInp);
       }
-
-      setTimeout(() => {
-        if (btn) {
-          btn.innerHTML = origContent;
-          btn.disabled = false;
-        }
-        if (type === 'login') {
-          if (typeof showCustomAlert === 'function') {
-            showCustomAlert('Welcome back, Victor! Redirecting to Dashboard...');
-          }
-        } else {
-          const nameInput = document.getElementById('payzaniSignupName');
-          const userName = nameInput && nameInput.value.trim() ? nameInput.value.trim().split(' ')[0] : 'Partner';
-          if (typeof isAgentStorefront === 'function' && isAgentStorefront()) {
-            const evt = {
-              id: 'EVT-' + Math.floor(10000 + Math.random() * 89999),
-              type: 'signup',
-              customer: 'New Customer (' + userName + ')',
-              action: 'Storefront Account Created & Phone Verified',
-              retail: 0,
-              wholesale: 0,
-              profit: 0,
-              status: 'Verified OTP • Active Wallet',
-              timeText: 'Just now',
-              timestamp: Date.now()
-            };
-            if (typeof recordStorefrontEvent === 'function') {
-              recordStorefrontEvent(evt);
-            }
-            let custs = 19;
-            try { custs = parseInt(localStorage.getItem('payzani_agent_customers') || '0'); } catch(e) {}
-            custs += 1;
-            try { localStorage.setItem('payzani_agent_customers', custs.toString()); } catch(e) {}
-          }
-          if (typeof showCustomAlert === 'function') {
-            showCustomAlert('Account created! Welcome to Payzani, ' + userName + '.');
-          }
-          const userDisplay = document.getElementById('userWalletDisplay');
-          const avatarName = document.querySelector('.opay-user-name');
-          if (avatarName) avatarName.textContent = 'Hi, ' + userName;
-        }
-        dismissPayzaniAuth(false);
-      }, 700);
     }
 
-  
+    function handleLoginIdentifierInput(input) {
+      if (!input) return;
+      const val = input.value.trim();
+      const prefix = document.getElementById('payzaniLoginPrefix');
+      const emailIcon = document.getElementById('payzaniLoginEmailIcon');
+      const label = document.getElementById('payzaniLoginLabel');
+
+      // Check if user has typed any letter or @
+      const isEmail = /[a-zA-Z@]/.test(val);
+
+      if (isEmail) {
+        if (prefix) prefix.classList.add('is-hidden');
+        if (emailIcon) emailIcon.classList.add('is-visible');
+        if (label) label.textContent = 'Email Address';
+        input.placeholder = 'name@example.com';
+      } else {
+        if (prefix) prefix.classList.remove('is-hidden');
+        if (emailIcon) emailIcon.classList.remove('is-visible');
+        if (label) label.textContent = 'Mobile Number or Email';
+        input.placeholder = '0812 345 6789 or email';
+      }
+    }
+
     // Agent Subscreen Controller & Dashboard Engine
     function submitAgentRegistration(e) {
       if (e) e.preventDefault();
