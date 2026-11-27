@@ -9102,6 +9102,195 @@
           </div>
         </div>
       </div>
+
+      <!-- ======================================================================
+           DESKTOP MASTER PRICING & TARIFFS ENGINE (AIRTIME, DATA, TV, POWER)
+      ======================================================================= -->
+      <div class="flat-card" style="margin-top: 24px; padding: clamp(16px, 2.5vw, 24px); border: 1px solid rgba(0,0,0,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <h3 style="font-size: clamp(16px, 2vw, 19px); font-weight: 800; color: #111827; margin: 0;">Live Service Pricing &amp; Tariffs Engine</h3>
+              <span style="font-size: 10px; font-weight: 800; background: #ECFDF5; border: 1px solid #A7F3D0; color: #059669; padding: 2px 8px; border-radius: 9999px; text-transform: uppercase;">Realtime Supabase Sync</span>
+            </div>
+            <p style="font-size: 13px; color: #6B7280; margin-top: 5px; margin-bottom: 0;">
+              Edit original prices (crossed-out on customer website) and discounted selling prices (bold) for Airtime, Data Bundles, Cable TV, and Power.
+            </p>
+          </div>
+          <button type="button" class="btn-primary" onclick="saveDeskPricingTariffs()" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 11px 24px; font-weight: 800; font-size: 13px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; cursor: pointer; border: none; color: #FFF; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.32);">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Save All Pricing to Website</span>
+          </button>
+        </div>
+
+        <!-- SERVICE NAVIGATION TABS -->
+        <div style="display: flex; gap: 8px; border-bottom: 2px solid #F3F4F6; margin-bottom: 20px; padding-bottom: 4px; overflow-x: auto;">
+          <button type="button" id="deskTariffTab_data" onclick="switchDeskTariffTab('data')" style="background: #111827; color: #FFFFFF; font-weight: 800; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">1. Data Bundles</button>
+          <button type="button" id="deskTariffTab_airtime" onclick="switchDeskTariffTab('airtime')" style="background: transparent; color: #6B7280; font-weight: 700; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">2. Airtime VTU</button>
+          <button type="button" id="deskTariffTab_tv" onclick="switchDeskTariffTab('tv')" style="background: transparent; color: #6B7280; font-weight: 700; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">3. Cable TV Subscriptions</button>
+          <button type="button" id="deskTariffTab_power" onclick="switchDeskTariffTab('power')" style="background: transparent; color: #6B7280; font-weight: 700; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">4. Electricity / Power</button>
+        </div>
+
+        <!-- PANE 1: DATA BUNDLES -->
+        <div id="deskTariffPane_data" style="display: block;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: #374151;">Select Network to Edit Plans:</div>
+            <div style="display: flex; gap: 6px;">
+              <button type="button" onclick="selectDeskDataNetwork('mtn')" id="deskNetBtn_mtn" style="background: #7C3AED; color: #FFF; font-weight: 800; font-size: 11.5px; padding: 6px 16px; border-radius: 6px; border: none; cursor: pointer;">MTN</button>
+              <button type="button" onclick="selectDeskDataNetwork('airtel')" id="deskNetBtn_airtel" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 16px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">Airtel</button>
+              <button type="button" onclick="selectDeskDataNetwork('glo')" id="deskNetBtn_glo" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 16px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">Glo</button>
+              <button type="button" onclick="selectDeskDataNetwork('mobile9')" id="deskNetBtn_mobile9" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 16px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">9mobile</button>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto; border: 1px solid #E5E7EB; border-radius: 12px; margin-bottom: 16px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; text-align: left;">
+              <thead>
+                <tr style="background: #F9FAFB; border-bottom: 1px solid #E5E7EB;">
+                  <th style="padding: 10px 14px; font-weight: 800; color: #374151;">Plan Name &amp; Validity</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #9CA3AF;">Original Price <s>MSRP</s> (NGN)</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #2563EB;">Selling Price - BOLD (NGN)</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #059669;">Agent Wholesale Price (NGN)</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #4B5563;">API Cost (NGN)</th>
+                </tr>
+              </thead>
+              <tbody id="deskDataPlansTableBody">
+                <!-- Dynamically rendered -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PANE 2: AIRTIME VTU -->
+        <div id="deskTariffPane_airtime" style="display: none;">
+          <div style="font-size: 13px; color: #4B5563; margin-bottom: 14px;">
+            Configure instant cashback &amp; discount percentages applied on customer airtime purchases across all networks:
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 16px;">
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px;">
+              <div style="font-size: 12px; font-weight: 800; color: #111827; margin-bottom: 4px;">Customer Retail Discount (%)</div>
+              <p style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Discount shown directly on customer airtime cards (e.g. ₦1,000 for ₦980 = 2% discount).</p>
+              <div style="display: flex; align-items: center; background: #FFFFFF; border: 1px solid #D1D5DB; border-radius: 8px; padding: 0 12px; height: 40px;">
+                <input type="number" id="deskAirtimeRetailDiscount" value="2.0" step="0.1" style="width: 100%; border: none; outline: none; font-size: 13.5px; font-weight: 800; color: #111827;" />
+                <span style="font-weight: 800; color: #6B7280;">%</span>
+              </div>
+            </div>
+
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px;">
+              <div style="font-size: 12px; font-weight: 800; color: #111827; margin-bottom: 4px;">Agent Wholesale Margin / Discount (%)</div>
+              <p style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Wholesale profit margin deducted for certified registered agents.</p>
+              <div style="display: flex; align-items: center; background: #FFFFFF; border: 1px solid #D1D5DB; border-radius: 8px; padding: 0 12px; height: 40px;">
+                <input type="number" id="deskAirtimeAgentDiscount" value="3.0" step="0.1" style="width: 100%; border: none; outline: none; font-size: 13.5px; font-weight: 800; color: #059669;" />
+                <span style="font-weight: 800; color: #6B7280;">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANE 3: CABLE TV SUBSCRIPTIONS -->
+        <div id="deskTariffPane_tv" style="display: none;">
+          <div style="font-size: 13px; color: #4B5563; margin-bottom: 14px;">
+            Configure original MSRP (shown crossed out) and discounted selling prices (shown in bold) for popular Cable TV decoders:
+          </div>
+          <div style="overflow-x: auto; border: 1px solid #E5E7EB; border-radius: 12px; margin-bottom: 16px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; text-align: left;">
+              <thead>
+                <tr style="background: #F9FAFB; border-bottom: 1px solid #E5E7EB;">
+                  <th style="padding: 10px 14px; font-weight: 800; color: #374151;">Package Name</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #374151;">Provider</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #9CA3AF;">Original <s>MSRP</s> (NGN)</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #059669;">Selling Price - BOLD (NGN)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 14px; font-weight: 800; color: #111827;">STARTERE36 (1 Month)</td>
+                  <td style="padding: 10px 14px; color: #6B7280;">GOtv</td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_orig_STARTERE36" value="6200" style="width: 130px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_retail_STARTERE36" value="5800" style="width: 130px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 14px; font-weight: 800; color: #111827;">SELECTE36 (1 Month)</td>
+                  <td style="padding: 10px 14px; color: #6B7280;">GOtv</td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_orig_SELECTE36" value="11500" style="width: 130px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_retail_SELECTE36" value="10800" style="width: 130px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                </tr>
+                <tr style="border-bottom: 1px solid #F3F4F6;">
+                  <td style="padding: 10px 14px; font-weight: 800; color: #111827;">SPORTSE36 (1 Month)</td>
+                  <td style="padding: 10px 14px; color: #6B7280;">GOtv</td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_orig_SPORTSE36" value="22000" style="width: 130px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_retail_SPORTSE36" value="20800" style="width: 130px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 14px; font-weight: 800; color: #111827;">DStv Compact (1 Month)</td>
+                  <td style="padding: 10px 14px; color: #6B7280;">DStv</td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_orig_Compact" value="16500" style="width: 130px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                  <td style="padding: 10px 14px;">
+                    <input type="number" id="desk_tv_retail_Compact" value="15700" style="width: 130px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px;" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PANE 4: ELECTRICITY / POWER -->
+        <div id="deskTariffPane_power" style="display: none;">
+          <div style="font-size: 13px; color: #4B5563; margin-bottom: 14px;">
+            Configure electricity convenience fee waiver and instant customer cashback:
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 16px;">
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px;">
+              <div style="font-size: 12px; font-weight: 800; color: #111827; margin-bottom: 4px;">Original Processing Fee (<s>MSRP</s>)</div>
+              <p style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Standard market token issuance fee crossed out on the website.</p>
+              <div style="display: flex; align-items: center; background: #FFFFFF; border: 1px solid #D1D5DB; border-radius: 8px; padding: 0 12px; height: 40px;">
+                <span style="font-weight: 800; color: #6B7280; margin-right: 4px;">₦</span>
+                <input type="number" id="deskPowerOrigFee" value="100" style="width: 100%; border: none; outline: none; font-size: 13px; font-weight: 700; color: #9CA3AF; text-decoration: line-through;" />
+              </div>
+            </div>
+
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px;">
+              <div style="font-size: 12px; font-weight: 800; color: #111827; margin-bottom: 4px;">Charged Convenience Fee (0 = FREE)</div>
+              <p style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">What the customer actually pays (set 0 to display FREE).</p>
+              <div style="display: flex; align-items: center; background: #ECFDF5; border: 1px solid #A7F3D0; border-radius: 8px; padding: 0 12px; height: 40px;">
+                <span style="font-weight: 800; color: #059669; margin-right: 4px;">₦</span>
+                <input type="number" id="deskPowerChargedFee" value="0" style="width: 100%; background: transparent; border: none; outline: none; font-size: 13px; font-weight: 800; color: #065F46;" />
+              </div>
+            </div>
+
+            <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 10px; padding: 14px;">
+              <div style="font-size: 12px; font-weight: 800; color: #111827; margin-bottom: 4px;">Instant Customer Cashback (%)</div>
+              <p style="font-size: 11px; color: #6B7280; margin-bottom: 10px;">Cashback credited back to the customer wallet upon meter token generation.</p>
+              <div style="display: flex; align-items: center; background: #FFFFFF; border: 1px solid #D1D5DB; border-radius: 8px; padding: 0 12px; height: 40px;">
+                <input type="number" id="deskPowerCashback" value="0.5" step="0.1" style="width: 100%; border: none; outline: none; font-size: 13px; font-weight: 800; color: #7C3AED;" />
+                <span style="font-weight: 800; color: #6B7280;">%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SAVE BUTTON -->
+        <div style="margin-top: 14px; text-align: right;">
+          <button type="button" class="btn-primary" onclick="saveDeskPricingTariffs()" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); padding: 12px 28px; font-weight: 800; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px; border-radius: 10px; cursor: pointer; border: none; color: #FFF; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>Save All Pricing to Website</span>
+          </button>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -11942,6 +12131,175 @@
       }
     }
 
+    
+    // =========================================================================
+    // DESKTOP ADMIN PRICING CONTROLLER (REAL SUPABASE BACKED)
+    // =========================================================================
+    let currentDeskPricingNetwork = 'mtn';
+
+    function switchDeskTariffTab(tabKey) {
+      const tabs = ['data', 'airtime', 'tv', 'power'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('deskTariffTab_' + t);
+        const pane = document.getElementById('deskTariffPane_' + t);
+        if (btn) {
+          if (t === tabKey) {
+            btn.style.background = '#111827';
+            btn.style.color = '#FFFFFF';
+            btn.style.fontWeight = '800';
+          } else {
+            btn.style.background = 'transparent';
+            btn.style.color = '#6B7280';
+            btn.style.fontWeight = '700';
+          }
+        }
+        if (pane) {
+          pane.style.display = (t === tabKey) ? 'block' : 'none';
+        }
+      });
+    }
+
+    function selectDeskDataNetwork(net) {
+      currentDeskPricingNetwork = net;
+      ['mtn', 'airtel', 'glo', 'mobile9'].forEach(n => {
+        const btn = document.getElementById('deskNetBtn_' + n);
+        if (btn) {
+          if (n === net) {
+            btn.style.background = '#7C3AED';
+            btn.style.color = '#FFFFFF';
+            btn.style.fontWeight = '800';
+            btn.style.border = 'none';
+          } else {
+            btn.style.background = '#F3F4F6';
+            btn.style.color = '#4B5563';
+            btn.style.fontWeight = '700';
+            btn.style.border = '1px solid #E5E7EB';
+          }
+        }
+      });
+      renderDeskDataPlans();
+    }
+
+    function renderDeskDataPlans() {
+      const tbody = document.getElementById('deskDataPlansTableBody');
+      if (!tbody) return;
+
+      const cfg = getMasterAdminConfig();
+      const plans = (cfg.dataPricing && cfg.dataPricing[currentDeskPricingNetwork]) || [];
+
+      // Populate Airtime
+      const airCfg = (cfg.airtimeDiscounts && cfg.airtimeDiscounts[currentDeskPricingNetwork]) || { agent: 3.0, retail: 2.0 };
+      const retAir = document.getElementById('deskAirtimeRetailDiscount');
+      const agtAir = document.getElementById('deskAirtimeAgentDiscount');
+      if (retAir) retAir.value = airCfg.retail || 2.0;
+      if (agtAir) agtAir.value = airCfg.agent || 3.0;
+
+      // Populate TV
+      if (cfg.tvPricing) {
+        ['STARTERE36', 'SELECTE36', 'SPORTSE36', 'Compact'].forEach(pkg => {
+          if (cfg.tvPricing[pkg]) {
+            const origInp = document.getElementById('desk_tv_orig_' + pkg);
+            const retInp = document.getElementById('desk_tv_retail_' + pkg);
+            if (origInp && cfg.tvPricing[pkg].orig) origInp.value = cfg.tvPricing[pkg].orig;
+            if (retInp && cfg.tvPricing[pkg].retail) retInp.value = cfg.tvPricing[pkg].retail;
+          }
+        });
+      }
+
+      // Populate Power
+      if (cfg.powerPricing) {
+        const pOrig = document.getElementById('deskPowerOrigFee');
+        const pChg = document.getElementById('deskPowerChargedFee');
+        const pCash = document.getElementById('deskPowerCashback');
+        if (pOrig && cfg.powerPricing.origFee !== undefined) pOrig.value = cfg.powerPricing.origFee;
+        if (pChg && cfg.powerPricing.chargedFee !== undefined) pChg.value = cfg.powerPricing.chargedFee;
+        if (pCash && cfg.powerPricing.cashback !== undefined) pCash.value = cfg.powerPricing.cashback;
+      }
+
+      if (!plans.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 18px; color: #9CA3AF;">No data plans configured for this network.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = plans.map(p => `
+        <tr style="border-bottom: 1px solid #F3F4F6;">
+          <td style="padding: 10px 14px;">
+            <div style="font-weight: 800; color: #111827;">${p.name}</div>
+            <div style="font-size: 11px; color: #6B7280;">${p.validity}</div>
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="number" id="desk_plan_orig_${p.id}" value="${p.originalPrice || Math.round(Number(p.retailPrice) * 1.25)}" style="width: 120px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="number" id="desk_plan_retail_${p.id}" value="${p.retailPrice}" style="width: 120px; background: #EFF6FF; border: 1px solid #BFDBFE; color: #1D4ED8; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="number" id="desk_plan_agent_${p.id}" value="${p.agentPrice}" style="width: 120px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="number" id="desk_plan_cost_${p.id}" value="${p.apiCost}" style="width: 110px; background: #F3F4F6; border: 1px solid #E5E7EB; color: #374151; font-weight: 600; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    async function saveDeskPricingTariffs() {
+      const cfg = getMasterAdminConfig();
+      const plans = (cfg.dataPricing && cfg.dataPricing[currentDeskPricingNetwork]) || [];
+
+      // 1. Data plans
+      plans.forEach(p => {
+        const origEl = document.getElementById('desk_plan_orig_' + p.id);
+        const retEl = document.getElementById('desk_plan_retail_' + p.id);
+        const agtEl = document.getElementById('desk_plan_agent_' + p.id);
+        const costEl = document.getElementById('desk_plan_cost_' + p.id);
+        if (origEl && origEl.value) p.originalPrice = Number(origEl.value);
+        if (retEl && retEl.value) p.retailPrice = Number(retEl.value);
+        if (agtEl && agtEl.value) p.agentPrice = Number(agtEl.value);
+        if (costEl && costEl.value) p.apiCost = Number(costEl.value);
+      });
+
+      // 2. Airtime VTU
+      const retAir = document.getElementById('deskAirtimeRetailDiscount');
+      const agtAir = document.getElementById('deskAirtimeAgentDiscount');
+      if (!cfg.airtimeDiscounts) cfg.airtimeDiscounts = {};
+      cfg.airtimeDiscounts[currentDeskPricingNetwork] = {
+        retail: retAir && retAir.value ? Number(retAir.value) : 2.0,
+        agent: agtAir && agtAir.value ? Number(agtAir.value) : 3.0
+      };
+
+      // 3. Cable TV Packages
+      if (!cfg.tvPricing) cfg.tvPricing = {};
+      ['STARTERE36', 'SELECTE36', 'SPORTSE36', 'Compact'].forEach(pkg => {
+        const origEl = document.getElementById('desk_tv_orig_' + pkg);
+        const retEl = document.getElementById('desk_tv_retail_' + pkg);
+        cfg.tvPricing[pkg] = {
+          orig: origEl && origEl.value ? Number(origEl.value) : (pkg === 'STARTERE36' ? 6200 : pkg === 'SELECTE36' ? 11500 : pkg === 'SPORTSE36' ? 22000 : 16500),
+          retail: retEl && retEl.value ? Number(retEl.value) : (pkg === 'STARTERE36' ? 5800 : pkg === 'SELECTE36' ? 10800 : pkg === 'SPORTSE36' ? 20800 : 15700)
+        };
+      });
+
+      // 4. Power / Electricity
+      const pOrig = document.getElementById('deskPowerOrigFee');
+      const pChg = document.getElementById('deskPowerChargedFee');
+      const pCash = document.getElementById('deskPowerCashback');
+      cfg.powerPricing = {
+        origFee: pOrig && pOrig.value !== '' ? Number(pOrig.value) : 100,
+        chargedFee: pChg && pChg.value !== '' ? Number(pChg.value) : 0,
+        cashback: pCash && pCash.value !== '' ? Number(pCash.value) : 0.5
+      };
+
+      // Save directly to Supabase and cache
+      await saveMasterAdminConfig(cfg);
+
+      // Immediately sync customer screens
+      if (typeof renderCustomerDataPlans === 'function') {
+        renderCustomerDataPlans();
+      }
+
+      showCustomAlert('Live pricing updated! Airtime, Data, TV, and Power prices saved to Supabase and live on the website.');
+    }
+
     async function syncRealMasterAdmin() {
       try {
         // 1. Fetch real admin_settings
@@ -12102,6 +12460,11 @@
       if (typeof renderCustomerDataPlans === 'function') {
         renderCustomerDataPlans();
       }
+
+      // Automatically sync Desktop Admin pricing engine
+      if (typeof renderDeskDataPlans === 'function') {
+        renderDeskDataPlans();
+      }
     }
 
     async function openMasterAdminPanel() {
@@ -12118,6 +12481,9 @@
       }
 
       switchMasterAdminTab(activeAdminTab);
+      if (typeof renderDeskDataPlans === 'function') {
+        renderDeskDataPlans();
+      }
       await syncRealMasterAdmin();
     }
 
