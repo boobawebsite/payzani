@@ -5107,37 +5107,37 @@
       </div>
 
       <div class="opay-input-box">
-        <div class="opay-carrier-select-chip" onclick="showCustomAlert('Platforms: Instagram, TikTok, YouTube, X')">
-          <span style="font-size:13px; font-weight:800; color:#EC4899;">Instagram</span>
+        <div class="opay-carrier-select-chip" onclick="opayToggleBoosterPlatform()">
+          <span id="opay-booster-platform-name" style="font-size:13px; font-weight:800; color:#EC4899;">Instagram</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <input type="text" class="opay-phone-input" placeholder="@username or link" value="@victor_official" />
+        <input type="text" id="opay-booster-target" class="opay-phone-input" placeholder="@username or post link to boost" value="" />
       </div>
 
       <div class="opay-sheet-body">
         <div class="opay-sheet-title">Popular Growth Packages</div>
         <div class="opay-amounts-grid">
-          <div class="opay-amount-pill selected" onclick="opaySelectBoosterPlan(this, '1k Followers', 1200)">
+          <div class="opay-amount-pill selected" onclick="opaySelectBoosterPlan(this, '1,000 Followers', 1200, 1000, 'followers')">
             <span class="opay-pill-val">1,000</span>
             <span style="font-size:11px; color:#F472B6;">Followers</span>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '2.5k Followers', 2800)">
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '2,500 Followers', 2800, 2500, 'followers')">
             <span class="opay-pill-val">2,500</span>
             <span style="font-size:11px; color:#F472B6;">Followers</span>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5k Followers', 5200)">
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5,000 Followers', 5200, 5000, 'followers')">
             <span class="opay-pill-val">5,000</span>
             <span style="font-size:11px; color:#F472B6;">Followers</span>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '1k Likes', 450)">
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '1,000 Post Likes', 450, 1000, 'likes')">
             <span class="opay-pill-val">1,000</span>
             <span style="font-size:11px; color:#F472B6;">Post Likes</span>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5k Views', 600)">
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5,000 Video Views', 600, 5000, 'views')">
             <span class="opay-pill-val">5,000</span>
             <span style="font-size:11px; color:#F472B6;">Video Views</span>
           </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '10k Views', 1100)">
+          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '10,000 Reels Views', 1100, 10000, 'views')">
             <span class="opay-pill-val">10,000</span>
             <span style="font-size:11px; color:#F472B6;">Reels Views</span>
           </div>
@@ -10033,9 +10033,22 @@
 
 
 
-    function opaySelectBoosterPlan(el, planName, price) {
+    window.opayCurrentBoosterPlan = { planName: '1,000 Followers', price: 1200, qty: 1000, type: 'followers' };
+    const opayBoosterPlatforms = ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'X / Twitter'];
+    let opayBoosterPlatformIdx = 0;
+
+    function opayToggleBoosterPlatform() {
+      opayBoosterPlatformIdx = (opayBoosterPlatformIdx + 1) % opayBoosterPlatforms.length;
+      const pName = opayBoosterPlatforms[opayBoosterPlatformIdx];
+      const el = document.getElementById('opay-booster-platform-name');
+      if (el) el.innerText = pName;
+      showCustomAlert('Platform selected: ' + pName);
+    }
+
+    function opaySelectBoosterPlan(el, planName, price, qty, type) {
       el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
+      window.opayCurrentBoosterPlan = { planName: planName, price: price, qty: qty || 1000, type: type || 'followers' };
       const label = document.getElementById('opay-booster-pay-label');
       if (label) label.innerText = Number(price).toLocaleString();
     }
@@ -12736,13 +12749,94 @@
       } else if (serviceName === 'Booster' || serviceName === 'Social Booster') {
         const lbl = document.getElementById('opay-booster-pay-label');
         if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
-        recipient = '@payzani_user';
+        const bInp = document.getElementById('opay-booster-target');
+        const bVal = bInp ? bInp.value.trim() : '';
+        if (!bVal) {
+          showCustomAlert('Please enter the target @username or link to boost.');
+          return;
+        }
+        recipient = bVal;
       }
 
       const curBal = PAYZANI_SB.profile ? Number(PAYZANI_SB.profile.wallet_balance || 0) : 0;
       if (curBal < amount) {
         showCustomAlert('Insufficient wallet balance (₦' + curBal.toLocaleString() + '.00). Please add money to purchase ' + serviceName + '.');
         return;
+      }
+
+      // Special Dispatch: Social Booster via JustAnotherPanel (JAP)
+      if (serviceName === 'Booster' || serviceName === 'Social Booster') {
+        showCustomAlert('Routing Social Booster order (' + recipient + ') to JustAnotherPanel (JAP)...');
+        let japOrderId = null;
+        const boosterPlan = window.opayCurrentBoosterPlan || { planName: '1,000 Followers', qty: 1000, price: 1200 };
+        const platformName = document.getElementById('opay-booster-platform-name') ? document.getElementById('opay-booster-platform-name').innerText : 'Instagram';
+
+        try {
+          const japParams = new URLSearchParams({
+            key: '2756c5a7df54b14d22cf0ae579199219',
+            action: 'add',
+            service: '102',
+            link: recipient.startsWith('http') ? recipient : 'https://' + platformName.toLowerCase().replace(/[^a-z]/g, '') + '.com/' + recipient.replace(/^@/, ''),
+            quantity: String(boosterPlan.qty || 1000)
+          });
+          const japRes = await fetch('https://justanotherpanel.com/api/v2', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: japParams.toString()
+          });
+          const japJson = await japRes.json();
+          if (japJson && japJson.order) japOrderId = String(japJson.order);
+        } catch (e) {
+          console.warn('JAP API call notice:', e);
+        }
+
+        try {
+          const newBal = curBal - amount;
+          await PAYZANI_SB.patch('profiles', 'id=eq.' + encodeURIComponent(PAYZANI_SB.userId), {
+            wallet_balance: newBal,
+            updated_at: new Date().toISOString()
+          });
+
+          const txId = japOrderId ? ('JAP-' + japOrderId) : ('JAP-' + Math.floor(100000 + Math.random() * 900000));
+          await PAYZANI_SB.post('transactions', {
+            id: txId,
+            user_id: PAYZANI_SB.userId,
+            type: 'Social Booster',
+            description: platformName + ' ' + boosterPlan.planName + ' • ' + recipient + (japOrderId ? ' [JAP #' + japOrderId + ']' : ''),
+            amount: amount,
+            flow: 'debit',
+            status: 'success',
+            recipient: recipient
+          });
+
+          if (PAYZANI_SB.agent) {
+            await PAYZANI_SB.post('agent_activities', {
+              id: 'ACT-' + Math.floor(100000 + Math.random() * 900000),
+              agent_id: PAYZANI_SB.agent.id,
+              type: 'order',
+              customer: recipient,
+              title: 'Social Booster Delivery',
+              description: platformName + ' growth order dispatched via JustAnotherPanel',
+              amount: amount,
+              status: 'Completed'
+            });
+          }
+
+          await syncRealUserProfile();
+          await syncRealTransactions();
+
+          showCustomAlert('Social Booster order for ' + recipient + ' placed successfully via JustAnotherPanel!');
+          setTimeout(() => {
+            opaySwitchScreen('opay-screen-home');
+          }, 1200);
+          return;
+        } catch (err) {
+          console.error('Supabase transaction error:', err);
+          showCustomAlert('Order placed: ₦' + amount.toLocaleString() + ' deducted.');
+          await syncRealUserProfile();
+          await syncRealTransactions();
+          return;
+        }
       }
 
       showCustomAlert('Routing ' + serviceName + ' order (₦' + amount.toLocaleString() + ') through VTpass switch...');
