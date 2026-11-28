@@ -5212,32 +5212,9 @@
       </div>
 
       <div class="opay-sheet-body">
-        <div class="opay-sheet-title">Popular Growth Packages</div>
-        <div class="opay-amounts-grid">
-          <div class="opay-amount-pill selected" onclick="opaySelectBoosterPlan(this, '1,000 Followers', 1200, 1000, 'followers')">
-            <span class="opay-pill-val">1,000</span>
-            <span style="font-size:11px; color:#F472B6;">Followers</span>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '2,500 Followers', 2800, 2500, 'followers')">
-            <span class="opay-pill-val">2,500</span>
-            <span style="font-size:11px; color:#F472B6;">Followers</span>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5,000 Followers', 5200, 5000, 'followers')">
-            <span class="opay-pill-val">5,000</span>
-            <span style="font-size:11px; color:#F472B6;">Followers</span>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '1,000 Post Likes', 450, 1000, 'likes')">
-            <span class="opay-pill-val">1,000</span>
-            <span style="font-size:11px; color:#F472B6;">Post Likes</span>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '5,000 Video Views', 600, 5000, 'views')">
-            <span class="opay-pill-val">5,000</span>
-            <span style="font-size:11px; color:#F472B6;">Video Views</span>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectBoosterPlan(this, '10,000 Reels Views', 1100, 10000, 'views')">
-            <span class="opay-pill-val">10,000</span>
-            <span style="font-size:11px; color:#F472B6;">Reels Views</span>
-          </div>
+        <div class="opay-sheet-title">Popular Growth Packages (Crossed-Out MSRP &bull; Bold Discounted)</div>
+        <div class="opay-amounts-grid" id="opayBoosterAmountsGrid">
+          <!-- Dynamically populated by renderCustomerBoosterPlans() -->
         </div>
 
         <button class="opay-pay-action-btn" style="background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);" onclick="opaySubmitPayment('Social Booster')">
@@ -9129,6 +9106,7 @@
           <button type="button" id="deskTariffTab_airtime" onclick="switchDeskTariffTab('airtime')" style="background: transparent; color: #6B7280; font-weight: 700; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">2. Airtime VTU</button>
           <button type="button" id="deskTariffTab_tv" onclick="switchDeskTariffTab('tv')" style="background: transparent; color: #6B7280; font-weight: 700; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">3. Cable TV Subscriptions</button>
           <button type="button" id="deskTariffTab_power" onclick="switchDeskTariffTab('power')" style="background: transparent; color: #6B7280; font-weight: 700; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">4. Electricity / Power</button>
+          <button type="button" id="deskTariffTab_booster" onclick="switchDeskTariffTab('booster')" style="background: transparent; color: #6B7280; font-weight: 700; font-size: 12.5px; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;">5. Social Booster</button>
         </div>
 
         <!-- PANE 1: DATA BUNDLES -->
@@ -9243,6 +9221,37 @@
                     <input type="number" id="desk_tv_retail_Compact" value="15700" style="width: 130px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px;" />
                   </td>
                 </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PANE 5: SOCIAL BOOSTER -->
+        <div id="deskTariffPane_booster" style="display: none;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: #374151;">Select Social Platform to Configure Rates:</div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" onclick="selectDeskBoosterPlatform('Instagram')" id="deskBoosterPlatBtn_Instagram" style="background: #EC4899; color: #FFF; font-weight: 800; font-size: 11.5px; padding: 6px 14px; border-radius: 6px; border: none; cursor: pointer;">Instagram</button>
+              <button type="button" onclick="selectDeskBoosterPlatform('TikTok')" id="deskBoosterPlatBtn_TikTok" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 14px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">TikTok</button>
+              <button type="button" onclick="selectDeskBoosterPlatform('YouTube')" id="deskBoosterPlatBtn_YouTube" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 14px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">YouTube</button>
+              <button type="button" onclick="selectDeskBoosterPlatform('Facebook')" id="deskBoosterPlatBtn_Facebook" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 14px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">Facebook</button>
+              <button type="button" onclick="selectDeskBoosterPlatform('X / Twitter')" id="deskBoosterPlatBtn_XTwitter" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 14px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">X / Twitter</button>
+            </div>
+          </div>
+
+          <div style="overflow-x: auto; border: 1px solid #E5E7EB; border-radius: 12px; margin-bottom: 16px;">
+            <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; text-align: left;">
+              <thead>
+                <tr style="background: #F9FAFB; border-bottom: 1px solid #E5E7EB;">
+                  <th style="padding: 10px 14px; font-weight: 800; color: #374151;">Growth Package</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #9CA3AF;">Original <s>MSRP</s> (NGN)</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #2563EB;">Selling Price - BOLD (NGN)</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #059669;">Units / Quantity</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #4B5563;">JAP Service ID</th>
+                </tr>
+              </thead>
+              <tbody id="deskBoosterPlansTableBody">
+                <!-- Dynamically populated by renderDeskBoosterPlans() -->
               </tbody>
             </table>
           </div>
@@ -9987,6 +9996,9 @@
         if (screenId === 'opay-screen-agent' && typeof applyMasterConfigToDOM === 'function' && typeof getMasterAdminConfig === 'function') {
           applyMasterConfigToDOM(getMasterAdminConfig());
         }
+        if (screenId === 'opay-screen-booster' && typeof renderCustomerBoosterPlans === 'function') {
+          renderCustomerBoosterPlans();
+        }
       }
     }
 
@@ -10390,18 +10402,76 @@
     const opayBoosterPlatforms = ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'X / Twitter'];
     let opayBoosterPlatformIdx = 0;
 
+    function renderCustomerBoosterPlans() {
+      const container = document.getElementById('opayBoosterAmountsGrid');
+      if (!container) return;
+
+      const pName = opayBoosterPlatforms[opayBoosterPlatformIdx] || 'Instagram';
+      const cfg = getMasterAdminConfig();
+      const plans = (cfg.boosterPricing && cfg.boosterPricing[pName]) || [];
+
+      if (!plans.length) {
+        container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:12px; color:#9CA3AF; font-size:12px;">No packages configured for ' + pName + '.</div>';
+        return;
+      }
+
+      container.innerHTML = plans.map((p, idx) => {
+        const isSel = idx === 0 ? 'selected' : '';
+        const orig = Number(p.origPrice || Math.round(p.retailPrice * 1.5));
+        const retail = Number(p.retailPrice);
+        const saveAmt = orig - retail;
+        const saveBadge = saveAmt > 0 ? `<span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦${saveAmt.toLocaleString()}</span>` : '';
+
+        return `
+          <div class="opay-amount-pill ${isSel}" onclick="opaySelectBoosterPlan(this, '${p.name}', ${retail}, ${orig}, ${p.qty}, '${p.type}', '${p.serviceId}')">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">${p.name.split(' ')[0]}</span>
+              ${saveBadge}
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦${orig.toLocaleString()}</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦${retail.toLocaleString()}</strong>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Auto-select first plan
+      if (plans.length > 0) {
+        const first = plans[0];
+        window.opayCurrentBoosterPlan = {
+          planName: first.name,
+          price: Number(first.retailPrice),
+          origPrice: Number(first.origPrice),
+          qty: first.qty || 1000,
+          type: first.type || 'followers',
+          serviceId: first.serviceId || '4108'
+        };
+        const label = document.getElementById('opay-booster-pay-label');
+        if (label) label.innerText = Number(first.retailPrice).toLocaleString();
+      }
+    }
+
     function opayToggleBoosterPlatform() {
       opayBoosterPlatformIdx = (opayBoosterPlatformIdx + 1) % opayBoosterPlatforms.length;
       const pName = opayBoosterPlatforms[opayBoosterPlatformIdx];
       const el = document.getElementById('opay-booster-platform-name');
       if (el) el.innerText = pName;
+      renderCustomerBoosterPlans();
       showCustomAlert('Platform selected: ' + pName);
     }
 
-    function opaySelectBoosterPlan(el, planName, price, qty, type) {
+    function opaySelectBoosterPlan(el, planName, price, origPrice, qty, type, serviceId) {
       el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
-      window.opayCurrentBoosterPlan = { planName: planName, price: price, qty: qty || 1000, type: type || 'followers' };
+      window.opayCurrentBoosterPlan = {
+        planName: planName,
+        price: price,
+        origPrice: origPrice,
+        qty: qty || 1000,
+        type: type || 'followers',
+        serviceId: serviceId || '4108'
+      };
       const label = document.getElementById('opay-booster-pay-label');
       if (label) label.innerText = Number(price).toLocaleString();
     }
@@ -12031,6 +12101,36 @@
       minFloatRefill: 5000,
       platformTokenCut: 200,
       agentWithdrawalFee: 50,
+            boosterPricing: {
+        'Instagram': [
+          { id: 'ig_1k_fol', name: '1,000 Followers', qty: 1000, type: 'followers', serviceId: '4108', origPrice: 2000, retailPrice: 1200 },
+          { id: 'ig_25k_fol', name: '2,500 Followers', qty: 2500, type: 'followers', serviceId: '4108', origPrice: 4500, retailPrice: 2800 },
+          { id: 'ig_5k_fol', name: '5,000 Followers', qty: 5000, type: 'followers', serviceId: '4108', origPrice: 8000, retailPrice: 5200 },
+          { id: 'ig_1k_lik', name: '1,000 Post Likes', qty: 1000, type: 'likes', serviceId: '1777', origPrice: 1000, retailPrice: 500 },
+          { id: 'ig_5k_viw', name: '5,000 Video Views', qty: 5000, type: 'views', serviceId: '6921', origPrice: 1200, retailPrice: 600 },
+          { id: 'ig_10k_viw', name: '10,000 Reels Views', qty: 10000, type: 'views', serviceId: '6921', origPrice: 2000, retailPrice: 1100 }
+        ],
+        'TikTok': [
+          { id: 'tt_1k_fol', name: '1,000 Followers', qty: 1000, type: 'followers', serviceId: '10465', origPrice: 5000, retailPrice: 3200 },
+          { id: 'tt_1k_lik', name: '1,000 Video Likes', qty: 1000, type: 'likes', serviceId: '9998', origPrice: 1200, retailPrice: 650 },
+          { id: 'tt_5k_viw', name: '5,000 Video Views', qty: 5000, type: 'views', serviceId: '6921', origPrice: 1200, retailPrice: 600 },
+          { id: 'tt_10k_viw', name: '10,000 Viral Views', qty: 10000, type: 'views', serviceId: '6921', origPrice: 2000, retailPrice: 1100 }
+        ],
+        'YouTube': [
+          { id: 'yt_1k_viw', name: '1,000 Video Views', qty: 1000, type: 'views', serviceId: '6861', origPrice: 1200, retailPrice: 600 },
+          { id: 'yt_500_sub', name: '500 Subscribers', qty: 500, type: 'subscribers', serviceId: '9186', origPrice: 2800, retailPrice: 1500 },
+          { id: 'yt_1k_sub', name: '1,000 Subscribers', qty: 1000, type: 'subscribers', serviceId: '9186', origPrice: 5500, retailPrice: 2900 }
+        ],
+        'Facebook': [
+          { id: 'fb_1k_fol', name: '1,000 Page Followers', qty: 1000, type: 'followers', serviceId: '9548', origPrice: 2200, retailPrice: 1200 },
+          { id: 'fb_1k_lik', name: '1,000 Post Likes', qty: 1000, type: 'likes', serviceId: '9548', origPrice: 1000, retailPrice: 600 },
+          { id: 'fb_5k_fol', name: '5,000 Page Followers', qty: 5000, type: 'followers', serviceId: '9548', origPrice: 9500, retailPrice: 5500 }
+        ],
+        'X / Twitter': [
+          { id: 'tw_1k_fol', name: '1,000 Followers', qty: 1000, type: 'followers', serviceId: '9011', origPrice: 3000, retailPrice: 1800 },
+          { id: 'tw_1k_lik', name: '1,000 Tweet Likes', qty: 1000, type: 'likes', serviceId: '9011', origPrice: 1200, retailPrice: 700 }
+        ]
+      },
       currentAdminPricingNetwork: 'mtn',
       dataPricing: {
         mtn: [
@@ -12138,7 +12238,7 @@
     let currentDeskPricingNetwork = 'mtn';
 
     function switchDeskTariffTab(tabKey) {
-      const tabs = ['data', 'airtime', 'tv', 'power'];
+      const tabs = ['data', 'airtime', 'tv', 'power', 'booster'];
       tabs.forEach(t => {
         const btn = document.getElementById('deskTariffTab_' + t);
         const pane = document.getElementById('deskTariffPane_' + t);
@@ -12157,6 +12257,66 @@
           pane.style.display = (t === tabKey) ? 'block' : 'none';
         }
       });
+    }
+
+    
+    let currentDeskBoosterPlatform = 'Instagram';
+
+    function selectDeskBoosterPlatform(plat) {
+      currentDeskBoosterPlatform = plat;
+      const plats = ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'X / Twitter'];
+      plats.forEach(p => {
+        const btnId = 'deskBoosterPlatBtn_' + (p === 'X / Twitter' ? 'XTwitter' : p);
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          if (p === plat) {
+            btn.style.background = '#EC4899';
+            btn.style.color = '#FFFFFF';
+            btn.style.fontWeight = '800';
+            btn.style.border = 'none';
+          } else {
+            btn.style.background = '#F3F4F6';
+            btn.style.color = '#4B5563';
+            btn.style.fontWeight = '700';
+            btn.style.border = '1px solid #E5E7EB';
+          }
+        }
+      });
+      renderDeskBoosterPlans();
+    }
+
+    function renderDeskBoosterPlans() {
+      const tbody = document.getElementById('deskBoosterPlansTableBody');
+      if (!tbody) return;
+
+      const cfg = getMasterAdminConfig();
+      const plans = (cfg.boosterPricing && cfg.boosterPricing[currentDeskBoosterPlatform]) || [];
+
+      if (!plans.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 18px; color: #9CA3AF;">No packages configured for ' + currentDeskBoosterPlatform + '.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = plans.map(p => `
+        <tr style="border-bottom: 1px solid #F3F4F6;">
+          <td style="padding: 10px 14px;">
+            <div style="font-weight: 800; color: #111827;">${p.name}</div>
+            <div style="font-size: 11px; color: #6B7280;">Category: ${p.type}</div>
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="number" id="desk_booster_orig_${p.id}" value="${p.origPrice || Math.round(Number(p.retailPrice) * 1.5)}" style="width: 120px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="number" id="desk_booster_retail_${p.id}" value="${p.retailPrice}" style="width: 120px; background: #EFF6FF; border: 1px solid #BFDBFE; color: #1D4ED8; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="number" id="desk_booster_qty_${p.id}" value="${p.qty || 1000}" style="width: 100px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="text" id="desk_booster_svc_${p.id}" value="${p.serviceId || '4108'}" style="width: 100px; background: #F3F4F6; border: 1px solid #E5E7EB; color: #374151; font-weight: 700; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+        </tr>
+      `).join('');
     }
 
     function selectDeskDataNetwork(net) {
@@ -12288,6 +12448,20 @@
         chargedFee: pChg && pChg.value !== '' ? Number(pChg.value) : 0,
         cashback: pCash && pCash.value !== '' ? Number(pCash.value) : 0.5
       };
+
+      // 5. Social Booster Plans
+      if (!cfg.boosterPricing) cfg.boosterPricing = {};
+      const bPlans = (cfg.boosterPricing && cfg.boosterPricing[currentDeskBoosterPlatform]) || [];
+      bPlans.forEach(p => {
+        const origEl = document.getElementById('desk_booster_orig_' + p.id);
+        const retEl = document.getElementById('desk_booster_retail_' + p.id);
+        const qtyEl = document.getElementById('desk_booster_qty_' + p.id);
+        const svcEl = document.getElementById('desk_booster_svc_' + p.id);
+        if (origEl && origEl.value) p.origPrice = Number(origEl.value);
+        if (retEl && retEl.value) p.retailPrice = Number(retEl.value);
+        if (qtyEl && qtyEl.value) p.qty = Number(qtyEl.value);
+        if (svcEl && svcEl.value) p.serviceId = svcEl.value.trim();
+      });
 
       // Save directly to Supabase and cache
       await saveMasterAdminConfig(cfg);
@@ -12461,9 +12635,20 @@
         renderCustomerDataPlans();
       }
 
+      // Automatically sync customer Social Booster plans
+      if (typeof renderCustomerBoosterPlans === 'function') {
+        renderCustomerBoosterPlans();
+      }
+
       // Automatically sync Desktop Admin pricing engine
       if (typeof renderDeskDataPlans === 'function') {
         renderDeskDataPlans();
+      }
+      if (typeof renderDeskBoosterPlans === 'function') {
+        renderDeskBoosterPlans();
+      }
+      if (typeof renderDeskBoosterPlans === 'function') {
+        renderDeskBoosterPlans();
       }
     }
 
@@ -13428,7 +13613,7 @@
           const japParams = new URLSearchParams({
             key: '2756c5a7df54b14d22cf0ae579199219',
             action: 'add',
-            service: '102',
+            service: String(boosterPlan.serviceId || '4108'),
             link: recipient.startsWith('http') ? recipient : 'https://' + platformName.toLowerCase().replace(/[^a-z]/g, '') + '.com/' + recipient.replace(/^@/, ''),
             quantity: String(boosterPlan.qty || 1000)
           });
