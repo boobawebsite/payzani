@@ -5309,13 +5309,7 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
 
-            <!-- DEV / TEST BYPASS BUTTON (NO PAYSTACK REQUIRED) -->
-            <div style="margin-top: 14px;">
-              <button type="button" id="devBypassAgentBtn" onclick="bypassToAgentDashboard()" style="background: rgba(124, 58, 237, 0.14); border: 1.5px dashed #8B5CF6; color: #DDD6FE; font-size: 12.5px; font-weight: 700; padding: 10px 18px; border-radius: 12px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(139, 92, 246, 0.15);">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                <span>Dev / Test Mode: Instant Access Agent Dashboard</span>
-              </button>
-            </div>
+
           </div>
         </form>
       </div>
@@ -5950,7 +5944,7 @@
           </div>
 
           <!-- Airtime Discounts Block -->
-          <div style="background: #0D0D14; border: 1px solid #222230; border-radius: 10px; padding: 10px; margin-bottom: 14px;">
+          <div style="border-top: 1px solid #222230; padding-top: 12px; margin-bottom: 14px;">
             <div style="font-size: 11px; font-weight: 800; color: #E5E7EB; margin-bottom: 6px;">Airtime VTU Discounts (%)</div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
               <div>
@@ -5971,61 +5965,61 @@
           </div>
 
           <!-- Cable TV Subscription Packages Pricing -->
-          <div style="background: #0D0D14; border: 1px solid #222230; border-radius: 10px; padding: 10px; margin-bottom: 14px;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+          <div style="border-top: 1px solid #222230; padding-top: 12px; margin-bottom: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
               <div style="font-size: 11px; font-weight: 800; color: #E5E7EB;">Cable TV Subscription Packages (MSRP vs Selling)</div>
               <span style="font-size: 9px; color: #60A5FA; font-weight: 700;">DStv / GOtv</span>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
                 <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">STARTERE36</div>
                 <div>
                   <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
-                  <input type="number" id="admin_tv_orig_STARTERE36" value="6200" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_orig_STARTERE36" value="6200" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 4px 6px; border-radius: 4px;" />
                 </div>
                 <div>
                   <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
-                  <input type="number" id="admin_tv_retail_STARTERE36" value="5800" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_retail_STARTERE36" value="5800" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 4px 6px; border-radius: 4px;" />
                 </div>
               </div>
-              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+              <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
                 <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">SELECTE36</div>
                 <div>
                   <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
-                  <input type="number" id="admin_tv_orig_SELECTE36" value="11500" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_orig_SELECTE36" value="11500" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 4px 6px; border-radius: 4px;" />
                 </div>
                 <div>
                   <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
-                  <input type="number" id="admin_tv_retail_SELECTE36" value="10800" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_retail_SELECTE36" value="10800" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 4px 6px; border-radius: 4px;" />
                 </div>
               </div>
-              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+              <div style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
                 <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">SPORTSE36</div>
                 <div>
                   <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
-                  <input type="number" id="admin_tv_orig_SPORTSE36" value="22000" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_orig_SPORTSE36" value="22000" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 4px 6px; border-radius: 4px;" />
                 </div>
                 <div>
                   <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
-                  <input type="number" id="admin_tv_retail_SPORTSE36" value="20800" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_retail_SPORTSE36" value="20800" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 4px 6px; border-radius: 4px;" />
                 </div>
               </div>
-              <div style="background: #0B0B10; border: 1px solid #1E1E28; border-radius: 6px; padding: 6px 8px; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
+              <div style="padding: 4px 0; display: grid; grid-template-columns: 2fr 1.5fr 1.5fr; gap: 6px; align-items: center;">
                 <div style="font-size: 10.5px; font-weight: 700; color: #FFFFFF;">DStv Compact</div>
                 <div>
                   <div style="font-size: 8px; color: #9CA3AF;">Original <s>MSRP</s></div>
-                  <input type="number" id="admin_tv_orig_Compact" value="16500" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_orig_Compact" value="16500" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #9CA3AF; text-decoration: line-through; font-size: 10.5px; padding: 4px 6px; border-radius: 4px;" />
                 </div>
                 <div>
                   <div style="font-size: 8px; color: #34D399; font-weight: 700;">Selling Price</div>
-                  <input type="number" id="admin_tv_retail_Compact" value="15700" style="width: 100%; background: #14141C; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 2px 4px; border-radius: 4px;" />
+                  <input type="number" id="admin_tv_retail_Compact" value="15700" style="width: 100%; background: #0B0B10; border: 1px solid #252536; color: #34D399; font-size: 10.5px; font-weight: 800; padding: 4px 6px; border-radius: 4px;" />
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Power & Electricity Settings -->
-          <div style="background: #0D0D14; border: 1px solid #222230; border-radius: 10px; padding: 10px; margin-bottom: 14px;">
+          <div style="border-top: 1px solid #222230; padding-top: 12px; margin-bottom: 14px;">
             <div style="font-size: 11px; font-weight: 800; color: #E5E7EB; margin-bottom: 6px;">Power &amp; Electricity Fee Policy</div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
               <div>
@@ -6071,7 +6065,7 @@
         </div>
 
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-          <div id="adminAgentsCountLabel" style="font-size: 10.5px; color: #9CA3AF; font-weight: 700;">Showing 5 Agent Outlets</div>
+          <div id="adminAgentsCountLabel" style="font-size: 10.5px; color: #9CA3AF; font-weight: 700;">Loading Agent Outlets...</div>
           <button type="button" onclick="refreshMasterAgentsList()" style="background: transparent; border: none; color: #A78BFA; font-size: 10.5px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 3px;">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
             <span>Refresh</span>
@@ -9881,14 +9875,65 @@
       showCustomAlert('Personal wallet funded with NGN ' + amt.toLocaleString() + '.00');
     }
 
-    function executeVTUTransaction(serviceName) {
-      if (userWalletBalance < 1000) {
-        showCustomAlert('Insufficient wallet balance. Please fund your wallet.');
+    async function executeVTUTransaction(serviceName) {
+      if (typeof PAYZANI_SB === 'undefined' || !PAYZANI_SB.userId) {
+        showCustomAlert('Please sign in or create an account to purchase ' + serviceName + '.');
+        if (typeof openPayzaniAuth === 'function') openPayzaniAuth();
         return;
       }
-      userWalletBalance -= 1000;
-      document.getElementById('userWalletDisplay').innerText = 'NGN ' + userWalletBalance.toLocaleString() + '.00';
-      showCustomAlert(serviceName + ' processed and delivered successfully');
+
+      let mappedService = serviceName;
+      let amount = 0;
+      let recipient = '';
+
+      if (serviceName.includes('Airtime')) {
+        mappedService = 'Airtime';
+        const p = document.getElementById('airtimePhone');
+        const a = document.getElementById('airtimeAmount');
+        recipient = p ? p.value.trim() : '';
+        amount = a ? Number(a.value) : 0;
+        const mPhone = document.getElementById('opay-airtime-phone');
+        const mAmt = document.getElementById('opay-airtime-custom');
+        if (mPhone) mPhone.value = recipient;
+        if (mAmt) mAmt.value = amount;
+      } else if (serviceName.includes('Data')) {
+        mappedService = 'Mobile Data';
+        const p = document.getElementById('dataPhone');
+        recipient = p ? p.value.trim() : '';
+        const lbl = document.getElementById('selectedDataPlanLabel');
+        const m = lbl ? lbl.innerText.match(/₦([\d,]+)/) : null;
+        amount = m ? Number(m[1].replace(/,/g, '')) : 580;
+        const mPhone = document.getElementById('opay-data-phone');
+        const mLbl = document.getElementById('opay-data-pay-label');
+        if (mPhone) mPhone.value = recipient;
+        if (mLbl) mLbl.innerText = amount.toLocaleString();
+      } else if (serviceName.includes('Cable') || serviceName.includes('TV')) {
+        mappedService = 'TV Subscription';
+        const sc = document.querySelector('#tab-cable input[type="text"]');
+        recipient = sc ? sc.value.trim() : '';
+        const lbl = document.getElementById('selectedCablePackageLabel');
+        const m = lbl ? lbl.innerText.match(/₦([\d,]+)/) : null;
+        amount = m ? Number(m[1].replace(/,/g, '')) : 4200;
+        const mSc = document.getElementById('opay-tv-smartcard');
+        const mLbl = document.getElementById('opay-tv-pay-label');
+        if (mSc) mSc.value = recipient;
+        if (mLbl) mLbl.innerText = amount.toLocaleString();
+      } else if (serviceName.includes('Electricity') || serviceName.includes('Power')) {
+        const meter = document.querySelector('#tab-power input[type="text"]');
+        const amtInp = document.getElementById('powerAmountInput');
+        recipient = meter ? meter.value.trim() : '';
+        amount = amtInp ? Number(amtInp.value) : 0;
+        if (!recipient) { showCustomAlert('Please enter a valid meter number.'); return; }
+        if (!amount || amount < 500) { showCustomAlert('Minimum electricity purchase is ₦500.'); return; }
+        if (typeof opaySubmitPayment === 'function') {
+          await opaySubmitPayment('Electricity', { amount: amount, recipient: recipient });
+          return;
+        }
+      }
+
+      if (typeof opaySubmitPayment === 'function') {
+        await opaySubmitPayment(mappedService, { amount: amount, recipient: recipient });
+      }
     }
 
 // saveMasterSettings unified in Superadmin section below
@@ -10040,8 +10085,9 @@
         const saveAmt = Math.max(15, origPrice - retPrice);
         const isSelected = idx === 0 ? 'selected' : '';
 
+        const planIdVal = escapeHtml(String(p.plan_id || p.id || '14'));
         return `
-          <div class="opay-amount-pill ${isSelected}" onclick="opaySelectDataPlan(this, '${escapeHtml(p.name)}', ${retPrice}, ${origPrice})">
+          <div class="opay-amount-pill ${isSelected}" onclick="opaySelectDataPlan(this, '${escapeHtml(p.name)}', ${retPrice}, ${origPrice}, '${planIdVal}')">
             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
               <span class="opay-pill-val" style="font-weight: 800; font-size: 13.5px;">${escapeHtml(p.name)}</span>
               <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 5px; border-radius: 4px;">SAVE ₦${saveAmt.toLocaleString()}</span>
@@ -10054,9 +10100,15 @@
         `;
       }).join('');
 
-      // Set initial pay label
+      // Set initial pay label & selected plan
       if (plans.length > 0) {
         const firstPrice = Number(plans[0].retailPrice);
+        window.opayCurrentDataPlan = {
+          id: plans[0].id,
+          plan_id: String(plans[0].plan_id || plans[0].id || '14'),
+          name: plans[0].name,
+          price: firstPrice
+        };
         const label = document.getElementById('opay-data-pay-label');
         if (label) label.innerText = firstPrice.toLocaleString();
       }
@@ -10072,9 +10124,15 @@
       if (label) label.innerText = finalPrice.toLocaleString();
     }
 
-    function opaySelectDataPlan(el, planName, price, origPrice) {
+    function opaySelectDataPlan(el, planName, price, origPrice, planId) {
       el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
+      window.opayCurrentDataPlan = {
+        id: planId || '14',
+        plan_id: String(planId || '14'),
+        name: planName,
+        price: Number(price)
+      };
       const label = document.getElementById('opay-data-pay-label');
       if (label) label.innerText = Number(price).toLocaleString();
     }
@@ -11171,28 +11229,33 @@
             if (!localStorage.getItem('payzani_agent_orders')) localStorage.setItem('payzani_agent_orders', '0');
           } catch(err) {}
 
-          // Record agent in Supabase agents table
+          // Record agent in Supabase agents table using exact valid schema columns
+          const agentSlug = (businessName || 'agent').toLowerCase().replace(/[^a-z0-9]/g, '') || ('agent' + Date.now().toString().slice(-4));
+          const agentId = 'AGT-' + Math.floor(100000 + Math.random() * 900000);
           if (PAYZANI_SB && typeof PAYZANI_SB.post === 'function') {
-            await PAYZANI_SB.post('agents', {
+            const agtRes = await PAYZANI_SB.post('agents', {
+              id: agentId,
               user_id: PAYZANI_SB.userId || ('usr_' + Date.now()),
-              business_name: businessName,
-              phone: phone,
-              email: userEmail,
-              tier: 'Gold Agent',
-              status: 'active',
+              outlet_name: businessName,
+              slug: agentSlug,
               wholesale_float: 0,
-              total_orders: 0,
-              monthly_profit: 0
-            }).catch(e => console.warn('Supabase agent record notice:', e));
+              float_capacity: 50000,
+              net_profit: 0,
+              orders_count: 0,
+              customers_count: 0
+            }).catch(e => { console.warn('Supabase agent record notice:', e); return null; });
+            if (agtRes && agtRes[0]) PAYZANI_SB.agent = agtRes[0];
 
             await PAYZANI_SB.post('transactions', {
+              id: 'TX-' + Math.floor(100000 + Math.random() * 900000),
               user_id: PAYZANI_SB.userId || null,
               reference: reference || ('AGT-' + Date.now()),
               type: 'Agent Registration',
-              network: 'PAYSTACK',
+              description: 'One-Time Agent Activation Fee (' + businessName + ')',
               amount: fee,
+              flow: 'credit',
               status: 'success',
-              recipient: businessName + ' (' + phone + ')'
+              recipient: businessName + (phone ? ' (' + phone + ')' : '')
             }).catch(e => console.warn('Supabase transaction notice:', e));
           }
 
@@ -11342,7 +11405,8 @@
       if (PAYZANI_SB && PAYZANI_SB.userId) {
         try {
           const records = await PAYZANI_SB.get('agents', 'user_id=eq.' + encodeURIComponent(PAYZANI_SB.userId));
-          if (records && records.length > 0 && records[0].status === 'active') {
+          if (records && records.length > 0) {
+            PAYZANI_SB.agent = records[0];
             isPayzaniAgentRegistered = true;
             localStorage.setItem('payzani_is_agent', 'true');
             opaySwitchScreen('opay-screen-agent-dashboard');
@@ -11509,23 +11573,87 @@
 
     function executeAgentFloatTopUp() {
       const input = document.getElementById('agentCustomRefillInput');
-      const amt = input ? parseFloat(input.value) : 10000;
-      if (isNaN(amt) || amt <= 0) {
-        if (typeof showCustomAlert === 'function') showCustomAlert('Please enter a valid refill amount.');
+      const amt = input ? parseFloat(input.value) : 0;
+      const cfg = (typeof getMasterAdminConfig === 'function') ? getMasterAdminConfig() : { minFloatRefill: 5000 };
+      const minRefill = Number(cfg.minFloatRefill || 5000);
+      if (isNaN(amt) || amt < minRefill) {
+        if (typeof showCustomAlert === 'function') showCustomAlert('Minimum wholesale float refill is ₦' + minRefill.toLocaleString() + '.');
         return;
       }
 
-      const cur = getAgentFloat();
-      const next = cur + amt;
-      setAgentFloat(next);
+      const userEmail = (PAYZANI_SB && PAYZANI_SB.profile && PAYZANI_SB.profile.email) ? PAYZANI_SB.profile.email : (localStorage.getItem('payzani_agent_email') || 'agent@payzani.ng');
+      const pKey = (typeof PAYSTACK_PUBLIC_KEY !== 'undefined' && PAYSTACK_PUBLIC_KEY) ? PAYSTACK_PUBLIC_KEY : 'pk_live_7ad543047c70c866ded395106782bf387c9fff6f';
 
-      // close drawer
-      const drawer = document.getElementById('agentTopUpDrawer');
-      if (drawer) drawer.style.display = 'none';
-
-      if (typeof showCustomAlert === 'function') {
-        showCustomAlert(` Wholesale Float Refilled! +₦${amt.toLocaleString()} credited. Remaining Credit: ₦${next.toLocaleString()}.00`);
+      function loadPaystackFloat(cb) {
+        if (typeof window.PaystackPop !== 'undefined' || typeof PaystackPop !== 'undefined') {
+          return cb(window.PaystackPop || PaystackPop);
+        }
+        const s = document.createElement('script');
+        s.src = 'https://js.paystack.co/v1/inline.js';
+        s.onload = () => cb(window.PaystackPop || PaystackPop);
+        s.onerror = () => cb(null);
+        document.head.appendChild(s);
       }
+
+      loadPaystackFloat((paystack) => {
+        if (!paystack) {
+          showCustomAlert('Unable to load Paystack payment gateway. Please check your connection.');
+          return;
+        }
+        const handler = paystack.setup({
+          key: pKey,
+          email: userEmail,
+          amount: Math.round(amt * 100),
+          currency: 'NGN',
+          ref: 'FLT_' + Date.now() + '_' + Math.floor(Math.random() * 100000),
+          callback: async function(response) {
+            const cur = getAgentFloat();
+            const next = cur + amt;
+            setAgentFloat(next);
+            try {
+              if (PAYZANI_SB && PAYZANI_SB.agent) {
+                const sbNext = Number(PAYZANI_SB.agent.wholesale_float || 0) + amt;
+                await PAYZANI_SB.patch('agents', 'id=eq.' + encodeURIComponent(PAYZANI_SB.agent.id), {
+                  wholesale_float: sbNext,
+                  updated_at: new Date().toISOString()
+                });
+                PAYZANI_SB.agent.wholesale_float = sbNext;
+                await PAYZANI_SB.post('transactions', {
+                  id: 'FLT-' + Math.floor(100000 + Math.random() * 900000),
+                  user_id: PAYZANI_SB.userId || null,
+                  reference: response.reference || ('FLT-' + Date.now()),
+                  type: 'Agent Float Refill',
+                  description: 'Paystack Wholesale Float Refill',
+                  amount: amt,
+                  flow: 'credit',
+                  status: 'success',
+                  recipient: PAYZANI_SB.agent.outlet_name || 'Agent Float'
+                });
+                await PAYZANI_SB.post('agent_activities', {
+                  id: 'ACT-' + Math.floor(100000 + Math.random() * 900000),
+                  agent_id: PAYZANI_SB.agent.id,
+                  type: 'wallet',
+                  customer: 'Wholesale Float',
+                  title: 'Float Refilled via Paystack',
+                  description: 'Paystack ref: ' + (response.reference || 'confirmed'),
+                  amount: amt,
+                  status: 'Completed'
+                });
+              }
+            } catch (e) { console.warn('Agent float sync error:', e); }
+            const drawer = document.getElementById('agentTopUpDrawer');
+            if (drawer) drawer.style.display = 'none';
+            if (typeof updateAgentDashboardUI === 'function') updateAgentDashboardUI();
+            if (typeof showCustomAlert === 'function') {
+              showCustomAlert('Wholesale Float Refilled via Paystack! +₦' + amt.toLocaleString() + ' credited.');
+            }
+          },
+          onClose: function() {
+            if (typeof showCustomAlert === 'function') showCustomAlert('Float refill cancelled.');
+          }
+        });
+        handler.openIframe();
+      });
     }
 
     // Storefront Live Activity Feed, Radar & Auditing Engine (100% Real Live Events)
@@ -12273,6 +12401,18 @@
       handleAgentStorefrontSloganInput(slogan);
       applyAgentStorefrontColor(currentAgentThemeColor || '#7C3AED', false);
       
+      if (PAYZANI_SB && PAYZANI_SB.agent && PAYZANI_SB.agent.id) {
+        const newSlug = name.toLowerCase().replace(/[^a-z0-9]/g, '') || PAYZANI_SB.agent.slug;
+        PAYZANI_SB.patch('agents', 'id=eq.' + encodeURIComponent(PAYZANI_SB.agent.id), {
+          outlet_name: name,
+          slug: newSlug,
+          updated_at: new Date().toISOString()
+        }).then(() => {
+          PAYZANI_SB.agent.outlet_name = name;
+          PAYZANI_SB.agent.slug = newSlug;
+        }).catch(e => console.warn('Agent branding DB sync:', e));
+      }
+
       if (isAgentStorefront()) {
         applyStorefrontOrMainMode();
       }
@@ -13369,9 +13509,11 @@
       if (filterQuery) {
         const q = filterQuery.toLowerCase();
         filtered = list.filter(a =>
+          (a.outlet_name && a.outlet_name.toLowerCase().includes(q)) ||
           (a.storefront_name && a.storefront_name.toLowerCase().includes(q)) ||
           (a.business_name && a.business_name.toLowerCase().includes(q)) ||
           (a.phone && a.phone.includes(q)) ||
+          (a.slug && a.slug.toLowerCase().includes(q)) ||
           (a.storefront_slug && a.storefront_slug.toLowerCase().includes(q))
         );
       }
@@ -13384,7 +13526,7 @@
           container.innerHTML = '<div style="color:#9CA3AF; font-size:11.5px; text-align:center; padding:24px; background:#14141E; border-radius:10px;">No registered agent outlets yet. When users upgrade to become an Agent, their storefronts and float balances appear here live.</div>';
         } else {
           container.innerHTML = filtered.map(a => {
-            const agtName = a.storefront_name || a.business_name || 'Agent Storefront';
+            const agtName = a.outlet_name || a.storefront_name || a.business_name || 'Agent Storefront';
             const floatBal = Number(a.wholesale_float) || 0;
             const statusColor = (a.status || 'Active').toLowerCase() === 'active' ? '#10B981' : '#F59E0B';
             return `
@@ -13395,7 +13537,7 @@
                     <span style="font-size: 8.5px; font-weight: 800; color: ${statusColor}; background: rgba(16, 185, 129, 0.12); padding: 1px 5px; border-radius: 3px;">${escapeHtml(a.status || 'Active')}</span>
                   </div>
                   <div style="color: #9CA3AF; font-size: 10px; margin-top: 2px;">
-                    <span>Phone: ${escapeHtml(a.phone || '-')}</span> &bull; <span>Slug: /?agent=${escapeHtml(a.storefront_slug || a.id)}</span>
+                    <span>ID: ${escapeHtml(a.id || '-')}</span> &bull; <span>Slug: /?agent=${escapeHtml(a.slug || a.storefront_slug || a.id)}</span>
                   </div>
                 </div>
                 <div style="text-align: right; display: flex; align-items: center; gap: 8px;">
@@ -13420,13 +13562,13 @@
           deskContainer.innerHTML = '<div style="font-size:12px; color:var(--text-muted); text-align:center; padding:16px;">No registered agent storefronts yet. Real agents will appear here live.</div>';
         } else {
           deskContainer.innerHTML = list.map(a => {
-            const agtName = a.storefront_name || a.business_name || 'Agent Storefront';
+            const agtName = a.outlet_name || a.storefront_name || a.business_name || 'Agent Storefront';
             const floatBal = Number(a.wholesale_float) || 0;
             return `
               <div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:var(--surface-subtle); border-radius:var(--radius-sm); border:1px solid var(--border);">
                 <div>
                   <div style="font-weight:700; font-size:13px;">${escapeHtml(agtName)}</div>
-                  <div style="font-size:11.5px; color:var(--text-muted);">payzani.com/?agent=${escapeHtml(a.storefront_slug || a.id)}</div>
+                  <div style="font-size:11.5px; color:var(--text-muted);">payzani-smoky.vercel.app/?agent=${escapeHtml(a.slug || a.storefront_slug || a.id)}</div>
                 </div>
                 <span style="font-size:12px; font-weight:800; color:var(--success);">NGN ${floatBal.toLocaleString()}.00 Float</span>
               </div>
@@ -14119,47 +14261,112 @@
       }
     }
 
-    async function opaySubmitPayment(serviceName) {
+    async function creditStorefrontAgentOnOrder(serviceName, amount, recipient) {
+      try {
+        const activeAgent = PAYZANI_SB.storefrontAgent || PAYZANI_SB.agent;
+        if (!activeAgent || !activeAgent.id) return;
+        const cfg = (typeof getMasterAdminConfig === 'function') ? getMasterAdminConfig() : { defaultAgentMargin: 8.5 };
+        const marginPct = Number(cfg.defaultAgentMargin || 8.5);
+        const profitEarned = Math.round(amount * (marginPct / 100));
+        const nextProfit = Number(activeAgent.net_profit || 0) + profitEarned;
+        const nextOrders = Number(activeAgent.orders_count || 0) + 1;
+
+        await PAYZANI_SB.patch('agents', 'id=eq.' + encodeURIComponent(activeAgent.id), {
+          net_profit: nextProfit,
+          orders_count: nextOrders,
+          updated_at: new Date().toISOString()
+        });
+        activeAgent.net_profit = nextProfit;
+        activeAgent.orders_count = nextOrders;
+
+        await PAYZANI_SB.post('agent_activities', {
+          id: 'ACT-' + Math.floor(100000 + Math.random() * 900000),
+          agent_id: activeAgent.id,
+          type: 'order',
+          customer: recipient,
+          title: serviceName + ' Delivery',
+          description: serviceName + ' order fulfilled (+₦' + profitEarned.toLocaleString() + ' profit)',
+          amount: amount,
+          status: 'Completed'
+        });
+      } catch (e) {
+        console.warn('Storefront agent credit notice:', e);
+      }
+    }
+
+    async function opaySubmitPayment(serviceName, overrides) {
       if (!PAYZANI_SB.userId) {
         showCustomAlert('Please log in or create an account to purchase ' + serviceName + '.');
         openPayzaniAuth();
         return;
       }
 
-      let amount = 1000;
-      let recipient = '08123456789';
+      let amount = (overrides && overrides.amount) ? Number(overrides.amount) : 0;
+      let recipient = (overrides && overrides.recipient) ? String(overrides.recipient).trim() : '';
       const carrierObj = (typeof OPAY_CARRIERS !== 'undefined' && OPAY_CARRIERS[opayCarrierIdx]) ? OPAY_CARRIERS[opayCarrierIdx] : { name: 'MTN' };
 
       if (serviceName === 'Airtime') {
         const inp = document.getElementById('opay-airtime-custom');
         const phone = document.getElementById('opay-airtime-phone');
-        if (inp && Number(inp.value)) amount = Number(inp.value);
-        if (phone && phone.value) recipient = phone.value.trim();
+        if (!amount && inp && Number(inp.value)) amount = Number(inp.value);
+        if (!recipient && phone && phone.value) recipient = phone.value.trim();
+        if (!recipient || recipient.replace(/\D/g, '').length < 10) {
+          showCustomAlert('Please enter a valid 10 or 11-digit phone number.');
+          return;
+        }
+        if (!amount || amount < 50) {
+          showCustomAlert('Minimum airtime purchase is ₦50.');
+          return;
+        }
       } else if (serviceName === 'Data' || serviceName === 'Mobile Data') {
         const lbl = document.getElementById('opay-data-pay-label');
         const phone = document.getElementById('opay-data-phone');
-        if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
-        if (phone && phone.value) recipient = phone.value.trim();
+        if (!amount && lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
+        if (!recipient && phone && phone.value) recipient = phone.value.trim();
+        if (!recipient || recipient.replace(/\D/g, '').length < 10) {
+          showCustomAlert('Please enter a valid 10 or 11-digit recipient phone number.');
+          return;
+        }
+        if (!amount || amount <= 0) {
+          showCustomAlert('Please select a data plan.');
+          return;
+        }
       } else if (serviceName === 'TV' || serviceName === 'TV Subscription') {
         const lbl = document.getElementById('opay-tv-pay-label');
-        if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
+        if (!amount && lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
         const scInp = document.getElementById('opay-tv-smartcard');
-        const scVal = scInp ? scInp.value.trim() : '7034982109';
+        const scVal = recipient || (scInp ? scInp.value.trim() : '');
+        if (!scVal || scVal.length < 6) {
+          showCustomAlert('Please enter a valid Smartcard / IUC number.');
+          return;
+        }
+        if (!amount || amount <= 0) {
+          showCustomAlert('Please select a TV bouquet.');
+          return;
+        }
         const tvProv = window.currentTvProviderName || 'DStv';
         const tvPlan = window.opayCurrentTvPlan ? window.opayCurrentTvPlan.name : 'Subscription';
         recipient = tvProv + ' Smartcard: ' + scVal + ' (' + tvPlan + ')';
       } else if (serviceName === 'Betting' || serviceName === 'Betting Topup') {
         const inp = document.getElementById('opay-bet-custom') || document.getElementById('opay-betting-custom');
-        if (inp && Number(inp.value)) amount = Number(inp.value);
+        if (!amount && inp && Number(inp.value)) amount = Number(inp.value);
         const betInp = document.getElementById('opay-bet-userid');
-        const betVal = betInp ? betInp.value.trim() : '8168207892';
+        const betVal = recipient || (betInp ? betInp.value.trim() : '');
+        if (!betVal) {
+          showCustomAlert('Please enter your betting User ID / Account ID.');
+          return;
+        }
+        if (!amount || amount < 100) {
+          showCustomAlert('Minimum betting wallet funding is ₦100.');
+          return;
+        }
         const betProv = window.currentBettingProviderName || 'SportyBet';
         recipient = betProv + ' ID: ' + betVal;
       } else if (serviceName === 'Education') {
         const lbl = document.getElementById('opay-education-pay-label');
-        if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
+        if (!amount && lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
         const rInp = document.getElementById('opay-education-recipient');
-        const rVal = rInp ? rInp.value.trim() : '';
+        const rVal = recipient || (rInp ? rInp.value.trim() : '');
         if (!rVal) {
           showCustomAlert('Please enter the recipient phone or WhatsApp to receive the exam PIN.');
           return;
@@ -14167,9 +14374,9 @@
         recipient = rVal;
       } else if (serviceName === 'Booster' || serviceName === 'Social Booster') {
         const lbl = document.getElementById('opay-booster-pay-label');
-        if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
+        if (!amount && lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
         const bInp = document.getElementById('opay-booster-target');
-        const bVal = bInp ? bInp.value.trim() : '';
+        const bVal = recipient || (bInp ? bInp.value.trim() : '');
         if (!bVal) {
           showCustomAlert('Please enter the target @username or link to boost.');
           return;
@@ -14177,6 +14384,8 @@
         recipient = bVal;
       }
 
+      // Sync latest balance from Supabase before checking
+      await syncRealUserProfile();
       const curBal = PAYZANI_SB.profile ? Number(PAYZANI_SB.profile.wallet_balance || 0) : 0;
       if (curBal < amount) {
         showCustomAlert('Insufficient wallet balance (₦' + curBal.toLocaleString() + '.00). Please add money to purchase ' + serviceName + '.');
@@ -14185,28 +14394,44 @@
 
       // Special Dispatch: Social Booster via JustAnotherPanel (JAP)
       if (serviceName === 'Booster' || serviceName === 'Social Booster') {
-        showCustomAlert('Routing Social Booster order (' + recipient + ') to JustAnotherPanel (JAP)...');
+        showCustomAlert('Routing Social Booster order (' + recipient + ') to JustAnotherPanel...');
         let japOrderId = null;
+        let japError = null;
         const boosterPlan = window.opayCurrentBoosterPlan || { planName: '1,000 Followers', qty: 1000, price: 1200 };
-        const platformName = document.getElementById('opay-booster-platform-name') ? document.getElementById('opay-booster-platform-name').innerText : 'Instagram';
+        const platNameEl = document.getElementById('opayBoosterCarrierName') || document.getElementById('opay-booster-platform-name');
+        const platformName = platNameEl ? platNameEl.innerText : 'Instagram';
+        const japKey = (MASTER_ADMIN_CACHE.jap && MASTER_ADMIN_CACHE.jap.api_key) || '2756c5a7df54b14d22cf0ae579199219';
+
+        const japParams = new URLSearchParams({
+          key: japKey,
+          action: 'add',
+          service: String(boosterPlan.serviceId || '4108'),
+          link: recipient.startsWith('http') ? recipient : 'https://' + platformName.toLowerCase().replace(/[^a-z]/g, '') + '.com/' + recipient.replace(/^@/, ''),
+          quantity: String(boosterPlan.qty || 1000)
+        });
 
         try {
-          const japParams = new URLSearchParams({
-            key: '2756c5a7df54b14d22cf0ae579199219',
-            action: 'add',
-            service: String(boosterPlan.serviceId || '4108'),
-            link: recipient.startsWith('http') ? recipient : 'https://' + platformName.toLowerCase().replace(/[^a-z]/g, '') + '.com/' + recipient.replace(/^@/, ''),
-            quantity: String(boosterPlan.qty || 1000)
-          });
-          const japRes = await fetch('https://justanotherpanel.com/api/v2', {
+          const endpoint = (window.location.hostname && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1')
+            ? '/api/jap'
+            : 'https://justanotherpanel.com/api/v2';
+          const japRes = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: japParams.toString()
           });
           const japJson = await japRes.json();
-          if (japJson && japJson.order) japOrderId = String(japJson.order);
+          if (japJson && japJson.order) {
+            japOrderId = String(japJson.order);
+          } else {
+            japError = (japJson && japJson.error) ? japJson.error : 'Social Booster gateway declined the order.';
+          }
         } catch (e) {
-          console.warn('JAP API call notice:', e);
+          japError = 'Unable to reach Social Booster gateway (' + (e.message || 'network error') + ').';
+        }
+
+        if (!japOrderId) {
+          showCustomAlert('Order Failed (Wallet NOT charged): ' + (japError || 'Gateway error.'));
+          return;
         }
 
         try {
@@ -14216,57 +14441,47 @@
             updated_at: new Date().toISOString()
           });
 
-          const txId = japOrderId ? ('JAP-' + japOrderId) : ('JAP-' + Math.floor(100000 + Math.random() * 900000));
+          const txId = 'JAP-' + japOrderId;
           await PAYZANI_SB.post('transactions', {
             id: txId,
             user_id: PAYZANI_SB.userId,
             type: 'Social Booster',
-            description: platformName + ' ' + boosterPlan.planName + ' • ' + recipient + (japOrderId ? ' [JAP #' + japOrderId + ']' : ''),
+            description: platformName + ' ' + boosterPlan.planName + ' • ' + recipient + ' [JAP #' + japOrderId + ']',
             amount: amount,
             flow: 'debit',
             status: 'success',
             recipient: recipient
           });
 
-          if (PAYZANI_SB.agent) {
-            await PAYZANI_SB.post('agent_activities', {
-              id: 'ACT-' + Math.floor(100000 + Math.random() * 900000),
-              agent_id: PAYZANI_SB.agent.id,
-              type: 'order',
-              customer: recipient,
-              title: 'Social Booster Delivery',
-              description: platformName + ' growth order dispatched via JustAnotherPanel',
-              amount: amount,
-              status: 'Completed'
-            });
-          }
-
+          await creditStorefrontAgentOnOrder('Social Booster', amount, recipient);
           await syncRealUserProfile();
           await syncRealTransactions();
 
-          showCustomAlert('Social Booster order for ' + recipient + ' placed successfully via JustAnotherPanel!');
+          showCustomAlert('Social Booster order #' + japOrderId + ' for ' + recipient + ' placed successfully!');
           setTimeout(() => {
             opaySwitchScreen('opay-screen-home');
           }, 1200);
           return;
         } catch (err) {
           console.error('Supabase transaction error:', err);
-          showCustomAlert('Order placed: ₦' + amount.toLocaleString() + ' deducted.');
+          showCustomAlert('Order #' + japOrderId + ' placed, syncing balance...');
           await syncRealUserProfile();
           await syncRealTransactions();
           return;
         }
       }
 
-      showCustomAlert('Routing ' + serviceName + ' order (₦' + amount.toLocaleString() + ') through Pairgate live engine...');
+      showCustomAlert('Processing ' + serviceName + ' order (₦' + amount.toLocaleString() + ')...');
 
       let pairgateTxId = null;
+      let pairgateError = null;
       let pairgateTokenDetail = '';
       const pairgateKey = (getMasterAdminConfig().pairgateApiKey) || 'PG_live_EOcMT8SDNPGBIon7TOrQyndTSAFFJE47m3LHmdh8Gygmi';
-      const cleanPhone = recipient.replace(/\D/g, '') || '08012345678';
+      const cleanPhone = recipient.replace(/\D/g, '');
       const refId = 'PZ-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(2, 6).toUpperCase();
 
       try {
+        let pRes = null;
         if (serviceName === 'Airtime') {
           let prov = (carrierObj.name || 'MTN').toUpperCase();
           if (prov.includes('9MOBILE') || prov.includes('ETISALAT')) prov = '9MOBILE';
@@ -14274,7 +14489,7 @@
           else if (prov.includes('GLO')) prov = 'GLO';
           else prov = 'MTN';
 
-          const pRes = await fetch('https://pairgate.com/api/v1/airtime/purchase', {
+          pRes = await fetch('https://pairgate.com/api/v1/airtime/purchase', {
             method: 'POST',
             headers: {
               'Authorization': 'Bearer ' + pairgateKey,
@@ -14287,10 +14502,6 @@
               reference: refId
             })
           });
-          const pJson = await pRes.json();
-          if (pJson && (pJson.code === 200 || pJson.status === 'success')) {
-            pairgateTxId = pJson.data ? (pJson.data.reference || pJson.data.id || refId) : refId;
-          }
         } else if (serviceName === 'Data' || serviceName === 'Mobile Data') {
           const provMap = {
             'mtn': 'f8efaacd-4dfe-11f1-b9ca-98e8d4b7dfa9',
@@ -14302,7 +14513,7 @@
           const provId = provMap[cName] || provMap['mtn'];
           const planId = (window.opayCurrentDataPlan && window.opayCurrentDataPlan.plan_id) || '14';
 
-          const pRes = await fetch('https://pairgate.com/api/v1/data/purchase', {
+          pRes = await fetch('https://pairgate.com/api/v1/data/purchase', {
             method: 'POST',
             headers: {
               'Authorization': 'Bearer ' + pairgateKey,
@@ -14315,13 +14526,9 @@
               reference: refId
             })
           });
-          const pJson = await pRes.json();
-          if (pJson && (pJson.code === 200 || pJson.status === 'success')) {
-            pairgateTxId = pJson.data ? (pJson.data.reference || pJson.data.id || refId) : refId;
-          }
         } else if (serviceName === 'Education') {
           const eduPlan = currentEducationPlan || { provider_id: 'waec', quantity: 1, name: 'WAEC Result Checker' };
-          const pRes = await fetch('https://pairgate.com/api/v1/education/purchase', {
+          pRes = await fetch('https://pairgate.com/api/v1/education/purchase', {
             method: 'POST',
             headers: {
               'Authorization': 'Bearer ' + pairgateKey,
@@ -14333,19 +14540,12 @@
               reference: refId
             })
           });
-          const pJson = await pRes.json();
-          if (pJson && (pJson.code === 200 || pJson.status === 'success')) {
-            pairgateTxId = pJson.data ? (pJson.data.reference || pJson.data.id || refId) : refId;
-            if (pJson.data && (pJson.data.pins || pJson.data.pin || pJson.data.token)) {
-              pairgateTokenDetail = ' [PIN: ' + (pJson.data.pins || pJson.data.pin || pJson.data.token) + ']';
-            }
-          }
         } else if (serviceName === 'TV' || serviceName === 'TV Subscription') {
           const tvProv = (window.currentTvProviderId || 'dstv').toLowerCase();
           const scInp = document.getElementById('opay-tv-smartcard');
-          const scVal = scInp ? scInp.value.trim() : '7034982109';
+          const scVal = (overrides && overrides.recipient) ? overrides.recipient : (scInp ? scInp.value.trim() : '');
           const tvPlan = window.opayCurrentTvPlan || { id: 'padi', name: 'DStv Padi' };
-          const pRes = await fetch('https://pairgate.com/api/v1/cable/purchase', {
+          pRes = await fetch('https://pairgate.com/api/v1/cable/purchase', {
             method: 'POST',
             headers: {
               'Authorization': 'Bearer ' + pairgateKey,
@@ -14358,15 +14558,11 @@
               reference: refId
             })
           });
-          const pJson = await pRes.json();
-          if (pJson && (pJson.code === 200 || pJson.status === 'success')) {
-            pairgateTxId = pJson.data ? (pJson.data.reference || pJson.data.id || refId) : refId;
-          }
         } else if (serviceName === 'Betting' || serviceName === 'Betting Topup') {
           const betProv = (window.currentBettingProviderId || 'sportybet').toLowerCase();
           const betInp = document.getElementById('opay-bet-userid');
-          const betVal = betInp ? betInp.value.trim() : '8168207892';
-          const pRes = await fetch('https://pairgate.com/api/v1/betting/purchase', {
+          const betVal = (overrides && overrides.recipient) ? overrides.recipient : (betInp ? betInp.value.trim() : '');
+          pRes = await fetch('https://pairgate.com/api/v1/betting/purchase', {
             method: 'POST',
             headers: {
               'Authorization': 'Bearer ' + pairgateKey,
@@ -14379,16 +14575,40 @@
               reference: refId
             })
           });
-          const pJson = await pRes.json();
-          if (pJson && (pJson.code === 200 || pJson.status === 'success')) {
+        } else if (serviceName === 'Electricity') {
+          pRes = await fetch('https://pairgate.com/api/v1/electricity/purchase', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + pairgateKey,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              provider_id: 'ekedc',
+              meter_number: recipient,
+              amount: Number(amount),
+              reference: refId
+            })
+          });
+        }
+
+        if (pRes) {
+          const pJson = await pRes.json().catch(() => ({}));
+          if (pRes.ok && pJson && (pJson.code === 200 || pJson.status === 'success' || pJson.success === true)) {
             pairgateTxId = pJson.data ? (pJson.data.reference || pJson.data.id || refId) : refId;
+            if (pJson.data && (pJson.data.pins || pJson.data.pin || pJson.data.token)) {
+              pairgateTokenDetail = ' [PIN: ' + (pJson.data.pins || pJson.data.pin || pJson.data.token) + ']';
+            }
+          } else {
+            pairgateError = (pJson && (pJson.message || pJson.error)) ? (pJson.message || pJson.error) : ('Gateway declined order (HTTP ' + pRes.status + ').');
           }
-        } else {
-          pairgateTxId = refId;
         }
       } catch (gateErr) {
-        console.warn('Pairgate live gateway notice:', gateErr);
-        pairgateTxId = refId;
+        pairgateError = 'Upstream VTU gateway error: ' + (gateErr.message || 'Connection failed');
+      }
+
+      if (!pairgateTxId) {
+        showCustomAlert(serviceName + ' Failed (Wallet NOT charged): ' + (pairgateError || 'Upstream provider declined transaction.'));
+        return;
       }
 
       try {
@@ -14399,42 +14619,30 @@
           updated_at: new Date().toISOString()
         });
 
-        const txId = pairgateTxId ? ('PG-' + pairgateTxId.slice(-8)) : ('TX-' + Math.floor(100000 + Math.random() * 900000));
+        const txId = 'PG-' + pairgateTxId.slice(-8);
         const serviceDescriptor = serviceName === 'Education' ? (currentEducationPlan ? currentEducationPlan.name : 'Exam PIN') : (carrierObj.name || serviceName);
         await PAYZANI_SB.post('transactions', {
           id: txId,
           user_id: PAYZANI_SB.userId,
           type: serviceName,
-          description: serviceName + ' Purchase (' + serviceDescriptor + ') • ' + recipient + (pairgateTxId ? ' [Pairgate #' + pairgateTxId.slice(-6) + ']' : '') + pairgateTokenDetail,
+          description: serviceName + ' Purchase (' + serviceDescriptor + ') • ' + recipient + ' [Ref #' + pairgateTxId.slice(-6) + ']' + pairgateTokenDetail,
           amount: amount,
           flow: 'debit',
           status: 'success',
           recipient: recipient
         });
 
-        if (PAYZANI_SB.agent) {
-          await PAYZANI_SB.post('agent_activities', {
-            id: 'ACT-' + Math.floor(100000 + Math.random() * 900000),
-            agent_id: PAYZANI_SB.agent.id,
-            type: 'order',
-            customer: recipient,
-            title: serviceName + ' Delivery',
-            description: serviceName + ' order fulfilled instantly via VTpass switch',
-            amount: amount,
-            status: 'Completed'
-          });
-        }
-
+        await creditStorefrontAgentOnOrder(serviceName, amount, recipient);
         await syncRealUserProfile();
         await syncRealTransactions();
 
-        showCustomAlert(serviceName + ' of ₦' + amount.toLocaleString() + ' delivered successfully via VTpass Switch!');
+        showCustomAlert(serviceName + ' of ₦' + amount.toLocaleString() + ' delivered successfully!' + pairgateTokenDetail);
         setTimeout(() => {
           opaySwitchScreen('opay-screen-home');
         }, 1200);
       } catch (err) {
         console.error('Supabase transaction error:', err);
-        showCustomAlert('Transaction processed: ₦' + amount.toLocaleString() + ' deducted.');
+        showCustomAlert('Order delivered, syncing wallet balance...');
         await syncRealUserProfile();
         await syncRealTransactions();
       }
@@ -14448,7 +14656,11 @@
       }
 
       const inp = document.getElementById('walletFundInput');
-      const amt = (inp && Number(inp.value)) ? Number(inp.value) : 5000;
+      const amt = inp ? Number(inp.value) : 0;
+      if (!amt || isNaN(amt) || amt < 100) {
+        showCustomAlert('Minimum wallet deposit is ₦100.');
+        return;
+      }
       dismissWalletDialog();
 
       const userEmail = (PAYZANI_SB.profile && PAYZANI_SB.profile.email) ? PAYZANI_SB.profile.email : ((PAYZANI_SB.profile && PAYZANI_SB.profile.phone) ? PAYZANI_SB.profile.phone + '@payzani.ng' : 'customer@payzani.ng');
@@ -14456,6 +14668,7 @@
 
       async function finalizeWalletFunding(reference) {
         try {
+          await syncRealUserProfile();
           const curBal = PAYZANI_SB.profile ? Number(PAYZANI_SB.profile.wallet_balance || 0) : 0;
           const newBal = curBal + amt;
 
@@ -14483,7 +14696,7 @@
           showCustomAlert('Payment Confirmed! ₦' + amt.toLocaleString() + ' deposited into your Payzani wallet via Paystack.');
         } catch (err) {
           console.error('Fund wallet sync error:', err);
-          showCustomAlert('Deposit of ₦' + amt.toLocaleString() + ' processed.');
+          showCustomAlert('Payment received; syncing wallet balance...');
           await syncRealUserProfile();
           await syncRealTransactions();
         }
@@ -14491,9 +14704,24 @@
 
       const pKey = (typeof PAYSTACK_PUBLIC_KEY !== 'undefined' && PAYSTACK_PUBLIC_KEY) ? PAYSTACK_PUBLIC_KEY : 'pk_live_7ad543047c70c866ded395106782bf387c9fff6f';
 
-      if (typeof PaystackPop !== 'undefined') {
+      function loadWalletPaystack(cb) {
+        if (typeof window.PaystackPop !== 'undefined' || typeof PaystackPop !== 'undefined') {
+          return cb(window.PaystackPop || PaystackPop);
+        }
+        const s = document.createElement('script');
+        s.src = 'https://js.paystack.co/v1/inline.js';
+        s.onload = () => cb(window.PaystackPop || PaystackPop);
+        s.onerror = () => cb(null);
+        document.head.appendChild(s);
+      }
+
+      loadWalletPaystack((paystack) => {
+        if (!paystack) {
+          showCustomAlert('Unable to load Paystack payment gateway. Please check your internet connection and try again.');
+          return;
+        }
         try {
-          const handler = PaystackPop.setup({
+          const handler = paystack.setup({
             key: pKey,
             email: userEmail,
             amount: Math.round(amt * 100),
@@ -14507,7 +14735,11 @@
               ]
             },
             callback: function(response) {
-              finalizeWalletFunding(response.reference);
+              if (response && (response.reference || response.trxref)) {
+                finalizeWalletFunding(response.reference || response.trxref);
+              } else {
+                showCustomAlert('Payment was not completed.');
+              }
             },
             onClose: function() {
               showCustomAlert('Wallet funding cancelled.');
@@ -14516,11 +14748,9 @@
           handler.openIframe();
         } catch(e) {
           console.error('Paystack setup error:', e);
-          finalizeWalletFunding('PSK-LOCAL-' + Date.now());
+          showCustomAlert('Payment Gateway Error: ' + (e.message || 'Unable to open Paystack checkout.'));
         }
-      } else {
-        finalizeWalletFunding('PSK-LOCAL-' + Date.now());
-      }
+      });
     }
 
     async function syncRealReferralRewards() {
@@ -14673,15 +14903,29 @@
       }
     }
 
+    async function syncStorefrontAgentContext() {
+      try {
+        if (typeof isAgentStorefront === 'function' && isAgentStorefront()) {
+          const params = new URLSearchParams(window.location.search);
+          const slug = (params.get('agent') || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+          if (slug) {
+            const rows = await PAYZANI_SB.get('agents', 'slug=eq.' + encodeURIComponent(slug));
+            if (rows && rows.length > 0) PAYZANI_SB.storefrontAgent = rows[0];
+          }
+        }
+      } catch (e) { console.warn('Storefront agent lookup notice:', e); }
+    }
+
     async function syncRealAgentDashboard() {
       try {
+        await syncStorefrontAgentContext();
         if (!PAYZANI_SB.userId) {
           PAYZANI_SB.agent = null;
           return;
         }
 
         const agents = await PAYZANI_SB.get('agents', 'user_id=eq.' + encodeURIComponent(PAYZANI_SB.userId));
-        if (agents && agents.length > 0 && agents[0].status === 'active') {
+        if (agents && agents.length > 0) {
           PAYZANI_SB.agent = agents[0];
           isPayzaniAgentRegistered = true;
           try { localStorage.setItem('payzani_is_agent', 'true'); } catch(e) {}
@@ -15005,9 +15249,10 @@
       // Always present the Sign-In / Login screen when opening the website
       openPayzaniAuth();
       
+      syncRealPlatformSettings();
+      syncStorefrontAgentContext();
       if (activeUser) {
         // Sync real backend data in background so everything is ready
-        syncRealPlatformSettings();
         syncRealUserProfile();
         syncRealTransactions();
         syncRealReferralRewards();
