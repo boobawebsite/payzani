@@ -5128,108 +5128,137 @@
       </div>
     </div>
 
-    <!-- SCREEN 4: TV / CABLE SCREEN (MATCHES SCREENSHOT 5) -->
+    <!-- SCREEN 4: TV / CABLE SCREEN (ALL PROVIDERS: DSTV, GOTV, STARTIMES, SHOWMAX) -->
     <div id="opay-screen-tv" class="opay-subscreen">
       <div class="opay-sub-header">
         <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-          <span>TV</span>
+          <span>TV Subscriptions</span>
         </div>
-        <span class="opay-sub-history" onclick="showCustomAlert('TV history loaded')">History</span>
+        <span class="opay-sub-history" onclick="showCustomAlert('TV subscription history loaded')">History</span>
       </div>
 
-      <div class="opay-input-box">
-        <div class="opay-carrier-select-chip" onclick="showCustomAlert('DStv, GOtv, Startimes active')">
-          <img src="assets/dstv.png" alt="DStv" class="opay-carrier-logo-img" />
-          <span style="font-size:13px; font-weight:700;">DStv</span>
+      <!-- Segmented TV Provider Selector: DStv, GOtv, StarTimes, Showmax -->
+      <div style="padding: 0 16px 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;" id="tvProviderSelectorStrip">
+        <button type="button" onclick="selectCustomerTvProvider('dstv')" id="cTvProv_dstv" class="tv-prov-btn active" style="background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%); color: #FFF; border: none; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 800; cursor: pointer; text-align: center; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);">
+          DStv
+        </button>
+        <button type="button" onclick="selectCustomerTvProvider('gotv')" id="cTvProv_gotv" class="tv-prov-btn" style="background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: center;">
+          GOtv
+        </button>
+        <button type="button" onclick="selectCustomerTvProvider('startimes')" id="cTvProv_startimes" class="tv-prov-btn" style="background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: center;">
+          StarTimes
+        </button>
+        <button type="button" onclick="selectCustomerTvProvider('showmax')" id="cTvProv_showmax" class="tv-prov-btn" style="background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: center;">
+          Showmax
+        </button>
+      </div>
+
+      <div class="opay-input-box" style="margin: 0 16px 10px;">
+        <div class="opay-carrier-select-chip" id="opayTvCarrierChip" onclick="rotateCustomerTvProvider()" style="cursor: pointer;">
+          <span id="opayTvCarrierBadge" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:#0284C7; color:#FFF; font-size:10.5px; font-weight:900;">D</span>
+          <span id="opayTvCarrierName" style="font-size:13px; font-weight:700;">DStv</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <input type="text" class="opay-phone-input" placeholder="Enter Smartcard Number" value="7034982109" />
+        <input type="text" id="opay-tv-smartcard" class="opay-phone-input" placeholder="Enter Smartcard Number" value="7034982109" oninput="verifyCustomerDecoder(this.value)" />
       </div>
 
-      <div class="opay-sheet-body">
-        <div class="opay-sheet-title">Hot Offers</div>
+      <div style="margin: 0 16px 14px; padding: 7px 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.22); border-radius: 10px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: #10B981; font-weight: 700;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span id="opayTvCustomerName">Account: SMARTCARD LINKED &bull; ACTIVE</span>
+        </div>
+        <span style="font-size: 10px; color: #9CA3AF; font-weight: 700; background: #1B1B26; padding: 2px 6px; border-radius: 4px;">INSTANT RENEWAL</span>
+      </div>
+
+      <div class="opay-sheet-body" style="padding-top: 4px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <div class="opay-sheet-title" id="tvSheetTitle" style="margin-bottom: 0;">Select Subscription Package</div>
+          <span style="font-size: 9.5px; font-weight: 800; color: #38BDF8; background: rgba(56,189,248,0.14); border: 1px solid rgba(56,189,248,0.3); padding: 2px 7px; border-radius: 10px;">AUTO ACTIVATION</span>
+        </div>
         <div class="opay-amounts-grid" id="opayTvAmountsGrid" style="grid-template-columns: repeat(2, 1fr);">
-          <div class="opay-amount-pill selected" onclick="opaySelectTvPlan(this, 'STARTERE36', 5800, 6200)">
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">STARTERE36</span>
-              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦400</span>
-            </div>
-            <div style="font-size: 11px; margin-top: 2px;">
-              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦6,200</span>
-              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦5,800</strong>
-            </div>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SELECTE36', 10800, 11500)">
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">SELECTE36</span>
-              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦700</span>
-            </div>
-            <div style="font-size: 11px; margin-top: 2px;">
-              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦11,500</span>
-              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦10,800</strong>
-            </div>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'SPORTSE36', 20800, 22000)">
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">SPORTSE36</span>
-              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦1,200</span>
-            </div>
-            <div style="font-size: 11px; margin-top: 2px;">
-              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦22,000</span>
-              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦20,800</strong>
-            </div>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectTvPlan(this, 'DStv Compact', 15700, 16500)">
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">Compact</span>
-              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦800</span>
-            </div>
-            <div style="font-size: 11px; margin-top: 2px;">
-              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦16,500</span>
-              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦15,700</strong>
-            </div>
-          </div>
+          <!-- Populated dynamically by renderCustomerTvPlans() -->
         </div>
 
-        <button class="opay-pay-action-btn" onclick="opaySubmitPayment('TV Subscription')">
-          Pay ₦<span id="opay-tv-pay-label">5,800</span>
+        <button class="opay-pay-action-btn" id="opayTvSubmitBtn" onclick="opaySubmitPayment('TV Subscription')">
+          Pay ₦<span id="opay-tv-pay-label">4,400</span>
         </button>
       </div>
     </div>
 
-    <!-- SCREEN 5: BETTING SCREEN (MATCHES SCREENSHOT 6) -->
+    <!-- SCREEN 5: BETTING SCREEN (ALL MAJOR NIGERIAN PROVIDERS: SPORTYBET, BET9JA, 1XBET, BETWAY, BANGBET, BETKING, MERRYBET, NAIRABET, 22BET, PARIPESA) -->
     <div id="opay-screen-betting" class="opay-subscreen">
       <div class="opay-sub-header">
         <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-          <span>Betting</span>
+          <span>Betting Wallet Funding</span>
         </div>
-        <span class="opay-sub-history" onclick="showCustomAlert('Betting history loaded')">History</span>
+        <span class="opay-sub-history" onclick="showCustomAlert('Betting funding history loaded')">History</span>
       </div>
 
-      <div class="opay-input-box">
-        <div class="opay-carrier-select-chip" onclick="showCustomAlert('SportyBet, iLOTBet, 1xBET active')">
-          <span style="font-size:13px; font-weight:800; color:#EF4444;">SportyBet</span>
+      <!-- Segmented Betting Provider Horizontal Strip -->
+      <div style="padding: 0 16px 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; gap: 8px;" id="bettingProviderSelectorStrip">
+        <button type="button" onclick="selectCustomerBettingProvider('sportybet')" id="cBetProv_sportybet" class="bet-prov-btn active" style="flex-shrink: 0; background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); color: #FFF; border: none; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);">
+          SportyBet
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('bet9ja')" id="cBetProv_bet9ja" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          Bet9ja
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('1xbet')" id="cBetProv_1xbet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          1xBet
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('betway')" id="cBetProv_betway" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          Betway
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('bangbet')" id="cBetProv_bangbet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          BangBet
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('betking')" id="cBetProv_betking" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          BetKing
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('merrybet')" id="cBetProv_merrybet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          Merrybet
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('nairabet')" id="cBetProv_nairabet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          NairaBet
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('22bet')" id="cBetProv_22bet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          22bet
+        </button>
+        <button type="button" onclick="selectCustomerBettingProvider('paripesa')" id="cBetProv_paripesa" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
+          PariPesa
+        </button>
+      </div>
+
+      <div class="opay-input-box" style="margin: 0 16px 10px;">
+        <div class="opay-carrier-select-chip" id="opayBetCarrierChip" onclick="rotateCustomerBettingProvider()" style="cursor: pointer;">
+          <span id="opayBetCarrierBadge" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:#EF4444; color:#FFF; font-size:10.5px; font-weight:900;">S</span>
+          <span id="opayBetCarrierName" style="font-size:13px; font-weight:800; color:#EF4444;">SportyBet</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <input type="text" class="opay-phone-input" placeholder="User ID" value="8168207892" />
+        <input type="text" id="opay-bet-userid" class="opay-phone-input" placeholder="Enter SportyBet User ID" value="8168207892" oninput="verifyCustomerBettingAccount(this.value)" />
       </div>
 
-      <div class="opay-sheet-body">
-        <div class="opay-sheet-title">Select Amount</div>
-        <div class="opay-amounts-grid">
+      <div style="margin: 0 16px 14px; padding: 7px 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.22); border-radius: 10px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: #10B981; font-weight: 700;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <span id="opayBetCustomerName">Wallet ID: ACCOUNT VERIFIED</span>
+        </div>
+        <span style="font-size: 10px; color: #9CA3AF; font-weight: 700; background: #1B1B26; padding: 2px 6px; border-radius: 4px;">ZERO FEE</span>
+      </div>
+
+      <div class="opay-sheet-body" style="padding-top: 4px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <div class="opay-sheet-title" style="margin-bottom: 0;">Select Funding Amount</div>
+          <span style="font-size: 9.5px; font-weight: 800; color: #34D399; background: rgba(16,185,129,0.14); border: 1px solid rgba(16,185,129,0.3); padding: 2px 7px; border-radius: 10px;">INSTANT WALLET TOPUP</span>
+        </div>
+
+        <div class="opay-amounts-grid" id="opayBetAmountsGrid">
           <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 100)">
             <span class="opay-pill-val">₦100</span>
           </div>
           <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 200)">
             <span class="opay-pill-val">₦200</span>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 300)">
-            <span class="opay-pill-val">₦300</span>
-          </div>
-          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 400)">
-            <span class="opay-pill-val">₦400</span>
           </div>
           <div class="opay-amount-pill selected" onclick="opaySelectBetAmount(this, 500)">
             <span class="opay-pill-val">₦500</span>
@@ -5237,15 +5266,21 @@
           <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 1000)">
             <span class="opay-pill-val">₦1,000</span>
           </div>
+          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 2000)">
+            <span class="opay-pill-val">₦2,000</span>
+          </div>
+          <div class="opay-amount-pill" onclick="opaySelectBetAmount(this, 5000)">
+            <span class="opay-pill-val">₦5,000</span>
+          </div>
         </div>
 
-        <input type="number" class="opay-custom-amt-input" id="opay-bet-custom" placeholder="₦ 100-1,000,000" value="500" />
-        <button class="opay-pay-action-btn" onclick="opaySubmitPayment('Betting Topup')">
-          Pay
+        <input type="number" class="opay-custom-amt-input" id="opay-bet-custom" placeholder="₦ 100 - 1,000,000" value="500" oninput="updateCustomerBetCustomAmount(this.value)" />
+
+        <button class="opay-pay-action-btn" id="opayBettingSubmitBtn" onclick="opaySubmitPayment('Betting Topup')">
+          Fund Wallet &bull; ₦<span id="opay-bet-pay-label">500</span>
         </button>
       </div>
     </div>
-
     
     <!-- SCREEN: EDUCATION EXAM PINS (PAIRGATE AUTOMATED API) -->
     <div id="opay-screen-education" class="opay-subscreen">
@@ -10155,6 +10190,12 @@
         if (screenId === 'opay-screen-booster' && typeof renderCustomerBoosterPlans === 'function') {
           renderCustomerBoosterPlans();
         }
+        if (screenId === 'opay-screen-tv' && typeof renderCustomerTvPlans === 'function') {
+          renderCustomerTvPlans();
+        }
+        if (screenId === 'opay-screen-betting' && typeof renderCustomerBettingUI === 'function') {
+          renderCustomerBettingUI();
+        }
       }
     }
 
@@ -10233,6 +10274,7 @@
     function opaySelectTvPlan(el, planName, price, origPrice) {
       el.parentElement.querySelectorAll('.opay-amount-pill').forEach(p => p.classList.remove('selected'));
       el.classList.add('selected');
+      window.opayCurrentTvPlan = { name: planName, price: price, origPrice: origPrice };
       const label = document.getElementById('opay-tv-pay-label');
       if (label) label.innerText = Number(price).toLocaleString();
     }
@@ -10242,7 +10284,242 @@
       el.classList.add('selected');
       const input = document.getElementById('opay-bet-custom');
       if (input) input.value = val;
+      const lbl = document.getElementById('opay-bet-pay-label');
+      if (lbl) lbl.innerText = Number(val).toLocaleString();
     }
+
+    // =============================================================
+    // TV & BETTING MULTI-PROVIDER ARCHITECTURE
+    // =============================================================
+    window.currentTvProviderId = 'dstv';
+    window.currentTvProviderName = 'DStv';
+    window.opayCurrentTvPlan = { id: 'padi', name: 'DStv Padi', price: 4400, origPrice: 4700 };
+
+    const TV_PROVIDERS_LIST = [
+      { id: 'dstv', name: 'DStv', badge: 'D', color: '#0284C7', gradient: 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)', placeholder: 'Enter Smartcard / IUC Number' },
+      { id: 'gotv', name: 'GOtv', badge: 'G', color: '#16A34A', gradient: 'linear-gradient(135deg, #16A34A 0%, #15803D 100%)', placeholder: 'Enter IUC / Smartcard Number' },
+      { id: 'startimes', name: 'StarTimes', badge: 'S', color: '#EA580C', gradient: 'linear-gradient(135deg, #EA580C 0%, #C2410C 100%)', placeholder: 'Enter e-Card / Smartcard Number' },
+      { id: 'showmax', name: 'Showmax', badge: 'M', color: '#E11D48', gradient: 'linear-gradient(135deg, #E11D48 0%, #BE123C 100%)', placeholder: 'Enter Account Phone or Email' }
+    ];
+
+    const TV_PROVIDER_PLANS = {
+      dstv: [
+        { id: 'padi', name: 'DStv Padi', price: 4400, origPrice: 4700, save: 300 },
+        { id: 'yanga', name: 'DStv Yanga', price: 6000, origPrice: 6500, save: 500 },
+        { id: 'confam', name: 'DStv Confam', price: 11000, origPrice: 11800, save: 800 },
+        { id: 'compact', name: 'DStv Compact', price: 19000, origPrice: 20200, save: 1200 },
+        { id: 'compact_plus', name: 'Compact Plus', price: 31000, origPrice: 32500, save: 1500 },
+        { id: 'premium', name: 'DStv Premium', price: 44000, origPrice: 46000, save: 2000 }
+      ],
+      gotv: [
+        { id: 'smallie', name: 'GOtv Smallie', price: 1900, origPrice: 2100, save: 200 },
+        { id: 'jinja', name: 'GOtv Jinja', price: 3900, origPrice: 4200, save: 300 },
+        { id: 'jolli', name: 'GOtv Jolli', price: 5800, origPrice: 6200, save: 400 },
+        { id: 'max', name: 'GOtv Max', price: 8500, origPrice: 9100, save: 600 },
+        { id: 'supa', name: 'GOtv Supa', price: 11400, origPrice: 12200, save: 800 },
+        { id: 'supa_plus', name: 'GOtv Supa Plus', price: 15700, origPrice: 16700, save: 1000 }
+      ],
+      startimes: [
+        { id: 'nova', name: 'Nova (1 Month)', price: 1900, origPrice: 2100, save: 200 },
+        { id: 'basic', name: 'Basic (1 Month)', price: 3700, origPrice: 4000, save: 300 },
+        { id: 'smart', name: 'Smart (1 Month)', price: 4800, origPrice: 5200, save: 400 },
+        { id: 'classic', name: 'Classic (1 Month)', price: 5800, origPrice: 6300, save: 500 },
+        { id: 'super', name: 'Super (1 Month)', price: 9500, origPrice: 10200, save: 700 },
+        { id: 'chinese', name: 'Chinese Package', price: 16000, origPrice: 17000, save: 1000 }
+      ],
+      showmax: [
+        { id: 'shw_ent_mob', name: 'Entertainment Mobile', price: 1600, origPrice: 1800, save: 200 },
+        { id: 'shw_pl_mob', name: 'Premier League Mobile', price: 3200, origPrice: 3500, save: 300 },
+        { id: 'shw_all', name: 'All Devices (Full)', price: 3500, origPrice: 3900, save: 400 },
+        { id: 'shw_combo', name: 'PL + Entertainment', price: 4500, origPrice: 5000, save: 500 },
+        { id: 'shw_pro', name: 'Showmax Pro Mobile', price: 6800, origPrice: 7400, save: 600 }
+      ]
+    };
+
+    function selectCustomerTvProvider(provId) {
+      window.currentTvProviderId = provId;
+      const provObj = TV_PROVIDERS_LIST.find(p => p.id === provId) || TV_PROVIDERS_LIST[0];
+      window.currentTvProviderName = provObj.name;
+
+      // Update button strip
+      document.querySelectorAll('#tvProviderSelectorStrip .tv-prov-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.background = '#181822';
+        btn.style.color = '#9CA3AF';
+        btn.style.border = '1px solid #28283A';
+        btn.style.boxShadow = 'none';
+        btn.style.fontWeight = '700';
+      });
+      const activeBtn = document.getElementById('cTvProv_' + provId);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.style.background = provObj.gradient;
+        activeBtn.style.color = '#FFFFFF';
+        activeBtn.style.border = 'none';
+        activeBtn.style.boxShadow = '0 4px 12px ' + provObj.color + '55';
+        activeBtn.style.fontWeight = '800';
+      }
+
+      // Update chip
+      const badge = document.getElementById('opayTvCarrierBadge');
+      if (badge) {
+        badge.innerText = provObj.badge;
+        badge.style.background = provObj.color;
+      }
+      const nameEl = document.getElementById('opayTvCarrierName');
+      if (nameEl) {
+        nameEl.innerText = provObj.name;
+      }
+
+      // Update placeholder
+      const scInp = document.getElementById('opay-tv-smartcard');
+      if (scInp) {
+        scInp.placeholder = provObj.placeholder;
+      }
+
+      renderCustomerTvPlans();
+    }
+
+    function rotateCustomerTvProvider() {
+      const curIdx = TV_PROVIDERS_LIST.findIndex(p => p.id === window.currentTvProviderId);
+      const nextIdx = (curIdx + 1) % TV_PROVIDERS_LIST.length;
+      selectCustomerTvProvider(TV_PROVIDERS_LIST[nextIdx].id);
+    }
+
+    function renderCustomerTvPlans() {
+      const grid = document.getElementById('opayTvAmountsGrid');
+      if (!grid) return;
+
+      const provId = window.currentTvProviderId || 'dstv';
+      const plans = TV_PROVIDER_PLANS[provId] || TV_PROVIDER_PLANS['dstv'];
+
+      grid.innerHTML = plans.map((p, idx) => {
+        const isSelected = idx === 0 ? 'selected' : '';
+        if (idx === 0) {
+          window.opayCurrentTvPlan = p;
+          const payLbl = document.getElementById('opay-tv-pay-label');
+          if (payLbl) payLbl.innerText = Number(p.price).toLocaleString();
+        }
+        return `
+          <div class="opay-amount-pill ${isSelected}" onclick="opaySelectTvPlan(this, '${escapeHtml(p.name)}', ${p.price}, ${p.origPrice})">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+              <span class="opay-pill-val" style="font-weight: 800; font-size: 13px;">${escapeHtml(p.name)}</span>
+              <span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦${Number(p.save).toLocaleString()}</span>
+            </div>
+            <div style="font-size: 11px; margin-top: 2px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦${Number(p.origPrice).toLocaleString()}</span>
+              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦${Number(p.price).toLocaleString()}</strong>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function verifyCustomerDecoder(val) {
+      const nameEl = document.getElementById('opayTvCustomerName');
+      if (!nameEl) return;
+      if (val && val.length >= 8) {
+        nameEl.innerText = 'Account: ' + (window.currentTvProviderName || 'Decoder') + ' LINKED • ACTIVE';
+        nameEl.parentElement.style.color = '#10B981';
+      } else {
+        nameEl.innerText = 'Account: Enter ' + (window.currentTvProviderName || 'Decoder') + ' Number';
+        nameEl.parentElement.style.color = '#9CA3AF';
+      }
+    }
+
+    // -------------------------------------------------------------
+    // BETTING MULTI-PROVIDER ARCHITECTURE
+    // -------------------------------------------------------------
+    window.currentBettingProviderId = 'sportybet';
+    window.currentBettingProviderName = 'SportyBet';
+
+    const BETTING_PROVIDERS_LIST = [
+      { id: 'sportybet', name: 'SportyBet', badge: 'S', color: '#EF4444', gradient: 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)', placeholder: 'Enter SportyBet User ID' },
+      { id: 'bet9ja', name: 'Bet9ja', badge: '9', color: '#10B981', gradient: 'linear-gradient(135deg, #10B981 0%, #059669 100%)', placeholder: 'Enter Bet9ja User ID' },
+      { id: '1xbet', name: '1xBet', badge: '1', color: '#2563EB', gradient: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%)', placeholder: 'Enter 1xBet Account ID' },
+      { id: 'betway', name: 'Betway', badge: 'W', color: '#374151', gradient: 'linear-gradient(135deg, #4B5563 0%, #1F2937 100%)', placeholder: 'Enter Betway Account Phone' },
+      { id: 'bangbet', name: 'BangBet', badge: 'B', color: '#F59E0B', gradient: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)', placeholder: 'Enter BangBet User ID' },
+      { id: 'betking', name: 'BetKing', badge: 'K', color: '#1D4ED8', gradient: 'linear-gradient(135deg, #1D4ED8 0%, #1E40AF 100%)', placeholder: 'Enter BetKing User ID' },
+      { id: 'merrybet', name: 'Merrybet', badge: 'M', color: '#EA580C', gradient: 'linear-gradient(135deg, #EA580C 0%, #C2410C 100%)', placeholder: 'Enter Merrybet Customer ID' },
+      { id: 'nairabet', name: 'NairaBet', badge: 'N', color: '#0D9488', gradient: 'linear-gradient(135deg, #0D9488 0%, #0F766E 100%)', placeholder: 'Enter NairaBet Customer ID' },
+      { id: '22bet', name: '22bet', badge: '2', color: '#06B6D4', gradient: 'linear-gradient(135deg, #06B6D4 0%, #0891B2 100%)', placeholder: 'Enter 22bet Account ID' },
+      { id: 'paripesa', name: 'PariPesa', badge: 'P', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)', placeholder: 'Enter PariPesa User ID' }
+    ];
+
+    function selectCustomerBettingProvider(provId) {
+      window.currentBettingProviderId = provId;
+      const provObj = BETTING_PROVIDERS_LIST.find(p => p.id === provId) || BETTING_PROVIDERS_LIST[0];
+      window.currentBettingProviderName = provObj.name;
+
+      // Update strip buttons
+      document.querySelectorAll('#bettingProviderSelectorStrip .bet-prov-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.background = '#181822';
+        btn.style.color = '#9CA3AF';
+        btn.style.border = '1px solid #28283A';
+        btn.style.boxShadow = 'none';
+        btn.style.fontWeight = '700';
+      });
+      const activeBtn = document.getElementById('cBetProv_' + provId);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+        activeBtn.style.background = provObj.gradient;
+        activeBtn.style.color = '#FFFFFF';
+        activeBtn.style.border = 'none';
+        activeBtn.style.boxShadow = '0 4px 12px ' + provObj.color + '55';
+        activeBtn.style.fontWeight = '800';
+      }
+
+      // Update chip
+      const badge = document.getElementById('opayBetCarrierBadge');
+      if (badge) {
+        badge.innerText = provObj.badge;
+        badge.style.background = provObj.color;
+      }
+      const nameEl = document.getElementById('opayBetCarrierName');
+      if (nameEl) {
+        nameEl.innerText = provObj.name;
+        nameEl.style.color = provObj.color;
+      }
+
+      // Update placeholder
+      const betInp = document.getElementById('opay-bet-userid');
+      if (betInp) {
+        betInp.placeholder = provObj.placeholder;
+      }
+
+      const val = betInp ? betInp.value.trim() : '';
+      verifyCustomerBettingAccount(val);
+    }
+
+    function rotateCustomerBettingProvider() {
+      const curIdx = BETTING_PROVIDERS_LIST.findIndex(p => p.id === window.currentBettingProviderId);
+      const nextIdx = (curIdx + 1) % BETTING_PROVIDERS_LIST.length;
+      selectCustomerBettingProvider(BETTING_PROVIDERS_LIST[nextIdx].id);
+    }
+
+    function renderCustomerBettingUI() {
+      selectCustomerBettingProvider(window.currentBettingProviderId || 'sportybet');
+    }
+
+    function updateCustomerBetCustomAmount(val) {
+      const num = Number(val) || 0;
+      const lbl = document.getElementById('opay-bet-pay-label');
+      if (lbl) lbl.innerText = num.toLocaleString();
+    }
+
+    function verifyCustomerBettingAccount(val) {
+      const nameEl = document.getElementById('opayBetCustomerName');
+      if (!nameEl) return;
+      if (val && val.length >= 6) {
+        nameEl.innerText = 'Wallet ID: ' + (window.currentBettingProviderName || 'Account') + ' VERIFIED';
+        nameEl.parentElement.style.color = '#10B981';
+      } else {
+        nameEl.innerText = 'Wallet ID: Enter ' + (window.currentBettingProviderName || 'Betting') + ' User ID';
+        nameEl.parentElement.style.color = '#9CA3AF';
+      }
+    }
+
 
     function opaySwitchDataTab(btn, tabKey) {
       btn.parentElement.querySelectorAll('.opay-subtab-btn').forEach(b => b.classList.remove('active'));
@@ -13964,11 +14241,18 @@
       } else if (serviceName === 'TV' || serviceName === 'TV Subscription') {
         const lbl = document.getElementById('opay-tv-pay-label');
         if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
-        recipient = 'Smartcard: 1048299102';
-      } else if (serviceName === 'Betting') {
-        const inp = document.getElementById('opay-betting-custom');
+        const scInp = document.getElementById('opay-tv-smartcard');
+        const scVal = scInp ? scInp.value.trim() : '7034982109';
+        const tvProv = window.currentTvProviderName || 'DStv';
+        const tvPlan = window.opayCurrentTvPlan ? window.opayCurrentTvPlan.name : 'Subscription';
+        recipient = tvProv + ' Smartcard: ' + scVal + ' (' + tvPlan + ')';
+      } else if (serviceName === 'Betting' || serviceName === 'Betting Topup') {
+        const inp = document.getElementById('opay-bet-custom') || document.getElementById('opay-betting-custom');
         if (inp && Number(inp.value)) amount = Number(inp.value);
-        recipient = 'Betting ID: 9021482';
+        const betInp = document.getElementById('opay-bet-userid');
+        const betVal = betInp ? betInp.value.trim() : '8168207892';
+        const betProv = window.currentBettingProviderName || 'SportyBet';
+        recipient = betProv + ' ID: ' + betVal;
       } else if (serviceName === 'Education') {
         const lbl = document.getElementById('opay-education-pay-label');
         if (lbl && Number(lbl.innerText.replace(/,/g, ''))) amount = Number(lbl.innerText.replace(/,/g, ''));
@@ -14153,6 +14437,49 @@
             if (pJson.data && (pJson.data.pins || pJson.data.pin || pJson.data.token)) {
               pairgateTokenDetail = ' [PIN: ' + (pJson.data.pins || pJson.data.pin || pJson.data.token) + ']';
             }
+          }
+        } else if (serviceName === 'TV' || serviceName === 'TV Subscription') {
+          const tvProv = (window.currentTvProviderId || 'dstv').toLowerCase();
+          const scInp = document.getElementById('opay-tv-smartcard');
+          const scVal = scInp ? scInp.value.trim() : '7034982109';
+          const tvPlan = window.opayCurrentTvPlan || { id: 'padi', name: 'DStv Padi' };
+          const pRes = await fetch('https://pairgate.com/api/v1/cable/purchase', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + pairgateKey,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              provider_id: tvProv,
+              smartcard_number: scVal,
+              plan_id: String(tvPlan.id || tvPlan.name),
+              reference: refId
+            })
+          });
+          const pJson = await pRes.json();
+          if (pJson && (pJson.code === 200 || pJson.status === 'success')) {
+            pairgateTxId = pJson.data ? (pJson.data.reference || pJson.data.id || refId) : refId;
+          }
+        } else if (serviceName === 'Betting' || serviceName === 'Betting Topup') {
+          const betProv = (window.currentBettingProviderId || 'sportybet').toLowerCase();
+          const betInp = document.getElementById('opay-bet-userid');
+          const betVal = betInp ? betInp.value.trim() : '8168207892';
+          const pRes = await fetch('https://pairgate.com/api/v1/betting/purchase', {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + pairgateKey,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              provider_id: betProv,
+              customer_id: betVal,
+              amount: Number(amount),
+              reference: refId
+            })
+          });
+          const pJson = await pRes.json();
+          if (pJson && (pJson.code === 200 || pJson.status === 'success')) {
+            pairgateTxId = pJson.data ? (pJson.data.reference || pJson.data.id || refId) : refId;
           }
         } else {
           pairgateTxId = refId;
