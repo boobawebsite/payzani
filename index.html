@@ -5193,31 +5193,60 @@
     </div>
 
     
-    <!-- SCREEN 6: SOCIAL BOOSTER SCREEN -->
+    <!-- SCREEN 6: SOCIAL BOOSTER SCREEN (APPLE-GRADE FINTECH DESIGN) -->
     <div id="opay-screen-booster" class="opay-subscreen">
       <div class="opay-sub-header">
         <div class="opay-sub-back-title" onclick="opaySwitchScreen('opay-screen-home')">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-          <span>Social Booster</span>
+          <span>Social Growth Engine</span>
         </div>
-        <span class="opay-sub-history" onclick="showCustomAlert('Social growth history loaded')">History</span>
+        <span class="opay-sub-history" onclick="showCustomAlert('Live growth orders syncing...')">Orders</span>
       </div>
 
-      <div class="opay-input-box">
-        <div class="opay-carrier-select-chip" onclick="opayToggleBoosterPlatform()">
-          <span id="opay-booster-platform-name" style="font-size:13px; font-weight:800; color:#EC4899;">Instagram</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <input type="text" id="opay-booster-target" class="opay-phone-input" placeholder="@username or post link to boost" value="" />
+      <!-- Apple-Style Platform Selector Strip -->
+      <div style="padding: 0 16px 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; gap: 8px;" id="boosterPlatformSelectorStrip">
+        <button type="button" onclick="selectCustomerBoosterPlatform('Instagram')" id="cBoosterPlat_Instagram" class="booster-plat-btn active" style="flex-shrink: 0; background: linear-gradient(135deg, #E1306C 0%, #C13584 100%); color: #FFF; border: none; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(225, 48, 108, 0.35);">
+          <span>Instagram</span>
+        </button>
+        <button type="button" onclick="selectCustomerBoosterPlatform('TikTok')" id="cBoosterPlat_TikTok" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <span>TikTok</span>
+        </button>
+        <button type="button" onclick="selectCustomerBoosterPlatform('YouTube')" id="cBoosterPlat_YouTube" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <span>YouTube</span>
+        </button>
+        <button type="button" onclick="selectCustomerBoosterPlatform('Facebook')" id="cBoosterPlat_Facebook" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <span>Facebook</span>
+        </button>
+        <button type="button" onclick="selectCustomerBoosterPlatform('X / Twitter')" id="cBoosterPlat_XTwitter" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+          <span>X / Twitter</span>
+        </button>
       </div>
 
-      <div class="opay-sheet-body">
-        <div class="opay-sheet-title">Popular Growth Packages (Crossed-Out MSRP &bull; Bold Discounted)</div>
+      <!-- Apple-Style Inset Target Input Box -->
+      <div class="opay-input-box" style="margin: 0 16px 12px; background: #12121A; border: 1px solid #222232; border-radius: 14px; padding: 4px 12px; display: flex; align-items: center; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 6px; color: #A78BFA;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+        </div>
+        <input type="text" id="opay-booster-target" class="opay-phone-input" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 13.5px;" placeholder="@username or channel link to boost" value="" />
+      </div>
+
+      <!-- Apple-Style Frosted Segmented Control for Categories (Followers/Subscribers, Likes, Views, Comments) -->
+      <div style="margin: 0 16px 14px; background: #0E0E16; border: 1px solid #20202F; border-radius: 12px; padding: 3px; display: flex; gap: 3px;" id="boosterCategorySegmentBar">
+        <!-- Dynamically rendered based on active platform -->
+      </div>
+
+      <div class="opay-sheet-body" style="padding-top: 4px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <div class="opay-sheet-title" id="boosterGridTitle" style="margin-bottom: 0;">Select Growth Tier</div>
+          <span style="font-size: 9.5px; font-weight: 800; color: #34D399; background: rgba(16,185,129,0.14); border: 1px solid rgba(16,185,129,0.3); padding: 2px 7px; border-radius: 10px;">WHOLESALE PRICING</span>
+        </div>
+
+        <!-- Apple Cards Grid -->
         <div class="opay-amounts-grid" id="opayBoosterAmountsGrid">
           <!-- Dynamically populated by renderCustomerBoosterPlans() -->
         </div>
 
-        <button class="opay-pay-action-btn" style="background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%);" onclick="opaySubmitPayment('Social Booster')">
+        <button class="opay-pay-action-btn" id="opayBoosterSubmitBtn" style="background: linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%); margin-top: 14px; box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);" onclick="opaySubmitPayment('Social Booster')">
           Boost Now &bull; ₦<span id="opay-booster-pay-label">1,200</span>
         </button>
       </div>
@@ -9226,10 +9255,10 @@
           </div>
         </div>
 
-        <!-- PANE 5: SOCIAL BOOSTER -->
+        <!-- PANE 5: SOCIAL BOOSTER (APPLE-INSPIRED ADMIN CONFIGURATOR) -->
         <div id="deskTariffPane_booster" style="display: none;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
-            <div style="font-size: 12px; font-weight: 700; color: #374151;">Select Social Platform to Configure Rates:</div>
+            <div style="font-size: 12.5px; font-weight: 800; color: #111827;">Select Social Platform to Configure Rates:</div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
               <button type="button" onclick="selectDeskBoosterPlatform('Instagram')" id="deskBoosterPlatBtn_Instagram" style="background: #EC4899; color: #FFF; font-weight: 800; font-size: 11.5px; padding: 6px 14px; border-radius: 6px; border: none; cursor: pointer;">Instagram</button>
               <button type="button" onclick="selectDeskBoosterPlatform('TikTok')" id="deskBoosterPlatBtn_TikTok" style="background: #F3F4F6; color: #4B5563; font-weight: 700; font-size: 11.5px; padding: 6px 14px; border-radius: 6px; border: 1px solid #E5E7EB; cursor: pointer;">TikTok</button>
@@ -9243,7 +9272,8 @@
             <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; text-align: left;">
               <thead>
                 <tr style="background: #F9FAFB; border-bottom: 1px solid #E5E7EB;">
-                  <th style="padding: 10px 14px; font-weight: 800; color: #374151;">Growth Package</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #374151;">Package Name</th>
+                  <th style="padding: 10px 14px; font-weight: 800; color: #7C3AED;">Section / Category</th>
                   <th style="padding: 10px 14px; font-weight: 800; color: #9CA3AF;">Original <s>MSRP</s> (NGN)</th>
                   <th style="padding: 10px 14px; font-weight: 800; color: #2563EB;">Selling Price - BOLD (NGN)</th>
                   <th style="padding: 10px 14px; font-weight: 800; color: #059669;">Units / Quantity</th>
@@ -10400,18 +10430,131 @@
 
     window.opayCurrentBoosterPlan = { planName: '1,000 Followers', price: 1200, qty: 1000, type: 'followers' };
     const opayBoosterPlatforms = ['Instagram', 'TikTok', 'YouTube', 'Facebook', 'X / Twitter'];
-    let opayBoosterPlatformIdx = 0;
+    let currentCustomerBoosterPlatform = 'Instagram';
+    let currentCustomerBoosterCategory = 'followers';
+
+    function getPlatformCategories(plat) {
+      if (plat === 'YouTube') {
+        return [
+          { key: 'subscribers', label: 'Subscribers' },
+          { key: 'views', label: 'Views' },
+          { key: 'likes', label: 'Likes' },
+          { key: 'comments', label: 'Comments' }
+        ];
+      } else if (plat === 'TikTok' || plat === 'Instagram') {
+        return [
+          { key: 'followers', label: 'Followers' },
+          { key: 'likes', label: 'Likes' },
+          { key: 'views', label: 'Views' },
+          { key: 'comments', label: 'Comments' }
+        ];
+      } else if (plat === 'Facebook') {
+        return [
+          { key: 'followers', label: 'Page Followers' },
+          { key: 'likes', label: 'Post Likes' },
+          { key: 'views', label: 'Video Views' },
+          { key: 'comments', label: 'Comments' }
+        ];
+      } else {
+        // X / Twitter
+        return [
+          { key: 'followers', label: 'Followers' },
+          { key: 'likes', label: 'Likes' },
+          { key: 'views', label: 'Retweets' }
+        ];
+      }
+    }
+
+    function selectCustomerBoosterPlatform(plat) {
+      currentCustomerBoosterPlatform = plat;
+      
+      // Update top platform buttons
+      opayBoosterPlatforms.forEach(p => {
+        const btnId = 'cBoosterPlat_' + (p === 'X / Twitter' ? 'XTwitter' : p);
+        const btn = document.getElementById(btnId);
+        if (btn) {
+          if (p === plat) {
+            btn.classList.add('active');
+            let grad = 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)';
+            if (p === 'Instagram') grad = 'linear-gradient(135deg, #E1306C 0%, #C13584 100%)';
+            if (p === 'TikTok') grad = 'linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%)';
+            if (p === 'YouTube') grad = 'linear-gradient(135deg, #FF0000 0%, #CC0000 100%)';
+            if (p === 'Facebook') grad = 'linear-gradient(135deg, #1877F2 0%, #0C63D4 100%)';
+            if (p === 'X / Twitter') grad = '#000000';
+            btn.style.background = grad;
+            btn.style.color = '#FFFFFF';
+            btn.style.border = 'none';
+            btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.4)';
+          } else {
+            btn.classList.remove('active');
+            btn.style.background = '#181822';
+            btn.style.color = '#9CA3AF';
+            btn.style.border = '1px solid #28283A';
+            btn.style.boxShadow = 'none';
+          }
+        }
+      });
+
+      // Default category for YouTube is subscribers, others followers
+      const cats = getPlatformCategories(plat);
+      currentCustomerBoosterCategory = cats[0].key;
+      
+      renderCustomerBoosterCategories();
+      renderCustomerBoosterPlans();
+    }
+
+    function selectCustomerBoosterCategory(catKey) {
+      currentCustomerBoosterCategory = catKey;
+      renderCustomerBoosterCategories();
+      renderCustomerBoosterPlans();
+    }
+
+    function renderCustomerBoosterCategories() {
+      const segBar = document.getElementById('boosterCategorySegmentBar');
+      if (!segBar) return;
+
+      const cats = getPlatformCategories(currentCustomerBoosterPlatform);
+      segBar.innerHTML = cats.map(c => {
+        const isActive = c.key === currentCustomerBoosterCategory;
+        const bg = isActive ? '#FFFFFF' : 'transparent';
+        const color = isActive ? '#0A0A0F' : '#9CA3AF';
+        const weight = isActive ? '800' : '600';
+        const shadow = isActive ? '0 2px 8px rgba(0,0,0,0.3)' : 'none';
+
+        return `<button type="button" onclick="selectCustomerBoosterCategory('${c.key}')" style="flex: 1; border: none; border-radius: 9px; padding: 7px 4px; font-size: 11.5px; font-weight: ${weight}; background: ${bg}; color: ${color}; box-shadow: ${shadow}; cursor: pointer; transition: all 0.2s ease;">${c.label}</button>`;
+      }).join('');
+
+      // Update input placeholder dynamically
+      const inp = document.getElementById('opay-booster-target');
+      if (inp) {
+        if (currentCustomerBoosterCategory === 'subscribers' || currentCustomerBoosterCategory === 'followers') {
+          inp.placeholder = currentCustomerBoosterPlatform === 'YouTube' ? 'Enter channel link or @handle' : 'Enter profile link or @username';
+        } else if (currentCustomerBoosterCategory === 'likes' || currentCustomerBoosterCategory === 'views') {
+          inp.placeholder = 'Paste post, reel or video link';
+        } else {
+          inp.placeholder = 'Paste post link for comments';
+        }
+      }
+    }
 
     function renderCustomerBoosterPlans() {
       const container = document.getElementById('opayBoosterAmountsGrid');
       if (!container) return;
 
-      const pName = opayBoosterPlatforms[opayBoosterPlatformIdx] || 'Instagram';
+      renderCustomerBoosterCategories();
+
+      const pName = currentCustomerBoosterPlatform;
       const cfg = getMasterAdminConfig();
-      const plans = (cfg.boosterPricing && cfg.boosterPricing[pName]) || [];
+      const allPlans = (cfg.boosterPricing && cfg.boosterPricing[pName]) || [];
+      const plans = allPlans.filter(p => (p.category || 'followers') === currentCustomerBoosterCategory);
+
+      const titleEl = document.getElementById('boosterGridTitle');
+      if (titleEl) {
+        titleEl.textContent = `${pName} ${currentCustomerBoosterCategory.charAt(0).toUpperCase() + currentCustomerBoosterCategory.slice(1)} Packages`;
+      }
 
       if (!plans.length) {
-        container.innerHTML = '<div style="grid-column: 1/-1; text-align:center; padding:12px; color:#9CA3AF; font-size:12px;">No packages configured for ' + pName + '.</div>';
+        container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding:18px; color:#9CA3AF; font-size:12px;">No packages configured for ${pName} ${currentCustomerBoosterCategory}.</div>`;
         return;
       }
 
@@ -10420,23 +10563,23 @@
         const orig = Number(p.origPrice || Math.round(p.retailPrice * 1.5));
         const retail = Number(p.retailPrice);
         const saveAmt = orig - retail;
-        const saveBadge = saveAmt > 0 ? `<span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 4px; border-radius: 4px;">SAVE ₦${saveAmt.toLocaleString()}</span>` : '';
+        const saveBadge = saveAmt > 0 ? `<span style="font-size: 8.5px; font-weight: 800; background: rgba(16, 185, 129, 0.18); border: 1px solid rgba(16, 185, 129, 0.35); color: #34D399; padding: 1px 5px; border-radius: 4px;">SAVE ₦${saveAmt.toLocaleString()}</span>` : '';
 
         return `
-          <div class="opay-amount-pill ${isSel}" onclick="opaySelectBoosterPlan(this, '${p.name}', ${retail}, ${orig}, ${p.qty}, '${p.type}', '${p.serviceId}')">
+          <div class="opay-amount-pill ${isSel}" onclick="opaySelectBoosterPlan(this, '${p.name}', ${retail}, ${orig}, ${p.qty}, '${p.type}', '${p.serviceId}')" style="background: #12121A; border: 1px solid #20202F; border-radius: 12px; padding: 10px 12px; text-align: left;">
             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800;">${p.name.split(' ')[0]}</span>
+              <span class="opay-pill-val" style="font-size: 13px; font-weight: 800; color: #FFFFFF;">${p.name}</span>
               ${saveBadge}
             </div>
-            <div style="font-size: 11px; margin-top: 2px;">
-              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; margin-right: 4px;">₦${orig.toLocaleString()}</span>
-              <strong style="color: #FFFFFF; font-weight: 900; font-size: 13px;">₦${retail.toLocaleString()}</strong>
+            <div style="font-size: 11px; margin-top: 4px; display: flex; align-items: baseline; gap: 6px;">
+              <span style="text-decoration: line-through; color: #9CA3AF; font-weight: 600; font-size: 11px;">₦${orig.toLocaleString()}</span>
+              <strong style="color: #60A5FA; font-weight: 900; font-size: 13.5px;">₦${retail.toLocaleString()}</strong>
             </div>
           </div>
         `;
       }).join('');
 
-      // Auto-select first plan
+      // Auto-select first plan in this category
       if (plans.length > 0) {
         const first = plans[0];
         window.opayCurrentBoosterPlan = {
@@ -10444,21 +10587,12 @@
           price: Number(first.retailPrice),
           origPrice: Number(first.origPrice),
           qty: first.qty || 1000,
-          type: first.type || 'followers',
+          type: first.type || 'Followers',
           serviceId: first.serviceId || '4108'
         };
         const label = document.getElementById('opay-booster-pay-label');
         if (label) label.innerText = Number(first.retailPrice).toLocaleString();
       }
-    }
-
-    function opayToggleBoosterPlatform() {
-      opayBoosterPlatformIdx = (opayBoosterPlatformIdx + 1) % opayBoosterPlatforms.length;
-      const pName = opayBoosterPlatforms[opayBoosterPlatformIdx];
-      const el = document.getElementById('opay-booster-platform-name');
-      if (el) el.innerText = pName;
-      renderCustomerBoosterPlans();
-      showCustomAlert('Platform selected: ' + pName);
     }
 
     function opaySelectBoosterPlan(el, planName, price, origPrice, qty, type, serviceId) {
@@ -10469,7 +10603,7 @@
         price: price,
         origPrice: origPrice,
         qty: qty || 1000,
-        type: type || 'followers',
+        type: type || 'Followers',
         serviceId: serviceId || '4108'
       };
       const label = document.getElementById('opay-booster-pay-label');
@@ -12103,32 +12237,60 @@
       agentWithdrawalFee: 50,
             boosterPricing: {
         'Instagram': [
-          { id: 'ig_1k_fol', name: '1,000 Followers', qty: 1000, type: 'followers', serviceId: '4108', origPrice: 2000, retailPrice: 1200 },
-          { id: 'ig_25k_fol', name: '2,500 Followers', qty: 2500, type: 'followers', serviceId: '4108', origPrice: 4500, retailPrice: 2800 },
-          { id: 'ig_5k_fol', name: '5,000 Followers', qty: 5000, type: 'followers', serviceId: '4108', origPrice: 8000, retailPrice: 5200 },
-          { id: 'ig_1k_lik', name: '1,000 Post Likes', qty: 1000, type: 'likes', serviceId: '1777', origPrice: 1000, retailPrice: 500 },
-          { id: 'ig_5k_viw', name: '5,000 Video Views', qty: 5000, type: 'views', serviceId: '6921', origPrice: 1200, retailPrice: 600 },
-          { id: 'ig_10k_viw', name: '10,000 Reels Views', qty: 10000, type: 'views', serviceId: '6921', origPrice: 2000, retailPrice: 1100 }
+          { id: 'ig_fol_1k', name: '1,000 Followers', category: 'followers', qty: 1000, type: 'Followers', serviceId: '4108', origPrice: 2000, retailPrice: 1200 },
+          { id: 'ig_fol_25k', name: '2,500 Followers', category: 'followers', qty: 2500, type: 'Followers', serviceId: '4108', origPrice: 4500, retailPrice: 2800 },
+          { id: 'ig_fol_5k', name: '5,000 Followers', category: 'followers', qty: 5000, type: 'Followers', serviceId: '4108', origPrice: 8000, retailPrice: 5200 },
+          { id: 'ig_fol_10k', name: '10,000 Followers', category: 'followers', qty: 10000, type: 'Followers', serviceId: '4108', origPrice: 15000, retailPrice: 9800 },
+          { id: 'ig_lik_500', name: '500 Post Likes', category: 'likes', qty: 500, type: 'Likes', serviceId: '1777', origPrice: 600, retailPrice: 300 },
+          { id: 'ig_lik_1k', name: '1,000 Post Likes', category: 'likes', qty: 1000, type: 'Likes', serviceId: '1777', origPrice: 1000, retailPrice: 500 },
+          { id: 'ig_lik_25k', name: '2,500 Post Likes', category: 'likes', qty: 2500, type: 'Likes', serviceId: '1777', origPrice: 2200, retailPrice: 1200 },
+          { id: 'ig_viw_2k', name: '2,000 Video Views', category: 'views', qty: 2000, type: 'Views', serviceId: '6921', origPrice: 800, retailPrice: 400 },
+          { id: 'ig_viw_5k', name: '5,000 Video Views', category: 'views', qty: 5000, type: 'Views', serviceId: '6921', origPrice: 1200, retailPrice: 600 },
+          { id: 'ig_viw_10k', name: '10,000 Reels Views', category: 'views', qty: 10000, type: 'Views', serviceId: '6921', origPrice: 2000, retailPrice: 1100 },
+          { id: 'ig_com_50', name: '50 Custom Comments', category: 'comments', qty: 50, type: 'Comments', serviceId: '102', origPrice: 1500, retailPrice: 800 },
+          { id: 'ig_com_100', name: '100 Custom Comments', category: 'comments', qty: 100, type: 'Comments', serviceId: '102', origPrice: 2800, retailPrice: 1500 }
         ],
         'TikTok': [
-          { id: 'tt_1k_fol', name: '1,000 Followers', qty: 1000, type: 'followers', serviceId: '10465', origPrice: 5000, retailPrice: 3200 },
-          { id: 'tt_1k_lik', name: '1,000 Video Likes', qty: 1000, type: 'likes', serviceId: '9998', origPrice: 1200, retailPrice: 650 },
-          { id: 'tt_5k_viw', name: '5,000 Video Views', qty: 5000, type: 'views', serviceId: '6921', origPrice: 1200, retailPrice: 600 },
-          { id: 'tt_10k_viw', name: '10,000 Viral Views', qty: 10000, type: 'views', serviceId: '6921', origPrice: 2000, retailPrice: 1100 }
+          { id: 'tt_fol_1k', name: '1,000 Followers', category: 'followers', qty: 1000, type: 'Followers', serviceId: '10465', origPrice: 5000, retailPrice: 3200 },
+          { id: 'tt_fol_25k', name: '2,500 Followers', category: 'followers', qty: 2500, type: 'Followers', serviceId: '10465', origPrice: 12000, retailPrice: 7500 },
+          { id: 'tt_fol_5k', name: '5,000 Followers', category: 'followers', qty: 5000, type: 'Followers', serviceId: '10465', origPrice: 22000, retailPrice: 14000 },
+          { id: 'tt_lik_500', name: '500 Video Likes', category: 'likes', qty: 500, type: 'Likes', serviceId: '9998', origPrice: 700, retailPrice: 350 },
+          { id: 'tt_lik_1k', name: '1,000 Video Likes', category: 'likes', qty: 1000, type: 'Likes', serviceId: '9998', origPrice: 1200, retailPrice: 650 },
+          { id: 'tt_lik_3k', name: '3,000 Video Likes', category: 'likes', qty: 3000, type: 'Likes', serviceId: '9998', origPrice: 3200, retailPrice: 1800 },
+          { id: 'tt_viw_5k', name: '5,000 Video Views', category: 'views', qty: 5000, type: 'Views', serviceId: '6921', origPrice: 1200, retailPrice: 600 },
+          { id: 'tt_viw_10k', name: '10,000 Viral Views', category: 'views', qty: 10000, type: 'Views', serviceId: '6921', origPrice: 2000, retailPrice: 1100 },
+          { id: 'tt_viw_25k', name: '25,000 Viral Views', category: 'views', qty: 25000, type: 'Views', serviceId: '6921', origPrice: 4500, retailPrice: 2500 },
+          { id: 'tt_com_50', name: '50 Video Comments', category: 'comments', qty: 50, type: 'Comments', serviceId: '102', origPrice: 1500, retailPrice: 800 }
         ],
         'YouTube': [
-          { id: 'yt_1k_viw', name: '1,000 Video Views', qty: 1000, type: 'views', serviceId: '6861', origPrice: 1200, retailPrice: 600 },
-          { id: 'yt_500_sub', name: '500 Subscribers', qty: 500, type: 'subscribers', serviceId: '9186', origPrice: 2800, retailPrice: 1500 },
-          { id: 'yt_1k_sub', name: '1,000 Subscribers', qty: 1000, type: 'subscribers', serviceId: '9186', origPrice: 5500, retailPrice: 2900 }
+          { id: 'yt_sub_250', name: '250 Subscribers', category: 'subscribers', qty: 250, type: 'Subscribers', serviceId: '9186', origPrice: 1500, retailPrice: 850 },
+          { id: 'yt_sub_500', name: '500 Subscribers', category: 'subscribers', qty: 500, type: 'Subscribers', serviceId: '9186', origPrice: 2800, retailPrice: 1500 },
+          { id: 'yt_sub_1k', name: '1,000 Subscribers', category: 'subscribers', qty: 1000, type: 'Subscribers', serviceId: '9186', origPrice: 5500, retailPrice: 2900 },
+          { id: 'yt_sub_2k', name: '2,000 Subscribers', category: 'subscribers', qty: 2000, type: 'Subscribers', serviceId: '9186', origPrice: 10500, retailPrice: 5600 },
+          { id: 'yt_viw_1k', name: '1,000 High-Retention Views', category: 'views', qty: 1000, type: 'Views', serviceId: '6861', origPrice: 1200, retailPrice: 600 },
+          { id: 'yt_viw_3k', name: '3,000 High-Retention Views', category: 'views', qty: 3000, type: 'Views', serviceId: '6861', origPrice: 3200, retailPrice: 1700 },
+          { id: 'yt_viw_5k', name: '5,000 High-Retention Views', category: 'views', qty: 5000, type: 'Views', serviceId: '6861', origPrice: 5000, retailPrice: 2700 },
+          { id: 'yt_lik_500', name: '500 Video Likes', category: 'likes', qty: 500, type: 'Likes', serviceId: '9186', origPrice: 1000, retailPrice: 500 },
+          { id: 'yt_lik_1k', name: '1,000 Video Likes', category: 'likes', qty: 1000, type: 'Likes', serviceId: '9186', origPrice: 1800, retailPrice: 950 },
+          { id: 'yt_com_25', name: '25 Custom Comments', category: 'comments', qty: 25, type: 'Comments', serviceId: '102', origPrice: 1200, retailPrice: 650 }
         ],
         'Facebook': [
-          { id: 'fb_1k_fol', name: '1,000 Page Followers', qty: 1000, type: 'followers', serviceId: '9548', origPrice: 2200, retailPrice: 1200 },
-          { id: 'fb_1k_lik', name: '1,000 Post Likes', qty: 1000, type: 'likes', serviceId: '9548', origPrice: 1000, retailPrice: 600 },
-          { id: 'fb_5k_fol', name: '5,000 Page Followers', qty: 5000, type: 'followers', serviceId: '9548', origPrice: 9500, retailPrice: 5500 }
+          { id: 'fb_fol_1k', name: '1,000 Page Followers', category: 'followers', qty: 1000, type: 'Followers', serviceId: '9548', origPrice: 2200, retailPrice: 1200 },
+          { id: 'fb_fol_25k', name: '2,500 Page Followers', category: 'followers', qty: 2500, type: 'Followers', serviceId: '9548', origPrice: 5200, retailPrice: 2900 },
+          { id: 'fb_fol_5k', name: '5,000 Page Followers', category: 'followers', qty: 5000, type: 'Followers', serviceId: '9548', origPrice: 9500, retailPrice: 5500 },
+          { id: 'fb_lik_500', name: '500 Post Likes', category: 'likes', qty: 500, type: 'Likes', serviceId: '9548', origPrice: 600, retailPrice: 350 },
+          { id: 'fb_lik_1k', name: '1,000 Post Likes', category: 'likes', qty: 1000, type: 'Likes', serviceId: '9548', origPrice: 1000, retailPrice: 600 },
+          { id: 'fb_viw_5k', name: '5,000 Video Views', category: 'views', qty: 5000, type: 'Views', serviceId: '6921', origPrice: 1200, retailPrice: 600 },
+          { id: 'fb_com_50', name: '50 Post Comments', category: 'comments', qty: 50, type: 'Comments', serviceId: '102', origPrice: 1500, retailPrice: 800 }
         ],
         'X / Twitter': [
-          { id: 'tw_1k_fol', name: '1,000 Followers', qty: 1000, type: 'followers', serviceId: '9011', origPrice: 3000, retailPrice: 1800 },
-          { id: 'tw_1k_lik', name: '1,000 Tweet Likes', qty: 1000, type: 'likes', serviceId: '9011', origPrice: 1200, retailPrice: 700 }
+          { id: 'tw_fol_500', name: '500 Followers', category: 'followers', qty: 500, type: 'Followers', serviceId: '9011', origPrice: 1600, retailPrice: 950 },
+          { id: 'tw_fol_1k', name: '1,000 Followers', category: 'followers', qty: 1000, type: 'Followers', serviceId: '9011', origPrice: 3000, retailPrice: 1800 },
+          { id: 'tw_fol_25k', name: '2,500 Followers', category: 'followers', qty: 2500, type: 'Followers', serviceId: '9011', origPrice: 7000, retailPrice: 4200 },
+          { id: 'tw_lik_500', name: '500 Tweet Likes', category: 'likes', qty: 500, type: 'Likes', serviceId: '9011', origPrice: 700, retailPrice: 400 },
+          { id: 'tw_lik_1k', name: '1,000 Tweet Likes', category: 'likes', qty: 1000, type: 'Likes', serviceId: '9011', origPrice: 1200, retailPrice: 700 },
+          { id: 'tw_rt_500', name: '500 Retweets', category: 'views', qty: 500, type: 'Retweets', serviceId: '9011', origPrice: 900, retailPrice: 500 },
+          { id: 'tw_rt_1k', name: '1,000 Retweets', category: 'views', qty: 1000, type: 'Retweets', serviceId: '9011', origPrice: 1600, retailPrice: 900 }
         ]
       },
       currentAdminPricingNetwork: 'mtn',
@@ -12301,19 +12463,21 @@
         <tr style="border-bottom: 1px solid #F3F4F6;">
           <td style="padding: 10px 14px;">
             <div style="font-weight: 800; color: #111827;">${p.name}</div>
-            <div style="font-size: 11px; color: #6B7280;">Category: ${p.type}</div>
           </td>
           <td style="padding: 10px 14px;">
-            <input type="number" id="desk_booster_orig_${p.id}" value="${p.origPrice || Math.round(Number(p.retailPrice) * 1.5)}" style="width: 120px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+            <span style="font-size: 11px; font-weight: 800; background: #F3F4F6; color: #7C3AED; padding: 3px 8px; border-radius: 6px; border: 1px solid #E5E7EB; text-transform: capitalize;">${p.category || p.type}</span>
           </td>
           <td style="padding: 10px 14px;">
-            <input type="number" id="desk_booster_retail_${p.id}" value="${p.retailPrice}" style="width: 120px; background: #EFF6FF; border: 1px solid #BFDBFE; color: #1D4ED8; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+            <input type="number" id="desk_booster_orig_${p.id}" value="${p.origPrice || Math.round(Number(p.retailPrice) * 1.5)}" style="width: 110px; background: #F9FAFB; border: 1px solid #D1D5DB; color: #9CA3AF; text-decoration: line-through; font-weight: 700; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
           </td>
           <td style="padding: 10px 14px;">
-            <input type="number" id="desk_booster_qty_${p.id}" value="${p.qty || 1000}" style="width: 100px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+            <input type="number" id="desk_booster_retail_${p.id}" value="${p.retailPrice}" style="width: 110px; background: #EFF6FF; border: 1px solid #BFDBFE; color: #1D4ED8; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
           </td>
           <td style="padding: 10px 14px;">
-            <input type="text" id="desk_booster_svc_${p.id}" value="${p.serviceId || '4108'}" style="width: 100px; background: #F3F4F6; border: 1px solid #E5E7EB; color: #374151; font-weight: 700; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+            <input type="number" id="desk_booster_qty_${p.id}" value="${p.qty || 1000}" style="width: 90px; background: #ECFDF5; border: 1px solid #A7F3D0; color: #065F46; font-weight: 800; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
+          </td>
+          <td style="padding: 10px 14px;">
+            <input type="text" id="desk_booster_svc_${p.id}" value="${p.serviceId || '4108'}" style="width: 90px; background: #F3F4F6; border: 1px solid #E5E7EB; color: #374151; font-weight: 700; padding: 6px 10px; border-radius: 6px; font-size: 12px;" />
           </td>
         </tr>
       `).join('');
