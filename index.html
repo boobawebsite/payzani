@@ -11368,8 +11368,9 @@
 
       if (filtered.length === 0) {
         container.innerHTML = `
-          <div style="background: #181822; border: 1px dashed #2E2E40; border-radius: 10px; padding: 20px 16px; text-align: center; color: #9CA3AF; font-size: 11.5px;">
-            No ${agentActivityFilter} events recorded yet. Run simulation or activate live radar!
+          <div style="background: #181822; border: 1px dashed #2E2E40; border-radius: 12px; padding: 32px 16px; text-align: center; color: #9CA3AF; font-size: 12px;">
+            <div style="font-weight: 700; color: #E5E7EB; margin-bottom: 4px;">No storefront activity yet</div>
+            <div>Real customer orders, wallet deposits, and account sign-ups will appear here live as they happen.</div>
           </div>
         `;
         return;
@@ -11500,6 +11501,8 @@
 
     // Comprehensive Simulation & Live Radar Engine
     function simulateAgentStorefrontActivity() {
+      // Disabled: Zero demo / zero simulated events policy.
+      return;
       const types = ['order', 'order', 'signup', 'wallet', 'visitor'];
       const chosenType = types[Math.floor(Math.random() * types.length)];
       const randomPhone = '0' + [803, 814, 701, 905, 802, 902, 816, 706][Math.floor(Math.random()*8)] + '***' + Math.floor(100 + Math.random()*899);
@@ -11667,6 +11670,9 @@
     }
 
     function startAgentRadarInterval() {
+      // Disabled: Zero demo / zero simulated events policy.
+      if (agentRadarInterval) { clearInterval(agentRadarInterval); agentRadarInterval = null; }
+      return;
       if (agentRadarInterval) clearInterval(agentRadarInterval);
       agentRadarInterval = setInterval(() => {
         // Only trigger radar pulse if agent dashboard is visible or in background
@@ -12360,10 +12366,13 @@
         // Enforce Main Site (Purple) vs Agent Storefront (Custom Color + Me Tab)
         applyStorefrontOrMainMode();
 
-        // Start Live Storefront Radar auto-pulse
-        if (typeof startAgentRadarInterval === 'function') {
-          startAgentRadarInterval();
-        }
+        // Clean real state: zero demo / zero simulated mock data
+        try {
+          localStorage.removeItem('payzani_storefront_events');
+          localStorage.removeItem('payzani_agent_profit');
+          localStorage.removeItem('payzani_agent_orders');
+          localStorage.removeItem('payzani_agent_customers');
+        } catch(e) {}
 
         // Storefront URL query param check (?agent=...)
         const params = new URLSearchParams(window.location.search);
