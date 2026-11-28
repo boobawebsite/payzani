@@ -4434,7 +4434,6 @@
         #opayBoosterSubmitBtn,
         #agentPreviewMiniBtn,
         #deskNetBtn_mtn,
-        #btnCardWaitlist,
         button[onclick*="saveAndApplyAgentBranding"],
         button[onclick*="saveAndApplyAgentColor"],
         button[onclick*="saveMasterFeeSettings"],
@@ -4461,21 +4460,15 @@
           background: ${color} !important;
           color: #FFFFFF !important;
         }
-        .opay-balance-card {
+        #opay-screen-home .opay-balance-card,
+        #opay-screen-me .opay-balance-card {
           background: linear-gradient(135deg, ${color} 0%, ${dark} 55%, ${deep} 100%) !important;
           box-shadow: 0 10px 30px ${glow} !important;
         }
         .opay-add-money-btn {
           color: ${dark} !important;
         }
-        .opay-balance-history,
-        .opay-recent-all,
-        .opay-sub-history,
-        .opay-promo-sub,
-        .opay-pill-cashback,
-        #agentStorefrontLinkInput,
-        #referralScreenCodeLabel,
-        #referralScreenLinkInput {
+        #agentStorefrontLinkInput {
           color: ${light} !important;
         }
         .opay-promo-card:active {
@@ -4485,9 +4478,6 @@
         .opay-ad-dot.active {
           background: ${color} !important;
         }
-        .opay-promo-icon-wrap,
-        .opay-trans-circle,
-        .opay-quick-icon-wrap,
         #agentDashboardHeaderLogoWrap,
         #agentDashboardLogoPreviewWrap,
         #userOutletLogoWrap,
@@ -4506,10 +4496,6 @@
           background: linear-gradient(135deg, ${darkest} 0%, #121020 100%) !important;
           border-color: ${dark} !important;
         }
-        .opay-voucher-bar {
-          background: linear-gradient(135deg, ${subtle} 0%, rgba(0,0,0,0) 100%) !important;
-          border-color: ${subtle35} !important;
-        }
         .opay-amount-pill:active,
         .opay-amount-pill.selected {
           background: ${subtle25} !important;
@@ -4518,19 +4504,10 @@
         .opay-custom-amt-input:focus {
           border-color: ${color} !important;
         }
-        .opay-subtab-btn.active {
-          color: ${light} !important;
-        }
-        .opay-subtab-btn.active::after {
-          background: ${color} !important;
-        }
         .opay-filter-pill.active,
         .opay-agent-tier-pill.active,
         .agent-dash-tab.active,
-        .agent-activity-pill.active,
-        .ref-filter-pill.active,
-        .master-admin-tab-btn.active,
-        .admin-network-tab-btn.active {
+        .agent-activity-pill.active {
           background: ${color} !important;
           border-color: ${color} !important;
           color: #FFFFFF !important;
@@ -4541,92 +4518,23 @@
           border-color: ${subtle35} !important;
         }
         #agentCopyLinkBtn,
-        #btnCopyReferralScreenLink,
         #userCopyAccBtn {
           background: ${subtle25} !important;
           border-color: ${dark} !important;
           color: ${lighter} !important;
-        }
-        svg[stroke="#7C3AED"], svg[stroke="#7c3aed"],
-        svg[stroke="#8B5CF6"], svg[stroke="#8b5cf6"],
-        svg[stroke="#A78BFA"], svg[stroke="#a78bfa"],
-        svg[stroke="#6D28D9"], svg[stroke="#6d28d9"] {
-          stroke: ${color} !important;
-        }
-        svg[fill="#7C3AED"], svg[fill="#7c3aed"],
-        svg[fill="#8B5CF6"], svg[fill="#8b5cf6"],
-        svg[fill="#A78BFA"], svg[fill="#a78bfa"] {
-          fill: ${color} !important;
-        }
-        svg *[stroke="#7C3AED"], svg *[stroke="#7c3aed"],
-        svg *[stroke="#8B5CF6"], svg *[stroke="#8b5cf6"],
-        svg *[stroke="#A78BFA"], svg *[stroke="#a78bfa"] {
-          stroke: ${color} !important;
-        }
-        svg *[fill="#7C3AED"], svg *[fill="#7c3aed"],
-        svg *[fill="#8B5CF6"], svg *[fill="#8b5cf6"],
-        svg *[fill="#A78BFA"], svg *[fill="#a78bfa"] {
-          fill: ${color} !important;
-        }
-        span[style*="#A78BFA"], div[style*="#A78BFA"],
-        span[style*="#a78bfa"], div[style*="#a78bfa"],
-        span[style*="#C4B5FD"], div[style*="#C4B5FD"],
-        span[style*="#c4b5fd"], div[style*="#c4b5fd"] {
-          color: ${light} !important;
-        }
-        span[style*="#DDD6FE"], div[style*="#DDD6FE"],
-        span[style*="#ddd6fe"], div[style*="#ddd6fe"] {
-          color: ${lighter} !important;
-        }
-        span[style*="#7C3AED"], div[style*="#7C3AED"],
-        span[style*="#7c3aed"], div[style*="#7c3aed"],
-        span[style*="#8B5CF6"], div[style*="#8B5CF6"] {
-          color: ${color} !important;
-        }
-        div[style*="linear-gradient(135deg, rgba(124, 58, 237"],
-        div[style*="linear-gradient(135deg, rgba(124,58,237"],
-        div[style*="linear-gradient(135deg, #7C3AED"],
-        div[style*="linear-gradient(135deg, #7c3aed"],
-        div[style*="linear-gradient(180deg, #7C3AED"],
-        button[style*="linear-gradient(135deg, #7C3AED"],
-        button[style*="linear-gradient(135deg, #7c3aed"] {
-          background: linear-gradient(135deg, ${color} 0%, ${dark} 100%) !important;
-          border-color: ${dark} !important;
-        }
-        div[style*="linear-gradient(135deg, #2E1065"],
-        div[style*="linear-gradient(135deg, #1E1B4B"],
-        div[style*="linear-gradient(135deg, #171536"] {
-          background: linear-gradient(135deg, ${darkest} 0%, ${blackTint} 100%) !important;
-          border-color: ${deep} !important;
-        }
-        div[style*="background: #7C3AED"], div[style*="background:#7C3AED"],
-        div[style*="background: #7c3aed"], div[style*="background:#7c3aed"],
-        button[style*="background: #7C3AED"], button[style*="background:#7C3AED"],
-        button[style*="background: #7c3aed"], button[style*="background:#7c3aed"],
-        span[style*="background: #7C3AED"], span[style*="background:#7C3AED"] {
-          background: ${color} !important;
-        }
-        div[style*="background: #251B38"], button[style*="background: #251B38"],
-        div[style*="background:#251B38"], button[style*="background:#251B38"] {
-          background: ${subtle25} !important;
-          border-color: ${dark} !important;
-          color: ${lighter} !important;
-        }
-        div[style*="rgba(124, 58, 237"], div[style*="rgba(124,58,237"],
-        span[style*="rgba(124, 58, 237"], span[style*="rgba(124,58,237"],
-        button[style*="rgba(124, 58, 237"], button[style*="rgba(124,58,237"] {
-          background: ${subtle20} !important;
-        }
-        div[style*="border-color: #7C3AED"], div[style*="border-color:#7C3AED"],
-        div[style*="border: 1px solid #7C3AED"], div[style*="border: 2px solid #8B5CF6"],
-        div[style*="border: 1px solid #4C1D95"] {
-          border-color: ${color} !important;
         }
         input[type="checkbox"]:checked {
           accent-color: ${color} !important;
         }
         input:focus, select:focus, textarea:focus {
           border-color: ${color} !important;
+        }
+
+        /* STRICT ISOLATION: Rewards, Cards, and Transactions are core fintech screens and remain 100% untouched */
+        #opay-screen-rewards, #opay-screen-rewards *,
+        #opay-screen-cards, #opay-screen-cards *,
+        #opay-screen-transactions, #opay-screen-transactions * {
+          /* Zero overrides: keep original fintech styling intact */
         }
       `;
     }
@@ -15005,9 +14913,12 @@
     window.addEventListener('DOMContentLoaded', () => {
       const activeUser = getActiveSessionUserId();
       PAYZANI_SB.userId = activeUser;
+
+      // Always present the Sign-In / Login screen when opening the website
+      openPayzaniAuth();
       
       if (activeUser) {
-        dismissPayzaniAuth(false);
+        // Sync real backend data in background so everything is ready
         syncRealPlatformSettings();
         syncRealUserProfile();
         syncRealTransactions();
@@ -15016,10 +14927,6 @@
       } else {
         PAYZANI_SB.profile = null;
         updateAuthUIForGuest();
-        if (isAgentStorefront()) {
-          // On agent storefront, require login or sign-up
-          openPayzaniAuth();
-        }
       }
     });</script>
 </body>
