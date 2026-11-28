@@ -4635,10 +4635,17 @@
       try {
         var params = new URLSearchParams(window.location.search);
         var styleEl = document.getElementById('payzani-agent-theme-override');
-        var color = params.get('theme') || params.get('color') || localStorage.getItem('payzani_agent_color');
-        if (color && styleEl && color.toLowerCase() !== '#7c3aed') {
-          if (color[0] !== '#') color = '#' + color;
-          styleEl.innerHTML = generatePayzaniThemeCSS(color);
+        // IMPORTANT: Main Payzani website is ALWAYS Royal Purple (#7C3AED).
+        // Custom branding and colors ONLY apply when visiting an Agent's Storefront (?agent=...)
+        if (params.has('agent')) {
+          var color = params.get('theme') || params.get('color') || localStorage.getItem('payzani_agent_color');
+          if (color && styleEl && color.toLowerCase() !== '#7c3aed') {
+            if (color[0] !== '#') color = '#' + color;
+            styleEl.innerHTML = generatePayzaniThemeCSS(color);
+          }
+        } else {
+          // Main Payzani Website: Strictly default Royal Purple
+          if (styleEl) styleEl.innerHTML = '';
         }
       } catch(e) {}
     })();
@@ -5767,6 +5774,12 @@
         <button type="button" onclick="saveAndApplyAgentBranding()" style="width: 100%; background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%); border: none; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 10px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Save Storefront Branding</span>
+        </button>
+
+        <!-- 7. Open My Website Button -->
+        <button type="button" onclick="openAgentStorefrontInNewTab()" style="width: 100%; margin-top: 8px; background: #181824; border: 1px solid #2C2C3E; color: #E5E7EB; font-size: 11.5px; font-weight: 700; padding: 9px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>Open My Website (View Custom Branding)</span>
         </button>
       </div>
 
@@ -10355,122 +10368,169 @@
       const styleEl = document.getElementById('payzani-agent-theme-override');
       const params = new URLSearchParams(window.location.search);
 
-      // 1. PRIMARY THEME COLOR (Overrides every single purple element across Payzani)
-      let agentColor = params.get('theme') || params.get('color');
-      if (!agentColor) {
-        try {
-          agentColor = localStorage.getItem('payzani_agent_color');
-        } catch(e) {}
-      }
-      if (agentColor) {
+      if (isAgentSite) {
+        // ==============================================================
+        // 1. AGENT'S OWN WEBSITE (Has ?agent=... in URL)
+        // Everything purple turns into the agent's chosen primary color,
+        // Website name replaces Payzani, and Motto replaces default motto!
+        // ==============================================================
+        let agentColor = params.get('theme') || params.get('color');
+        if (!agentColor) {
+          try {
+            agentColor = localStorage.getItem('payzani_agent_color');
+          } catch(e) {}
+        }
+        if (!agentColor) agentColor = '#7C3AED';
         if (agentColor[0] !== '#') agentColor = '#' + agentColor;
-        currentAgentThemeColor = agentColor;
+
         if (styleEl && agentColor.toLowerCase() !== '#7c3aed') {
           styleEl.innerHTML = generatePayzaniThemeCSS(agentColor);
-        } else if (styleEl && agentColor.toLowerCase() === '#7c3aed') {
+        } else if (styleEl) {
           styleEl.innerHTML = '';
         }
-      }
 
-      // 2. WEBSITE NAME (Replaces "Payzani" across the entire website)
-      let agentName = params.get('name');
-      if (!agentName) {
-        try {
-          agentName = localStorage.getItem('payzani_agent_name');
-        } catch(e) {}
-      }
-      if (agentName && agentName.trim()) {
+        let agentName = params.get('name');
+        if (!agentName) {
+          try {
+            agentName = localStorage.getItem('payzani_agent_name');
+          } catch(e) {}
+        }
+        if (!agentName || !agentName.trim()) agentName = 'Agent Storefront';
         agentName = agentName.trim();
+
+        // Motto (replaces "We are Beyond Telecom" on the agent's site)
+        let agentMotto = params.get('slogan') || params.get('motto');
+        if (!agentMotto) {
+          try {
+            agentMotto = localStorage.getItem('payzani_agent_slogan');
+          } catch(e) {}
+        }
+        if (!agentMotto || !agentMotto.trim()) agentMotto = 'We are Beyond Telecom';
+        agentMotto = agentMotto.trim();
+
+        // Apply to Page Title & Splash
+        try {
+          document.title = agentName + ' - Instant Telecom Switch';
+        } catch(e) {}
+
+        const splashTitle = document.querySelector('.payzani-splash-headline');
+        if (splashTitle) splashTitle.textContent = agentMotto;
+        const splashSub = document.querySelector('.payzani-splash-sub');
+        if (splashSub) splashSub.textContent = agentName + ' Verified Telecom Outlet';
+
+        // Apply to Header & Greetings
         const headerBrandTitle = document.getElementById('headerBrandTitle');
         if (headerBrandTitle) headerBrandTitle.textContent = agentName;
         const opayGreeting = document.getElementById('opayUserGreeting');
         if (opayGreeting) opayGreeting.textContent = 'Welcome to ' + agentName;
-        const outletNameEl = document.getElementById('agentDashboardOutletName');
-        if (outletNameEl) outletNameEl.textContent = agentName;
-        const previewName = document.getElementById('agentPreviewMiniName');
-        if (previewName) previewName.textContent = agentName;
         const userOutletName = document.getElementById('userOutletName');
         if (userOutletName) userOutletName.textContent = agentName;
+        const userOutletSlogan = document.getElementById('userOutletSlogan');
+        if (userOutletSlogan) userOutletSlogan.textContent = agentMotto;
+
+        // Apply to Auth Screen
         const authBrandLabel = document.querySelector('.payzani-auth-brand-label');
         if (authBrandLabel) authBrandLabel.textContent = agentName;
         const authHeroTitle = document.getElementById('payzaniAuthHeroTitle');
         if (authHeroTitle) authHeroTitle.textContent = 'Welcome to ' + agentName;
+        const authHeroDesc = document.getElementById('payzaniAuthHeroDesc');
+        if (authHeroDesc) authHeroDesc.textContent = agentMotto;
         const loginBtn = document.getElementById('payzaniLoginBtn');
         if (loginBtn && loginBtn.querySelector('span')) loginBtn.querySelector('span').textContent = 'Log In to ' + agentName;
-        try {
-          document.title = agentName + ' - Instant Telecom Switch';
-        } catch(e) {}
+
+        // Apply Initials / Logo
         const initChar = agentName.charAt(0).toUpperCase();
         const mark = document.getElementById('headerBrandMark');
         if (mark) mark.textContent = initChar;
         const avatar = document.getElementById('opayUserAvatarInit');
         if (avatar) avatar.textContent = initChar;
-        const logoPreview = document.getElementById('agentDashboardLogoPreviewText');
-        if (logoPreview) logoPreview.textContent = initChar;
-      }
 
-      // 3. WEBSITE MOTTO (Replaces "We are Beyond Telecom" across splash and subtitles)
-      let agentMotto = params.get('slogan') || params.get('motto');
-      if (!agentMotto) {
-        try {
-          agentMotto = localStorage.getItem('payzani_agent_slogan');
-        } catch(e) {}
-      }
-      if (!agentMotto) {
-        agentMotto = 'We are Beyond Telecom';
-      }
-      const splashTitle = document.querySelector('.payzani-splash-headline');
-      if (splashTitle) splashTitle.textContent = agentMotto;
-      const splashSub = document.querySelector('.payzani-splash-sub');
-      if (splashSub) splashSub.textContent = agentMotto;
-      const outletSloganEl = document.getElementById('agentDashboardOutletSlogan');
-      if (outletSloganEl) outletSloganEl.textContent = agentMotto;
-      const previewSlogan = document.getElementById('agentPreviewMiniSlogan');
-      if (previewSlogan) previewSlogan.textContent = agentMotto;
-      const userOutletSlogan = document.getElementById('userOutletSlogan');
-      if (userOutletSlogan) userOutletSlogan.textContent = agentMotto;
-      const authHeroDesc = document.getElementById('payzaniAuthHeroDesc');
-      if (authHeroDesc) authHeroDesc.textContent = agentMotto;
+        let agentLogo = params.get('logo');
+        if (agentLogo && !agentLogo.startsWith('preset:') && !agentLogo.startsWith('data:')) {
+          agentLogo = 'preset:' + agentLogo;
+        }
+        if (!agentLogo) {
+          try {
+            agentLogo = localStorage.getItem('payzani_agent_logo');
+          } catch(e) {}
+        }
+        if (agentLogo) {
+          const splashLogoCircle = document.querySelector('.payzani-splash-logo-circle');
+          if (splashLogoCircle) splashLogoCircle.innerHTML = renderAgentLogoContent(agentLogo, agentName, 88);
+          const authMiniLogo = document.querySelector('.payzani-auth-mini-logo');
+          if (authMiniLogo) authMiniLogo.innerHTML = renderAgentLogoContent(agentLogo, agentName, 36);
+          const userOutletLogo = document.getElementById('userOutletLogoWrap');
+          if (userOutletLogo) userOutletLogo.innerHTML = renderAgentLogoContent(agentLogo, agentName, 42);
+        }
 
-      // 4. LOGO
-      let agentLogo = params.get('logo');
-      if (agentLogo && !agentLogo.startsWith('preset:') && !agentLogo.startsWith('data:')) {
-        agentLogo = 'preset:' + agentLogo;
-      }
-      if (!agentLogo) {
-        try {
-          agentLogo = localStorage.getItem('payzani_agent_logo');
-        } catch(e) {}
-      }
-      if (agentLogo) {
-        const splashLogoCircle = document.querySelector('.payzani-splash-logo-circle');
-        if (splashLogoCircle) splashLogoCircle.innerHTML = renderAgentLogoContent(agentLogo, agentName || 'P', 88);
-        const authMiniLogo = document.querySelector('.payzani-auth-mini-logo');
-        if (authMiniLogo) authMiniLogo.innerHTML = renderAgentLogoContent(agentLogo, agentName || 'P', 36);
-        const userOutletLogo = document.getElementById('userOutletLogoWrap');
-        if (userOutletLogo) userOutletLogo.innerHTML = renderAgentLogoContent(agentLogo, agentName || 'P', 42);
-      }
-
-      // 5. 4th Tab Navigation Setup
-      const navTab = document.getElementById('opayNavMe');
-      const navLabel = document.getElementById('opayNavMeLabel');
-      const navIcon = document.getElementById('opayNavMeIcon');
-      if (isAgentSite) {
+        // On an agent storefront: 4th Tab is STRICTLY "Me" (Customer Account)
+        const navTab = document.getElementById('opayNavMe');
+        const navLabel = document.getElementById('opayNavMeLabel');
+        const navIcon = document.getElementById('opayNavMeIcon');
         if (navTab) navTab.setAttribute('onclick', "opaySwitchBottomTab(this, 'me')");
         if (navLabel) navLabel.textContent = 'Me';
         if (navIcon) {
           navIcon.innerHTML = '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>';
         }
+
         const userNameEl = document.querySelector('.opay-user-name');
         if (userNameEl) {
           userNameEl.innerHTML = 'Hi, Partner <span style="font-size:10px; font-weight:700; color:#10B981; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); padding:2px 6px; border-radius:10px; margin-left:4px;">CUSTOMER</span>';
         }
       } else {
+        // ==============================================================
+        // 2. MAIN PAYZANI WEBSITE (STRICTLY ROYAL PURPLE #7C3AED)
+        // Does NOT take the agent's custom color or name.
+        // It is strictly Payzani, Royal Purple, and "We are Beyond Telecom".
+        // ==============================================================
+        if (styleEl) {
+          styleEl.innerHTML = '';
+        }
+
+        try {
+          document.title = 'Payzani - Telecommunications Switch & VTU Wholesale API';
+        } catch(e) {}
+
+        // Main Splash Screen: Strictly Payzani Defaults
+        const splashTitle = document.querySelector('.payzani-splash-headline');
+        if (splashTitle) splashTitle.textContent = 'We are Beyond Telecom';
+        const splashSub = document.querySelector('.payzani-splash-sub');
+        if (splashSub) splashSub.textContent = 'Instant Switching • Wholesale Margins';
+        const splashLogoCircle = document.querySelector('.payzani-splash-logo-circle');
+        if (splashLogoCircle) splashLogoCircle.innerHTML = '<div class="payzani-splash-p-mark">P</div>';
+
+        // Main Top Header: Strictly Payzani
+        const headerBrandTitle = document.getElementById('headerBrandTitle');
+        if (headerBrandTitle) headerBrandTitle.textContent = 'Payzani';
+        const opayGreeting = document.getElementById('opayUserGreeting');
+        if (opayGreeting) opayGreeting.textContent = 'Welcome to Payzani';
+        const mark = document.getElementById('headerBrandMark');
+        if (mark) mark.textContent = 'P';
+        const avatar = document.getElementById('opayUserAvatarInit');
+        if (avatar) avatar.textContent = 'P';
+
+        // Main Auth Screen: Strictly Payzani Defaults
+        const authBrandLabel = document.querySelector('.payzani-auth-brand-label');
+        if (authBrandLabel) authBrandLabel.textContent = 'Payzani';
+        const authMiniLogo = document.querySelector('.payzani-auth-mini-logo');
+        if (authMiniLogo) authMiniLogo.innerHTML = 'P';
+        const authHeroTitle = document.getElementById('payzaniAuthHeroTitle');
+        if (authHeroTitle) authHeroTitle.textContent = 'Welcome Back';
+        const authHeroDesc = document.getElementById('payzaniAuthHeroDesc');
+        if (authHeroDesc) authHeroDesc.textContent = 'Log in to manage your telecom switch & wholesale wallet.';
+        const loginBtn = document.getElementById('payzaniLoginBtn');
+        if (loginBtn && loginBtn.querySelector('span')) loginBtn.querySelector('span').textContent = 'Log In to Payzani';
+
+        // 4th Tab on Main Site: Strictly "Agent"
+        const navTab = document.getElementById('opayNavMe');
+        const navLabel = document.getElementById('opayNavMeLabel');
+        const navIcon = document.getElementById('opayNavMeIcon');
         if (navTab) navTab.setAttribute('onclick', "opaySwitchBottomTab(this, 'agent')");
         if (navLabel) navLabel.textContent = 'Agent';
         if (navIcon) {
           navIcon.innerHTML = '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>';
         }
+
         if (localStorage.getItem('payzani_is_agent') === 'true') {
           const userNameEl = document.querySelector('.opay-user-name');
           if (userNameEl) {
@@ -11182,15 +11242,20 @@
       const path = window.location.pathname || '/';
       let name = 'My Reseller Store';
       let slug = 'victor';
+      let motto = 'We are Beyond Telecom';
       try {
         const storedName = localStorage.getItem('payzani_agent_name');
         if (storedName && storedName.trim()) {
           name = storedName.trim();
           slug = name.toLowerCase().replace(/[^a-z0-9]/g, '');
         }
+        const storedMotto = localStorage.getItem('payzani_agent_slogan');
+        if (storedMotto && storedMotto.trim()) {
+          motto = storedMotto.trim();
+        }
       } catch(e) {}
       const colorHex = (currentAgentThemeColor || '#7C3AED').replace('#', '');
-      let url = `${origin}${path}?agent=${slug || 'victor'}&name=${encodeURIComponent(name)}&theme=${colorHex}`;
+      let url = `${origin}${path}?agent=${slug || 'victor'}&name=${encodeURIComponent(name)}&theme=${colorHex}&slogan=${encodeURIComponent(motto)}`;
       try {
         const logo = localStorage.getItem('payzani_agent_logo');
         if (logo && logo.startsWith('preset:')) {
@@ -11198,6 +11263,11 @@
         }
       } catch(e) {}
       return url;
+    }
+
+    function openAgentStorefrontInNewTab() {
+      const url = getAgentStorefrontUrl();
+      window.open(url, '_blank');
     }
 
     function copyAgentStorefrontLink() {
@@ -11791,21 +11861,23 @@
         linkInput.value = getAgentStorefrontUrl();
       }
 
-      // Immediately transform every single purple element across Payzani to the agent's new primary color
-      let styleEl = document.getElementById('payzani-agent-theme-override');
-      if (!styleEl) {
-        styleEl = document.createElement('style');
-        styleEl.id = 'payzani-agent-theme-override';
-        document.head.appendChild(styleEl);
-      }
-      if (color.toLowerCase() !== '#7c3aed') {
-        styleEl.innerHTML = generatePayzaniThemeCSS(color);
-      } else {
-        styleEl.innerHTML = '';
+      // ONLY apply theme CSS to active page if we are currently visiting an agent's storefront (?agent=...)
+      if (isAgentStorefront()) {
+        let styleEl = document.getElementById('payzani-agent-theme-override');
+        if (!styleEl) {
+          styleEl = document.createElement('style');
+          styleEl.id = 'payzani-agent-theme-override';
+          document.head.appendChild(styleEl);
+        }
+        if (color.toLowerCase() !== '#7c3aed') {
+          styleEl.innerHTML = generatePayzaniThemeCSS(color);
+        } else {
+          styleEl.innerHTML = '';
+        }
       }
 
       if (showToast && typeof showCustomAlert === 'function') {
-        showCustomAlert('Primary theme color updated to ' + color.toUpperCase() + '! Every purple element across your website now uses this color.');
+        showCustomAlert('Storefront Theme Updated: ' + color.toUpperCase() + '! Your website will display this primary color, while the main Payzani website remains Royal Purple.');
       }
     }
 
@@ -11813,7 +11885,7 @@
     // AGENT STOREFRONT BRANDING & LOGO STUDIO CONTROLLER
     // -------------------------------------------------------------
     function handleAgentStorefrontNameInput(val) {
-      if (!val || !val.trim()) val = 'Payzani';
+      if (!val || !val.trim()) val = 'My Telecom Store';
       val = val.trim();
       try {
         localStorage.setItem('payzani_agent_name', val);
@@ -11825,39 +11897,25 @@
       const previewName = document.getElementById('agentPreviewMiniName');
       if (previewName) previewName.textContent = val;
 
-      const headerBrandTitle = document.getElementById('headerBrandTitle');
-      if (headerBrandTitle) headerBrandTitle.textContent = val;
-
-      const opayGreeting = document.getElementById('opayUserGreeting');
-      if (opayGreeting) opayGreeting.textContent = 'Welcome to ' + val;
-
-      const userOutletName = document.getElementById('userOutletName');
-      if (userOutletName) userOutletName.textContent = val;
-
-      const authBrandLabel = document.querySelector('.payzani-auth-brand-label');
-      if (authBrandLabel) authBrandLabel.textContent = val;
-
-      const authHeroTitle = document.getElementById('payzaniAuthHeroTitle');
-      if (authHeroTitle) authHeroTitle.textContent = 'Welcome to ' + val;
-
-      const loginBtn = document.getElementById('payzaniLoginBtn');
-      if (loginBtn && loginBtn.querySelector('span')) loginBtn.querySelector('span').textContent = 'Log In to ' + val;
-
-      try {
-        document.title = val + ' - Instant Telecom Switch';
-      } catch(e) {}
-
-      const initChar = val.charAt(0).toUpperCase();
-      const mark = document.getElementById('headerBrandMark');
-      if (mark) mark.textContent = initChar;
-      const avatar = document.getElementById('opayUserAvatarInit');
-      if (avatar) avatar.textContent = initChar;
-      const logoPreview = document.getElementById('agentDashboardLogoPreviewText');
-      if (logoPreview) logoPreview.textContent = initChar;
-      
       const linkInput = document.getElementById('agentStorefrontLinkInput');
       if (linkInput && typeof getAgentStorefrontUrl === 'function') linkInput.value = getAgentStorefrontUrl();
       
+      // If currently on an agent storefront, update visible titles
+      if (isAgentStorefront()) {
+        const headerBrandTitle = document.getElementById('headerBrandTitle');
+        if (headerBrandTitle) headerBrandTitle.textContent = val;
+        const opayGreeting = document.getElementById('opayUserGreeting');
+        if (opayGreeting) opayGreeting.textContent = 'Welcome to ' + val;
+        const userOutletName = document.getElementById('userOutletName');
+        if (userOutletName) userOutletName.textContent = val;
+        try { document.title = val + ' - Instant Telecom Switch'; } catch(e) {}
+        const initChar = val.charAt(0).toUpperCase();
+        const mark = document.getElementById('headerBrandMark');
+        if (mark) mark.textContent = initChar;
+        const avatar = document.getElementById('opayUserAvatarInit');
+        if (avatar) avatar.textContent = initChar;
+      }
+
       if (typeof updateDashboardLogoPreview === 'function') updateDashboardLogoPreview();
     }
 
@@ -11868,24 +11926,24 @@
         localStorage.setItem('payzani_agent_slogan', val);
       } catch(e) {}
       
-      // Updates splash screen headline (replaces "We are Beyond Telecom")
-      const splashTitle = document.querySelector('.payzani-splash-headline');
-      if (splashTitle) splashTitle.textContent = val;
-
-      const splashSub = document.querySelector('.payzani-splash-sub');
-      if (splashSub) splashSub.textContent = val;
-
       const outletSloganEl = document.getElementById('agentDashboardOutletSlogan');
       if (outletSloganEl) outletSloganEl.textContent = val;
       
       const previewSlogan = document.getElementById('agentPreviewMiniSlogan');
       if (previewSlogan) previewSlogan.textContent = val;
 
-      const userOutletSlogan = document.getElementById('userOutletSlogan');
-      if (userOutletSlogan) userOutletSlogan.textContent = val;
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput && typeof getAgentStorefrontUrl === 'function') linkInput.value = getAgentStorefrontUrl();
 
-      const authHeroDesc = document.getElementById('payzaniAuthHeroDesc');
-      if (authHeroDesc) authHeroDesc.textContent = val;
+      // If currently on an agent storefront, update visible slogans
+      if (isAgentStorefront()) {
+        const splashTitle = document.querySelector('.payzani-splash-headline');
+        if (splashTitle) splashTitle.textContent = val;
+        const splashSub = document.querySelector('.payzani-splash-sub');
+        if (splashSub) splashSub.textContent = val;
+        const userOutletSlogan = document.getElementById('userOutletSlogan');
+        if (userOutletSlogan) userOutletSlogan.textContent = val;
+      }
     }
 
     function handleAgentLogoFileUpload(input) {
@@ -12038,7 +12096,7 @@
       const nameInput = document.getElementById('agentStorefrontNameInput');
       const sloganInput = document.getElementById('agentStorefrontSloganInput');
       
-      const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : (localStorage.getItem('payzani_agent_name') || 'Payzani');
+      const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : (localStorage.getItem('payzani_agent_name') || 'My Telecom Store');
       const slogan = sloganInput && sloganInput.value.trim() ? sloganInput.value.trim() : (localStorage.getItem('payzani_agent_slogan') || 'We are Beyond Telecom');
       
       try {
@@ -12051,8 +12109,12 @@
       handleAgentStorefrontSloganInput(slogan);
       applyAgentStorefrontColor(currentAgentThemeColor || '#7C3AED', false);
       
+      if (isAgentStorefront()) {
+        applyStorefrontOrMainMode();
+      }
+
       if (typeof showCustomAlert === 'function') {
-        showCustomAlert(`Website Branding Saved!\nName: "${name}"\nMotto: "${slogan}"\nPrimary Color: ${(currentAgentThemeColor || '#7C3AED').toUpperCase()}`);
+        showCustomAlert('Storefront Branding Saved!\nWebsite: "' + name + '"\nMotto: "' + slogan + '"\nTheme: ' + (currentAgentThemeColor || '#7C3AED').toUpperCase() + '\n\nThis only affects your own website. The main Payzani website remains Royal Purple.');
       }
     }
 
