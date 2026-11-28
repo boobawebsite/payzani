@@ -5497,26 +5497,34 @@
     <!-- SCREEN 8: AGENT STOREFRONT & WHOLESALE DASHBOARD -->
     <div id="opay-screen-agent-dashboard" class="opay-subscreen">
       <!-- Top Header -->
-      <div class="opay-sub-header" style="padding: 10px 16px;">
-        <div class="opay-sub-back-title" onclick="opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home')">
+      <div class="opay-sub-header" style="padding: 10px 16px; display: flex; align-items: center; justify-content: space-between;">
+        <div class="opay-sub-back-title" onclick="opaySwitchBottomTab(document.querySelector('.opay-bottom-nav .opay-nav-item:first-child'), 'home')" style="cursor: pointer;">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
           <span style="font-size: 15px; font-weight: 800;">Agent Dashboard</span>
         </div>
+        <button type="button" onclick="switchAgentDashTab('branding')" title="Edit Website &amp; Motto" style="background: rgba(124, 58, 237, 0.16); border: 1px solid rgba(124, 58, 237, 0.35); color: #DDD6FE; font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.25); transition: all 0.2s ease;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>Edit Brand</span>
+        </button>
       </div>
 
       <!-- SLEEK COMPACT HERO FLOAT & OUTLET CARD -->
       <div style="margin: 8px 16px 10px; background: linear-gradient(135deg, #181528 0%, #0F0E17 100%); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 14px; padding: 12px 14px; position: relative;">
-        <!-- Top: Outlet Logo, Name & Margin Pill -->
-        <div style="display: flex; align-items: center; margin-bottom: 8px;">
+        <!-- Top: Outlet Logo, Name & Edit Button -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
           <div style="display: flex; align-items: center; gap: 8px;">
             <div id="agentDashboardHeaderLogoWrap" style="width: 28px; height: 28px; border-radius: 8px; background: rgba(124, 58, 237, 0.25); border: 1px solid rgba(124, 58, 237, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; color: #C4B5FD;">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </div>
             <div>
               <div id="agentDashboardOutletName" style="color: #FFFFFF; font-size: 13.5px; font-weight: 800; line-height: 1.2;">My Reseller Store</div>
-              <div id="agentDashboardOutletSlogan" style="display: none;">Instant Switching &bull; Wholesale Telecoms</div>
+              <div id="agentDashboardOutletSlogan" style="display: none;">We are Beyond Telecom</div>
             </div>
           </div>
+          <button type="button" onclick="switchAgentDashTab('branding')" title="Edit Website Name &amp; Motto" style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); color: #C4B5FD; font-size: 10.5px; font-weight: 700; padding: 4px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: background 0.2s ease;">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+            <span>Edit</span>
+          </button>
         </div>
 
         <!-- Middle: Float Balance + Quick Top Up Pill -->
@@ -12076,6 +12084,14 @@
           else if (!sloganInput.value) sloganInput.value = 'We are Beyond Telecom';
         }
         updateColorSelectorUI(currentAgentThemeColor || '#7C3AED');
+        setTimeout(() => {
+          if (secBrand) {
+            secBrand.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          if (nameInput) {
+            nameInput.focus();
+          }
+        }, 80);
       } else {
         if (btnAct) {
           btnAct.classList.add('active');
