@@ -1,0 +1,26 @@
+{
+  "name": "Payzani — Instant VTU & Agent Platform",
+  "short_name": "Payzani",
+  "description": "Buy cheap MTN, Airtel, Glo & 9mobile data, airtime, TV, betting, education PINs, and social boosting.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B0B10",
+  "theme_color": "#7C3AED",
+  "categories": ["finance", "utilities"],
+  "icons": [
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
