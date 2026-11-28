@@ -5242,25 +5242,13 @@
         <span class="opay-sub-history" onclick="showCustomAlert('Exam PIN order history loaded')">PINs</span>
       </div>
 
-      <!-- Segmented Exam Selector: WAEC, NECO, NABTEB -->
-      <div style="padding: 0 16px 12px; display: flex; gap: 8px;" id="educationExamSelectorStrip">
-        <button type="button" onclick="selectEducationExam('waec')" id="eduExamBtn_waec" class="edu-exam-btn active" style="flex: 1; background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%); color: #FFF; border: none; border-radius: 12px; padding: 9px 8px; font-size: 13px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35); text-align: center;">
-          WAEC
-        </button>
-        <button type="button" onclick="selectEducationExam('neco')" id="eduExamBtn_neco" class="edu-exam-btn" style="flex: 1; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 8px; font-size: 13px; font-weight: 700; cursor: pointer; text-align: center;">
-          NECO
-        </button>
-        <button type="button" onclick="selectEducationExam('nabt')" id="eduExamBtn_nabt" class="edu-exam-btn" style="flex: 1; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 8px; font-size: 13px; font-weight: 700; cursor: pointer; text-align: center;">
-          NABTEB
-        </button>
-      </div>
-
-      <!-- Inset Recipient Phone / WhatsApp input -->
-      <div class="opay-input-box" style="margin: 0 16px 12px; background: #12121A; border: 1px solid #222232; border-radius: 14px; padding: 4px 12px; display: flex; align-items: center; gap: 10px;">
-        <div style="display: flex; align-items: center; gap: 6px; color: #38BDF8;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <div class="opay-input-box" style="margin: 0 16px 12px;">
+        <div class="opay-carrier-select-chip" id="opayEducationCarrierChip" onclick="rotateCustomerEducationExam()" style="cursor: pointer;">
+          <span id="opayEducationCarrierBadge" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:#0284C7; color:#FFF; font-size:10.5px; font-weight:900;">W</span>
+          <span id="opayEducationCarrierName" style="font-size:13px; font-weight:800; color:#38BDF8;">WAEC</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <input type="tel" id="opay-education-recipient" class="opay-phone-input" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 13.5px;" placeholder="Phone or WhatsApp for instant SMS delivery" value="" />
+        <input type="tel" id="opay-education-recipient" class="opay-phone-input" placeholder="Phone or WhatsApp for instant SMS delivery" value="" />
       </div>
 
       <div class="opay-sheet-body" style="padding-top: 4px;">
@@ -5288,31 +5276,13 @@
         <span class="opay-sub-history" onclick="showCustomAlert('Live growth orders syncing...')">Orders</span>
       </div>
 
-      <!-- Apple-Style Platform Selector Strip -->
-      <div style="padding: 0 16px 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; gap: 8px;" id="boosterPlatformSelectorStrip">
-        <button type="button" onclick="selectCustomerBoosterPlatform('Instagram')" id="cBoosterPlat_Instagram" class="booster-plat-btn active" style="flex-shrink: 0; background: linear-gradient(135deg, #E1306C 0%, #C13584 100%); color: #FFF; border: none; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; box-shadow: 0 4px 12px rgba(225, 48, 108, 0.35);">
-          <span>Instagram</span>
-        </button>
-        <button type="button" onclick="selectCustomerBoosterPlatform('TikTok')" id="cBoosterPlat_TikTok" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
-          <span>TikTok</span>
-        </button>
-        <button type="button" onclick="selectCustomerBoosterPlatform('YouTube')" id="cBoosterPlat_YouTube" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
-          <span>YouTube</span>
-        </button>
-        <button type="button" onclick="selectCustomerBoosterPlatform('Facebook')" id="cBoosterPlat_Facebook" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
-          <span>Facebook</span>
-        </button>
-        <button type="button" onclick="selectCustomerBoosterPlatform('X / Twitter')" id="cBoosterPlat_XTwitter" class="booster-plat-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
-          <span>X / Twitter</span>
-        </button>
-      </div>
-
-      <!-- Apple-Style Inset Target Input Box -->
-      <div class="opay-input-box" style="margin: 0 16px 12px; background: #12121A; border: 1px solid #222232; border-radius: 14px; padding: 4px 12px; display: flex; align-items: center; gap: 10px;">
-        <div style="display: flex; align-items: center; gap: 6px; color: #A78BFA;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+      <div class="opay-input-box" style="margin: 0 16px 12px;">
+        <div class="opay-carrier-select-chip" id="opayBoosterCarrierChip" onclick="rotateCustomerBoosterPlatform()" style="cursor: pointer;">
+          <span id="opayBoosterCarrierBadge" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:#E1306C; color:#FFF; font-size:9.5px; font-weight:900;">IG</span>
+          <span id="opayBoosterCarrierName" style="font-size:13px; font-weight:800; color:#E1306C;">Instagram</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <input type="text" id="opay-booster-target" class="opay-phone-input" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 13.5px;" placeholder="@username or channel link to boost" value="" />
+        <input type="text" id="opay-booster-target" class="opay-phone-input" placeholder="Enter profile link or @username" value="" />
       </div>
 
       <!-- Apple-Style Frosted Segmented Control for Categories (Followers/Subscribers, Likes, Views, Comments) -->
@@ -10811,35 +10781,29 @@
       }
     }
 
-    function selectCustomerBoosterPlatform(plat) {
+    const BOOSTER_PLATFORMS_INFO = [
+      { id: 'Instagram', name: 'Instagram', badge: 'IG', color: '#E1306C' },
+      { id: 'TikTok', name: 'TikTok', badge: 'TK', color: '#00F2FE' },
+      { id: 'YouTube', name: 'YouTube', badge: 'YT', color: '#FF0000' },
+      { id: 'Facebook', name: 'Facebook', badge: 'FB', color: '#1877F2' },
+      { id: 'X / Twitter', name: 'X / Twitter', badge: 'X', color: '#A855F7' }
+    ];
+
+    function selectCustomerBoosterPlatform(plat, showNotice) {
       currentCustomerBoosterPlatform = plat;
-      
-      // Update top platform buttons
-      opayBoosterPlatforms.forEach(p => {
-        const btnId = 'cBoosterPlat_' + (p === 'X / Twitter' ? 'XTwitter' : p);
-        const btn = document.getElementById(btnId);
-        if (btn) {
-          if (p === plat) {
-            btn.classList.add('active');
-            let grad = 'linear-gradient(135deg, #EC4899 0%, #8B5CF6 100%)';
-            if (p === 'Instagram') grad = 'linear-gradient(135deg, #E1306C 0%, #C13584 100%)';
-            if (p === 'TikTok') grad = 'linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%)';
-            if (p === 'YouTube') grad = 'linear-gradient(135deg, #FF0000 0%, #CC0000 100%)';
-            if (p === 'Facebook') grad = 'linear-gradient(135deg, #1877F2 0%, #0C63D4 100%)';
-            if (p === 'X / Twitter') grad = '#000000';
-            btn.style.background = grad;
-            btn.style.color = '#FFFFFF';
-            btn.style.border = 'none';
-            btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.4)';
-          } else {
-            btn.classList.remove('active');
-            btn.style.background = '#181822';
-            btn.style.color = '#9CA3AF';
-            btn.style.border = '1px solid #28283A';
-            btn.style.boxShadow = 'none';
-          }
-        }
-      });
+      const platObj = BOOSTER_PLATFORMS_INFO.find(p => p.id === plat) || BOOSTER_PLATFORMS_INFO[0];
+
+      // Update chip badge and name
+      const badge = document.getElementById('opayBoosterCarrierBadge');
+      if (badge) {
+        badge.innerText = platObj.badge;
+        badge.style.background = platObj.color;
+      }
+      const nameEl = document.getElementById('opayBoosterCarrierName');
+      if (nameEl) {
+        nameEl.innerText = platObj.name;
+        nameEl.style.color = platObj.color;
+      }
 
       // Default category for YouTube is subscribers, others followers
       const cats = getPlatformCategories(plat);
@@ -10847,6 +10811,16 @@
       
       renderCustomerBoosterCategories();
       renderCustomerBoosterPlans();
+
+      if (showNotice) {
+        showCustomAlert('Growth platform switched to ' + platObj.name);
+      }
+    }
+
+    function rotateCustomerBoosterPlatform() {
+      const curIdx = BOOSTER_PLATFORMS_INFO.findIndex(p => p.id === currentCustomerBoosterPlatform);
+      const nextIdx = (curIdx + 1) % BOOSTER_PLATFORMS_INFO.length;
+      selectCustomerBoosterPlatform(BOOSTER_PLATFORMS_INFO[nextIdx].id, true);
     }
 
     function selectCustomerBoosterCategory(catKey) {
@@ -10888,27 +10862,39 @@
     let currentEducationExam = 'waec';
     let currentEducationPlan = { id: 'edu_waec_1', provider_id: 'waec', name: 'WAEC Result Checker', price: 3850, origPrice: 4500, quantity: 1 };
 
-    function selectEducationExam(examSlug) {
+    const EDUCATION_EXAMS_INFO = [
+      { id: 'waec', name: 'WAEC', badge: 'W', color: '#0284C7' },
+      { id: 'neco', name: 'NECO', badge: 'N', color: '#10B981' },
+      { id: 'nabt', name: 'NABTEB', badge: 'NB', color: '#F59E0B' }
+    ];
+
+    function selectEducationExam(examSlug, showNotice) {
       currentEducationExam = examSlug;
-      ['waec', 'neco', 'nabt'].forEach(slug => {
-        const btn = document.getElementById('eduExamBtn_' + slug);
-        if (btn) {
-          if (slug === examSlug) {
-            btn.classList.add('active');
-            btn.style.background = 'linear-gradient(135deg, #0284C7 0%, #0369A1 100%)';
-            btn.style.color = '#FFF';
-            btn.style.border = 'none';
-            btn.style.boxShadow = '0 4px 12px rgba(2, 132, 199, 0.35)';
-          } else {
-            btn.classList.remove('active');
-            btn.style.background = '#181822';
-            btn.style.color = '#9CA3AF';
-            btn.style.border = '1px solid #28283A';
-            btn.style.boxShadow = 'none';
-          }
-        }
-      });
+      const examObj = EDUCATION_EXAMS_INFO.find(e => e.id === examSlug) || EDUCATION_EXAMS_INFO[0];
+
+      // Update chip badge and name
+      const badge = document.getElementById('opayEducationCarrierBadge');
+      if (badge) {
+        badge.innerText = examObj.badge;
+        badge.style.background = examObj.color;
+      }
+      const nameEl = document.getElementById('opayEducationCarrierName');
+      if (nameEl) {
+        nameEl.innerText = examObj.name;
+        nameEl.style.color = examObj.color;
+      }
+
       renderEducationPlans();
+
+      if (showNotice) {
+        showCustomAlert('Exam body switched to ' + examObj.name);
+      }
+    }
+
+    function rotateCustomerEducationExam() {
+      const curIdx = EDUCATION_EXAMS_INFO.findIndex(e => e.id === currentEducationExam);
+      const nextIdx = (curIdx + 1) % EDUCATION_EXAMS_INFO.length;
+      selectEducationExam(EDUCATION_EXAMS_INFO[nextIdx].id, true);
     }
 
     function renderEducationPlans() {
