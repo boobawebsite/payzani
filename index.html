@@ -5138,24 +5138,8 @@
         <span class="opay-sub-history" onclick="showCustomAlert('TV subscription history loaded')">History</span>
       </div>
 
-      <!-- Segmented TV Provider Selector: DStv, GOtv, StarTimes, Showmax -->
-      <div style="padding: 0 16px 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;" id="tvProviderSelectorStrip">
-        <button type="button" onclick="selectCustomerTvProvider('dstv')" id="cTvProv_dstv" class="tv-prov-btn active" style="background: linear-gradient(135deg, #0284C7 0%, #0369A1 100%); color: #FFF; border: none; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 800; cursor: pointer; text-align: center; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);">
-          DStv
-        </button>
-        <button type="button" onclick="selectCustomerTvProvider('gotv')" id="cTvProv_gotv" class="tv-prov-btn" style="background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: center;">
-          GOtv
-        </button>
-        <button type="button" onclick="selectCustomerTvProvider('startimes')" id="cTvProv_startimes" class="tv-prov-btn" style="background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: center;">
-          StarTimes
-        </button>
-        <button type="button" onclick="selectCustomerTvProvider('showmax')" id="cTvProv_showmax" class="tv-prov-btn" style="background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 12px; padding: 9px 4px; font-size: 12.5px; font-weight: 700; cursor: pointer; text-align: center;">
-          Showmax
-        </button>
-      </div>
-
       <div class="opay-input-box" style="margin: 0 16px 10px;">
-        <div class="opay-carrier-select-chip" id="opayTvCarrierChip" onclick="rotateCustomerTvProvider()" style="cursor: pointer;">
+        <div class="opay-carrier-select-chip" id="opayTvCarrierChip" onclick="openTvProviderModal()" style="cursor: pointer;">
           <span id="opayTvCarrierBadge" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:#0284C7; color:#FFF; font-size:10.5px; font-weight:900;">D</span>
           <span id="opayTvCarrierName" style="font-size:13px; font-weight:700;">DStv</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -5196,42 +5180,8 @@
         <span class="opay-sub-history" onclick="showCustomAlert('Betting funding history loaded')">History</span>
       </div>
 
-      <!-- Segmented Betting Provider Horizontal Strip -->
-      <div style="padding: 0 16px 12px; overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; gap: 8px;" id="bettingProviderSelectorStrip">
-        <button type="button" onclick="selectCustomerBettingProvider('sportybet')" id="cBetProv_sportybet" class="bet-prov-btn active" style="flex-shrink: 0; background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); color: #FFF; border: none; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);">
-          SportyBet
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('bet9ja')" id="cBetProv_bet9ja" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          Bet9ja
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('1xbet')" id="cBetProv_1xbet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          1xBet
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('betway')" id="cBetProv_betway" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          Betway
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('bangbet')" id="cBetProv_bangbet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          BangBet
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('betking')" id="cBetProv_betking" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          BetKing
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('merrybet')" id="cBetProv_merrybet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          Merrybet
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('nairabet')" id="cBetProv_nairabet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          NairaBet
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('22bet')" id="cBetProv_22bet" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          22bet
-        </button>
-        <button type="button" onclick="selectCustomerBettingProvider('paripesa')" id="cBetProv_paripesa" class="bet-prov-btn" style="flex-shrink: 0; background: #181822; color: #9CA3AF; border: 1px solid #28283A; border-radius: 20px; padding: 7px 15px; font-size: 12px; font-weight: 700; cursor: pointer;">
-          PariPesa
-        </button>
-      </div>
-
       <div class="opay-input-box" style="margin: 0 16px 10px;">
-        <div class="opay-carrier-select-chip" id="opayBetCarrierChip" onclick="rotateCustomerBettingProvider()" style="cursor: pointer;">
+        <div class="opay-carrier-select-chip" id="opayBetCarrierChip" onclick="openBettingProviderModal()" style="cursor: pointer;">
           <span id="opayBetCarrierBadge" style="display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; border-radius:6px; background:#EF4444; color:#FFF; font-size:10.5px; font-weight:900;">S</span>
           <span id="opayBetCarrierName" style="font-size:13px; font-weight:800; color:#EF4444;">SportyBet</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -6322,6 +6272,121 @@
     </div>
 
     <!-- MASTER ADMIN FLOAT ADJUSTMENT MODAL -->
+    
+    <!-- TV PROVIDER PICKER MODAL -->
+    <div id="opayTvProviderModal" style="display: none; position: fixed; inset: 0; background: rgba(5, 5, 8, 0.85); z-index: 99999; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(5px);" onclick="if(event.target===this) closeTvProviderModal();">
+      <div style="background: #14141E; border: 1px solid #2E2E42; border-radius: 16px; width: 100%; max-width: 360px; padding: 18px; box-shadow: 0 16px 40px rgba(0,0,0,0.6);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid #222230; padding-bottom: 10px;">
+          <div>
+            <div style="color: #FFFFFF; font-size: 14px; font-weight: 800;">Select TV Provider</div>
+            <div style="color: #9CA3AF; font-size: 11px;">Instant decoder bouquet renewal</div>
+          </div>
+          <button type="button" onclick="closeTvProviderModal()" style="background: transparent; border: none; color: #9CA3AF; cursor: pointer; padding: 4px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <div onclick="selectCustomerTvProvider('dstv')" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 12px; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 8px; background: #0284C7; color: #FFF; font-weight: 900; font-size: 13px;">D</span>
+              <div>
+                <div style="color: #FFFFFF; font-weight: 800; font-size: 13px;">DStv</div>
+                <div style="color: #9CA3AF; font-size: 10.5px;">Padi, Yanga, Confam, Compact, Premium</div>
+              </div>
+            </div>
+            <span style="color: #0284C7; font-size: 12px; font-weight: 700;">Select</span>
+          </div>
+          <div onclick="selectCustomerTvProvider('gotv')" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 12px; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 8px; background: #16A34A; color: #FFF; font-weight: 900; font-size: 13px;">G</span>
+              <div>
+                <div style="color: #FFFFFF; font-weight: 800; font-size: 13px;">GOtv</div>
+                <div style="color: #9CA3AF; font-size: 10.5px;">Smallie, Jinja, Jolli, Max, Supa</div>
+              </div>
+            </div>
+            <span style="color: #16A34A; font-size: 12px; font-weight: 700;">Select</span>
+          </div>
+          <div onclick="selectCustomerTvProvider('startimes')" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 12px; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 8px; background: #EA580C; color: #FFF; font-weight: 900; font-size: 13px;">S</span>
+              <div>
+                <div style="color: #FFFFFF; font-weight: 800; font-size: 13px;">StarTimes</div>
+                <div style="color: #9CA3AF; font-size: 10.5px;">Nova, Basic, Smart, Classic, Super</div>
+              </div>
+            </div>
+            <span style="color: #EA580C; font-size: 12px; font-weight: 700;">Select</span>
+          </div>
+          <div onclick="selectCustomerTvProvider('showmax')" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 12px; cursor: pointer;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 8px; background: #E11D48; color: #FFF; font-weight: 900; font-size: 13px;">M</span>
+              <div>
+                <div style="color: #FFFFFF; font-weight: 800; font-size: 13px;">Showmax</div>
+                <div style="color: #9CA3AF; font-size: 10.5px;">Mobile, All Devices, Premier League</div>
+              </div>
+            </div>
+            <span style="color: #E11D48; font-size: 12px; font-weight: 700;">Select</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BETTING PROVIDER PICKER MODAL -->
+    <div id="opayBettingProviderModal" style="display: none; position: fixed; inset: 0; background: rgba(5, 5, 8, 0.85); z-index: 99999; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(5px);" onclick="if(event.target===this) closeBettingProviderModal();">
+      <div style="background: #14141E; border: 1px solid #2E2E42; border-radius: 16px; width: 100%; max-width: 380px; padding: 18px; box-shadow: 0 16px 40px rgba(0,0,0,0.6); max-height: 85vh; display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #222230; padding-bottom: 10px;">
+          <div>
+            <div style="color: #FFFFFF; font-size: 14px; font-weight: 800;">Select Betting Platform</div>
+            <div style="color: #9CA3AF; font-size: 11px;">Direct wallet credit &bull; Zero service fees</div>
+          </div>
+          <button type="button" onclick="closeBettingProviderModal()" style="background: transparent; border: none; color: #9CA3AF; cursor: pointer; padding: 4px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div style="overflow-y: auto; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; padding-right: 2px;">
+          <div onclick="selectCustomerBettingProvider('sportybet')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #EF4444; color: #FFF; font-weight: 900; font-size: 11px;">S</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">SportyBet</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('bet9ja')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #10B981; color: #FFF; font-weight: 900; font-size: 11px;">9</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">Bet9ja</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('1xbet')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #2563EB; color: #FFF; font-weight: 900; font-size: 11px;">1</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">1xBet</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('betway')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #374151; color: #FFF; font-weight: 900; font-size: 11px;">W</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">Betway</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('bangbet')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #F59E0B; color: #FFF; font-weight: 900; font-size: 11px;">B</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">BangBet</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('betking')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #1D4ED8; color: #FFF; font-weight: 900; font-size: 11px;">K</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">BetKing</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('merrybet')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #EA580C; color: #FFF; font-weight: 900; font-size: 11px;">M</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">Merrybet</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('nairabet')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #0D9488; color: #FFF; font-weight: 900; font-size: 11px;">N</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">NairaBet</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('22bet')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #06B6D4; color: #FFF; font-weight: 900; font-size: 11px;">2</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">22bet</span>
+          </div>
+          <div onclick="selectCustomerBettingProvider('paripesa')" style="display: flex; align-items: center; gap: 8px; padding: 10px 10px; background: #1A1A26; border: 1px solid #2A2A3C; border-radius: 10px; cursor: pointer;">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 6px; background: #8B5CF6; color: #FFF; font-weight: 900; font-size: 11px;">P</span>
+            <span style="color: #FFFFFF; font-weight: 800; font-size: 12px;">PariPesa</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="adminAdjustFloatModal" style="display: none; position: fixed; inset: 0; background: rgba(5, 5, 8, 0.85); z-index: 99999; align-items: center; justify-content: center; padding: 16px; backdrop-filter: blur(5px);">
       <div style="background: #14141E; border: 1px solid #2E2E42; border-radius: 14px; width: 100%; max-width: 340px; padding: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.6);">
         <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #222230; padding-bottom: 8px;">
@@ -10336,29 +10401,19 @@
       ]
     };
 
+    function openTvProviderModal() {
+      const modal = document.getElementById('opayTvProviderModal');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeTvProviderModal() {
+      const modal = document.getElementById('opayTvProviderModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     function selectCustomerTvProvider(provId) {
       window.currentTvProviderId = provId;
       const provObj = TV_PROVIDERS_LIST.find(p => p.id === provId) || TV_PROVIDERS_LIST[0];
       window.currentTvProviderName = provObj.name;
-
-      // Update button strip
-      document.querySelectorAll('#tvProviderSelectorStrip .tv-prov-btn').forEach(btn => {
-        btn.classList.remove('active');
-        btn.style.background = '#181822';
-        btn.style.color = '#9CA3AF';
-        btn.style.border = '1px solid #28283A';
-        btn.style.boxShadow = 'none';
-        btn.style.fontWeight = '700';
-      });
-      const activeBtn = document.getElementById('cTvProv_' + provId);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-        activeBtn.style.background = provObj.gradient;
-        activeBtn.style.color = '#FFFFFF';
-        activeBtn.style.border = 'none';
-        activeBtn.style.boxShadow = '0 4px 12px ' + provObj.color + '55';
-        activeBtn.style.fontWeight = '800';
-      }
 
       // Update chip
       const badge = document.getElementById('opayTvCarrierBadge');
@@ -10378,6 +10433,7 @@
       }
 
       renderCustomerTvPlans();
+      closeTvProviderModal();
     }
 
     function rotateCustomerTvProvider() {
@@ -10446,29 +10502,19 @@
       { id: 'paripesa', name: 'PariPesa', badge: 'P', color: '#8B5CF6', gradient: 'linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%)', placeholder: 'Enter PariPesa User ID' }
     ];
 
+    function openBettingProviderModal() {
+      const modal = document.getElementById('opayBettingProviderModal');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closeBettingProviderModal() {
+      const modal = document.getElementById('opayBettingProviderModal');
+      if (modal) modal.style.display = 'none';
+    }
+
     function selectCustomerBettingProvider(provId) {
       window.currentBettingProviderId = provId;
       const provObj = BETTING_PROVIDERS_LIST.find(p => p.id === provId) || BETTING_PROVIDERS_LIST[0];
       window.currentBettingProviderName = provObj.name;
-
-      // Update strip buttons
-      document.querySelectorAll('#bettingProviderSelectorStrip .bet-prov-btn').forEach(btn => {
-        btn.classList.remove('active');
-        btn.style.background = '#181822';
-        btn.style.color = '#9CA3AF';
-        btn.style.border = '1px solid #28283A';
-        btn.style.boxShadow = 'none';
-        btn.style.fontWeight = '700';
-      });
-      const activeBtn = document.getElementById('cBetProv_' + provId);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-        activeBtn.style.background = provObj.gradient;
-        activeBtn.style.color = '#FFFFFF';
-        activeBtn.style.border = 'none';
-        activeBtn.style.boxShadow = '0 4px 12px ' + provObj.color + '55';
-        activeBtn.style.fontWeight = '800';
-      }
 
       // Update chip
       const badge = document.getElementById('opayBetCarrierBadge');
@@ -10490,6 +10536,7 @@
 
       const val = betInp ? betInp.value.trim() : '';
       verifyCustomerBettingAccount(val);
+      closeBettingProviderModal();
     }
 
     function rotateCustomerBettingProvider() {
