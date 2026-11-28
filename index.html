@@ -4584,7 +4584,7 @@
           <div class="payzani-auth-mini-logo">P</div>
           <span class="payzani-auth-brand-label">Payzani</span>
         </div>
-        <button type="button" class="payzani-auth-help-btn" onclick="showCustomAlert('Payzani 24/7 Live Support: Connected')">
+        <button type="button" class="payzani-auth-help-btn" onclick="openWhatsAppSupport()" title="Customer Support">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
           <span>Support</span>
         </button>
@@ -4739,7 +4739,7 @@
           <span class="opay-user-name" id="opayUserGreeting">Welcome to Payzani</span>
         </div>
         <div class="opay-top-actions">
-          <button class="opay-icon-btn" onclick="showCustomAlert('Payzani Live Support: Connected')">
+          <button class="opay-icon-btn" onclick="openWhatsAppSupport()" title="Customer Support">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
               <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
@@ -5231,7 +5231,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
           <span>Become a Payzani Agent</span>
         </div>
-        <span class="opay-sub-history" onclick="showCustomAlert('Agent Helpline: 24/7 Priority Support Active')">Support</span>
+        <span class="opay-sub-history" onclick="openWhatsAppSupport()" style="cursor: pointer;">Support</span>
       </div>
 
       <!-- One-Time Agent Registration Fee Display -->
@@ -5487,6 +5487,18 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" style="flex-shrink:0;"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
             <input type="text" id="agentStorefrontSloganInput" value="We are Beyond Telecom" placeholder="We are Beyond Telecom" oninput="handleAgentStorefrontSloganInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #D1D5DB; font-size: 11.5px; font-weight: 500;" />
           </div>
+        </div>
+
+        <!-- 3. Storefront WhatsApp Support Number -->
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 11px; font-weight: 700; color: #E5E7EB; margin-bottom: 4px;">
+            WhatsApp Support Number (Customers on your website will message this number)
+          </label>
+          <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" style="flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            <input type="tel" id="agentStorefrontPhoneInput" placeholder="e.g. 0812 345 6789 or +234..." oninput="handleAgentStorefrontPhoneInput(this.value)" style="width: 100%; background: transparent; border: none; outline: none; color: #D1D5DB; font-size: 11.5px; font-weight: 600;" />
+          </div>
+          <div style="font-size: 9.5px; color: #9CA3AF; margin-top: 3px;">When customers click Support on your custom website, it opens WhatsApp chat to this number.</div>
         </div>
 
         <!-- 3. Storefront Logo Studio -->
@@ -5880,7 +5892,7 @@
           </div>
 
           <!-- 5. Agent Bank Cashout / Withdrawal Fee -->
-          <div style="margin-bottom: 16px;">
+          <div style="margin-bottom: 14px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
               <label style="font-size: 11px; font-weight: 700; color: #E5E7EB;">Agent Bank Withdrawal Fee (₦)</label>
               <span style="font-size: 9.5px; color: #9CA3AF; font-weight: 600;">Switch clearing</span>
@@ -5890,6 +5902,19 @@
               <input type="number" id="adminAgentWithdrawalFee" value="50" min="0" step="10" style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
             </div>
             <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">Charged per settlement to Nigerian commercial bank accounts.</div>
+          </div>
+
+          <!-- 6. Admin WhatsApp Support Helpline -->
+          <div style="margin-bottom: 16px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label style="font-size: 11px; font-weight: 700; color: #E5E7EB;">Admin WhatsApp Support Number</label>
+              <span style="font-size: 9.5px; color: #10B981; font-weight: 600;">24/7 Helpline</span>
+            </div>
+            <div style="background: #0B0B10; border: 1px solid #252536; border-radius: 8px; padding: 0 10px; height: 38px; display: flex; align-items: center; gap: 6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <input type="tel" id="adminSupportWhatsApp" placeholder="e.g. 08123456789 or +234..." style="width: 100%; background: transparent; border: none; outline: none; color: #FFF; font-size: 12.5px; font-weight: 700;" />
+            </div>
+            <div style="font-size: 9.5px; color: #6B7280; margin-top: 3px;">When customers or agents click Support across Payzani, it opens WhatsApp chat to this number.</div>
           </div>
 
           <!-- Save Button -->
@@ -9032,6 +9057,12 @@
             <span style="font-size:11.5px; color:var(--text-muted);">Retained profit deducted during token purchases.</span>
           </div>
 
+          <div class="form-group" style="margin-bottom:14px;">
+            <label class="form-label">Admin WhatsApp Support Number</label>
+            <input type="tel" class="input-field" placeholder="e.g. 08123456789 or +234..." id="adminDeskSupportWhatsApp">
+            <span style="font-size:11.5px; color:var(--text-muted);">Users clicking Support across the platform will be redirected to this WhatsApp number.</span>
+          </div>
+
           <button class="btn-primary" onclick="saveMasterSettings()">Save Platform Fees</button>
         </div>
 
@@ -10346,16 +10377,71 @@
       }
     }
 
+    function formatWhatsAppNumber(phone) {
+      if (!phone) return '';
+      let clean = String(phone).replace(/\D/g, '');
+      if (clean.startsWith('0')) {
+        clean = '234' + clean.slice(1);
+      } else if (clean.length === 10) {
+        clean = '234' + clean;
+      }
+      return clean;
+    }
+
+    function openWhatsAppSupport() {
+      const isAgent = typeof isAgentStorefront === 'function' && isAgentStorefront();
+      const params = new URLSearchParams(window.location.search);
+
+      if (isAgent) {
+        // Agent Storefront Support -> Route to Agent WhatsApp
+        let agentPhone = params.get('support') || params.get('whatsapp') || params.get('phone');
+        if (!agentPhone) {
+          try {
+            agentPhone = localStorage.getItem('payzani_agent_support_phone') || localStorage.getItem('payzani_agent_phone');
+          } catch(e) {}
+        }
+        let cleanPhone = formatWhatsAppNumber(agentPhone);
+        let agentName = params.get('name') || '';
+        if (!agentName) {
+          try {
+            agentName = localStorage.getItem('payzani_agent_name') || 'Storefront';
+          } catch(e) {}
+        }
+
+        if (!cleanPhone) {
+          if (typeof showCustomAlert === 'function') {
+            showCustomAlert('Storefront agent support number is not configured yet.');
+          }
+          return;
+        }
+
+        const msg = encodeURIComponent(`Hello ${agentName || 'Agent'}, I am contacting you for support from your storefront website.`);
+        window.open(`https://api.whatsapp.com/send?phone=${cleanPhone}&text=${msg}`, '_blank');
+      } else {
+        // Main Payzani Site Support -> Route to Admin WhatsApp
+        const cfg = (typeof getMasterAdminConfig === 'function') ? getMasterAdminConfig() : {};
+        let adminPhone = cfg.adminSupportPhone;
+        if (!adminPhone) {
+          try {
+            adminPhone = localStorage.getItem('payzani_admin_support_phone');
+          } catch(e) {}
+        }
+
+        let cleanPhone = formatWhatsAppNumber(adminPhone);
+        if (!cleanPhone) {
+          if (typeof showCustomAlert === 'function') {
+            showCustomAlert('Admin support WhatsApp number is not configured yet. Please set it in the Admin Panel.');
+          }
+          return;
+        }
+
+        const msg = encodeURIComponent('Hello Payzani Support, I need assistance with my account / transaction.');
+        window.open(`https://api.whatsapp.com/send?phone=${cleanPhone}&text=${msg}`, '_blank');
+      }
+    }
+
     function contactStorefrontWhatsApp() {
-      let outletName = 'My Reseller Store';
-      let phone = '2348023456789';
-      try {
-        outletName = localStorage.getItem('payzani_agent_name') || 'My Reseller Store';
-        phone = (localStorage.getItem('payzani_agent_phone') || '08023456789').replace(/[^0-9]/g, '');
-        if (phone.startsWith('0')) phone = '234' + phone.slice(1);
-      } catch(e) {}
-      const msg = encodeURIComponent(`Hello ${outletName}, I am shopping on your Payzani storefront website and need assistance.`);
-      window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${msg}`, '_blank');
+      openWhatsAppSupport();
     }
 
     function handlePayzaniLogout() {
@@ -11308,6 +11394,12 @@
           url += `&logo=${encodeURIComponent(logo.replace('preset:', ''))}`;
         }
       } catch(e) {}
+      try {
+        const supportPhone = localStorage.getItem('payzani_agent_support_phone') || localStorage.getItem('payzani_agent_phone');
+        if (supportPhone && supportPhone.trim()) {
+          url += `&support=${encodeURIComponent(supportPhone.trim())}`;
+        }
+      } catch(e) {}
       return url;
     }
 
@@ -12121,6 +12213,11 @@
           if (storedMotto) sloganInput.value = storedMotto;
           else if (!sloganInput.value) sloganInput.value = 'We are Beyond Telecom';
         }
+        const phoneInput = document.getElementById('agentStorefrontPhoneInput');
+        if (phoneInput) {
+          const storedPhone = localStorage.getItem('payzani_agent_support_phone') || localStorage.getItem('payzani_agent_phone');
+          if (storedPhone) phoneInput.value = storedPhone;
+        }
         updateColorSelectorUI(currentAgentThemeColor || '#7C3AED');
         setTimeout(() => {
           if (secBrand) {
@@ -12146,17 +12243,30 @@
       }
     }
 
+    function handleAgentStorefrontPhoneInput(val) {
+      try {
+        localStorage.setItem('payzani_agent_support_phone', (val || '').trim());
+      } catch(e) {}
+      const linkInput = document.getElementById('agentStorefrontLinkInput');
+      if (linkInput && typeof getAgentStorefrontUrl === 'function') {
+        linkInput.value = getAgentStorefrontUrl();
+      }
+    }
+
     function saveAndApplyAgentBranding() {
       const nameInput = document.getElementById('agentStorefrontNameInput');
       const sloganInput = document.getElementById('agentStorefrontSloganInput');
+      const phoneInput = document.getElementById('agentStorefrontPhoneInput');
       
       const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : (localStorage.getItem('payzani_agent_name') || 'My Telecom Store');
       const slogan = sloganInput && sloganInput.value.trim() ? sloganInput.value.trim() : (localStorage.getItem('payzani_agent_slogan') || 'We are Beyond Telecom');
+      const phone = phoneInput && phoneInput.value.trim() ? phoneInput.value.trim() : (localStorage.getItem('payzani_agent_support_phone') || localStorage.getItem('payzani_agent_phone') || '');
       
       try {
         localStorage.setItem('payzani_agent_name', name);
         localStorage.setItem('payzani_agent_slogan', slogan);
         localStorage.setItem('payzani_agent_color', currentAgentThemeColor || '#7C3AED');
+        if (phone) localStorage.setItem('payzani_agent_support_phone', phone);
       } catch(e) {}
       
       handleAgentStorefrontNameInput(name);
@@ -12168,7 +12278,7 @@
       }
 
       if (typeof showCustomAlert === 'function') {
-        showCustomAlert('Storefront Branding Saved!\nWebsite: "' + name + '"\nMotto: "' + slogan + '"\nTheme: ' + (currentAgentThemeColor || '#7C3AED').toUpperCase() + '\n\nThis only affects your own website. The main Payzani website remains Royal Purple.');
+        showCustomAlert('Storefront Branding Saved!\nWebsite: "' + name + '"\nMotto: "' + slogan + '"\nSupport WhatsApp: ' + (phone || 'Configured') + '\nTheme: ' + (currentAgentThemeColor || '#7C3AED').toUpperCase() + '\n\nThis only affects your own website. The main Payzani website remains Royal Purple.');
       }
     }
 
@@ -12191,6 +12301,8 @@
       if (nameInput) nameInput.value = businessName;
       const sloganInput = document.getElementById('agentStorefrontSloganInput');
       if (sloganInput) sloganInput.value = businessSlogan;
+      const phoneInput = document.getElementById('agentStorefrontPhoneInput');
+      if (phoneInput) phoneInput.value = localStorage.getItem('payzani_agent_support_phone') || localStorage.getItem('payzani_agent_phone') || '';
       
       const previewName = document.getElementById('agentPreviewMiniName');
       if (previewName) previewName.textContent = businessName;
@@ -12364,6 +12476,7 @@
       minFloatRefill: 5000,
       platformTokenCut: 200,
       agentWithdrawalFee: 50,
+      adminSupportPhone: '08123456789',
       pairgateApiKey: 'PG_live_EOcMT8SDNPGBIon7TOrQyndTSAFFJE47m3LHmdh8Gygmi',
       educationPricing: [
         { id: 'edu_waec_1', provider_id: 'waec', name: 'WAEC Result Checker', origPrice: 4500, retailPrice: 3850, quantity: 1, type: 'waec' },
@@ -12900,6 +13013,10 @@
         if (deskCut) deskCut.value = cfg.platformTokenCut || 200;
         const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
         if (inputWithdraw) inputWithdraw.value = cfg.agentWithdrawalFee || 50;
+        const inputSupport = document.getElementById('adminSupportWhatsApp');
+        if (inputSupport) inputSupport.value = cfg.adminSupportPhone || '';
+        const deskSupport = document.getElementById('adminDeskSupportWhatsApp');
+        if (deskSupport) deskSupport.value = cfg.adminSupportPhone || '';
 
         // 7. Render Sub-views
         renderAdminPricingPlans();
@@ -12955,6 +13072,10 @@
       if (inputFee && document.activeElement !== inputFee) inputFee.value = fee;
       const deskFee = document.getElementById('adminAgentFee');
       if (deskFee && document.activeElement !== deskFee) deskFee.value = fee;
+      const inputSupport = document.getElementById('adminSupportWhatsApp');
+      if (inputSupport && document.activeElement !== inputSupport) inputSupport.value = cfg.adminSupportPhone || '';
+      const deskSupport = document.getElementById('adminDeskSupportWhatsApp');
+      if (deskSupport && document.activeElement !== deskSupport) deskSupport.value = cfg.adminSupportPhone || '';
 
       // Sync Cable TV admin inputs and customer grid
       if (cfg.tvPricing) {
@@ -13063,6 +13184,16 @@
       const inputWithdraw = document.getElementById('adminAgentWithdrawalFee');
       if (inputWithdraw) cfg.agentWithdrawalFee = Number(inputWithdraw.value) || 50;
 
+      const inputSupport = document.getElementById('adminSupportWhatsApp');
+      const deskSupport = document.getElementById('adminDeskSupportWhatsApp');
+      if (inputSupport && inputSupport.value.trim()) {
+        cfg.adminSupportPhone = inputSupport.value.trim();
+        try { localStorage.setItem('payzani_admin_support_phone', cfg.adminSupportPhone); } catch(e) {}
+      } else if (deskSupport && deskSupport.value.trim()) {
+        cfg.adminSupportPhone = deskSupport.value.trim();
+        try { localStorage.setItem('payzani_admin_support_phone', cfg.adminSupportPhone); } catch(e) {}
+      }
+
       await saveMasterAdminConfig(cfg);
       showCustomAlert('Agent Activation Fee updated to ₦' + feeVal.toLocaleString() + ' & saved live!');
     }
@@ -13078,6 +13209,16 @@
       const cut = document.getElementById('adminTokenCut') ? document.getElementById('adminTokenCut').value : 200;
       cfg.agentOnboardingFee = feeVal;
       if (cut) cfg.platformTokenCut = Number(cut);
+
+      const deskSupport = document.getElementById('adminDeskSupportWhatsApp');
+      const inputSupport = document.getElementById('adminSupportWhatsApp');
+      if (deskSupport && deskSupport.value.trim()) {
+        cfg.adminSupportPhone = deskSupport.value.trim();
+        try { localStorage.setItem('payzani_admin_support_phone', cfg.adminSupportPhone); } catch(e) {}
+      } else if (inputSupport && inputSupport.value.trim()) {
+        cfg.adminSupportPhone = inputSupport.value.trim();
+        try { localStorage.setItem('payzani_admin_support_phone', cfg.adminSupportPhone); } catch(e) {}
+      }
 
       await saveMasterAdminConfig(cfg);
       showCustomAlert('Agent Activation Fee updated to ₦' + feeVal.toLocaleString() + ' & saved live!');
