@@ -13553,10 +13553,86 @@
     // Global Paystack Gateway Credentials (Live)
     const PAYSTACK_PUBLIC_KEY = 'pk_live_7ad543047c70c866ded395106782bf387c9fff6f';
 
+    // ==============================================================================
+    // STOREFRONT-SCOPED AUTHENTICATION & SESSION ISOLATION ENGINE
+    // Ensures accounts and sessions on Main Payzani vs Agent Storefronts are strictly isolated.
+    // A user registered on Payzani CANNOT log in to an agent storefront without signing up on that storefront!
+    // ==============================================================================
+    function getActiveSessionUserId() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('agent')) {
+          const agentSlug = (params.get('agent') || 'default').toLowerCase().replace(/[^a-z0-9]/g, '');
+          return localStorage.getItem('payzani_storefront_user_id_' + agentSlug) || null;
+        } else {
+          return localStorage.getItem('payzani_main_user_id') || localStorage.getItem('payzani_user_id') || null;
+        }
+      } catch(e) {
+        return null;
+      }
+    }
+
+    function setActiveSessionUserId(userId) {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('agent')) {
+          const agentSlug = (params.get('agent') || 'default').toLowerCase().replace(/[^a-z0-9]/g, '');
+          if (userId) {
+            localStorage.setItem('payzani_storefront_user_id_' + agentSlug, userId);
+          } else {
+            localStorage.removeItem('payzani_storefront_user_id_' + agentSlug);
+          }
+        } else {
+          if (userId) {
+            localStorage.setItem('payzani_main_user_id', userId);
+            localStorage.setItem('payzani_user_id', userId);
+          } else {
+            localStorage.removeItem('payzani_main_user_id');
+            localStorage.removeItem('payzani_user_id');
+          }
+        }
+      } catch(e) {}
+    }
+
+    function getStorefrontCustomerKeys(agentSlug) {
+      try {
+        const raw = localStorage.getItem('payzani_storefront_customers_' + agentSlug);
+        return raw ? JSON.parse(raw) : [];
+      } catch(e) {
+        return [];
+      }
+    }
+
+    function registerStorefrontCustomer(agentSlug, identifier, profileId) {
+      try {
+        const list = getStorefrontCustomerKeys(agentSlug);
+        const idClean = identifier ? identifier.replace(/\D/g, '') : '';
+        const emailClean = (identifier && identifier.includes('@')) ? identifier.toLowerCase().trim() : '';
+        if (idClean && !list.includes(idClean)) list.push(idClean);
+        if (emailClean && !list.includes(emailClean)) list.push(emailClean);
+        if (profileId && !list.includes(profileId)) list.push(profileId);
+        localStorage.setItem('payzani_storefront_customers_' + agentSlug, JSON.stringify(list));
+      } catch(e) {}
+    }
+
+    function isUserRegisteredOnStorefront(agentSlug, phone, email, profile) {
+      if (!agentSlug) return true;
+      const list = getStorefrontCustomerKeys(agentSlug);
+      const cleanPhone = phone ? phone.replace(/\D/g, '') : '';
+      const cleanEmail = email ? email.toLowerCase().trim() : '';
+
+      if (cleanPhone && list.includes(cleanPhone)) return true;
+      if (cleanEmail && list.includes(cleanEmail)) return true;
+      if (profile && profile.id && list.includes(profile.id)) return true;
+      if (profile && profile.role && profile.role.includes('customer:' + agentSlug)) return true;
+      if (profile && profile.referral_code && profile.referral_code.includes('AGT-' + agentSlug.toUpperCase())) return true;
+      return false;
+    }
+
     const PAYZANI_SB = {
       url: 'https://qjocejtvourlhpweosyu.supabase.co',
       anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqb2NlanR2b3VybGhwd2Vvc3l1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNDY5MzYsImV4cCI6MjExMDkyMjkzNn0.pPYRZYdqIiKl4biX6G8VS8AnbOA3jNtBrdeFVfGfUNg',
-      userId: localStorage.getItem('payzani_user_id') || null,
+      userId: getActiveSessionUserId(),
       profile: null,
       transactions: [],
       rewards: [],
@@ -14460,6 +14536,11 @@
       }
 
       try {
+        const isAgentSite = isAgentStorefront();
+        const params = new URLSearchParams(window.location.search);
+        const agentSlug = isAgentSite ? (params.get('agent') || 'default').toLowerCase().replace(/[^a-z0-9]/g, '') : null;
+        const agentName = isAgentSite ? (params.get('name') || localStorage.getItem('payzani_agent_name') || 'this Storefront') : 'Payzani';
+
         if (type === 'login') {
           const phoneInput = document.getElementById('payzaniLoginPhone');
           const passInput = document.getElementById('payzaniLoginPassword');
@@ -14467,27 +14548,42 @@
           const pin = passInput ? passInput.value.trim() : '';
 
           if (!phoneOrEmail) {
-            showCustomAlert('Please enter your registered mobile number or email.');
+            showCustomAlert('Please enter your mobile number or email.');
             return;
           }
 
           let query = '';
+          const cleanPhone = phoneOrEmail.replace(/\D/g, '');
           if (phoneOrEmail.includes('@')) {
-            query = 'email=eq.' + encodeURIComponent(phoneOrEmail);
+            query = 'email=eq.' + encodeURIComponent(phoneOrEmail.toLowerCase());
           } else {
-            const cleanPhone = phoneOrEmail.replace(/\D/g, '');
             query = 'phone=eq.' + encodeURIComponent(cleanPhone);
           }
 
           const profiles = await PAYZANI_SB.get('profiles', query);
 
           if (!profiles || profiles.length === 0) {
-            showCustomAlert('No account found with this credential. Please create a free account.');
+            showCustomAlert('No account found with this credential. Please click Sign Up to create an account.');
             switchPayzaniAuthTab('signup');
             return;
           }
 
           const userProfile = profiles[0];
+
+          // STRICT STOREFRONT ISOLATION:
+          // A user registered on Payzani CANNOT log in to an agent's website without signing up on that agent's website!
+          if (isAgentSite) {
+            const isRegisteredHere = isUserRegisteredOnStorefront(agentSlug, cleanPhone, phoneOrEmail, userProfile);
+            if (!isRegisteredHere) {
+              showCustomAlert('No account found on ' + agentName + '. You cannot log in with Payzani details directly without registering here first. Please click "Sign Up" below to create your account on ' + agentName + '.');
+              switchPayzaniAuthTab('signup');
+              const signupPhone = document.getElementById('payzaniSignupPhone');
+              if (signupPhone && cleanPhone) signupPhone.value = cleanPhone;
+              const signupEmail = document.getElementById('payzaniSignupEmail');
+              if (signupEmail && phoneOrEmail.includes('@')) signupEmail.value = phoneOrEmail;
+              return;
+            }
+          }
 
           // Check PIN if present
           if (userProfile.pin && pin && userProfile.pin !== pin) {
@@ -14496,13 +14592,13 @@
           }
 
           PAYZANI_SB.userId = userProfile.id;
-          localStorage.setItem('payzani_user_id', userProfile.id);
+          setActiveSessionUserId(userProfile.id);
           dismissPayzaniAuth(false);
           await syncRealUserProfile();
           await syncRealTransactions();
           await syncRealReferralRewards();
           await syncRealAgentDashboard();
-          showCustomAlert('Welcome back, ' + userProfile.full_name + '! Live Supabase wallet connected.');
+          showCustomAlert('Welcome back, ' + userProfile.full_name + '! Logged in to ' + agentName + '.');
         } else {
           const nameInput = document.getElementById('payzaniSignupName');
           const phoneInput = document.getElementById('payzaniSignupPhone');
@@ -14527,33 +14623,80 @@
             return;
           }
 
-          // Check if phone already registered in Supabase
-          const existing = await PAYZANI_SB.get('profiles', 'phone=eq.' + encodeURIComponent(cleanPhone));
-          if (existing && existing.length > 0) {
-            showCustomAlert('An account with phone ' + cleanPhone + ' already exists. Please log in.');
-            switchPayzaniAuthTab('login');
-            const loginInp = document.getElementById('payzaniLoginPhone');
-            if (loginInp) loginInp.value = cleanPhone;
-            return;
+          // Check if already registered on THIS storefront
+          if (isAgentSite) {
+            const alreadyRegisteredHere = isUserRegisteredOnStorefront(agentSlug, cleanPhone, emailVal, null);
+            if (alreadyRegisteredHere) {
+              showCustomAlert('You already have an account on ' + agentName + '. Please log in.');
+              switchPayzaniAuthTab('login');
+              const loginInp = document.getElementById('payzaniLoginPhone');
+              if (loginInp) loginInp.value = cleanPhone;
+              return;
+            }
           }
 
-          const newId = 'usr_' + Date.now();
-          const refCode = 'PYZ-' + Math.floor(100000 + Math.random() * 900000);
+          // Query existing profile in Supabase
+          const existing = await PAYZANI_SB.get('profiles', 'phone=eq.' + encodeURIComponent(cleanPhone));
+          let userProfile = null;
 
-          const res = await PAYZANI_SB.post('profiles', {
-            id: newId,
-            full_name: fullName,
-            phone: cleanPhone,
-            email: emailVal || (cleanPhone + '@payzani.user'),
-            wallet_balance: 0.00,
-            earned_today: 0.00,
-            referral_code: refCode,
-            role: 'user',
-            pin: pinVal
-          });
+          if (existing && existing.length > 0) {
+            if (!isAgentSite) {
+              // Main Payzani site: existing user should log in
+              showCustomAlert('An account with phone ' + cleanPhone + ' already exists on Payzani. Please log in.');
+              switchPayzaniAuthTab('login');
+              const loginInp = document.getElementById('payzaniLoginPhone');
+              if (loginInp) loginInp.value = cleanPhone;
+              return;
+            } else {
+              // Agent site: user is registering specifically on this storefront!
+              userProfile = existing[0];
+              registerStorefrontCustomer(agentSlug, cleanPhone, userProfile.id);
+              if (emailVal) registerStorefrontCustomer(agentSlug, emailVal, userProfile.id);
 
-          // If a referrer was provided, credit referral bonus
-          if (refVal) {
+              // Update customer count for agent
+              let custs = parseInt(localStorage.getItem('payzani_agent_customers') || '0') + 1;
+              localStorage.setItem('payzani_agent_customers', custs.toString());
+              const custEl = document.getElementById('agentTotalCustomers');
+              if (custEl) custEl.textContent = custs.toString();
+            }
+          } else {
+            // Brand new profile
+            const newId = 'usr_' + Date.now();
+            const refCode = isAgentSite ? ('AGT-' + agentSlug.toUpperCase() + '-' + Math.floor(1000 + Math.random() * 9000)) : ('PYZ-' + Math.floor(100000 + Math.random() * 900000));
+            const userRole = isAgentSite ? ('customer:' + agentSlug) : 'user';
+
+            const res = await PAYZANI_SB.post('profiles', {
+              id: newId,
+              full_name: fullName,
+              phone: cleanPhone,
+              email: emailVal || (cleanPhone + '@' + (isAgentSite ? agentSlug : 'payzani') + '.com'),
+              wallet_balance: 0.00,
+              earned_today: 0.00,
+              referral_code: refCode,
+              role: userRole,
+              pin: pinVal
+            });
+
+            userProfile = (res && res[0]) || {
+              id: newId,
+              full_name: fullName,
+              phone: cleanPhone,
+              wallet_balance: 0.00
+            };
+
+            if (isAgentSite) {
+              registerStorefrontCustomer(agentSlug, cleanPhone, userProfile.id);
+              if (emailVal) registerStorefrontCustomer(agentSlug, emailVal, userProfile.id);
+
+              let custs = parseInt(localStorage.getItem('payzani_agent_customers') || '0') + 1;
+              localStorage.setItem('payzani_agent_customers', custs.toString());
+              const custEl = document.getElementById('agentTotalCustomers');
+              if (custEl) custEl.textContent = custs.toString();
+            }
+          }
+
+          // If a referrer was provided on main site, credit referral bonus
+          if (!isAgentSite && refVal) {
             try {
               const refs = await PAYZANI_SB.get('profiles', 'referral_code=eq.' + encodeURIComponent(refVal));
               if (refs && refs.length > 0) {
@@ -14573,21 +14716,14 @@
             }
           }
 
-          const userProfile = res[0] || {
-            id: newId,
-            full_name: fullName,
-            phone: cleanPhone,
-            wallet_balance: 0.00
-          };
-
           PAYZANI_SB.userId = userProfile.id;
-          localStorage.setItem('payzani_user_id', userProfile.id);
+          setActiveSessionUserId(userProfile.id);
           dismissPayzaniAuth(false);
           await syncRealUserProfile();
           await syncRealTransactions();
           await syncRealReferralRewards();
           await syncRealAgentDashboard();
-          showCustomAlert('Account created successfully! Welcome to Payzani, ' + fullName + '.');
+          showCustomAlert('Account created successfully! Welcome to ' + agentName + ', ' + fullName + '.');
         }
       } catch (err) {
         console.error('Supabase Auth error:', err);
@@ -14606,14 +14742,14 @@
         return;
       }
       const p = PAYZANI_SB.profile;
+      const siteName = isAgentStorefront() ? (new URLSearchParams(window.location.search).get('name') || localStorage.getItem('payzani_agent_name') || 'Storefront') : 'Payzani';
       const doSignOut = confirm(
-        'PAYZANI ACCOUNT DETAILS\n\n' +
+        siteName.toUpperCase() + ' ACCOUNT DETAILS\n\n' +
         'Name: ' + (p.full_name || 'N/A') + '\n' +
         'Phone: ' + (p.phone || 'N/A') + '\n' +
         'Email: ' + (p.email || 'N/A') + '\n' +
-        'Wallet: ₦' + Number(p.wallet_balance || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '\n' +
-        'Referral Code: ' + (p.referral_code || 'N/A') + '\n\n' +
-        'Would you like to Sign Out?'
+        'Wallet: ₦' + Number(p.wallet_balance || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '\n\n' +
+        'Would you like to Sign Out of ' + siteName + '?'
       );
       if (doSignOut) {
         payzaniSignOut();
@@ -14621,7 +14757,7 @@
     }
 
     function payzaniSignOut() {
-      localStorage.removeItem('payzani_user_id');
+      setActiveSessionUserId(null);
       PAYZANI_SB.userId = null;
       PAYZANI_SB.profile = null;
       PAYZANI_SB.transactions = [];
@@ -14634,13 +14770,24 @@
 
     // Auto-initialize real database sync when page loads
     window.addEventListener('DOMContentLoaded', () => {
-      syncRealPlatformSettings();
-      syncRealUserProfile();
-      syncRealTransactions();
-      syncRealReferralRewards();
-      syncRealAgentDashboard();
-    });
-
-</script>
+      const activeUser = getActiveSessionUserId();
+      PAYZANI_SB.userId = activeUser;
+      
+      if (activeUser) {
+        dismissPayzaniAuth(false);
+        syncRealPlatformSettings();
+        syncRealUserProfile();
+        syncRealTransactions();
+        syncRealReferralRewards();
+        syncRealAgentDashboard();
+      } else {
+        PAYZANI_SB.profile = null;
+        updateAuthUIForGuest();
+        if (isAgentStorefront()) {
+          // On agent storefront, require login or sign-up
+          openPayzaniAuth();
+        }
+      }
+    });</script>
 </body>
 </html>
